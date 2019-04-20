@@ -1,0 +1,9 @@
+/Library
+Library/
+/ProjectSettings
+ProjectSettings/
+/UnityPackageManager
+UnityPackageManager/
+Assets/Imported/
+.vs/
+Temp/
