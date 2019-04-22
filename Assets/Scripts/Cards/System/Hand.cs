@@ -34,6 +34,8 @@ public class Hand : DropZone, CardHandler
     public void AddToHand(Card card)
     {
         card = Instantiate(card);
+        card.owner = CombatManager.Instance.player;
+        card.handler = this;
         card.transform.SetParent(transform);
         cards.Add(card);
     }

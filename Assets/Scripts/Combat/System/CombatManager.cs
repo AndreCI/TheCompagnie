@@ -20,6 +20,7 @@ public class CombatManager : MonoBehaviour
     {
         instance = this;
         StartCombat(new List<Compagnion> { player }, new List<Enemy> { enemy });
+
     }
 
     public void StartCombat(List<Compagnion> compagnions_, List<Enemy> enemies_)
@@ -37,6 +38,11 @@ public class CombatManager : MonoBehaviour
         {
             enemiesDeck.Add(e.GetDeck());
         }
-        TurnManager.Instance.StartTurn();
+
+        List<Card> drawnCards = CombatManager.Instance.compagnionDeck.Draw();
+        Hand.Instance.AddToHand(drawnCards);
+        drawnCards = CombatManager.Instance.compagnionDeck.Draw();
+        Hand.Instance.AddToHand(drawnCards);
+        //TurnManager.Instance.StartTurn();
     }
 }

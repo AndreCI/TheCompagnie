@@ -10,6 +10,7 @@ public abstract class Unit : MonoBehaviour
 {
     public int currentHealth;
     public int maxHealth;
+    public int speed;
 
     private Deck deck;
     private Text jack;

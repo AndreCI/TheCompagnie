@@ -9,6 +9,6 @@ public class Compagnion : Unit
 
     public override Deck GetDeck()
     {
-        return new Deck(this, new List<Card>{ strike, strike, strike });
+        return new Deck(this, new List<Card>{ strike, strike, strike, strike, strike });
     }
 }
