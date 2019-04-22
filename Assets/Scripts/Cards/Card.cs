@@ -7,18 +7,18 @@ using Unity;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Card : Draggable
+public abstract class Card : Draggable
 {
     public Unit owner;
-    public CombatEffect effect = new CombatEffect();
+    public CombatEffect effect;
     public CardHandler handler;
+    public int manaCost;
 
 
 
-    public void Play(Unit target)
+    public virtual void Play(Unit target)
     {
-        CombatEvent cardEvent = new CombatEvent(owner, target, owner.speed, effect, this);
-        TurnManager.Instance.AddCombatEvent(cardEvent);
+        owner.currentMana -= manaCost;
     }
 
 

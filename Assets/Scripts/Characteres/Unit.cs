@@ -10,6 +10,8 @@ public abstract class Unit : MonoBehaviour
 {
     public int currentHealth;
     public int maxHealth;
+    public int currentMana;
+    public int maxMana;
     public int speed;
 
     private Deck deck;
@@ -20,16 +22,22 @@ public abstract class Unit : MonoBehaviour
     void Start()
     {
         jack = this.GetComponentInChildren<Text>();
-        jack.text = maxHealth.ToString() + "/" + maxHealth.ToString();
+        jack.text = maxHealth.ToString() + "/" + maxHealth.ToString() + "\n" + maxMana + "/" + maxMana;
     }
 
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        jack.text = currentHealth.ToString() + "/" + maxHealth.ToString();
+        jack.text = currentHealth.ToString() + "/" + maxHealth.ToString() + "\n" + currentMana + "/" + maxMana;
         if (currentHealth <= 0)
         {
             Debug.Log("Dead");
         }
+    }
+
+    public void Heal(int amount)
+    {
+        currentHealth += amount;
+        jack.text = currentHealth.ToString() + "/" + maxHealth.ToString() + "\n" + currentMana + "/" + maxMana;
     }
 }

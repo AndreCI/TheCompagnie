@@ -36,13 +36,15 @@ public class CombatManager : MonoBehaviour
         enemiesDeck = new List<Deck>();
         foreach(Enemy e in enemies)
         {
+            e.GetDeck().Shuffle();
             enemiesDeck.Add(e.GetDeck());
         }
-
+        compagnionDeck.Shuffle();
+        
         List<Card> drawnCards = CombatManager.Instance.compagnionDeck.Draw();
         Hand.Instance.AddToHand(drawnCards);
         drawnCards = CombatManager.Instance.compagnionDeck.Draw();
         Hand.Instance.AddToHand(drawnCards);
-        //TurnManager.Instance.StartTurn();
+        TurnManager.Instance.StartTurn();
     }
 }
