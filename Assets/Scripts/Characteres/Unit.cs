@@ -6,28 +6,36 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Unit : MonoBehaviour
+public abstract class Unit : UICardDropZone
 {
     public int currentHealth;
     public int maxHealth;
     public int currentMana;
     public int maxMana;
+    public int currentAction;
+    public int maxAction;
     public int speed;
+    public Slider healthSlider;
+    public Slider manaSlider;
+    public Slider actionSlider;
 
     private Deck deck;
-    private Text jack;
 
     public abstract Deck GetDeck();
 
     void Start()
     {
-        jack = this.GetComponentInChildren<Text>();
-        jack.text = maxHealth.ToString() + "/" + maxHealth.ToString() + "\n" + maxMana + "/" + maxMana;
+        currentHealth = maxHealth;
+        currentMana = maxMana;
+        currentAction = maxAction;
+        UpdateInfo();
     }
 
     public void UpdateInfo()
     {
-        jack.text = currentHealth.ToString() + "/" + maxHealth.ToString() + "\n" + currentMana + "/" + maxMana;
+        healthSlider.value = 1 - (float)currentHealth / (float)maxHealth;
+        manaSlider.value = 1 - (float)currentMana / (float)maxMana;
+        actionSlider.value = 1 - (float)currentAction / (float)maxAction;
     }
 
     public void TakeDamage(int amount)

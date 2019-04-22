@@ -13,13 +13,13 @@ public class CardUI : Draggable, Observer
     public Card card;
     public Image image;
 
-    private bool playable;
+    private bool playable = true;
     public bool Playable
     {
         get => playable; set
         {
             playable = value;
-            //draggable = value;
+            draggable = value;
         }
     }
 
@@ -33,6 +33,7 @@ public class CardUI : Draggable, Observer
         if (playable)
         {
             card.Play(target);
+            Destroy(gameObject);
         }
     }
 
@@ -40,7 +41,7 @@ public class CardUI : Draggable, Observer
     public override void OnEndDrag(PointerEventData pointerEventData)
     {
         base.OnEndDrag(pointerEventData);
-        Unit target = this.transform.parent.transform.parent.GetComponent<Unit>();
+        Unit target = this.transform.parent.GetComponent<Unit>();
         if (target != null)
         {
             Play(target);

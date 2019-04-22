@@ -45,11 +45,13 @@ public class TurnManager : MonoBehaviour, Subject
         foreach(Compagnion u in CombatManager.Instance.compagnions)
         {
             u.GainMana(2);
+            Hand.Instance.SetLock(false);
         }
     }
 
     public void EndTurn()
     {
+        Hand.Instance.SetLock(true);
         StartCoroutine(PerformTime());
     }
 

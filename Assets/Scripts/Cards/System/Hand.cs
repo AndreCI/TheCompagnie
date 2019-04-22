@@ -7,23 +7,19 @@ using Unity;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Hand : DropZone, CardHandler
+public class Hand : UICardDropZone, CardHandler
 {
     public CardUI cardUI;
-    public List<Card> cards;
+    public List<CardUI> cards;
     private static Hand instance;
     public static Hand Instance { get => instance; }
 
     void Awake()
     {
         instance = this;
-        cards = new List<Card>();
+        cards = new List<CardUI>();
     }
 
-    public void RemoveFromHand(Card card)
-    {
-        cards.Remove(card);
-    }
 
     public void AddToHand(List<Card> cards)
     {
@@ -41,7 +37,15 @@ public class Hand : DropZone, CardHandler
         UI.transform.SetParent(transform);
         UI.parentToReturnTo = transform;
         UI.placeholderParent = transform;
-        cards.Add(card);
+        cards.Add(UI);
         UI.Playable = true;
+    }
+
+    public void SetLock(bool locked)
+    {
+        foreach(CardUI card in cards)
+        {
+            card.draggable = !locked;
+        }
     }
 }
