@@ -25,10 +25,15 @@ public abstract class Unit : MonoBehaviour
         jack.text = maxHealth.ToString() + "/" + maxHealth.ToString() + "\n" + maxMana + "/" + maxMana;
     }
 
+    public void UpdateInfo()
+    {
+        jack.text = currentHealth.ToString() + "/" + maxHealth.ToString() + "\n" + currentMana + "/" + maxMana;
+    }
+
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        jack.text = currentHealth.ToString() + "/" + maxHealth.ToString() + "\n" + currentMana + "/" + maxMana;
+        UpdateInfo();
         if (currentHealth <= 0)
         {
             Debug.Log("Dead");
@@ -38,6 +43,6 @@ public abstract class Unit : MonoBehaviour
     public void Heal(int amount)
     {
         currentHealth += amount;
-        jack.text = currentHealth.ToString() + "/" + maxHealth.ToString() + "\n" + currentMana + "/" + maxMana;
+        UpdateInfo();
     }
 }

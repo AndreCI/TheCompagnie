@@ -6,30 +6,32 @@ using System.Threading.Tasks;
 using Unity;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public abstract class Card : Draggable
+[Serializable]
+public class Card
 {
-    public Unit owner;
-    public CombatEffect effect;
+    private Unit owner;
+    public Sprite sprite;
+    public List<CombatEffect> effects;
     public CardHandler handler;
     public int manaCost;
 
+    public Card(Unit owner_, Card baseCard)
+    {
+        owner = owner_;
+        sprite = baseCard.sprite;
+        effects = baseCard.effects;
+        manaCost = baseCard.manaCost;
+
+    }
 
 
     public virtual void Play(Unit target)
     {
         owner.currentMana -= manaCost;
-    }
-
-
-public override void OnEndDrag(PointerEventData pointerEventData)
-    {
-        base.OnEndDrag(pointerEventData);
-        Unit target = this.transform.parent.transform.parent.GetComponent<Unit>();
-        if (target != null)
-        {
-            Play(target);
-        }
+        CombatEvent cardEvent = new CombatEvent(owner, new List<Unit> { target }, owner.speed, effects, this);
+        TurnManager.Instance.AddCombatEvent(cardEvent);
     }
 }
 

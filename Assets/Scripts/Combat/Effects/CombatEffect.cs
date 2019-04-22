@@ -5,28 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 using Unity;
 using UnityEngine;
-
+[Serializable]
 public class CombatEffect
 {
     public enum TYPE {DAMAGE,
     HEAL};
-    private TYPE type;
+    public TYPE type;
+    public int amount;
     private Unit source;
-    private Unit target;
-    private int amount;
-    public CombatEffect(TYPE type_, Unit source_, Unit target_, int amount_)
+    public CombatEffect(TYPE type_, Unit source_)
     {
         type = type_;
         source = source_;
-        target = target_;
-        amount = amount_;
     }
 
-    public void Perform()
+    public void Perform(Unit target)
     {
         switch (type)
         {
             case TYPE.DAMAGE:
+                Debug.Log(target.ToString());
                 target.TakeDamage(amount);
                 break;
             case TYPE.HEAL:

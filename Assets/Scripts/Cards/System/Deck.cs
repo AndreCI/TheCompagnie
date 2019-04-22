@@ -12,6 +12,34 @@ public class Deck : CardHandler
     public List<Stack<Card>> Cards { get => cards; set => cards = value; }
     public List<Unit> Owners { get => owners; set => owners = value; }
 
+
+    public override string ToString()
+    {
+        string returnval = "Deck(s) of : ";
+        foreach(Unit owner in owners)
+        {
+            returnval += owner.ToString() + " ";
+        }
+        returnval += "\n";
+        List<Stack<Card>> newList = new List<Stack<Card>>();
+        foreach(Stack<Card> sc in cards)
+        {
+            returnval += ("("+sc.Count.ToString()+" cards)\n");
+            Stack<Card> newStack = new Stack<Card>();
+            while(sc.Count>0)
+            {
+                Card c = sc.Pop();
+                returnval += c.ToString() + "\n";
+                newStack.Push(c);
+            }
+            newList.Add(newStack);
+            returnval += "------" + "\n";
+        }
+        cards = newList;
+
+        return returnval;
+
+    }
     public Deck(Unit owner, List<Card> ownerCards)
     {
         owners = new List<Unit>();
@@ -37,7 +65,11 @@ public class Deck : CardHandler
         List<Card> drawnCards = new List<Card>();
         foreach(Unit u in users)
         {
-            drawnCards.Add(Draw(u));
+            Card drawn = Draw(u);
+            if (drawn != null)
+            {
+                drawnCards.Add(drawn);
+            }
         }
         return drawnCards;
     }
@@ -47,6 +79,9 @@ public class Deck : CardHandler
         if (!owners.Contains(user))
         {
             Debug.Log("User" + user.ToString() + " not found. skip draw");
+            return null;
+        }if(cards[owners.IndexOf(user)].Count <= 0)
+        {
             return null;
         }
         return cards[owners.IndexOf(user)].Pop();

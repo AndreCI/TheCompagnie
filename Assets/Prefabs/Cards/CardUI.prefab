@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1731782229391693617
+--- !u!1 &8518181276473933548
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,26 +8,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5043456164290698347}
-  - component: {fileID: 3559915315841433872}
-  - component: {fileID: 7496691123038911417}
-  - component: {fileID: 7875143505180562111}
-  - component: {fileID: 4405098215862046124}
-  - component: {fileID: 98676142448554606}
+  - component: {fileID: 3153604779019105718}
+  - component: {fileID: 6870648463853807821}
+  - component: {fileID: 448027507936694884}
+  - component: {fileID: 4204370782540161407}
+  - component: {fileID: 248840601098156898}
+  - component: {fileID: 5988700098317476977}
   m_Layer: 5
-  m_Name: Heal
+  m_Name: CardUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &5043456164290698347
+--- !u!224 &3153604779019105718
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731782229391693617}
+  m_GameObject: {fileID: 8518181276473933548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -37,24 +37,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 74.80998, y: 41.131866}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 39.71, y: 49.59}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3559915315841433872
+--- !u!222 &6870648463853807821
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731782229391693617}
+  m_GameObject: {fileID: 8518181276473933548}
   m_CullTransparentMesh: 0
---- !u!114 &7496691123038911417
+--- !u!114 &448027507936694884
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731782229391693617}
+  m_GameObject: {fileID: 8518181276473933548}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 603453818e965eb4bb5aa57781b7d413, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
@@ -77,13 +77,33 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &7875143505180562111
+--- !u!114 &4204370782540161407
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731782229391693617}
+  m_GameObject: {fileID: 8518181276473933548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 763699b5cd1f86b4fb489f5c36e8cda2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  draggable: 1
+  parentToReturnTo: {fileID: 0}
+  placeholderParent: {fileID: 0}
+  card:
+    sprite: {fileID: 0}
+    effects: []
+    manaCost: 0
+  image: {fileID: 448027507936694884}
+--- !u!114 &248840601098156898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518181276473933548}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -94,34 +114,18 @@ MonoBehaviour:
   m_MinHeight: -1
   m_PreferredWidth: 39.71
   m_PreferredHeight: 49.59
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
+  m_FlexibleWidth: 0
+  m_FlexibleHeight: 0
   m_LayoutPriority: 1
---- !u!225 &4405098215862046124
+--- !u!225 &5988700098317476977
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731782229391693617}
+  m_GameObject: {fileID: 8518181276473933548}
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &98676142448554606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731782229391693617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eddd1657b02bd8f4bbd2c15804926ad3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentToReturnTo: {fileID: 0}
-  placeholderParent: {fileID: 0}
-  owner: {fileID: 0}
-  manaCost: 0

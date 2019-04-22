@@ -10,7 +10,6 @@ public class CombatManager : MonoBehaviour
     public Compagnion player;
     public Enemy enemy;
 
-
     public List<Compagnion> compagnions;
     public Deck compagnionDeck;
     public List<Enemy> enemies;
@@ -28,23 +27,35 @@ public class CombatManager : MonoBehaviour
         compagnions = compagnions_;
         enemies = enemies_;
         List<Deck> cd = new List<Deck>();
-        foreach(Compagnion c in compagnions)
+        foreach (Compagnion c in compagnions)
         {
             cd.Add(c.GetDeck());
         }
         compagnionDeck = new Deck(cd);
         enemiesDeck = new List<Deck>();
-        foreach(Enemy e in enemies)
+        foreach (Enemy e in enemies)
         {
             e.GetDeck().Shuffle();
             enemiesDeck.Add(e.GetDeck());
         }
         compagnionDeck.Shuffle();
-        
+
         List<Card> drawnCards = CombatManager.Instance.compagnionDeck.Draw();
         Hand.Instance.AddToHand(drawnCards);
         drawnCards = CombatManager.Instance.compagnionDeck.Draw();
         Hand.Instance.AddToHand(drawnCards);
         TurnManager.Instance.StartTurn();
     }
+
+
+    public void AddEnemiesIntents()
+    {
+        foreach (Deck deck in enemiesDeck)
+        {
+            Debug.Log(deck.ToString());
+            Card card = deck.Draw()[0];
+            card.Play(compagnions[0]);
+        }
+    }
+
 }

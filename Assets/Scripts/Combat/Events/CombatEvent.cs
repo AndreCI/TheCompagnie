@@ -31,7 +31,7 @@ public class CombatEvent
     {
         for(int i =0; i<targets.Count; i++)
         {
-            effects[i].Perform();
+            effects[i].Perform(targets[i]);
         }
     }
 }

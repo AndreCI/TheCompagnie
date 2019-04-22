@@ -1,11 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : Unit
 {
+    public Card strike;
     public override Deck GetDeck()
     {
-        return new Deck(this, new System.Collections.Generic.List<Card>());
+        List<Card> cards = new List<Card>();
+        for (int i = 0; i < 6; i++)
+        {
+            cards.Add(new Card(this, strike));
+        }
+        return new Deck(this, cards);
     }
 }

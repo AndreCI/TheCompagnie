@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 
 public class Hand : DropZone, CardHandler
 {
+    public CardUI cardUI;
     public List<Card> cards;
     private static Hand instance;
     public static Hand Instance { get => instance; }
@@ -16,6 +17,7 @@ public class Hand : DropZone, CardHandler
     void Awake()
     {
         instance = this;
+        cards = new List<Card>();
     }
 
     public void RemoveFromHand(Card card)
@@ -33,10 +35,13 @@ public class Hand : DropZone, CardHandler
 
     public void AddToHand(Card card)
     {
-        card = Instantiate(card);
-        card.owner = CombatManager.Instance.player;
+        CardUI UI = Instantiate(cardUI);
+        UI.Setup(card);
         card.handler = this;
-        card.transform.SetParent(transform);
+        UI.transform.SetParent(transform);
+        UI.parentToReturnTo = transform;
+        UI.placeholderParent = transform;
         cards.Add(card);
+        UI.Playable = true;
     }
 }

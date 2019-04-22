@@ -4,7 +4,7 @@ using Unity;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TurnManager : MonoBehaviour
+public class TurnManager : MonoBehaviour, Subject
 {
  
     public Button endTurnButton;
@@ -42,6 +42,10 @@ public class TurnManager : MonoBehaviour
         time.value = 0;
         List<Card> drawnCards = CombatManager.Instance.compagnionDeck.Draw();
         Hand.Instance.AddToHand(drawnCards);
+        foreach(Compagnion u in CombatManager.Instance.compagnions)
+        {
+            u.GainMana(2);
+        }
     }
 
     public void EndTurn()
@@ -57,6 +61,7 @@ public class TurnManager : MonoBehaviour
             yield return StartCoroutine(PerformTimeStep(i));
         }
         yield return new WaitForSeconds(0.1f);
+        CombatManager.Instance.AddEnemiesIntents();
         StartTurn();
     }
 
@@ -69,6 +74,20 @@ public class TurnManager : MonoBehaviour
             yield return new WaitForSeconds(0.8f);
         }
         yield return new WaitForSeconds(0.3f);
-    } 
+    }
 
+    public void NotifyObservers()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void AddObserver(Observer observer)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void RemoveObserver(Observer observer)
+    {
+        throw new System.NotImplementedException();
+    }
 }
