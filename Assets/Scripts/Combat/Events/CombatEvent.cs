@@ -13,6 +13,8 @@ public class CombatEvent
     public List<Unit> targets;
     public List<CombatEffect> effects;
 
+    public Intent intent;
+
 
     public CombatEvent(Unit source_, List<Unit> targets_, int timeIndex_, List<CombatEffect> effects_, Card cardSource_)
     {

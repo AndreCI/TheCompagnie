@@ -6,10 +6,15 @@ using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour, Subject
 {
- 
+
+    public Intent intent;
     public Button endTurnButton;
     public Scrollbar time;
-
+    public CardUI cardPlaceHolder;
+    public Transform enemiesIntentsTransform;
+    public Transform compIntentsTransform;
+    public List<VerticalLayoutGroup> enemiesIntents;
+    public List<VerticalLayoutGroup> compIntents;
     private List<Queue<CombatEvent>> registeredEvents;
     private static TurnManager instance;
     public static TurnManager Instance { get => instance; }
@@ -22,12 +27,22 @@ public class TurnManager : MonoBehaviour, Subject
             registeredEvents.Add(new Queue<CombatEvent>());
         }
         instance = this;
+        enemiesIntents = new List<VerticalLayoutGroup>(enemiesIntentsTransform.GetComponentsInChildren<VerticalLayoutGroup>());
+        compIntents = new List<VerticalLayoutGroup>(compIntentsTransform.GetComponentsInChildren<VerticalLayoutGroup>());
+
+
     }
 
     public void AddCombatEvent(CombatEvent newEvent)
     {
 
         registeredEvents[newEvent.timeIndex].Enqueue(newEvent);
+        Intent newIntent = Instantiate(intent);
+        List<VerticalLayoutGroup> intentsLayout = (newEvent.source.GetType() == typeof(Compagnion)) ? compIntents : enemiesIntents;
+        newIntent.transform.SetParent(intentsLayout[newEvent.timeIndex].transform);
+        newIntent.card = newEvent.cardSource;
+        newIntent.UI = cardPlaceHolder;
+        newEvent.intent = newIntent;
        
     }
 
@@ -73,8 +88,9 @@ public class TurnManager : MonoBehaviour, Subject
         time.value = (float)i/(float)time.numberOfSteps;
         while(registeredEvents[i].Count > 0)
         {
-            registeredEvents[i].Dequeue().PerformEffect();
-            yield return new WaitForSeconds(0.8f);
+            CombatEvent currentEvent = registeredEvents[i].Dequeue();
+            currentEvent.PerformEffect();
+            Destroy(currentEvent.intent.gameObject, 0.5f);
         }
         yield return new WaitForSeconds(0.3f);
     }
