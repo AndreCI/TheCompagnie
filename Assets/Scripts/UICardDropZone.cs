@@ -13,8 +13,8 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
             if (eventData.pointerDrag == null)
                 return;
 
-            Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
-            if (d != null && d.draggable)
+            CardUI d = eventData.pointerDrag.GetComponent<CardUI>();
+            if (d != null && d.Playable)
             {
                 d.placeholderParent = this.transform;
             }
@@ -28,8 +28,8 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
             if (eventData.pointerDrag == null)
                 return;
 
-            Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
-            if (d != null && d.draggable && d.placeholderParent == this.transform)
+            CardUI d = eventData.pointerDrag.GetComponent<CardUI>();
+            if (d != null && d.Playable && d.placeholderParent == this.transform)
             {
                 d.placeholderParent = d.parentToReturnTo;
             }
@@ -41,8 +41,8 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
         {
             Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
 
-            Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
-            if (d != null && d.draggable)
+            CardUI d = eventData.pointerDrag.GetComponent<CardUI>();
+            if (d != null && d.Playable)
             {
                 d.parentToReturnTo = this.transform;
             }

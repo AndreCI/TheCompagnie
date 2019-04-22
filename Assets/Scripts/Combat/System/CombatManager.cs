@@ -12,6 +12,7 @@ public class CombatManager : MonoBehaviour
 
     public List<Compagnion> compagnions;
     public Deck compagnionDeck;
+    public Deck compagnionDiscard;
     public List<Enemy> enemies;
     public List<Deck> enemiesDeck;
 
@@ -19,6 +20,12 @@ public class CombatManager : MonoBehaviour
     {
         instance = this;
         StartCombat(new List<Compagnion> { player }, new List<Enemy> { enemy });
+        List<Deck> discards = new List<Deck>();
+        foreach(Compagnion c in compagnions)
+        {
+            discards.Add(new Deck(c, new List<Card>()));
+        }
+        compagnionDiscard = new Deck(discards);
 
     }
 

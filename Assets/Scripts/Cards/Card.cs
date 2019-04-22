@@ -11,11 +11,13 @@ using UnityEngine.UI;
 [Serializable]
 public class Card
 {
-    private Unit owner;
+    [HideInInspector]
+    public Unit owner;
     public Sprite sprite;
     public List<CombatEffect> effects;
     public CardHandler handler;
     public int manaCost;
+    public int actionCost = 1;
 
     public Card(Unit owner_, Card baseCard)
     {
@@ -30,6 +32,8 @@ public class Card
     public virtual void Play(Unit target)
     {
         owner.currentMana -= manaCost;
+        owner.currentAction -= actionCost;
+        owner.UpdateInfo();
         CombatEvent cardEvent = new CombatEvent(owner, new List<Unit> { target }, owner.speed, effects, this);
         TurnManager.Instance.AddCombatEvent(cardEvent);
     }

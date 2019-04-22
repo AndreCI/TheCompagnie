@@ -45,7 +45,7 @@ public class Hand : UICardDropZone, CardHandler
     {
         foreach(CardUI card in cards)
         {
-            card.draggable = !locked;
+            card.Playable = !locked;
         }
     }
 }

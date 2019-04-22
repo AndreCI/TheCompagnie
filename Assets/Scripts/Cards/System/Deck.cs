@@ -59,6 +59,11 @@ public class Deck : CardHandler
         }
     }
 
+    public void AddCard(Unit owner, Card card)
+    {
+        cards[owners.IndexOf(owner)].Push(card);
+    }
+
     public List<Card> Draw(List<Unit> users = null)
     {
         if(users == null) { users = owners; }
@@ -85,6 +90,19 @@ public class Deck : CardHandler
             return null;
         }
         return cards[owners.IndexOf(user)].Pop();
+    }
+
+    public List<Card> GetCards()
+    {
+        List<Card> allCards = new List<Card>();
+        foreach(Stack<Card> cs in cards)
+        {
+            foreach(Card c in cs)
+            {
+                allCards.Add(c);
+            }
+        }
+        return allCards;
     }
 
     public void Shuffle(List<Unit> users = null)

@@ -45,6 +45,7 @@ public class TurnManager : MonoBehaviour, Subject
         foreach(Compagnion u in CombatManager.Instance.compagnions)
         {
             u.GainMana(2);
+            u.GainAction(1);
             Hand.Instance.SetLock(false);
         }
     }

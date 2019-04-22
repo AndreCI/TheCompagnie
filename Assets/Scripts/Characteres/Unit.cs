@@ -27,7 +27,7 @@ public abstract class Unit : UICardDropZone
     {
         currentHealth = maxHealth;
         currentMana = maxMana;
-        currentAction = maxAction;
+        currentAction = maxAction/2 - 1;
         UpdateInfo();
     }
 

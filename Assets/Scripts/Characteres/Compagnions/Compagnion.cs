@@ -11,7 +11,7 @@ public class Compagnion : Unit
     public override Deck GetDeck()
     {
         List<Card> cards = new List<Card>();
-        for(int i = 0; i <3; i++)
+        for(int i = 0; i <15; i++)
         {
             cards.Add(new Card(this, strike));
         }
@@ -25,7 +25,16 @@ public class Compagnion : Unit
         if(currentMana > maxMana)
         {
             currentMana = maxMana;
-            UpdateInfo();
         }
+            UpdateInfo();
+    }
+    public void GainAction(int amount)
+    {
+        currentAction += amount;
+        if(currentAction > maxAction)
+        {
+            currentAction = maxAction;
+        }
+        UpdateInfo();
     }
 }
