@@ -9,11 +9,19 @@ using UnityEngine.EventSystems;
 
 public class Card : Draggable
 {
+    public Unit owner;
+    public CardHandler handler;
+
+
+    public void Play()
+    {
+
+    }
+
     public override void OnEndDrag(PointerEventData pointerEventData)
     {
         base.OnEndDrag(pointerEventData);
-        Debug.Log("Toast");
-        Compagnion target = this.transform.parent.transform.parent.GetComponent<Compagnion>();
+        Unit target = this.transform.parent.transform.parent.GetComponent<Unit>();
         if (target != null)
         {
             target.TakeDamage(6);

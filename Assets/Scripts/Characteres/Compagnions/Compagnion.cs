@@ -1,27 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Compagnion : MonoBehaviour
+public class Compagnion : Unit
 {
-    public int currentHealth;
-    public int maxHealth;
+    public Card strike;
 
-    private Text jack;
-
-    void Start()
+    public override Deck GetDeck()
     {
-        jack = this.GetComponentInChildren<Text>();
-        jack.text = maxHealth.ToString() + "/" + maxHealth.ToString();
-    }
-
-    public void TakeDamage(int amount)
-    {
-        currentHealth -= amount;
-        jack.text = currentHealth.ToString() + "/" + maxHealth.ToString();
-        if (currentHealth <= 0)
-        {
-            Debug.Log("Dead");
-        }
+        return new Deck(this, new List<Card>{ strike, strike, strike });
     }
 }
