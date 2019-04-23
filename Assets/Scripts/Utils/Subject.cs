@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 public interface Subject
 {
-    void NotifyObservers();
-    void AddObserver(Observer observer);
+    void NotifyObservers(GeneralUtils.SUBJECT_TRIGGER trigger);
+    void AddObserver(Observer observer, GeneralUtils.SUBJECT_TRIGGER trigger);
 
-    void RemoveObserver(Observer observer);
+    void RemoveObserver(Observer observer, GeneralUtils.SUBJECT_TRIGGER trigger);
 }

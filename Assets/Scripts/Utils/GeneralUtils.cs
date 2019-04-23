@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public interface Observer
+public class GeneralUtils
 {
-    void Notified(Subject subject, GeneralUtils.SUBJECT_TRIGGER trigger);
+    public enum SUBJECT_TRIGGER { START_OF_TURN};
 }

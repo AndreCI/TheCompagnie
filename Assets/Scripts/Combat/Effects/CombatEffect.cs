@@ -9,9 +9,11 @@ using UnityEngine;
 public class CombatEffect
 {
     public enum TYPE {DAMAGE,
-    HEAL};
+    HEAL,
+    APPLY_STATUS};
     public TYPE type;
     public int amount;
+    public List<CombatStatusFactory> statusFactories;
     private Unit source;
     public CombatEffect(TYPE type_, Unit source_)
     {
@@ -30,6 +32,11 @@ public class CombatEffect
             case TYPE.HEAL:
                 target.Heal(amount);
                 break;
+        }
+        foreach(CombatStatusFactory statusFactory in statusFactories)
+        {
+            CombatStatus status = statusFactory.GenerateApply(target);
+           
         }
     }
 }

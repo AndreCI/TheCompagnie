@@ -20,6 +20,7 @@ public abstract class Unit : UICardDropZone
     public Slider actionSlider;
 
     private Deck deck;
+    public List<CombatStatus> currentStatus;
 
     public abstract Deck GetDeck();
 

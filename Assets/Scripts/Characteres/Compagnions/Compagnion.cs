@@ -13,7 +13,7 @@ public class Compagnion : Unit
         List<Card> cards = new List<Card>();
         for(int i = 0; i <15; i++)
         {
-            cards.Add(new Card(this, strike));
+            cards.Add(new Card(this, heal));
         }
         cards.Add(new Card(this, heal));
         return new Deck(this, cards);
