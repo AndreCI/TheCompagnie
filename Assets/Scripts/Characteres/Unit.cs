@@ -6,52 +6,88 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Unit : UICardDropZone
+[Serializable]
+public abstract class Unit
 {
-    public int currentHealth;
     public int maxHealth;
-    public int currentMana;
     public int maxMana;
-    public int currentAction;
     public int maxAction;
+    private int currentHealth;
+    private int currentMana;
+    private int currentAction;
+    public Sprite combatSprite;
+
+    public delegate void InfoUpdate();
+    public event InfoUpdate NotifyUpdate;
+
+    public void Setup()
+    {
+        currentHealth = maxHealth;
+        currentMana = maxMana;
+        currentAction = maxAction;
+    }
+
+    public int CurrentHealth {  get => currentHealth; set {
+            currentHealth = value;
+            if (currentHealth > maxHealth) { currentHealth = maxHealth; }
+            if (currentHealth < 0) { currentHealth = 0;}
+            NotifyUpdate();
+        } }
+    public int CurrentMana
+    {
+        get => currentMana; set
+        {
+            currentMana = value;
+            if (currentMana > maxMana) { currentMana = maxMana; }
+            if (currentMana < 0) { currentMana = 0; }
+            NotifyUpdate();
+        }
+    }
+    public int CurrentAction
+    {
+        get => currentAction; set
+        {
+            currentAction = value;
+            if (currentAction > maxAction) { currentAction = maxAction; }
+            if (currentAction < 0) { currentAction = 0; }
+            NotifyUpdate();
+        }
+    }
     public int speed;
-    public Slider healthSlider;
-    public Slider manaSlider;
-    public Slider actionSlider;
 
     private Deck deck;
     public List<CombatStatus> currentStatus;
 
     public abstract Deck GetDeck();
 
-    void Start()
-    {
-        currentHealth = maxHealth;
-        currentMana = maxMana;
-        currentAction = maxAction/2 - 1;
-        UpdateInfo();
-    }
-
-    public void UpdateInfo()
-    {
-        healthSlider.value = 1 - (float)currentHealth / (float)maxHealth;
-        manaSlider.value = 1 - (float)currentMana / (float)maxMana;
-        actionSlider.value = 1 - (float)currentAction / (float)maxAction;
-    }
 
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
-        UpdateInfo();
-        if (currentHealth <= 0)
+        if (amount > 0)
         {
-            Debug.Log("Dead");
+            CurrentHealth -= amount;
+            Debug.Log(amount);
+            if (currentHealth <= 0)
+            {
+                Debug.Log("Dead");
+            }
         }
     }
 
     public void Heal(int amount)
     {
-        currentHealth += amount;
-        UpdateInfo();
+        if (amount > 0)
+        {
+            CurrentHealth += amount;
+        }
+    }
+
+    public void GainMana(int amount)
+    {
+        CurrentMana += amount;
+    }
+    public void GainAction(int amount)
+    {
+        CurrentAction += amount;
     }
 }

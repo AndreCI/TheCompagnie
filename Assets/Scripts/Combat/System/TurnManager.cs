@@ -102,7 +102,6 @@ public class TurnManager : MonoBehaviour, Subject
 
     public void NotifyObservers(GeneralUtils.SUBJECT_TRIGGER trigger)
     {
-        Debug.Log("Obs not");
         if (triggers.Contains(trigger))
         {
             foreach (Observer o in observers[triggers.IndexOf(trigger)])

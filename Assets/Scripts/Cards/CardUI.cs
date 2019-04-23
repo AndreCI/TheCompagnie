@@ -18,8 +18,8 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     public bool Playable
     {
         get => playable &&
-            card.manaCost <= card.owner.currentMana &&
-            card.actionCost <= card.owner.currentAction
+            card.manaCost <= card.owner.CurrentMana &&
+            card.actionCost <= card.owner.CurrentAction
             ; set
         {
             playable = value;
@@ -96,10 +96,10 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         Destroy(placeholder);
-        Unit target = this.transform.parent.GetComponent<Unit>();
+        UnitUI target = this.transform.parent.GetComponent<UnitUI>();
         if (target != null)
         {
-            Play(target);
+            Play(target.unit);
         }
 
     }

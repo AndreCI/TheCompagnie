@@ -26,7 +26,6 @@ public class CombatEffect
         switch (type)
         {
             case TYPE.DAMAGE:
-                Debug.Log(target.ToString());
                 target.TakeDamage(amount);
                 break;
             case TYPE.HEAL:

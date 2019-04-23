@@ -7,8 +7,8 @@ public class CombatManager : MonoBehaviour
 {
     private static CombatManager instance;
     public static CombatManager Instance { get => instance; }
-    public Compagnion player;
-    public Enemy enemy;
+    public UnitUI player;
+    public UnitUI enemy;
 
     public List<Compagnion> compagnions;
     public Deck compagnionDeck;
@@ -19,7 +19,9 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        StartCombat(new List<Compagnion> { player }, new List<Enemy> { enemy });
+        player.SetInfos(PlayerInfos.Instance.compagnions[0]);
+        enemy.SetInfos(PlayerInfos.Instance.enemy);
+        StartCombat(PlayerInfos.Instance.compagnions, new List<Enemy> { PlayerInfos.Instance.enemy });
         List<Deck> discards = new List<Deck>();
         foreach(Compagnion c in compagnions)
         {
@@ -59,7 +61,6 @@ public class CombatManager : MonoBehaviour
     {
         foreach (Deck deck in enemiesDeck)
         {
-            Debug.Log(deck.ToString());
             Card card = deck.Draw()[0];
             card.Play(compagnions[0]);
         }

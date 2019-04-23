@@ -19,22 +19,5 @@ public class Compagnion : Unit
         return new Deck(this, cards);
     }
 
-    public void GainMana(int amount)
-    {
-        currentMana += amount;
-        if(currentMana > maxMana)
-        {
-            currentMana = maxMana;
-        }
-            UpdateInfo();
-    }
-    public void GainAction(int amount)
-    {
-        currentAction += amount;
-        if(currentAction > maxAction)
-        {
-            currentAction = maxAction;
-        }
-        UpdateInfo();
-    }
+
 }

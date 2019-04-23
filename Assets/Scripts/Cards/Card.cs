@@ -31,9 +31,8 @@ public class Card
 
     public virtual void Play(Unit target)
     {
-        owner.currentMana -= manaCost;
-        owner.currentAction -= actionCost;
-        owner.UpdateInfo();
+        owner.CurrentMana -= manaCost;
+        owner.CurrentAction -= actionCost;
         CombatEvent cardEvent = new CombatEvent(owner, new List<Unit> { target }, owner.speed, effects, this);
         TurnManager.Instance.AddCombatEvent(cardEvent);
     }
