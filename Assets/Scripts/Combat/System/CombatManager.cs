@@ -2,6 +2,7 @@
 using Unity;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CombatManager : MonoBehaviour
 {
@@ -64,6 +65,12 @@ public class CombatManager : MonoBehaviour
             Card card = deck.Draw()[0];
             card.Play(compagnions[0]);
         }
+    }
+
+    public void Win()
+    {
+        compagnions[0].TakeDamage(3);
+        SceneManager.LoadScene(0);
     }
 
 }

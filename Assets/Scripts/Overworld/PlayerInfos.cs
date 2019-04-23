@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +16,9 @@ public class PlayerInfos : MonoBehaviour
     public List<Compagnion> compagnions;
     public Enemy enemy;
 
-    private void Start()
+    private OverworldMap globalMap;
+
+    void Start()
     {
         if(_instance != null)
         {
@@ -25,10 +27,19 @@ public class PlayerInfos : MonoBehaviour
         }
         _instance = this;
         GameObject.DontDestroyOnLoad(gameObject);
+        globalMap = OverworldMap.Instance;
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+
         foreach(Compagnion c in compagnions)
         {
             c.Setup();
         }
         enemy.Setup();
+        
+    }
+
+    private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        globalMap.gameObject.SetActive(scene.name == "Overworld");
     }
 }

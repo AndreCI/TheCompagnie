@@ -66,7 +66,6 @@ public abstract class Unit
         if (amount > 0)
         {
             CurrentHealth -= amount;
-            Debug.Log(amount);
             if (currentHealth <= 0)
             {
                 Debug.Log("Dead");
