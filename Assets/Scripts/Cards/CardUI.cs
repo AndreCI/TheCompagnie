@@ -34,7 +34,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     public void Play(Unit target)
     {
         card.Play(target);
-        CombatManager.Instance.compagnionDiscard.AddCard(card.owner, card);
+        CombatManager.Instance.compagnionDiscard.AddCard(card, card.owner);
         Destroy(gameObject);
     }
     public Transform parentToReturnTo = null;

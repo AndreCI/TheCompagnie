@@ -28,8 +28,10 @@ public class Card
     {
         owner = owner_;
         sprite = baseCard.sprite;
-        effects = baseCard.effects;
+        effects = new List<CombatEffect>(baseCard.effects);
         manaCost = baseCard.manaCost;
+        potential_target = baseCard.potential_target;
+        actionCost = baseCard.actionCost;
 
     }
 
@@ -41,5 +43,7 @@ public class Card
         CombatEvent cardEvent = new CombatEvent(owner, new List<Unit> { target }, owner.speed, effects, this);
         TurnManager.Instance.AddCombatEvent(cardEvent);
     }
+
+
 }
 

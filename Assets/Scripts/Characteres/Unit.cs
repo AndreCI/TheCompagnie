@@ -56,12 +56,13 @@ public abstract class Unit
     }
     public int speed;
 
-    public Deck deck;
+    public PersistentUnitDeck persistentDeck;
+
     public List<CombatStatus> currentStatus;
 
-    public Deck GetNewDeck()
+    public CombatUnitDeck GetNewDeck()
     {
-        return deck;
+        return persistentDeck.GenerateCombatDeck();
     }
 
 

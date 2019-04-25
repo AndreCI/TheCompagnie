@@ -42,7 +42,7 @@ public class UIDisplay : MonoBehaviour, CardHandler
         Display();
     }
 
-    public void DisplayDeck(Deck deck)
+    public void DisplayDeck(CombatDeck deck)
     {
         Clear();
         cards = deck.GetCards();
@@ -82,8 +82,9 @@ public class UIDisplay : MonoBehaviour, CardHandler
 
     public void SelectionValidate()
     {
-        PlayerInfos.Instance.compagnions[0].deck.AddCard(PlayerInfos.Instance.compagnions[0], 
-            new Card(PlayerInfos.Instance.compagnions[0], cards[(int)cardSelection.value * 2]));
+        PlayerInfos.Instance.compagnions[0].persistentDeck.AddCard( 
+            new Card(PlayerInfos.Instance.compagnions[0], cards[(int)cardSelection.value * 2]),
+            PlayerInfos.Instance.compagnions[0]);
         cardSelection.gameObject.SetActive(false);
     }
 }

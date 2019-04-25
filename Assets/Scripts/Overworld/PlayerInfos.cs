@@ -17,6 +17,8 @@ public class PlayerInfos : MonoBehaviour
 
     public MapNode currentPosition;
     public List<Compagnion> compagnions;
+    public PersistentPartyDeck persistentPartyDeck;
+
     public Enemy enemy;
 
     private OverworldMap globalMap;
@@ -39,7 +41,9 @@ public class PlayerInfos : MonoBehaviour
             cards.Add(new Card(enemy, collection.cards[0]));
         }
         cards.Add(new Card(enemy, collection.cards[1]));
-        enemy.deck = new Deck(enemy, cards);
+        enemy.persistentDeck = new PersistentUnitDeck(cards);
+
+        List<PersistentUnitDeck> decks = new List<PersistentUnitDeck>();
         foreach(Compagnion c in compagnions)
         {
             c.Setup();
@@ -50,8 +54,11 @@ public class PlayerInfos : MonoBehaviour
                 cards.Add(new Card(c, collection.cards[0]));
             }
             cards.Add(new Card(c, collection.cards[1]));
-            c.deck = new Deck(c, cards);
+            c.persistentDeck = new PersistentUnitDeck(cards);
+            decks.Add(c.persistentDeck);
         }
+
+        persistentPartyDeck = new PersistentPartyDeck(compagnions, decks);
 
 
 

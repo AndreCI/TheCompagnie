@@ -12,10 +12,11 @@ public class CombatManager : MonoBehaviour
     public UnitUI enemy;
 
     public List<Compagnion> compagnions;
-    public Deck compagnionDeck;
-    public Deck compagnionDiscard;
+    public CombatPartyDeck compagnionDeck;
+    public CombatPartyDeck compagnionDiscard;
     public List<Enemy> enemies;
-    public List<Deck> enemiesDeck;
+    public CombatPartyDeck enemiesDeck;
+    public CombatPartyDeck enemiesDiscard;
 
     void Start()
     {
@@ -23,36 +24,27 @@ public class CombatManager : MonoBehaviour
         player.SetInfos(PlayerInfos.Instance.compagnions[0]);
         enemy.SetInfos(PlayerInfos.Instance.enemy);
         StartCombat(PlayerInfos.Instance.compagnions, new List<Enemy> { PlayerInfos.Instance.enemy });
-        List<Deck> discards = new List<Deck>();
-        foreach(Compagnion c in compagnions)
-        {
-            discards.Add(new Deck(c, new List<Card>()));
-        }
-        compagnionDiscard = new Deck(discards);
-
     }
 
     public void StartCombat(List<Compagnion> compagnions_, List<Enemy> enemies_)
     {
         compagnions = compagnions_;
         enemies = enemies_;
-        List<Deck> cd = new List<Deck>();
-        foreach (Compagnion c in compagnions)
-        {
-            cd.Add(c.GetNewDeck());
-        }
-        compagnionDeck = new Deck(cd);
-        enemiesDeck = new List<Deck>();
+        compagnionDeck = PlayerInfos.Instance.persistentPartyDeck.GenerateCombatDeck(compagnions);
+        List<CombatUnitDeck> cd = new List<CombatUnitDeck>();
         foreach (Enemy e in enemies)
         {
-            e.GetNewDeck().Shuffle();
-            enemiesDeck.Add(e.GetNewDeck());
+            cd.Add(e.GetNewDeck());
         }
-        compagnionDeck.Shuffle();
+        enemiesDeck = new CombatPartyDeck(enemies, cd);
 
-        List<Card> drawnCards = CombatManager.Instance.compagnionDeck.Draw();
-        Hand.Instance.AddToHand(drawnCards);
-        drawnCards = CombatManager.Instance.compagnionDeck.Draw();
+        compagnionDeck.Shuffle();
+        enemiesDeck.Shuffle();
+
+        compagnionDiscard = new CombatPartyDeck(compagnions, null);
+        enemiesDiscard = new CombatPartyDeck(enemies, null);
+
+        List<Card> drawnCards = compagnionDeck.DrawCards(new List<int> { 3 }, compagnions);
         Hand.Instance.AddToHand(drawnCards);
         TurnManager.Instance.StartTurn();
     }
@@ -67,9 +59,10 @@ public class CombatManager : MonoBehaviour
 
     public void AddEnemiesIntents()
     {
-        foreach (Deck deck in enemiesDeck)
+        List<Card> cards = enemiesDeck.DrawCards();
+        foreach (Card card in cards)
         {
-            Card card = deck.Draw()[0];
+            
             card.Play(compagnions[0]);
         }
     }

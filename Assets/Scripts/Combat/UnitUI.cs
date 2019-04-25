@@ -13,13 +13,13 @@ public class UnitUI : UICardDropZone
     public Slider healthSlider;
     public Slider manaSlider;
     public Slider actionSlider;
-    public Image Image;
+    public SpriteRenderer Image;
 
     public void SetInfos(Unit unit_)
     {
         unit = unit_;
         Image.sprite = unit_.combatSprite;
-        Image.preserveAspect = true;
+        //Image.preserveAspect = true;
         unit.NotifyUpdate += UpdateInfo;
 
         UpdateInfo();

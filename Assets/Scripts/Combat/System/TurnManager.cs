@@ -60,7 +60,7 @@ public class TurnManager : MonoBehaviour, Subject
     {
         NotifyObservers(GeneralUtils.SUBJECT_TRIGGER.START_OF_TURN);
         time.value = 0;
-        List<Card> drawnCards = CombatManager.Instance.compagnionDeck.Draw();
+        List<Card> drawnCards = CombatManager.Instance.compagnionDeck.DrawCards();
         Hand.Instance.AddToHand(drawnCards);
         foreach(Compagnion u in CombatManager.Instance.compagnions)
         {
