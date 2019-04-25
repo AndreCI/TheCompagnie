@@ -20,7 +20,6 @@ public class Card
     public Sprite sprite;
     public POTENTIAL_TARGET potential_target;
     public List<CombatEffect> effects;
-    public CardHandler handler;
     public int manaCost;
     public int actionCost = 1;
 

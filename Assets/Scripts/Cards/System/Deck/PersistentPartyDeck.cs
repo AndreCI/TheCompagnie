@@ -21,6 +21,10 @@ public class PersistentPartyDeck : PersistentDeck
 
     public override List<Card> GetCards(IEnumerable<Unit> owners = null)
     {
+        if(owners == null || (new List<Unit>(owners)).Count == 0)
+        {
+            owners = owners_;
+        }
         List<Card> newCards = new List<Card>();
         foreach(Unit owner in owners)
         {
@@ -31,6 +35,10 @@ public class PersistentPartyDeck : PersistentDeck
 
     public CombatPartyDeck GenerateCombatDeck(IEnumerable<Unit> owners)
     {
+                if (owners == null || (new List<Unit>(owners)).Count == 0)
+        {
+            owners = owners_;
+        }
         List<CombatUnitDeck> combatDecks = new List<CombatUnitDeck>();
         foreach (Unit owner in owners)
         {

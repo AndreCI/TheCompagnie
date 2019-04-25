@@ -8,7 +8,6 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
     public Card.POTENTIAL_TARGET target_type;
 
 	public void OnPointerEnter(PointerEventData eventData) {
-        Debug.Log("OnPointerEnter");
         if (!locked)
         {
             if (eventData.pointerDrag == null)
@@ -22,8 +21,7 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
         }
 	}
 	
-	public void OnPointerExit(PointerEventData eventData) {
-        Debug.Log("OnPointerExit");
+	public void OnPointerExit(PointerEventData eventData) { 
         if (!locked)
         {
             if (eventData.pointerDrag == null)

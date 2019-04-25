@@ -14,18 +14,21 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     public Slider manaSlider;
     public Slider actionSlider;
     public SpriteRenderer Image;
-
+    public ParticleSystem selectionAnimation;
     public void OnPointerClick(PointerEventData eventData)
     {
-        UnitSelector.Instance.AddCompagnionToSelection(unit);
-        UnitSelector.Notify += S;
+        UnitSelector.Instance.ToggleSelection(unit);
     }
 
-    public void S(List<Unit> jack)
+    private void SelectedUnitsUpdate(List<Unit> selectedUnits)
     {
-        foreach(Unit u in jack)
+        if (!selectedUnits.Contains(unit))
+        { 
+            selectionAnimation.gameObject.SetActive(false);
+        }
+        else 
         {
-            Debug.Log("HERE" + u.ToString());
+            selectionAnimation.gameObject.SetActive(true);
         }
     }
     public void SetInfos(Unit unit_)
@@ -34,9 +37,11 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
         Image.sprite = unit_.combatSprite;
         //Image.preserveAspect = true;
         unit.NotifyUpdate += UpdateInfo;
+        UnitSelector.Notify += SelectedUnitsUpdate;
 
         UpdateInfo();
     }
+    
     public void UpdateInfo()
     {
         healthSlider.value = 1 - (float)unit.CurrentHealth / (float)unit.maxHealth;
@@ -50,5 +55,6 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     private void OnDestroy()
     {
         unit.NotifyUpdate -= UpdateInfo;
+        UnitSelector.Notify -= this.SelectedUnitsUpdate;
     }
 }

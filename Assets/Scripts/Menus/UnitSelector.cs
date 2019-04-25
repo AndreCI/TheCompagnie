@@ -4,39 +4,58 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class UnitSelector
+public class UnitSelector : MonoBehaviour
 {
     private static UnitSelector _instance;
-    public static UnitSelector Instance { get { if (_instance == null) { _instance = new UnitSelector(); } return _instance; } }
-    private List<Unit> compagnionSelected;
+    public static UnitSelector Instance { get { return _instance; } }
+    private List<Unit> unitSelected;
 
     public delegate void AddToListener(List<Unit> selected);
     public static event AddToListener Notify;
 
-    private UnitSelector()//void Start()
+    void Start()
     {
+        if(_instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         _instance = this;
-        compagnionSelected = new List<Unit>();
+        unitSelected = new List<Unit>();
     }
 
-    public void AddCompagnionToSelection(Unit c)
+    void Update()
     {
-        Debug.Log(c.ToString());
-        Debug.Log(compagnionSelected.Count);
-        if (!compagnionSelected.Contains(c)){
-            compagnionSelected.Add(c);
+        if (Input.GetMouseButtonDown(1))
+        {
+            Unselect();
         }
-        Notify?.Invoke(compagnionSelected);
+    }
+
+    public void ToggleSelection(Unit c)
+    {
+        if (!unitSelected.Contains(c))
+        {
+            unitSelected.Add(c);
+        }
+        else
+        {
+            unitSelected.Remove(c);
+        }
+        Notify?.Invoke(unitSelected);
     }
 
     public void Unselect()
     {
-        compagnionSelected = new List<Unit>();
+        unitSelected = new List<Unit>();
+        Notify?.Invoke(unitSelected);
     }
 
-    public IEnumerable<Unit> GetSelectedCompagnions()
+    public IEnumerable<Unit> GetSelectedUnit()
     {
-        return compagnionSelected;
+        return unitSelected;
     }
+
 }

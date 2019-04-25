@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIDisplay : MonoBehaviour, CardHandler
+public class UIDisplay : MonoBehaviour, CardLocation
 {
     private List<Card> cards;
     private List<CardUI> cardUIs;
@@ -38,14 +38,14 @@ public class UIDisplay : MonoBehaviour, CardHandler
     public void DisplayAbstractDeck()
     {
         Clear();
-        cards = PlayerInfos.Instance.compagnions[0].GetNewDeck().GetCards();
+        cards = PlayerInfos.Instance.persistentPartyDeck.GetCards(UnitSelector.Instance.GetSelectedUnit());
         Display();
     }
 
     public void DisplayDeck(CombatDeck deck)
     {
         Clear();
-        cards = deck.GetCards();
+        cards = deck.GetCards(UnitSelector.Instance.GetSelectedUnit());
         //cards = CombatManager.Instance.compagnionDeck.GetCards();
         Display();
     }
@@ -61,6 +61,7 @@ public class UIDisplay : MonoBehaviour, CardHandler
 
     private void Display()
     {
+        Debug.Log((new List<Unit>(UnitSelector.Instance.GetSelectedUnit()).Count));
         cardUIs = new List<CardUI>();
         foreach(Card card in cards)
         {

@@ -7,7 +7,7 @@ using Unity;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Hand : UICardDropZone, CardHandler
+public class Hand : UICardDropZone
 {
     public CardUI cardUI;
     public List<CardUI> cards;

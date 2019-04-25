@@ -41,7 +41,8 @@ public class CombatPartyDeck : CombatDeck
         if(number == null)
         {
             number = Enumerable.Repeat(1, owners_.Count).ToList();
-        }if(owners == null)
+        }
+                if (owners == null || (new List<Unit>(owners)).Count == 0)
         {
             owners = owners_;
         }
@@ -57,7 +58,7 @@ public class CombatPartyDeck : CombatDeck
     public override List<Card> GetCards(IEnumerable<Unit> owners = null)
     {
         List<Card> newCards = new List<Card>();
-        if(owners == null)
+                if (owners == null || (new List<Unit>(owners)).Count == 0)
         {
             owners = owners_;
         }
@@ -75,11 +76,11 @@ public class CombatPartyDeck : CombatDeck
 
     public override void Shuffle(IEnumerable<Unit> owners = null)
     {
-        if(owners == null)
+                if (owners == null || (new List<Unit>(owners)).Count == 0)
         {
             owners = owners_;
         }
-        foreach(Unit owner in owners)
+        foreach (Unit owner in owners)
         {
             Debug.Log(owners_.Count.ToString() + " " + owner.ToString());
             cards[owners_.IndexOf(owner)].Shuffle();
