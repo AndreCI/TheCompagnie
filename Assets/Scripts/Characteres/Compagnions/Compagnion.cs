@@ -5,19 +5,11 @@ using UnityEngine.UI;
 [Serializable]
 public class Compagnion : Unit
 {
-    public Card strike;
-    public Card heal;
+    public Leveling level;
 
-    public override Deck GetDeck()
+    public override void Setup()
     {
-        List<Card> cards = new List<Card>();
-        for(int i = 0; i <15; i++)
-        {
-            cards.Add(new Card(this, heal));
-        }
-        cards.Add(new Card(this, heal));
-        return new Deck(this, cards);
+        base.Setup();
+        level = new Leveling();
     }
-
-
 }

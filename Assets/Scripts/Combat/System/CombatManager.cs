@@ -39,14 +39,14 @@ public class CombatManager : MonoBehaviour
         List<Deck> cd = new List<Deck>();
         foreach (Compagnion c in compagnions)
         {
-            cd.Add(c.GetDeck());
+            cd.Add(c.GetNewDeck());
         }
         compagnionDeck = new Deck(cd);
         enemiesDeck = new List<Deck>();
         foreach (Enemy e in enemies)
         {
-            e.GetDeck().Shuffle();
-            enemiesDeck.Add(e.GetDeck());
+            e.GetNewDeck().Shuffle();
+            enemiesDeck.Add(e.GetNewDeck());
         }
         compagnionDeck.Shuffle();
 
@@ -57,6 +57,13 @@ public class CombatManager : MonoBehaviour
         TurnManager.Instance.StartTurn();
     }
 
+    public void OnUnitDeath(Unit unit)
+    {
+        if (enemies.Count == 1)
+        {
+            Win();
+        }
+    }
 
     public void AddEnemiesIntents()
     {
@@ -73,4 +80,16 @@ public class CombatManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void DisplayDeck()
+    {
+        PlayerInfos.Instance.cardsDisplay.gameObject.SetActive(true);
+        PlayerInfos.Instance.cardsDisplay.DisplayDeck(compagnionDeck);
+    }
+
+    public void DisplayDiscard()
+    {
+        PlayerInfos.Instance.cardsDisplay.gameObject.SetActive(true);
+        PlayerInfos.Instance.cardsDisplay.DisplayDeck(compagnionDiscard);
+
+    }
 }

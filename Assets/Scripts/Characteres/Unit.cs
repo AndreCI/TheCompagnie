@@ -20,11 +20,12 @@ public abstract class Unit
     public delegate void InfoUpdate();
     public event InfoUpdate NotifyUpdate;
 
-    public void Setup()
+    public virtual void Setup()
     {
         currentHealth = maxHealth;
         currentMana = maxMana;
         currentAction = maxAction;
+
     }
 
     public int CurrentHealth {  get => currentHealth; set {
@@ -55,10 +56,13 @@ public abstract class Unit
     }
     public int speed;
 
-    private Deck deck;
+    public Deck deck;
     public List<CombatStatus> currentStatus;
 
-    public abstract Deck GetDeck();
+    public Deck GetNewDeck()
+    {
+        return deck;
+    }
 
 
     public void TakeDamage(int amount)

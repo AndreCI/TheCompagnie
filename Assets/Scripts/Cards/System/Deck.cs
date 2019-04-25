@@ -11,6 +11,7 @@ public class Deck : CardHandler
 
     public List<Stack<Card>> Cards { get => cards; set => cards = value; }
     public List<Unit> Owners { get => owners; set => owners = value; }
+    public bool isAbstract;
 
 
     public override string ToString()

@@ -12,6 +12,9 @@ public class PlayerInfos : MonoBehaviour
     private static PlayerInfos _instance;
     public static PlayerInfos Instance { get => _instance; }
 
+    public CardCollection collection;
+    public UIDisplay cardsDisplay;
+
     public MapNode currentPosition;
     public List<Compagnion> compagnions;
     public Enemy enemy;
@@ -29,17 +32,36 @@ public class PlayerInfos : MonoBehaviour
         GameObject.DontDestroyOnLoad(gameObject);
         globalMap = OverworldMap.Instance;
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
-
+        enemy.Setup();
+        List<Card> cards = new List<Card>();
+        for (int i = 0; i < 15; i++)
+        {
+            cards.Add(new Card(enemy, collection.cards[0]));
+        }
+        cards.Add(new Card(enemy, collection.cards[1]));
+        enemy.deck = new Deck(enemy, cards);
         foreach(Compagnion c in compagnions)
         {
             c.Setup();
+
+            cards = new List<Card>();
+            for (int i = 0; i < 3; i++)
+            {
+                cards.Add(new Card(c, collection.cards[0]));
+            }
+            cards.Add(new Card(c, collection.cards[1]));
+            c.deck = new Deck(c, cards);
         }
-        enemy.Setup();
-        
+
+
+
     }
 
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        globalMap.gameObject.SetActive(scene.name == "Overworld");
+        if (globalMap != null)
+        {
+            globalMap.gameObject.SetActive(scene.name == "Overworld");
+        }
     }
 }

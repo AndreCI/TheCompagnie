@@ -15,28 +15,47 @@ public class UIDisplay : MonoBehaviour, CardHandler
     public GridLayoutGroup group;
     public CardUI cardUI;
 
-    private void Start()
+    public Scrollbar cardSelection;
+
+    void Start()
     {
-        cards = new List<Card>();        
+        
     }
 
     public void Clear()
     {
-        foreach(CardUI ui in cardUIs)
+        if (cardUIs != null)
         {
-            Destroy(ui.gameObject);
+            foreach (CardUI ui in cardUIs)
+            {
+                Destroy(ui.gameObject);
+            }
         }
+        cardUIs = new List<CardUI>();
+        cards = new List<Card>();
     }
 
-    public void DisplayDeck()
+    public void DisplayAbstractDeck()
     {
-        cards = CombatManager.Instance.compagnionDeck.GetCards();
+        Clear();
+        cards = PlayerInfos.Instance.compagnions[0].GetNewDeck().GetCards();
         Display();
     }
 
-    public void DisplayDiscard()
+    public void DisplayDeck(Deck deck)
     {
-        cards = CombatManager.Instance.compagnionDiscard.GetCards();
+        Clear();
+        cards = deck.GetCards();
+        //cards = CombatManager.Instance.compagnionDeck.GetCards();
+        Display();
+    }
+
+    public void DisplayLevelUpSelection()
+    {
+        Clear();
+        group.childAlignment = TextAnchor.MiddleCenter;
+        cards = PlayerInfos.Instance.collection.GetRandomCards(3);
+        cardSelection.gameObject.SetActive(true);
         Display();
     }
 
@@ -59,5 +78,12 @@ public class UIDisplay : MonoBehaviour, CardHandler
         UI.placeholderParent = transform;
         UI.Playable = false;
         return UI;
+    }
+
+    public void SelectionValidate()
+    {
+        PlayerInfos.Instance.compagnions[0].deck.AddCard(PlayerInfos.Instance.compagnions[0], 
+            new Card(PlayerInfos.Instance.compagnions[0], cards[(int)cardSelection.value * 2]));
+        cardSelection.gameObject.SetActive(false);
     }
 }

@@ -15,3 +15,15 @@ public static class Utils
             stack.Push(value);
     }
 }
+
+[Serializable]
+public class CardCollection
+{
+    public List<Card> cards;
+
+    public List<Card> GetRandomCards(int number)
+    {
+        Random rnd = new Random();
+        return new List<Card>(cards.OrderBy(x => rnd.Next()).Take(number));
+    }
+}

@@ -11,9 +11,14 @@ using UnityEngine.UI;
 [Serializable]
 public class Card
 {
+
+    public enum POTENTIAL_TARGET {SINGLE_ENEMY, ENEMIES, SINGLE_COMP, PARTY, NONE };
     [HideInInspector]
     public Unit owner;
+
+    public string name;
     public Sprite sprite;
+    public POTENTIAL_TARGET potential_target;
     public List<CombatEffect> effects;
     public CardHandler handler;
     public int manaCost;
