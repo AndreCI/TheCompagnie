@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Unity;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnitUI : UICardDropZone
+public class UnitUI : UICardDropZone, IPointerClickHandler
 {
     public Unit unit;
     public Slider healthSlider;
@@ -15,6 +15,19 @@ public class UnitUI : UICardDropZone
     public Slider actionSlider;
     public SpriteRenderer Image;
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        UnitSelector.Instance.AddCompagnionToSelection(unit);
+        UnitSelector.Notify += S;
+    }
+
+    public void S(List<Unit> jack)
+    {
+        foreach(Unit u in jack)
+        {
+            Debug.Log("HERE" + u.ToString());
+        }
+    }
     public void SetInfos(Unit unit_)
     {
         unit = unit_;

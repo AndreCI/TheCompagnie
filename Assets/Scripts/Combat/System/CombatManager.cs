@@ -9,7 +9,9 @@ public class CombatManager : MonoBehaviour
     private static CombatManager instance;
     public static CombatManager Instance { get => instance; }
     public UnitUI player;
+    public UnitUI p2;
     public UnitUI enemy;
+    public UnitUI e2;
 
     public List<Compagnion> compagnions;
     public CombatPartyDeck compagnionDeck;
@@ -22,8 +24,11 @@ public class CombatManager : MonoBehaviour
     {
         instance = this;
         player.SetInfos(PlayerInfos.Instance.compagnions[0]);
-        enemy.SetInfos(PlayerInfos.Instance.enemy);
-        StartCombat(PlayerInfos.Instance.compagnions, new List<Enemy> { PlayerInfos.Instance.enemy });
+        p2.SetInfos(PlayerInfos.Instance.compagnions[1]);
+        enemy.SetInfos(PlayerInfos.Instance.enemies[0]);
+        e2.SetInfos(PlayerInfos.Instance.enemies[1]);
+
+        StartCombat(PlayerInfos.Instance.compagnions, PlayerInfos.Instance.enemies);
     }
 
     public void StartCombat(List<Compagnion> compagnions_, List<Enemy> enemies_)
@@ -31,12 +36,7 @@ public class CombatManager : MonoBehaviour
         compagnions = compagnions_;
         enemies = enemies_;
         compagnionDeck = PlayerInfos.Instance.persistentPartyDeck.GenerateCombatDeck(compagnions);
-        List<CombatUnitDeck> cd = new List<CombatUnitDeck>();
-        foreach (Enemy e in enemies)
-        {
-            cd.Add(e.GetNewDeck());
-        }
-        enemiesDeck = new CombatPartyDeck(enemies, cd);
+        enemiesDeck = PlayerInfos.Instance.persistentEnemyPartyDeck.GenerateCombatDeck(enemies);
 
         compagnionDeck.Shuffle();
         enemiesDeck.Shuffle();
@@ -44,7 +44,7 @@ public class CombatManager : MonoBehaviour
         compagnionDiscard = new CombatPartyDeck(compagnions, null);
         enemiesDiscard = new CombatPartyDeck(enemies, null);
 
-        List<Card> drawnCards = compagnionDeck.DrawCards(new List<int> { 3 }, compagnions);
+        List<Card> drawnCards = compagnionDeck.DrawCards(new List<int> { 2, 2 }, compagnions);
         Hand.Instance.AddToHand(drawnCards);
         TurnManager.Instance.StartTurn();
     }

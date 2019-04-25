@@ -18,8 +18,9 @@ public class PlayerInfos : MonoBehaviour
     public MapNode currentPosition;
     public List<Compagnion> compagnions;
     public PersistentPartyDeck persistentPartyDeck;
+    public PersistentPartyDeck persistentEnemyPartyDeck;
 
-    public Enemy enemy;
+    public List<Enemy> enemies;
 
     private OverworldMap globalMap;
 
@@ -34,21 +35,27 @@ public class PlayerInfos : MonoBehaviour
         GameObject.DontDestroyOnLoad(gameObject);
         globalMap = OverworldMap.Instance;
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
-        enemy.Setup();
-        List<Card> cards = new List<Card>();
-        for (int i = 0; i < 15; i++)
-        {
-            cards.Add(new Card(enemy, collection.cards[0]));
-        }
-        cards.Add(new Card(enemy, collection.cards[1]));
-        enemy.persistentDeck = new PersistentUnitDeck(cards);
-
         List<PersistentUnitDeck> decks = new List<PersistentUnitDeck>();
+
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.Setup();
+            List<Card> cards = new List<Card>();
+            for (int i = 0; i < 15; i++)
+            {
+                cards.Add(new Card(enemy, collection.cards[0]));
+            }
+            cards.Add(new Card(enemy, collection.cards[1]));
+            enemy.persistentDeck = new PersistentUnitDeck(cards);
+            decks.Add(enemy.persistentDeck);
+        }
+        persistentEnemyPartyDeck = new PersistentPartyDeck(enemies, decks);
+
+        decks = new List<PersistentUnitDeck>();
         foreach(Compagnion c in compagnions)
         {
             c.Setup();
-
-            cards = new List<Card>();
+            List<Card> cards = new List<Card>();
             for (int i = 0; i < 3; i++)
             {
                 cards.Add(new Card(c, collection.cards[0]));

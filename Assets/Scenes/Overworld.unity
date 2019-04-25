@@ -1270,6 +1270,7 @@ MonoBehaviour:
     cards:
     - name: Strike
       sprite: {fileID: 21300000, guid: 08943cc2cc5055b4d96e6aa54e72b7b7, type: 3}
+      potential_target: 0
       effects:
       - type: 0
         amount: 6
@@ -1278,6 +1279,7 @@ MonoBehaviour:
       actionCost: 1
     - name: Heal
       sprite: {fileID: 21300000, guid: 603453818e965eb4bb5aa57781b7d413, type: 3}
+      potential_target: 0
       effects:
       - type: 1
         amount: 6
@@ -1286,6 +1288,7 @@ MonoBehaviour:
       actionCost: 1
     - name: block
       sprite: {fileID: 21300000, guid: fdd474973a16a3044a06b66b78c63c74, type: 3}
+      potential_target: 0
       effects:
       - type: 1
         amount: 6
@@ -1294,6 +1297,7 @@ MonoBehaviour:
       actionCost: 1
     - name: PommelStrike
       sprite: {fileID: 21300000, guid: e99bab72544af0d40b8696ed9e288feb, type: 3}
+      potential_target: 0
       effects:
       - type: 0
         amount: 9
@@ -1314,8 +1318,25 @@ MonoBehaviour:
       currentLevel: 0
       nextLevelThreshold: 0
       talentPoints: 0
-  enemy:
-    maxHealth: 30
+  - maxHealth: 20
+    maxMana: 10
+    maxAction: 2
+    combatSprite: {fileID: 21300000, guid: bd3dbdd857b69c2439f11f8a651dadff, type: 3}
+    speed: 2
+    currentStatus: []
+    level:
+      currentXP: 0
+      currentLevel: 0
+      nextLevelThreshold: 0
+      talentPoints: 0
+  enemies:
+  - maxHealth: 10
+    maxMana: 0
+    maxAction: 10
+    combatSprite: {fileID: 21300000, guid: bd3dbdd857b69c2439f11f8a651dadff, type: 3}
+    speed: 6
+    currentStatus: []
+  - maxHealth: 10
     maxMana: 0
     maxAction: 10
     combatSprite: {fileID: 21300000, guid: bd3dbdd857b69c2439f11f8a651dadff, type: 3}
@@ -2818,22 +2839,22 @@ PrefabInstance:
     - target: {fileID: 4170869178956553306, guid: e85be62a94a08664397b0084cf5e7065,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -87.26
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 4170869178956553306, guid: e85be62a94a08664397b0084cf5e7065,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -121
+      value: -63.4
       objectReference: {fileID: 0}
     - target: {fileID: 4170869178956553306, guid: e85be62a94a08664397b0084cf5e7065,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -473.56
+      value: -343.53
       objectReference: {fileID: 0}
     - target: {fileID: 4170869178956553306, guid: e85be62a94a08664397b0084cf5e7065,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 18.01
+      value: 17.46
       objectReference: {fileID: 0}
     - target: {fileID: 4170869178956553306, guid: e85be62a94a08664397b0084cf5e7065,
         type: 3}
