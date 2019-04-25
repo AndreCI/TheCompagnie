@@ -33,7 +33,6 @@ public class Hand : UICardDropZone
     {
         CardUI UI = Instantiate(cardUI);
         UI.Setup(card);
-        card.handler = this;
         UI.transform.SetParent(transform);
         UI.parentToReturnTo = transform;
         UI.placeholderParent = transform;

@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 
     public Card card;
@@ -30,6 +30,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
     {
         card = card_;
         image.sprite = card.sprite;
+        CardSelector.Notify += SelectedUnitsUpdate; 
     }
     public void Play(Unit target)
     {
@@ -37,11 +38,34 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
         CombatManager.Instance.compagnionDiscard.AddCard(card, card.owner);
         Destroy(gameObject);
     }
+
+    public void OnDestroy()
+    {
+        CardSelector.Notify -= SelectedUnitsUpdate;
+
+    }
+
     public Transform parentToReturnTo = null;
     public Transform placeholderParent = null;
 
     GameObject placeholder = null;
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        CardSelector.Instance.ToggleSelection(card);
+    }
+
+    private void SelectedUnitsUpdate(List<Card> selectedCard)
+    {
+        if (!selectedCard.Contains(card))
+        {
+            image.color = Color.white;
+        }
+        else
+        {
+            image.color = Color.red;
+        }
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         placeholder = new GameObject();

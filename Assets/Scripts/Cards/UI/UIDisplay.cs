@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIDisplay : MonoBehaviour, CardLocation
+public class UIDisplay : MonoBehaviour
 {
     private List<Card> cards;
     private List<CardUI> cardUIs;
@@ -73,7 +73,6 @@ public class UIDisplay : MonoBehaviour, CardLocation
     {
         CardUI UI = Instantiate(cardUI);
         UI.Setup(card);
-        card.handler = this;
         UI.transform.SetParent(transform);
         UI.parentToReturnTo = transform;
         UI.placeholderParent = transform;

@@ -1327,6 +1327,7 @@ GameObject:
   - component: {fileID: 1086689865}
   - component: {fileID: 1086689864}
   - component: {fileID: 1086689869}
+  - component: {fileID: 1086689870}
   m_Layer: 5
   m_Name: PlayerInfos-GLOBAL
   m_TagString: Untagged
@@ -1514,6 +1515,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7a5a92fe2d97724881d7984330c63e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1086689870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086689863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34cc819db03fcb44ba13b37c55ee12a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &1128580433 stripped
@@ -1787,7 +1800,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1380624937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e075352b6faaf8b4a9872bea5f2ad11b, type: 3}
+  m_Script: {fileID: 11500000, guid: 55f57c22df9fc9447a2e367081200c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   group: {fileID: 1380624939}
