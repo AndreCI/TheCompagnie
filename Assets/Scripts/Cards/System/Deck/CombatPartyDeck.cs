@@ -22,8 +22,6 @@ public class CombatPartyDeck : CombatDeck
             }
         }
         cards = decks;
-        Debug.Log(owners_.Count.ToString());
-        Debug.Log(cards.Count.ToString());
     }
 
     public override void AddCard(Card card, Unit owner = null)
@@ -82,7 +80,6 @@ public class CombatPartyDeck : CombatDeck
         }
         foreach (Unit owner in owners)
         {
-            Debug.Log(owners_.Count.ToString() + " " + owner.ToString());
             cards[owners_.IndexOf(owner)].Shuffle();
         }
     }

@@ -179,6 +179,7 @@ MonoBehaviour:
     maxHealth: 0
     maxMana: 0
     maxAction: 0
+    currentHealth: 0
     combatSprite: {fileID: 0}
     baseSpeed: 0
     currentSpeed: 0
@@ -1350,7 +1351,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collection:
     cards:
-    - name: Strike
+    - multipleTarget: 0
+      name: Strike
       sprite: {fileID: 21300000, guid: 08943cc2cc5055b4d96e6aa54e72b7b7, type: 3}
       potential_target: 0
       effects:
@@ -1359,18 +1361,20 @@ MonoBehaviour:
         statusFactories: []
       manaCost: 0
       actionCost: 1
-    - name: Heal
+    - multipleTarget: 0
+      name: Heal
       sprite: {fileID: 21300000, guid: 603453818e965eb4bb5aa57781b7d413, type: 3}
-      potential_target: 0
+      potential_target: 1
       effects:
       - type: 1
         amount: 6
         statusFactories: []
       manaCost: 4
       actionCost: 1
-    - name: block
+    - multipleTarget: 0
+      name: block
       sprite: {fileID: 21300000, guid: fdd474973a16a3044a06b66b78c63c74, type: 3}
-      potential_target: 0
+      potential_target: 1
       effects:
       - type: 2
         amount: 6
@@ -1381,7 +1385,8 @@ MonoBehaviour:
           trigger: 1
       manaCost: 0
       actionCost: 1
-    - name: PommelStrike
+    - multipleTarget: 0
+      name: PommelStrike
       sprite: {fileID: 21300000, guid: e99bab72544af0d40b8696ed9e288feb, type: 3}
       potential_target: 0
       effects:
@@ -1390,7 +1395,8 @@ MonoBehaviour:
         statusFactories: []
       manaCost: 8
       actionCost: 1
-    - name: strikeSilent
+    - multipleTarget: 0
+      name: strikeSilent
       sprite: {fileID: 21300000, guid: 448c90e4bcaf2704485c008883a5c09a, type: 3}
       potential_target: 0
       effects:
@@ -1399,12 +1405,16 @@ MonoBehaviour:
         statusFactories: []
       manaCost: 0
       actionCost: 1
-    - name: strikeSilent
+    - multipleTarget: 1
+      name: daggerspray
       sprite: {fileID: 21300000, guid: f4dd316e94e37cc408ec10c66275e4ae, type: 3}
-      potential_target: 1
+      potential_target: 0
       effects:
       - type: 0
-        amount: 6
+        amount: 4
+        statusFactories: []
+      - type: 0
+        amount: 4
         statusFactories: []
       manaCost: 0
       actionCost: 1
@@ -1414,6 +1424,7 @@ MonoBehaviour:
   - maxHealth: 20
     maxMana: 10
     maxAction: 2
+    currentHealth: 0
     combatSprite: {fileID: 21300000, guid: bd3dbdd857b69c2439f11f8a651dadff, type: 3}
     baseSpeed: 0
     currentSpeed: 3
@@ -1426,6 +1437,7 @@ MonoBehaviour:
   - maxHealth: 20
     maxMana: 10
     maxAction: 2
+    currentHealth: 0
     combatSprite: {fileID: 21300000, guid: bd3dbdd857b69c2439f11f8a651dadff, type: 3}
     baseSpeed: 0
     currentSpeed: 4
@@ -1439,6 +1451,7 @@ MonoBehaviour:
   - maxHealth: 10
     maxMana: 0
     maxAction: 10
+    currentHealth: 0
     combatSprite: {fileID: 21300000, guid: bd3dbdd857b69c2439f11f8a651dadff, type: 3}
     baseSpeed: 5
     currentSpeed: 5
@@ -1446,6 +1459,7 @@ MonoBehaviour:
   - maxHealth: 10
     maxMana: 0
     maxAction: 10
+    currentHealth: 0
     combatSprite: {fileID: 21300000, guid: bd3dbdd857b69c2439f11f8a651dadff, type: 3}
     baseSpeed: 4
     currentSpeed: 6
@@ -2166,7 +2180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.108, y: 0}
   m_AnchorMax: {x: 0.20935296, y: 1}
-  m_AnchoredPosition: {x: -0.20050049, y: -0.20405579}
+  m_AnchoredPosition: {x: -0.20043945, y: -0.20405579}
   m_SizeDelta: {x: -0.010009766, y: 0}
   m_Pivot: {x: 0.54993045, y: 0.5}
 --- !u!114 &1542469746

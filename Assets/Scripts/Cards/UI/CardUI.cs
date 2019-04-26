@@ -19,7 +19,9 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     {
         get => playable &&
             card.manaCost <= card.owner.CurrentMana &&
-            card.actionCost <= card.owner.CurrentAction 
+            card.actionCost <= card.owner.CurrentAction &&
+            ((new List<Unit>(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.TPOTENTIAL))).Count > 0 ||
+            (new List<Unit>(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.TCURRENT))).Count > 0)
             ; set
         {
             playable = value;
@@ -32,7 +34,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         image.sprite = card.sprite;
         CardSelector.Notify += SelectedCardUpdate; 
     }
-    public void Play(Unit target)
+    public void Play(List<Unit> target)
     {
         card.Play(target);
         CombatManager.Instance.compagnionDiscard.AddCard(card, card.owner);
@@ -122,10 +124,19 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         Destroy(placeholder);
-        UnitUI target = this.transform.parent.GetComponent<UnitUI>();
-        if (target != null)
+        List<UnitUI> target;
+        if (!card.multipleTarget)
         {
-            Play(target.unit);
+            target = new List<UnitUI>(this.transform.GetComponentsInParent<UnitUI>());
+        }
+        else
+        {
+            target = new List<UnitUI>(this.transform.parent.parent.GetComponentsInChildren<UnitUI>());            
+        }
+        Debug.Log("jere" + target.Count);
+        if (target != null && target.Count > 0) 
+        {
+            Play(target.Select(x=>x.unit).ToList());
         }
 
     }

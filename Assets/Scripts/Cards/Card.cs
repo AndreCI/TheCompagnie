@@ -12,7 +12,7 @@ using UnityEngine.UI;
 public class Card
 {
 
-    public enum POTENTIAL_TARGET {SINGLE_ENEMY, ENEMIES, SINGLE_COMP, PARTY, NONE };
+    public enum POTENTIAL_TARGET {ENEMIES, PARTY, NONE };
     [HideInInspector]
     public Unit owner;
 
@@ -22,6 +22,7 @@ public class Card
     public List<CombatEffect> effects;
     public int manaCost;
     public int actionCost = 1;
+    public bool multipleTarget;
 
     public Card(Unit owner_, Card baseCard)
     {
@@ -31,16 +32,21 @@ public class Card
         manaCost = baseCard.manaCost;
         potential_target = baseCard.potential_target;
         actionCost = baseCard.actionCost;
+        multipleTarget = baseCard.multipleTarget;
 
     }
 
 
-    public virtual void Play(Unit target)
+    public virtual void Play(List<Unit> targets)
     {
         owner.CurrentMana -= manaCost;
         owner.CurrentAction -= actionCost;
-        CombatEvent cardEvent = new CombatEvent(owner, new List<Unit> { target }, owner.currentSpeed, effects, this);
-        TurnManager.Instance.AddCombatEvent(cardEvent);
+        foreach (Unit target in targets)
+        {
+            CombatEvent cardEvent = new CombatEvent(owner, target, owner.currentSpeed, effects, this);
+            TurnManager.Instance.AddCombatEvent(cardEvent);
+        }
+        
     }
 
 

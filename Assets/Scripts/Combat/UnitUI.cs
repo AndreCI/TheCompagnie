@@ -27,14 +27,29 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
 
     void Update()
     {
-        if (targeting && !selectorNotified)
+
+        if (!selectorNotified)
         {
-            UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TCURRENT);
+            if(CardSelector.Instance.GetSelectedCard().All(x => x.multipleTarget) && CardSelector.Instance.GetSelectedCard().Count()>0)
+            {
+                TargetNotification();
+            }
+            else
+            {
+                UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TCURRENT);
+            }
             selectorNotified = true;
-        }else if(!targeting && !selectorNotified)
+
+        }
+        
+    }
+
+    private void TargetNotification()
+    {
+        List<UnitUI> uis = new List<UnitUI>(transform.parent.GetComponentsInChildren<UnitUI>());
+        foreach(UnitUI ui in uis)
         {
-            UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TCURRENT);
-            selectorNotified = true;
+            UnitSelector.Instance.ToggleSelection(ui.unit, UnitSelector.SELECTION_MODE.TCURRENT);
         }
     }
     private void SelectedCardUpdate(List<Card> selectedCard)
@@ -59,7 +74,6 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     {
         if (!selectedUnits.Contains(unit))
         {
-            Debug.Log("hey" + mode.ToString() + " "+name);
             switch (mode)
             {
                 case UnitSelector.SELECTION_MODE.SELECT:
@@ -80,7 +94,6 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
         }
         else
         {
-            Debug.Log("heyooo" + mode.ToString());
             switch (mode)
             {
                 case UnitSelector.SELECTION_MODE.SELECT:

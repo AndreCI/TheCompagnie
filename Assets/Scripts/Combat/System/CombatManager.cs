@@ -63,7 +63,7 @@ public class CombatManager : MonoBehaviour
         foreach (Card card in cards)
         {
             
-            card.Play(compagnions[0]);
+            card.Play(new List<Unit> { compagnions[0] });
         }
     }
 
