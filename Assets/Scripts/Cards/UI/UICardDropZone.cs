@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
     public bool locked = false;
+    public bool targeting = false;
+    public bool selectorNotified = true;
     public Card.POTENTIAL_TARGET target_type;
 
 	public void OnPointerEnter(PointerEventData eventData) {
@@ -17,6 +19,8 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
             if (d != null && d.Playable && IsAcceptableTarget(d))
             {
                 d.placeholderParent = this.transform;
+                targeting = true;
+                selectorNotified = false;
             }
         }
 	}
@@ -31,6 +35,8 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
             if (d != null && d.Playable && IsAcceptableTarget(d) && d.placeholderParent == this.transform)
             {
                 d.placeholderParent = d.parentToReturnTo;
+                targeting = false;
+                selectorNotified = false;
             }
         }
 	}
@@ -44,6 +50,8 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
             if (d != null && d.Playable && IsAcceptableTarget(d))
             {
                 d.parentToReturnTo = this.transform;
+                targeting = false;
+                selectorNotified = false;
             }
         }
 

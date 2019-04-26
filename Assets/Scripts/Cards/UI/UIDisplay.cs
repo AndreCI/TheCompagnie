@@ -38,14 +38,14 @@ public class UIDisplay : MonoBehaviour
     public void DisplayAbstractDeck()
     {
         Clear();
-        cards = PlayerInfos.Instance.persistentPartyDeck.GetCards(UnitSelector.Instance.GetSelectedUnit());
+        cards = PlayerInfos.Instance.persistentPartyDeck.GetCards(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT));
         Display();
     }
 
     public void DisplayDeck(CombatDeck deck)
     {
         Clear();
-        cards = deck.GetCards(UnitSelector.Instance.GetSelectedUnit());
+        cards = deck.GetCards(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT));
         //cards = CombatManager.Instance.compagnionDeck.GetCards();
         Display();
     }

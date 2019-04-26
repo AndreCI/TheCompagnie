@@ -15,20 +15,88 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     public Slider actionSlider;
     public SpriteRenderer Image;
     public ParticleSystem selectionAnimation;
-    public void OnPointerClick(PointerEventData eventData)
+    public ParticleSystem targetAnimation;
+
+
+    void Start()
     {
-        UnitSelector.Instance.ToggleSelection(unit);
+        targeting = false;
+        selectorNotified = true;
+        CardSelector.Notify += SelectedCardUpdate;
     }
 
-    private void SelectedUnitsUpdate(List<Unit> selectedUnits)
+    void Update()
+    {
+        if (targeting && !selectorNotified)
+        {
+            UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TCURRENT);
+            selectorNotified = true;
+        }else if(!targeting && !selectorNotified)
+        {
+            UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TCURRENT);
+            selectorNotified = true;
+        }
+    }
+    private void SelectedCardUpdate(List<Card> selectedCard)
+    {
+        if(selectedCard.FindAll(x=> x.potential_target != target_type).Count == 0 && selectedCard.Count>0)
+        {
+            UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TPOTENTIAL, forceAdd:true);
+        }
+        else
+        {
+            UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TPOTENTIAL, forceRemove: true);
+
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.SELECT);
+    }
+
+    private void SelectedUnitsUpdate(List<Unit> selectedUnits, UnitSelector.SELECTION_MODE mode)
     {
         if (!selectedUnits.Contains(unit))
-        { 
-            selectionAnimation.gameObject.SetActive(false);
-        }
-        else 
         {
-            selectionAnimation.gameObject.SetActive(true);
+            Debug.Log("hey" + mode.ToString() + " "+name);
+            switch (mode)
+            {
+                case UnitSelector.SELECTION_MODE.SELECT:
+                    selectionAnimation.gameObject.SetActive(false);
+                    break;
+                case UnitSelector.SELECTION_MODE.TPOTENTIAL:
+                    targetAnimation.gameObject.SetActive(false);
+                    break;
+                case UnitSelector.SELECTION_MODE.TCURRENT:
+                    
+                    this.SelectedUnitsUpdate(new List<Unit>(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.TPOTENTIAL)),
+                        UnitSelector.SELECTION_MODE.TPOTENTIAL);
+                 //   targetAnimation.gameObject.SetActive(false);
+                    break;
+
+            }
+            
+        }
+        else
+        {
+            Debug.Log("heyooo" + mode.ToString());
+            switch (mode)
+            {
+                case UnitSelector.SELECTION_MODE.SELECT:
+                    selectionAnimation.gameObject.SetActive(true);
+                    break;
+                case UnitSelector.SELECTION_MODE.TPOTENTIAL:
+                    targetAnimation.startColor = Color.green;
+                    targetAnimation.gameObject.SetActive(true);
+                    break;
+                case UnitSelector.SELECTION_MODE.TCURRENT:
+                    targetAnimation.startColor = Color.red;
+
+                    targetAnimation.gameObject.SetActive(true);
+                    break;
+
+            }
         }
     }
     public void SetInfos(Unit unit_)
@@ -56,5 +124,6 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     {
         unit.NotifyUpdate -= UpdateInfo;
         UnitSelector.Notify -= this.SelectedUnitsUpdate;
+        CardSelector.Notify -= this.SelectedCardUpdate;
     }
 }

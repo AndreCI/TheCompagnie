@@ -11,6 +11,8 @@ public class CardSelector : MonoBehaviour
     private static CardSelector _instance;
     public static CardSelector Instance { get { return _instance; } }
     private List<Card> cardSelected;
+    private List<Card> cardSelectedPlaceholder;
+    private bool singleCardSelected;
 
     public delegate void AddToListener(List<Card> selected);
     public static event AddToListener Notify;
@@ -24,6 +26,7 @@ public class CardSelector : MonoBehaviour
         }
         _instance = this;
         cardSelected = new List<Card>();
+        singleCardSelected = false;
     }
 
     void Update()
@@ -50,6 +53,22 @@ public class CardSelector : MonoBehaviour
     public void Unselect()
     {
         cardSelected = new List<Card>();
+        Notify?.Invoke(cardSelected);
+    }
+
+    public void SelectOne(Card card)
+    {
+        cardSelectedPlaceholder = cardSelected;
+        cardSelected = new List<Card> { card };
+        singleCardSelected = true;
+        Notify?.Invoke(cardSelected);
+    }
+
+    public void UnselectOne()
+    {
+        cardSelected = cardSelectedPlaceholder;
+        cardSelectedPlaceholder = new List<Card>();
+        singleCardSelected = false;
         Notify?.Invoke(cardSelected);
     }
 

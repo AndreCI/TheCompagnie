@@ -19,7 +19,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     {
         get => playable &&
             card.manaCost <= card.owner.CurrentMana &&
-            card.actionCost <= card.owner.CurrentAction
+            card.actionCost <= card.owner.CurrentAction 
             ; set
         {
             playable = value;
@@ -30,7 +30,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     {
         card = card_;
         image.sprite = card.sprite;
-        CardSelector.Notify += SelectedUnitsUpdate; 
+        CardSelector.Notify += SelectedCardUpdate; 
     }
     public void Play(Unit target)
     {
@@ -41,7 +41,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
 
     public void OnDestroy()
     {
-        CardSelector.Notify -= SelectedUnitsUpdate;
+        CardSelector.Notify -= SelectedCardUpdate;
 
     }
 
@@ -55,7 +55,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         CardSelector.Instance.ToggleSelection(card);
     }
 
-    private void SelectedUnitsUpdate(List<Card> selectedCard)
+    private void SelectedCardUpdate(List<Card> selectedCard)
     {
         if (!selectedCard.Contains(card))
         {
@@ -68,6 +68,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
+        CardSelector.Instance.SelectOne(card);
         placeholder = new GameObject();
         placeholder.transform.SetParent(this.transform.parent);
         LayoutElement le = placeholder.AddComponent<LayoutElement>();
@@ -115,6 +116,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
 
     public virtual void OnEndDrag(PointerEventData eventData)
     {
+        CardSelector.Instance.UnselectOne();
         this.transform.SetParent(parentToReturnTo);
         this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
         GetComponent<CanvasGroup>().blocksRaycasts = true;

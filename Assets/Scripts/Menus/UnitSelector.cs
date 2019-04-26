@@ -8,11 +8,16 @@ using UnityEngine.EventSystems;
 
 public class UnitSelector : MonoBehaviour
 {
+    public enum SELECTION_MODE { SELECT, TPOTENTIAL, TCURRENT}
     private static UnitSelector _instance;
     public static UnitSelector Instance { get { return _instance; } }
-    private List<Unit> unitSelected;
+    //private List<Unit> unitSelected;
+    private List<Unit> potentialTarget;
+    private List<Unit> currentTarget;
 
-    public delegate void AddToListener(List<Unit> selected);
+    private Dictionary<SELECTION_MODE, List<Unit>> unitSelected;
+
+    public delegate void AddToListener(List<Unit> selected, SELECTION_MODE mode);
     public static event AddToListener Notify;
 
     void Start()
@@ -23,7 +28,11 @@ public class UnitSelector : MonoBehaviour
             return;
         }
         _instance = this;
-        unitSelected = new List<Unit>();
+        unitSelected = new Dictionary<SELECTION_MODE, List<Unit>>();//new List<Unit>();
+        foreach(SELECTION_MODE mode in Enum.GetValues(typeof(SELECTION_MODE)))
+        {
+            unitSelected.Add(mode, new List<Unit>());
+        }
     }
 
     void Update()
@@ -34,28 +43,33 @@ public class UnitSelector : MonoBehaviour
         }
     }
 
-    public void ToggleSelection(Unit c)
+
+    public void ToggleSelection(Unit c, SELECTION_MODE mode, bool forceAdd=false, bool forceRemove=false)
     {
-        if (!unitSelected.Contains(c))
+        if (!unitSelected[mode].Contains(c) && !forceRemove)
         {
-            unitSelected.Add(c);
+            unitSelected[mode].Add(c);
         }
-        else
+        else if(unitSelected[mode].Contains(c) && !forceAdd)
         {
-            unitSelected.Remove(c);
+            unitSelected[mode].Remove(c);
         }
-        Notify?.Invoke(unitSelected);
+        Notify?.Invoke(unitSelected[mode], mode);
     }
 
     public void Unselect()
     {
-        unitSelected = new List<Unit>();
-        Notify?.Invoke(unitSelected);
+        unitSelected = new Dictionary<SELECTION_MODE, List<Unit>>();//new List<Unit>();
+        foreach (SELECTION_MODE mode in Enum.GetValues(typeof(SELECTION_MODE)))
+        {
+            unitSelected.Add(mode, new List<Unit>());
+            Notify?.Invoke(unitSelected[mode], mode);
+        }
     }
 
-    public IEnumerable<Unit> GetSelectedUnit()
+    public IEnumerable<Unit> GetSelectedUnit(SELECTION_MODE mode)
     {
-        return unitSelected;
+        return unitSelected[mode];
     }
 
 }

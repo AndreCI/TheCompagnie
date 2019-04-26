@@ -25,10 +25,10 @@ public class UnitSelectable : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         if(unit == null) { Setup(); }
-        UnitSelector.Instance.ToggleSelection(unit);
+        UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.SELECT);
     }
 
-    private void SelectedUnitsUpdate(List<Unit> selectedUnits)
+    private void SelectedUnitsUpdate(List<Unit> selectedUnits, UnitSelector.SELECTION_MODE mode)
     {
         if (!selectedUnits.Contains(unit))
         { //CALLED TWICE!
