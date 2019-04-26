@@ -180,7 +180,8 @@ MonoBehaviour:
     maxMana: 0
     maxAction: 0
     combatSprite: {fileID: 0}
-    speed: 0
+    baseSpeed: 0
+    currentSpeed: 0
     currentStatus: []
     level:
       currentXP: 0
@@ -1371,9 +1372,13 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: fdd474973a16a3044a06b66b78c63c74, type: 3}
       potential_target: 0
       effects:
-      - type: 1
+      - type: 2
         amount: 6
-        statusFactories: []
+        statusFactories:
+        - status: 1
+          value: 6
+          duration: 6
+          trigger: 1
       manaCost: 0
       actionCost: 1
     - name: PommelStrike
@@ -1385,6 +1390,24 @@ MonoBehaviour:
         statusFactories: []
       manaCost: 8
       actionCost: 1
+    - name: strikeSilent
+      sprite: {fileID: 21300000, guid: 448c90e4bcaf2704485c008883a5c09a, type: 3}
+      potential_target: 0
+      effects:
+      - type: 0
+        amount: 6
+        statusFactories: []
+      manaCost: 0
+      actionCost: 1
+    - name: strikeSilent
+      sprite: {fileID: 21300000, guid: f4dd316e94e37cc408ec10c66275e4ae, type: 3}
+      potential_target: 1
+      effects:
+      - type: 0
+        amount: 6
+        statusFactories: []
+      manaCost: 0
+      actionCost: 1
   cardsDisplay: {fileID: 1380624938}
   currentPosition: {fileID: 6233686071619016863}
   compagnions:
@@ -1392,7 +1415,8 @@ MonoBehaviour:
     maxMana: 10
     maxAction: 2
     combatSprite: {fileID: 21300000, guid: bd3dbdd857b69c2439f11f8a651dadff, type: 3}
-    speed: 4
+    baseSpeed: 0
+    currentSpeed: 3
     currentStatus: []
     level:
       currentXP: 0
@@ -1403,7 +1427,8 @@ MonoBehaviour:
     maxMana: 10
     maxAction: 2
     combatSprite: {fileID: 21300000, guid: bd3dbdd857b69c2439f11f8a651dadff, type: 3}
-    speed: 2
+    baseSpeed: 0
+    currentSpeed: 4
     currentStatus: []
     level:
       currentXP: 0
@@ -1415,13 +1440,15 @@ MonoBehaviour:
     maxMana: 0
     maxAction: 10
     combatSprite: {fileID: 21300000, guid: bd3dbdd857b69c2439f11f8a651dadff, type: 3}
-    speed: 6
+    baseSpeed: 5
+    currentSpeed: 5
     currentStatus: []
   - maxHealth: 10
     maxMana: 0
     maxAction: 10
     combatSprite: {fileID: 21300000, guid: bd3dbdd857b69c2439f11f8a651dadff, type: 3}
-    speed: 8
+    baseSpeed: 4
+    currentSpeed: 6
     currentStatus: []
 --- !u!114 &1086689865
 MonoBehaviour:

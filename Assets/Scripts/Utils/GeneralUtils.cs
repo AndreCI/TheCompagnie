@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 public class GeneralUtils
 {
-    public enum SUBJECT_TRIGGER { START_OF_TURN};
+    public enum SUBJECT_TRIGGER { START_OF_TURN, TIMESTEP_TICK};
 }

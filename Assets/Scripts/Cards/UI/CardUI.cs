@@ -127,9 +127,5 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         }
 
     }
-    public void Notified(Subject subject)
-    {
-
-    }
 }
 

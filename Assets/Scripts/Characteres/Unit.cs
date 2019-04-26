@@ -12,7 +12,7 @@ public abstract class Unit
     public int maxHealth;
     public int maxMana;
     public int maxAction;
-    private int currentHealth;
+    public int currentHealth;
     private int currentMana;
     private int currentAction;
     public Sprite combatSprite;
@@ -54,7 +54,9 @@ public abstract class Unit
             NotifyUpdate();
         }
     }
-    public int speed;
+
+    public int baseSpeed;
+    public int currentSpeed;
 
     public PersistentUnitDeck persistentDeck;
 
@@ -68,6 +70,25 @@ public abstract class Unit
 
     public void TakeDamage(int amount)
     {
+        foreach(CombatStatus cs in currentStatus.FindAll(x => x.status == CombatStatus.STATUS.PARRY ||
+        x.status == CombatStatus.STATUS.BLOCK))
+        {
+            if(cs.status == CombatStatus.STATUS.PARRY)
+            {
+                amount = 0;
+                cs.value -= 1;
+                cs.CheckUpdate();
+                return;
+            }
+            if(cs.status == CombatStatus.STATUS.BLOCK)
+            {
+                Debug.Log("BLOCKED!");
+                cs.value -= amount;
+                if(cs.value < 0) { amount = -1 * cs.value; }
+                else { amount = 0; }
+                cs.CheckUpdate();
+            }
+        }
         if (amount > 0)
         {
             CurrentHealth -= amount;

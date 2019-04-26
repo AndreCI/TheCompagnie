@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [Serializable]
-public class CombatStatus : Observer
+public class CombatStatus
 {
     public enum STATUS {
-        REGEN
+        REGEN,
+        BLOCK,
+        PARRY
 };
 
     public STATUS status;
@@ -25,32 +27,37 @@ public class CombatStatus : Observer
         duration = duration_;
         trigger = trigger_;
         target = target_;
-        TurnManager.Instance.AddObserver(this, trigger);
+        TurnManager.NotifyAll += Notified;
         target.currentStatus.Add(this);
     }
 
-    public void Notified(Subject subject, GeneralUtils.SUBJECT_TRIGGER currentTrigger)
+    public void Notified(GeneralUtils.SUBJECT_TRIGGER currentTrigger)
     {
-        Debug.Log("trigger");
-        if(currentTrigger == trigger)
+        if (currentTrigger == trigger)
         {
             Apply();
             duration -= 1;
-            if(duration <= 0)
-            {
-                //pass
-            }
+            CheckUpdate();
         }
     }
-
     private void Apply()
     {
         switch (status)
         {
             case STATUS.REGEN:
-            Debug.Log("apply");
                 target.Heal(value);
                 break;
+
         }
     }
+
+    public void CheckUpdate()
+    {
+        if(value == 0 || duration <= 0)
+        {
+            target.currentStatus.Remove(this);
+            TurnManager.NotifyAll -= Notified;
+        }
+    }
+
 }

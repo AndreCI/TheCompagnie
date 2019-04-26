@@ -4,7 +4,7 @@ using Unity;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TurnManager : MonoBehaviour, Subject
+public class TurnManager : MonoBehaviour
 {
 
     public Intent intent;
@@ -18,8 +18,11 @@ public class TurnManager : MonoBehaviour, Subject
     private List<Queue<CombatEvent>> registeredEvents;
     private static TurnManager instance;
     private List<GeneralUtils.SUBJECT_TRIGGER> triggers;
-    private List<List<Observer>> observers;
+   // private List<List<Observer>> observers;
     public static TurnManager Instance { get => instance; }
+
+    public delegate void Notify(GeneralUtils.SUBJECT_TRIGGER trigger);
+    public static event Notify NotifyAll;
 
     void Start()
     {
@@ -29,7 +32,7 @@ public class TurnManager : MonoBehaviour, Subject
             registeredEvents.Add(new Queue<CombatEvent>());
         }
         triggers = new List<GeneralUtils.SUBJECT_TRIGGER>();
-        observers = new List<List<Observer>>();
+      //  observers = new List<List<Observer>>();
         instance = this;
         enemiesIntents = new List<VerticalLayoutGroup>(enemiesIntentsTransform.GetComponentsInChildren<VerticalLayoutGroup>());
         compIntents = new List<VerticalLayoutGroup>(compIntentsTransform.GetComponentsInChildren<VerticalLayoutGroup>());
@@ -58,7 +61,7 @@ public class TurnManager : MonoBehaviour, Subject
      */
     public void StartTurn()
     {
-        NotifyObservers(GeneralUtils.SUBJECT_TRIGGER.START_OF_TURN);
+        NotifyAll?.Invoke(GeneralUtils.SUBJECT_TRIGGER.START_OF_TURN);
         time.value = 0;
         List<Card> drawnCards = CombatManager.Instance.compagnionDeck.DrawCards();
         Hand.Instance.AddToHand(drawnCards);
@@ -91,6 +94,7 @@ public class TurnManager : MonoBehaviour, Subject
     private IEnumerator PerformTimeStep(int i)
     {
         time.value = (float)i/(float)time.numberOfSteps;
+        NotifyAll?.Invoke(GeneralUtils.SUBJECT_TRIGGER.TIMESTEP_TICK);
         while(registeredEvents[i].Count > 0)
         {
             CombatEvent currentEvent = registeredEvents[i].Dequeue();
@@ -100,33 +104,4 @@ public class TurnManager : MonoBehaviour, Subject
         yield return new WaitForSeconds(0.3f);
     }
 
-    public void NotifyObservers(GeneralUtils.SUBJECT_TRIGGER trigger)
-    {
-        if (triggers.Contains(trigger))
-        {
-            foreach (Observer o in observers[triggers.IndexOf(trigger)])
-            {
-                o.Notified(this, trigger);
-            }
-        }
-    }
-
-    public void AddObserver(Observer observer, GeneralUtils.SUBJECT_TRIGGER trigger)
-    {
-        if (!triggers.Contains(trigger))
-        {
-            triggers.Add(trigger);
-            observers.Add(new List<Observer>());
-        }
-        observers[triggers.IndexOf(trigger)].Add(observer);
-    }
-
-    public void RemoveObserver(Observer observer, GeneralUtils.SUBJECT_TRIGGER trigger)
-    {
-        if (!triggers.Contains(trigger)) { Debug.Log("ISSUE WITH TRIGGER"); }
-        else
-        {
-            observers[triggers.IndexOf(trigger)].Remove(observer);
-        }
-    }
 }

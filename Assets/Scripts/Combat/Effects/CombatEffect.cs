@@ -31,11 +31,14 @@ public class CombatEffect
             case TYPE.HEAL:
                 target.Heal(amount);
                 break;
-        }
-        foreach(CombatStatusFactory statusFactory in statusFactories)
-        {
-            CombatStatus status = statusFactory.GenerateApply(target);
+            case TYPE.APPLY_STATUS:
+                foreach(CombatStatusFactory statusFactory in statusFactories)
+                        {
+                            CombatStatus status = statusFactory.GenerateApply(target);
            
+                        }
+                break;
         }
+        
     }
 }

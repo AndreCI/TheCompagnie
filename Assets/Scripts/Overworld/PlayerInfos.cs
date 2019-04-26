@@ -58,7 +58,7 @@ public class PlayerInfos : MonoBehaviour
             List<Card> cards = new List<Card>();
             for (int i = 0; i < 3; i++)
             {
-                cards.Add(new Card(c, collection.cards[compagnions.IndexOf(c) + 1]));
+                cards.Add(new Card(c, collection.cards[1 + 1]));
             }
             cards.Add(new Card(c, collection.cards[0]));
             c.persistentDeck = new PersistentUnitDeck(cards);

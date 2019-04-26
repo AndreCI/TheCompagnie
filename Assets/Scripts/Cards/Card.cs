@@ -39,7 +39,7 @@ public class Card
     {
         owner.CurrentMana -= manaCost;
         owner.CurrentAction -= actionCost;
-        CombatEvent cardEvent = new CombatEvent(owner, new List<Unit> { target }, owner.speed, effects, this);
+        CombatEvent cardEvent = new CombatEvent(owner, new List<Unit> { target }, owner.currentSpeed, effects, this);
         TurnManager.Instance.AddCombatEvent(cardEvent);
     }
 

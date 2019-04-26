@@ -61,7 +61,6 @@ public class UIDisplay : MonoBehaviour
 
     private void Display()
     {
-        Debug.Log((new List<Unit>(UnitSelector.Instance.GetSelectedUnit()).Count));
         cardUIs = new List<CardUI>();
         foreach(Card card in cards)
         {
@@ -83,7 +82,7 @@ public class UIDisplay : MonoBehaviour
     public void SelectionValidate()
     {
         PlayerInfos.Instance.compagnions[0].persistentDeck.AddCard( 
-            new Card(PlayerInfos.Instance.compagnions[0], cards[(int)cardSelection.value * 2]),
+            new Card(PlayerInfos.Instance.compagnions[0], cards[(int)(cardSelection.value * 2)]),
             PlayerInfos.Instance.compagnions[0]);
         cardSelection.gameObject.SetActive(false);
     }
