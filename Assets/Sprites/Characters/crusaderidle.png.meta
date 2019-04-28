@@ -1,0 +1,1181 @@
+fileFormatVersion: 2
+guid: 26245a271da5f0f43a4b9ed70109fa97
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2819370734436703708
+    second: crusaderidle_0
+  - first:
+      213: 1559953571715519569
+    second: crusaderidle_1
+  - first:
+      213: -7627899613469817351
+    second: crusaderidle_2
+  - first:
+      213: 1253503137622731225
+    second: crusaderidle_3
+  - first:
+      213: -4791704670845184188
+    second: crusaderidle_4
+  - first:
+      213: 6068717425904516510
+    second: crusaderidle_5
+  - first:
+      213: -5627154708863764884
+    second: crusaderidle_6
+  - first:
+      213: 2651523035708606949
+    second: crusaderidle_7
+  - first:
+      213: -3478226169564252527
+    second: crusaderidle_8
+  - first:
+      213: -5292152706506209477
+    second: crusaderidle_9
+  - first:
+      213: 6042730399094326750
+    second: crusaderidle_10
+  - first:
+      213: 911223601936350867
+    second: crusaderidle_11
+  - first:
+      213: -5015423411356663255
+    second: crusaderidle_12
+  - first:
+      213: -5370171835310956496
+    second: crusaderidle_13
+  - first:
+      213: -2284148813092856626
+    second: crusaderidle_14
+  - first:
+      213: -8949968150999721414
+    second: crusaderidle_15
+  - first:
+      213: 1413957566745105017
+    second: crusaderidle_16
+  - first:
+      213: -3346098962020569243
+    second: crusaderidle_17
+  - first:
+      213: -1560169689107941273
+    second: crusaderidle_18
+  - first:
+      213: -6376814034008848780
+    second: crusaderidle_19
+  - first:
+      213: 5775461378318326593
+    second: crusaderidle_20
+  - first:
+      213: -1428864914225356264
+    second: crusaderidle_21
+  - first:
+      213: 6032493304632851736
+    second: crusaderidle_22
+  - first:
+      213: -1380468802757760861
+    second: crusaderidle_23
+  - first:
+      213: 4359005502888486796
+    second: crusaderidle_24
+  - first:
+      213: -1732735790520669047
+    second: crusaderidle_25
+  - first:
+      213: -7596607921536528452
+    second: crusaderidle_26
+  - first:
+      213: -7392260085000253987
+    second: crusaderidle_27
+  - first:
+      213: 5172224536119536148
+    second: crusaderidle_28
+  - first:
+      213: -9152942883587400228
+    second: crusaderidle_29
+  - first:
+      213: -8418327804469326641
+    second: crusaderidle_30
+  - first:
+      213: 1231160645932642264
+    second: crusaderidle_31
+  - first:
+      213: 7500107360771254438
+    second: crusaderidle_32
+  - first:
+      213: -5607165984247201503
+    second: crusaderidle_33
+  - first:
+      213: 7324566814667094020
+    second: crusaderidle_34
+  - first:
+      213: -1263723500156811187
+    second: crusaderidle_35
+  - first:
+      213: 1190366486018785449
+    second: crusaderidle_36
+  - first:
+      213: -6209787845650560975
+    second: crusaderidle_37
+  - first:
+      213: 3487598421775619534
+    second: crusaderidle_38
+  - first:
+      213: 4304511773365981497
+    second: crusaderidle_39
+  - first:
+      213: 6622684680841967723
+    second: crusaderidle_40
+  - first:
+      213: 4429707355921556862
+    second: crusaderidle_41
+  - first:
+      213: 4930559497003659996
+    second: crusaderidle_42
+  - first:
+      213: 6762175326094846385
+    second: crusaderidle_43
+  - first:
+      213: 3538391159676918692
+    second: crusaderidle_44
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: crusaderidle_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 619
+        width: 141
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 302e34418a25b41468005566de93f282
+      internalID: 2819370734436703708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_1
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 695
+        width: 176
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40bcc21af439bc84e81770622cd3d1f5
+      internalID: 1559953571715519569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_2
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 602
+        width: 162
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31a3f8c7bd38f2d41b66525f90a4c6b1
+      internalID: -7627899613469817351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_3
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 745
+        width: 24
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5ec671331971a746a5f0bb986f8b892
+      internalID: 1253503137622731225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_4
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 743
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11933b3e6068635428a87dc45f89c173
+      internalID: -4791704670845184188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_5
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 321
+        width: 160
+        height: 450
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a593cc7bc736fb74e81e2a72eb712050
+      internalID: 6068717425904516510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_6
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 716
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bceb7b9a6dfb33c408ba05b9020dcfab
+      internalID: -5627154708863764884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_7
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 631
+        width: 81
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81004ac485344494dab2ef30cd0a9a82
+      internalID: 2651523035708606949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_8
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 442
+        width: 134
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2a34713255d85947a108f0d5f466291
+      internalID: -3478226169564252527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_9
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 523
+        width: 53
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c4acc7020911884496edd336959bc62
+      internalID: -5292152706506209477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_10
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 544
+        width: 77
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eaddefa427936643873917abb23219e
+      internalID: 6042730399094326750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_11
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 503
+        width: 138
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 877cf54583c03bb43852cc0252640caa
+      internalID: 911223601936350867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_12
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 550
+        width: 78
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d113cb9d72e67a468a8e66f1a3fb3c5
+      internalID: -5015423411356663255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_13
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 498
+        width: 55
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96456df1c385cb04ea07e095b40faf59
+      internalID: -5370171835310956496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_14
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 442
+        width: 70
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93a6639b215eb994db8f2178f89705d0
+      internalID: -2284148813092856626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_15
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 383
+        width: 47
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46fd089d646130545a8cbaaf749df08f
+      internalID: -8949968150999721414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_16
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 381
+        width: 52
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab988d28afef0b4f94292c16dc81840
+      internalID: 1413957566745105017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_17
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 370
+        width: 56
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0fb73653a2d15a43868089445fd8d78
+      internalID: -3346098962020569243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_18
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 405
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e894c495ba24a84e82e514be7c37a34
+      internalID: -1560169689107941273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_19
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 341
+        width: 118
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 825e24209accdd448aee91e8246a1ed9
+      internalID: -6376814034008848780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_20
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 409
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4680476f9059ad41bdb5c9ad7aca2d8
+      internalID: 5775461378318326593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_21
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 381
+        width: 67
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 335dce72cf9b1ff4cbb8a3dcc17a02c7
+      internalID: -1428864914225356264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_22
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 338
+        width: 73
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5126144697bec1740b484c9506a8e08a
+      internalID: 6032493304632851736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_23
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 353
+        width: 87
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 633656d36e17a6c4ab63caae41da397a
+      internalID: -1380468802757760861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_24
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 400
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41851f49e5f03f748be3940097c95dc0
+      internalID: 4359005502888486796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_25
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 375
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4331c2036cd6ab4a80f530de20276ca
+      internalID: -1732735790520669047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_26
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 374
+        width: 13
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7e229ae53c7ffd4eaa93d0588d1c6b0
+      internalID: -7596607921536528452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_27
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 272
+        width: 83
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ba1aa9a740da9e4a93859a648ad5e97
+      internalID: -7392260085000253987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_28
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 253
+        width: 89
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72a1ab6302e7d8840bcc25ac4c93a801
+      internalID: 5172224536119536148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_29
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 275
+        width: 57
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78e1c86616a78ca439d29e6641b48c66
+      internalID: -9152942883587400228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_30
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 295
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 234862c8ccd6ca140b654ecf85a4c92f
+      internalID: -8418327804469326641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_31
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 299
+        width: 62
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da696ee81f78fea429e66027f4b81656
+      internalID: 1231160645932642264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_32
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 284
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 226023ebf2b0bce4d8c95d6cef22aa5e
+      internalID: 7500107360771254438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_33
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 119
+        width: 127
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be7629b44ccf5d2438c3bf325cb26239
+      internalID: -5607165984247201503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_34
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 181
+        width: 70
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ea6ea8519a74d14fa434deeb4d7a9a1
+      internalID: 7324566814667094020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_35
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 266
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50559badd6e280c4d9b2ccb58c3cc411
+      internalID: -1263723500156811187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_36
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 262
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad4e376d1a111264cb4bb0be197ea85d
+      internalID: 1190366486018785449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_37
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 209
+        width: 75
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e535d59aceba0ad4a8bbb48731e7f784
+      internalID: -6209787845650560975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_38
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 233
+        width: 77
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea5aa53eeefdd024a90e91a0b21a307e
+      internalID: 3487598421775619534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_39
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 242
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e91cd6fa0d9c62844839f92b62f15fa2
+      internalID: 4304511773365981497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_40
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 201
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2fee875d5692284393205c5e6ff3d06
+      internalID: 6622684680841967723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_41
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 168
+        width: 72
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a73ffa0798773df45b440601982eea66
+      internalID: 4429707355921556862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_42
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 169
+        width: 33
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e92ee8792af6404b83c8ebc64fde6ac
+      internalID: 4930559497003659996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_43
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 84
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 618f37014b0c2cb41bcedf3afd44f89a
+      internalID: 6762175326094846385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crusaderidle_44
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 5
+        width: 123
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 155cd0d829540ae4b8f64d87aaa0779a
+      internalID: 3538391159676918692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 1c0702aa008405148ab1d9cbd51e99be
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

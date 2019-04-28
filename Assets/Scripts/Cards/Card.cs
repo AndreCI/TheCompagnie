@@ -16,13 +16,17 @@ public class Card
     [HideInInspector]
     public Unit owner;
 
-    public string name;
+    public string Name;
     public Sprite sprite;
     public POTENTIAL_TARGET potential_target;
     public List<CombatEffect> effects;
     public int manaCost;
     public int actionCost = 1;
     public bool multipleTarget;
+
+    public int ID;
+    public string Description;
+    public int delay;
 
     public Card(Unit owner_, Card baseCard)
     {
@@ -33,6 +37,10 @@ public class Card
         potential_target = baseCard.potential_target;
         actionCost = baseCard.actionCost;
         multipleTarget = baseCard.multipleTarget;
+        Name = baseCard.Name;
+        delay = baseCard.delay;
+        ID = baseCard.ID;
+        Description = baseCard.Description;
 
     }
 
@@ -41,9 +49,11 @@ public class Card
     {
         owner.CurrentMana -= manaCost;
         owner.CurrentAction -= actionCost;
+        int timeIndex = owner.currentSpeed + delay;
+        if (timeIndex > 9) { timeIndex = 9; }
         foreach (Unit target in targets)
         {
-            CombatEvent cardEvent = new CombatEvent(owner, target, owner.currentSpeed, effects, this);
+            CombatEvent cardEvent = new CombatEvent(owner, target, timeIndex, effects, this);
             TurnManager.Instance.AddCombatEvent(cardEvent);
         }
         

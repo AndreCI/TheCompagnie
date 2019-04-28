@@ -13,11 +13,14 @@ public class UnitSelectable : MonoBehaviour, IPointerDownHandler
     public Image image;
     private Unit unit;
 
-
-
+    void Start()
+    {
+        //Setup();
+    }
     void Setup()
     {
         unit = PlayerInfos.Instance.compagnions[index];
+        image.sprite = unit.portraitSprite;
         UnitSelector.Notify += SelectedUnitsUpdate;
 
     }

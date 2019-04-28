@@ -75,14 +75,15 @@ public class CombatManager : MonoBehaviour
 
     public void DisplayDeck()
     {
-        PlayerInfos.Instance.cardsDisplay.gameObject.SetActive(true);
-        PlayerInfos.Instance.cardsDisplay.DisplayDeck(compagnionDeck);
+        PlayerInfos.Instance.deckMenu.gameObject.SetActive(true);
+        PlayerInfos.Instance.deckMenu.SetInfos(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT),
+            compagnionDeck.GetCards(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT)));
     }
 
     public void DisplayDiscard()
     {
-        PlayerInfos.Instance.cardsDisplay.gameObject.SetActive(true);
-        PlayerInfos.Instance.cardsDisplay.DisplayDeck(compagnionDiscard);
-
+        PlayerInfos.Instance.deckMenu.gameObject.SetActive(true);
+        PlayerInfos.Instance.deckMenu.SetInfos(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT),
+            compagnionDiscard.GetCards(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT)));
     }
 }

@@ -9,40 +9,69 @@ using UnityEngine.UI;
 
 public class PartyMenu : MonoBehaviour
 {
-    public Compagnion unit;
-    public Slider healthSlider;
-    public Slider manaSlider;
-    public Slider actionSlider;
-    public Image Image;
-    public Button deckButton;
+    public Unit unit;
+    public UnitPortrait portrait;
+    public GameObject tab1;
+    public GameObject tab2;
+    public GameObject tab3;
 
-    public Text xpAndPoints;
+    public List<List<DuloGames.UI.UIItemSlot>> slots;
+    public List<Card> cards;
+    public CardUI cardHolder;
 
-    public void SetInfos(Compagnion unit_)
+    public void Start()
     {
-        unit = unit_;
-        Image.sprite = unit_.combatSprite;
-        Image.preserveAspect = true;
-        //unit.NotifyUpdate += UpdateInfo;
-
-        UpdateInfo();
     }
-    public void UpdateInfo()
+
+    public void SetInfos(IEnumerable<Unit> units = null, List<Card> cards = null)
     {
-        healthSlider.value = 1 - (float)unit.CurrentHealth / (float)unit.maxHealth;
-        manaSlider.value = 1 - (float)unit.CurrentMana / (float)unit.maxMana;
-        actionSlider.value = 1 - (float)unit.CurrentAction / (float)unit.maxAction;
-        xpAndPoints.text = "Level " + unit.level.currentLevel.ToString() + "\n" +
-            "XP: " + unit.level.currentXP.ToString() + "/" + unit.level.nextLevelThreshold.ToString() + "\n" +
-            "Skill points:" + unit.level.talentPoints.ToString();
+        Clear();
+        if(units == null || units.Count() == 0) { units = PlayerInfos.Instance.compagnions; }
+        unit = (new List<Unit>(units))[0];
+        if (portrait != null)
+        {
+            portrait.Setup(unit);
+        }
+        if (cards == null) { cards = PlayerInfos.Instance.persistentPartyDeck.GetCards(units); }
+        for (int i = 0; i < cards.Count; i++)
+        {
+            slots[0][i].Assign(cards[i]);
+        }
+     
+
+        
     }
     private void OnDestroy()
     {
         //unit.NotifyUpdate -= UpdateInfo;
     }
 
+    public void Clear()
+    {
+        slots = new List<List<DuloGames.UI.UIItemSlot>>();
+        slots.Add(new List<DuloGames.UI.UIItemSlot>(tab1.GetComponentsInChildren<DuloGames.UI.UIItemSlot>()));
+        slots.Add(new List<DuloGames.UI.UIItemSlot>(tab2.GetComponentsInChildren<DuloGames.UI.UIItemSlot>()));
+        slots.Add(new List<DuloGames.UI.UIItemSlot>(tab3.GetComponentsInChildren<DuloGames.UI.UIItemSlot>()));
+        foreach (List<DuloGames.UI.UIItemSlot> slotlist in slots)
+        {
+            foreach (DuloGames.UI.UIItemSlot slot in slotlist)
+            {
+                slot.Unassign();
+            }
+        }
+    }
+
     private void OnEnable()
     {
-        SetInfos(PlayerInfos.Instance.compagnions[0]);
+        SetInfos(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT));
+    }
+    public void ShowCardHolder(Card card)
+    {
+        cardHolder.gameObject.SetActive(true);
+        cardHolder.Setup(card);
+    }
+    public void HideCardHolder()
+    {
+        cardHolder.gameObject.SetActive(false);
     }
 }

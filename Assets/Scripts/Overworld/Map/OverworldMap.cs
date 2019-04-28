@@ -21,6 +21,10 @@ public class OverworldMap: MonoBehaviour
         }
         _instance = this;
         nodes = new List<MapNode>(GetComponentsInChildren<MapNode>());
+        foreach(MapNode node in nodes)
+        {
+            node.nextNodes = nodes;
+        }
         GameObject.DontDestroyOnLoad(gameObject);
     }
 }

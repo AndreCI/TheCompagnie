@@ -94,10 +94,10 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 39.71
-  m_PreferredHeight: 49.59
-  m_FlexibleWidth: 0
-  m_FlexibleHeight: 0
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
   m_LayoutPriority: 1
 --- !u!225 &436380286013161587
 CanvasGroup:
@@ -124,12 +124,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card:
-    owner: {fileID: 0}
+    Name: 
     sprite: {fileID: 0}
+    potential_target: 0
     effects: []
     manaCost: 0
     actionCost: 0
+    multipleTarget: 0
+    ID: 0
+    Description: 
+    delay: 0
   UI: {fileID: 0}
+  icon: {fileID: 5991406163095762534}
 --- !u!223 &2793885787820606400
 Canvas:
   m_ObjectHideFlags: 0

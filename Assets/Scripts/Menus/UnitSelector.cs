@@ -16,6 +16,7 @@ public class UnitSelector : MonoBehaviour
     private List<Unit> currentTarget;
 
     private Dictionary<SELECTION_MODE, List<Unit>> unitSelected;
+    private Dictionary<SELECTION_MODE, List<Unit>> unitSelectedPlaceholder;
 
     public delegate void AddToListener(List<Unit> selected, SELECTION_MODE mode);
     public static event AddToListener Notify;
@@ -29,9 +30,11 @@ public class UnitSelector : MonoBehaviour
         }
         _instance = this;
         unitSelected = new Dictionary<SELECTION_MODE, List<Unit>>();//new List<Unit>();
-        foreach(SELECTION_MODE mode in Enum.GetValues(typeof(SELECTION_MODE)))
+        unitSelectedPlaceholder = new Dictionary<SELECTION_MODE, List<Unit>>();//new List<Unit>();
+        foreach (SELECTION_MODE mode in Enum.GetValues(typeof(SELECTION_MODE)))
         {
             unitSelected.Add(mode, new List<Unit>());
+            unitSelectedPlaceholder.Add(mode, new List<Unit>());
         }
     }
 
@@ -41,6 +44,19 @@ public class UnitSelector : MonoBehaviour
         {
             Unselect();
         }
+    }
+
+    public void ForceSelection(List<Unit> c, SELECTION_MODE mode)
+    {
+        unitSelectedPlaceholder[mode] = unitSelected[mode];
+        unitSelected[mode] = c;
+        Notify?.Invoke(c, mode);
+    }
+
+    public void EndForceSelection(SELECTION_MODE mode)
+    {
+        unitSelected[mode] = unitSelectedPlaceholder[mode];
+        Notify?.Invoke(unitSelected[mode], mode);
     }
 
 

@@ -12,7 +12,12 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
 {
 
     public Card card;
+
+    public GameObject header;
     public Image image;
+    public Text manaCost;
+    public Text delayCost;
+    public Text description;
 
     private bool playable = true;
     public bool Playable
@@ -32,6 +37,14 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     {
         card = card_;
         image.sprite = card.sprite;
+        manaCost.text = card.manaCost.ToString();
+        delayCost.text = card.delay.ToString();
+        description.text = card.Description;
+        foreach(Text head in header.GetComponentsInChildren<Text>())
+        {
+            head.text = card.Name;
+        }
+
         CardSelector.Notify += SelectedCardUpdate; 
     }
     public void Play(List<Unit> target)
@@ -39,6 +52,11 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         card.Play(target);
         CombatManager.Instance.compagnionDiscard.AddCard(card, card.owner);
         Destroy(gameObject);
+    }
+
+    public void OnDisable()
+    {
+        CardSelector.Notify -= SelectedCardUpdate;
     }
 
     public void OnDestroy()
@@ -131,11 +149,15 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         }
         else
         {
-            target = new List<UnitUI>(this.transform.parent.parent.GetComponentsInChildren<UnitUI>());            
+            PartyUI pui= this.transform.parent.GetComponent<PartyUI>();
+            target = null;
+            if (pui != null) {
+                target = new List<UnitUI>(pui.units);
+            }
         }
-        Debug.Log("jere" + target.Count);
         if (target != null && target.Count > 0) 
         {
+        Debug.Log("jere" + target.Count);
             Play(target.Select(x=>x.unit).ToList());
         }
 

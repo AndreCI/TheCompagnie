@@ -8,6 +8,7 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
     public bool targeting = false;
     public bool selectorNotified = true;
     public Card.POTENTIAL_TARGET target_type;
+    public bool partyDropZone;
 
 	public void OnPointerEnter(PointerEventData eventData) {
         if (!locked)
@@ -59,6 +60,6 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 
     public bool IsAcceptableTarget(CardUI card)
     {
-        return card.card.potential_target == target_type;
+        return card.card.potential_target == target_type && card.card.multipleTarget == partyDropZone;
     }
 }

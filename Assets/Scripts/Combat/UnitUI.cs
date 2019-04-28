@@ -10,19 +10,17 @@ using UnityEngine.UI;
 public class UnitUI : UICardDropZone, IPointerClickHandler
 {
     public Unit unit;
-    public Slider healthSlider;
-    public Slider manaSlider;
-    public Slider actionSlider;
     public SpriteRenderer Image;
     public ParticleSystem selectionAnimation;
     public ParticleSystem targetAnimation;
-
+    public UnitPortrait portraitInfos;
 
     void Start()
     {
         targeting = false;
         selectorNotified = true;
         CardSelector.Notify += SelectedCardUpdate;
+
     }
 
     void Update()
@@ -30,14 +28,15 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
 
         if (!selectorNotified)
         {
-            if(CardSelector.Instance.GetSelectedCard().All(x => x.multipleTarget) && CardSelector.Instance.GetSelectedCard().Count()>0)
-            {
-                TargetNotification();
-            }
-            else
-            {
-                UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TCURRENT);
-            }
+            /*  if(CardSelector.Instance.GetSelectedCard().All(x => x.multipleTarget) && CardSelector.Instance.GetSelectedCard().Count()>0)
+              {
+                  TargetNotification();
+              }
+              else
+              {
+                  UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TCURRENT);
+              }*/
+            UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TCURRENT);
             selectorNotified = true;
 
         }
@@ -46,6 +45,7 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
 
     private void TargetNotification()
     {
+        throw new NotImplementedException();
         List<UnitUI> uis = new List<UnitUI>(transform.parent.GetComponentsInChildren<UnitUI>());
         foreach(UnitUI ui in uis)
         {
@@ -119,15 +119,14 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
         //Image.preserveAspect = true;
         unit.NotifyUpdate += UpdateInfo;
         UnitSelector.Notify += SelectedUnitsUpdate;
-
+        portraitInfos.Setup(unit);
+        partyDropZone = false;
         UpdateInfo();
     }
     
     public void UpdateInfo()
     {
-        healthSlider.value = 1 - (float)unit.CurrentHealth / (float)unit.maxHealth;
-        manaSlider.value = 1 - (float)unit.CurrentMana / (float)unit.maxMana;
-        actionSlider.value = 1 - (float)unit.CurrentAction / (float)unit.maxAction;
+        portraitInfos.UpdatePortrait();
         if (unit.CurrentHealth <= 0)
         {
             CombatManager.Instance.OnUnitDeath(unit);

@@ -16,15 +16,20 @@ public abstract class Unit
     private int currentMana;
     private int currentAction;
     public Sprite combatSprite;
+    public Sprite portraitSprite;
+    public string unitName;
 
     public delegate void InfoUpdate();
     public event InfoUpdate NotifyUpdate;
+
+    public Leveling level;
 
     public virtual void Setup()
     {
         currentHealth = maxHealth;
         currentMana = maxMana;
         currentAction = maxAction;
+        level = new Leveling();
 
     }
 

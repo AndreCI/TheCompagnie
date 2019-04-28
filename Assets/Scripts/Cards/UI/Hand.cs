@@ -36,6 +36,7 @@ public class Hand : UICardDropZone
         UI.transform.SetParent(transform);
         UI.parentToReturnTo = transform;
         UI.placeholderParent = transform;
+        UI.transform.localScale = new Vector3(1f, 1f, 1f);
         cards.Add(UI);
         UI.Playable = true;
     }

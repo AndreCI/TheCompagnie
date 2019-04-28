@@ -9,10 +9,9 @@ public class TurnManager : MonoBehaviour
 
     public Intent intent;
     public Button endTurnButton;
-    public Scrollbar time;
+    public GameObject timeHolder;
+    public List<TimeStep> timeSteps;
     public CardUI cardPlaceHolder;
-    public Transform enemiesIntentsTransform;
-    public Transform compIntentsTransform;
     public List<VerticalLayoutGroup> enemiesIntents;
     public List<VerticalLayoutGroup> compIntents;
     private List<Queue<CombatEvent>> registeredEvents;
@@ -26,6 +25,8 @@ public class TurnManager : MonoBehaviour
 
     void Start()
     {
+        timeSteps = new List<TimeStep>(timeHolder.GetComponentsInChildren<TimeStep>());
+        timeSteps.Sort((x, y) => x.index.CompareTo(y.index));
         registeredEvents = new List<Queue<CombatEvent>>();
         for (int i = 0; i < 10; i++)
         {
@@ -34,9 +35,14 @@ public class TurnManager : MonoBehaviour
         triggers = new List<GeneralUtils.SUBJECT_TRIGGER>();
       //  observers = new List<List<Observer>>();
         instance = this;
-        enemiesIntents = new List<VerticalLayoutGroup>(enemiesIntentsTransform.GetComponentsInChildren<VerticalLayoutGroup>());
-        compIntents = new List<VerticalLayoutGroup>(compIntentsTransform.GetComponentsInChildren<VerticalLayoutGroup>());
+        enemiesIntents = new List<VerticalLayoutGroup>();
+        compIntents = new List<VerticalLayoutGroup>();
+        foreach (TimeStep timeStep in timeSteps)
+        {
+            enemiesIntents.Add(timeStep.enemiesIntents);
+            compIntents.Add(timeStep.compIntents);
 
+        }
 
     }
 
@@ -47,8 +53,7 @@ public class TurnManager : MonoBehaviour
         Intent newIntent = Instantiate(intent);
         List<VerticalLayoutGroup> intentsLayout = (newEvent.source.GetType() == typeof(Compagnion)) ? compIntents : enemiesIntents;
         newIntent.transform.SetParent(intentsLayout[newEvent.timeIndex].transform);
-        newIntent.card = newEvent.cardSource;
-        newIntent.UI = cardPlaceHolder;
+        newIntent.Setup(newEvent.cardSource, cardPlaceHolder, newEvent);
         newEvent.intent = newIntent;
        
     }
@@ -62,7 +67,10 @@ public class TurnManager : MonoBehaviour
     public void StartTurn()
     {
         NotifyAll?.Invoke(GeneralUtils.SUBJECT_TRIGGER.START_OF_TURN);
-        time.value = 0;
+        foreach(TimeStep timeStep in timeSteps)
+        {
+            timeStep.Reset();
+        }
         List<Card> drawnCards = CombatManager.Instance.compagnionDeck.DrawCards();
         Hand.Instance.AddToHand(drawnCards);
         foreach(Compagnion u in CombatManager.Instance.compagnions)
@@ -82,7 +90,7 @@ public class TurnManager : MonoBehaviour
     private IEnumerator PerformTime()
     {
        
-        for(int i = (int)time.value; i < time.numberOfSteps; i++)
+        for(int i = 0; i < timeSteps.Count; i++)
         {
             yield return StartCoroutine(PerformTimeStep(i));
         }
@@ -93,8 +101,8 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator PerformTimeStep(int i)
     {
-        time.value = (float)i/(float)time.numberOfSteps;
         NotifyAll?.Invoke(GeneralUtils.SUBJECT_TRIGGER.TIMESTEP_TICK);
+        timeSteps[i].Activate();
         while(registeredEvents[i].Count > 0)
         {
             CombatEvent currentEvent = registeredEvents[i].Dequeue();

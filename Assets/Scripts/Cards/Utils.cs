@@ -27,7 +27,7 @@ public class CardCollection
         {
             foreach(Card c in cards)
             {
-                if(c.name == name)
+                if(c.Name == name)
                 {
                     newCards.Add(new Card(null, c));
                 }

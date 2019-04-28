@@ -1,0 +1,26 @@
+
+
+Variable:
+Mana, action, speed
+strength? magical power?
+
+Basic card:
+
+4 mana fireball
+Deal X damage
+1 action
+?? speed
+
+
+Initiative + cast time OR Speed + rapidity for consistence (final time = SUM(v1, v2))
+
+
+Only spell have cast time? 
+
+fix leveling for all units
+animate 2D with 2Danimation package
+Generate cards with a generator
+effects icon
+multiple units zone
+Perlin animation: multiple images for 1 quad using offset on image pixel index?
+clean cards attributes

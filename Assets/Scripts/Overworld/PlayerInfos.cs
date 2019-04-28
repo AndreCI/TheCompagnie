@@ -17,6 +17,8 @@ public class PlayerInfos : MonoBehaviour
 
     public MapNode currentPosition;
     public List<Compagnion> compagnions;
+    public PartyMenu unitsWindow;
+    public PartyMenu deckMenu;
     public PersistentPartyDeck persistentPartyDeck;
     public PersistentPartyDeck persistentEnemyPartyDeck;
 
@@ -56,11 +58,11 @@ public class PlayerInfos : MonoBehaviour
         {
             c.Setup();
             List<Card> cards = new List<Card>();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < collection.cards.Count; i++)
             {
-                cards.Add(new Card(c, collection.cards[i + 3]));
+                cards.Add(new Card(c, collection.cards[i]));
             }
-            cards.Add(new Card(c, collection.cards[5]));
+           // cards.Add(new Card(c, collection.cards[5]));
             c.persistentDeck = new PersistentUnitDeck(cards);
             decks.Add(c.persistentDeck);
         }

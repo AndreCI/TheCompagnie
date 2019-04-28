@@ -5,11 +5,4 @@ using UnityEngine.UI;
 [Serializable]
 public class Compagnion : Unit
 {
-    public Leveling level;
-
-    public override void Setup()
-    {
-        base.Setup();
-        level = new Leveling();
-    }
 }
