@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201986ae631fcdb4ca6d64bbb435ca49, type: 3}
+  m_Name: effectDatabase
+  m_EditorClassIdentifier: 
+  status: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
+  sprites:
+  - {fileID: 2089316530606557333, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+  - {fileID: 5186327475281492939, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+  - {fileID: 7398067855506635011, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+  - {fileID: 94592334007545441, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+  - {fileID: -3562896200445918687, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+  - {fileID: 258179898762336802, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+  - {fileID: -7564531039104685784, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+  - {fileID: 1051530557967077447, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+  - {fileID: 3639649512935966595, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+  - {fileID: -156692291178953082, guid: 0f01698d67d322048833746f43c903ad, type: 3}

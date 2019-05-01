@@ -17,13 +17,13 @@ public class Leveling
         currentLevel = level;
         currentXP = 0;
         nextLevelThreshold = 10;
-        talentPoints = 3;
+        talentPoints = 0;
     }
 
     public void GainXP(int xp)
     {
         currentXP += xp;
-        while(currentXP > nextLevelThreshold)
+        while(currentXP >= nextLevelThreshold)
         {
             currentXP -= nextLevelThreshold;
             currentLevel += 1;

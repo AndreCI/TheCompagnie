@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: wolf
+  m_EditorClassIdentifier: 
+  Name: WOLF
+  cardClass: 2
+  childrenDatabase: []
+  items:
+  - ID: 0
+    Name: Bite
+    manaCost: 0
+    delay: 1
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 1ee87670a5423394a9f36661d3932e93, type: 3}
+    atype: 0
+    Description: Deal 15 damages and apply 1 bleed for 10 ticks.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      amount: 15
+      statusFactories: []
+    - type: 2
+      amount: 0
+      statusFactories:
+      - status: 4
+        value: 1
+        duration: 10
+        trigger: 1
+    databasePath: 
+    cardClass: 0
+  - ID: 1
+    Name: Horrible Howl
+    manaCost: 10
+    delay: 3
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: f62b3d3447d01a040ae3b318f5b45e41, type: 3}
+    atype: 0
+    Description: All friendly units gain 10 strength and 10 regen for 7 turns
+    multipleTarget: 1
+    potential_target: 1
+    effects:
+    - type: 2
+      amount: 0
+      statusFactories:
+      - status: 0
+        value: 10
+        duration: 7
+        trigger: 0
+      - status: 7
+        value: 0
+        duration: 0
+        trigger: 0
+    databasePath: 
+    cardClass: 0
+  - ID: 2
+    Name: Hide
+    manaCost: 4
+    delay: 0
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 55b72913e41b34741a33f94e50255f5c, type: 3}
+    atype: 0
+    Description: Gain 2 parry until end of turn.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      amount: 0
+      statusFactories:
+      - status: 2
+        value: 2
+        duration: 1
+        trigger: 0
+    databasePath: 
+    cardClass: 0

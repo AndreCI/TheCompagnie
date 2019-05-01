@@ -11,22 +11,31 @@ using UnityEngine.UI;
 [Serializable]
 public class Card
 {
-
     public enum POTENTIAL_TARGET {ENEMIES, PARTY, NONE };
+    [Header("Basic Informations")]
+    public int ID;
+    public string Name;
+    public int manaCost;
+    public int delay;
+    public int actionCost = 1;
+    [Header("UI & Animations")]
+    public Sprite sprite;
+    public AnimationList.ANIMATION_TYPES atype;
+    public string Description;
+    [Header("Mechanics & effects")]
+    public bool multipleTarget;
+    public POTENTIAL_TARGET potential_target;
+    public List<CombatEffect> effects;
+
+    [Header("Database infos (no settings)")]
+    public string databasePath;
+    public CardDatabase.CARDCLASS cardClass;
+
+
     [HideInInspector]
     public Unit owner;
 
-    public string Name;
-    public Sprite sprite;
-    public POTENTIAL_TARGET potential_target;
-    public List<CombatEffect> effects;
-    public int manaCost;
-    public int actionCost = 1;
-    public bool multipleTarget;
 
-    public int ID;
-    public string Description;
-    public int delay;
 
     public Card(Unit owner_, Card baseCard)
     {

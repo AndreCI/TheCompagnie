@@ -9,6 +9,7 @@ using UnityEngine.UI;
 [Serializable]
 public abstract class Unit
 {
+    public CardDatabase.CARDCLASS availableCards;
     public int maxHealth;
     public int maxMana;
     public int maxAction;
@@ -24,6 +25,21 @@ public abstract class Unit
 
     public Leveling level;
 
+    public int currentStrength { get
+        {
+            int baseVal = 0;
+            foreach(CombatStatus s in currentStatus)
+            {
+                if(s.status == CombatStatus.STATUS.BUFF_STR)
+                {
+                    baseVal += s.value;
+                }else if(s.status == CombatStatus.STATUS.REDUCE_STR)
+                {
+                    baseVal -= s.value;
+                    if(baseVal < 0) { baseVal = 0; }
+                }
+            }return baseVal;
+        } }
     public virtual void Setup()
     {
         currentHealth = maxHealth;
@@ -65,17 +81,51 @@ public abstract class Unit
 
     public PersistentUnitDeck persistentDeck;
 
-    public List<CombatStatus> currentStatus;
+    private List<CombatStatus> currentStatus;
 
-    public CombatUnitDeck GetNewDeck()
+       public List<CombatStatus> CurrentStatus
+    {
+        get
+        {
+            if(currentStatus == null)
+            {
+                currentStatus = new List<CombatStatus>();
+            }
+            return currentStatus;
+        }
+    }
+
+    public void AddStatus(CombatStatus status)
+    {
+        if (currentStatus == null)
+        {
+            currentStatus = new List<CombatStatus>();
+        }
+        currentStatus.Add(status);
+        NotifyUpdate();
+    }
+
+    public void RemoveStatus(CombatStatus status)
+    {
+        if (currentStatus == null)
+        {
+            currentStatus = new List<CombatStatus>();
+        }
+        else
+        {
+            currentStatus.Remove(status);
+        }
+        NotifyUpdate();
+    }
+        public CombatUnitDeck GetNewDeck()
     {
         return persistentDeck.GenerateCombatDeck();
     }
 
 
-    public void TakeDamage(int amount)
+    public virtual void TakeDamage(int amount)
     {
-        foreach(CombatStatus cs in currentStatus.FindAll(x => x.status == CombatStatus.STATUS.PARRY ||
+        foreach(CombatStatus cs in CurrentStatus.FindAll(x => x.status == CombatStatus.STATUS.PARRY ||
         x.status == CombatStatus.STATUS.BLOCK))
         {
             if(cs.status == CombatStatus.STATUS.PARRY)
@@ -87,7 +137,6 @@ public abstract class Unit
             }
             if(cs.status == CombatStatus.STATUS.BLOCK)
             {
-                Debug.Log("BLOCKED!");
                 cs.value -= amount;
                 if(cs.value < 0) { amount = -1 * cs.value; }
                 else { amount = 0; }

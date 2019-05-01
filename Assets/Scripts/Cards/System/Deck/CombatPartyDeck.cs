@@ -67,6 +67,16 @@ public class CombatPartyDeck : CombatDeck
         return newCards;
     }
 
+    public override List<Card> Redraw(IEnumerable<Card> cards_)
+    {
+        List<Card> redrawn = new List<Card>();
+        foreach(Card card in cards_)
+        {
+            redrawn.AddRange(cards[owners_.IndexOf(card.owner)].Redraw(new List<Card> { card }));
+        }
+        return redrawn;
+    }
+
     public override void RemoveCard(Card card, Unit owner = null)
     {
         cards[owners_.IndexOf(owner)].RemoveCard(card);

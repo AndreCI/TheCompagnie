@@ -8,10 +8,13 @@ public class PersistentUnitDeck : PersistentDeck
 {
 
     private List<Card> cards;
+    private int cardSlots;
+
 
     public PersistentUnitDeck(List<Card> cards_)
     {
         cards = cards_;
+        cardSlots = cards.Count;
     }
     public override void AddCard(Card card, Unit owner = null)
     {
@@ -37,5 +40,15 @@ public class PersistentUnitDeck : PersistentDeck
     public override void RemoveCard(Card card, Unit owner = null)
     {
        cards.Remove(card);
+    }
+
+    public override void AddDeckSlot(Unit owner = null)
+    {
+        cardSlots += 1;
+    }
+
+    public override int GetCardSlots(IEnumerable<Unit> owners = null)
+    {
+        return cardSlots;
     }
 }

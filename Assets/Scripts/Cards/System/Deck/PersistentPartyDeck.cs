@@ -9,6 +9,20 @@ public class PersistentPartyDeck : PersistentDeck
     private List<Unit> owners_;
     private List<PersistentUnitDeck> cards;
 
+    public override int GetCardSlots(IEnumerable<Unit> owners =null) {
+
+        if (owners == null || (new List<Unit>(owners)).Count == 0)
+        {
+            owners = owners_;
+        }
+        int i = 0;
+            foreach(PersistentUnitDeck deck in cards)
+            {
+                i += deck.GetCardSlots();
+            }
+            return i;
+        } 
+
     public PersistentPartyDeck(IEnumerable<Unit> owners, List<PersistentUnitDeck> decks)
     {
         owners_ = new List<Unit>(owners);
@@ -50,5 +64,10 @@ public class PersistentPartyDeck : PersistentDeck
     public override void RemoveCard(Card card, Unit owner = null)
     {
         cards[owners_.IndexOf(owner)].RemoveCard(card);
+    }
+
+    public override void AddDeckSlot(Unit owner = null)
+    {
+        cards[owners_.IndexOf(owner)].AddDeckSlot();
     }
 }

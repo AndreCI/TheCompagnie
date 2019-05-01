@@ -12,54 +12,45 @@ public class PartyMenu : MonoBehaviour
     public Unit unit;
     public UnitPortrait portrait;
     public GameObject tab1;
-    public GameObject tab2;
-    public GameObject tab3;
+    public Button levelUp;
+    public Image image;
+    public DeckDisplayUI deckDisplay;
+    public DeckDisplayUI levelUpDisplay;
 
-    public List<List<DuloGames.UI.UIItemSlot>> slots;
-    public List<Card> cards;
     public CardUI cardHolder;
 
     public void Start()
     {
+        
     }
 
-    public void SetInfos(IEnumerable<Unit> units = null, List<Card> cards = null)
+    public void SetInfos(IEnumerable<Unit> units = null)
     {
-        Clear();
         if(units == null || units.Count() == 0) { units = PlayerInfos.Instance.compagnions; }
+
+        //Portrait Setup
         unit = (new List<Unit>(units))[0];
         if (portrait != null)
         {
             portrait.Setup(unit);
         }
-        if (cards == null) { cards = PlayerInfos.Instance.persistentPartyDeck.GetCards(units); }
-        for (int i = 0; i < cards.Count; i++)
+        //Level up setup
+        if(levelUp != null)
         {
-            slots[0][i].Assign(cards[i]);
+            levelUp.interactable = unit.level.talentPoints > 0;
         }
-     
-
+        if(image != null) { image.sprite = unit.combatSprite; }
+        //Deck display setup
         
+        deckDisplay.Setup(PlayerInfos.Instance.persistentPartyDeck.GetCards(units), 0);// PlayerInfos.Instance.persistentPartyDeck.GetCardSlots(units));
+
     }
     private void OnDestroy()
     {
         //unit.NotifyUpdate -= UpdateInfo;
     }
 
-    public void Clear()
-    {
-        slots = new List<List<DuloGames.UI.UIItemSlot>>();
-        slots.Add(new List<DuloGames.UI.UIItemSlot>(tab1.GetComponentsInChildren<DuloGames.UI.UIItemSlot>()));
-        slots.Add(new List<DuloGames.UI.UIItemSlot>(tab2.GetComponentsInChildren<DuloGames.UI.UIItemSlot>()));
-        slots.Add(new List<DuloGames.UI.UIItemSlot>(tab3.GetComponentsInChildren<DuloGames.UI.UIItemSlot>()));
-        foreach (List<DuloGames.UI.UIItemSlot> slotlist in slots)
-        {
-            foreach (DuloGames.UI.UIItemSlot slot in slotlist)
-            {
-                slot.Unassign();
-            }
-        }
-    }
+    
 
     private void OnEnable()
     {
@@ -73,5 +64,11 @@ public class PartyMenu : MonoBehaviour
     public void HideCardHolder()
     {
         cardHolder.gameObject.SetActive(false);
+    }
+
+    public void ShowLevelUp()
+    {
+        levelUpDisplay.gameObject.SetActive(true);
+        levelUpDisplay.Setup(PlayerInfos.Instance.cardDatabase.GetRandomCards(3, PlayerInfos.Instance.cardDatabase.GetCardsFromClass(unit.availableCards)));
     }
 }

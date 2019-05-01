@@ -45,7 +45,7 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 	public void OnDrop(PointerEventData eventData) {
         if (!locked)
         {
-            Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+//            Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
 
             CardUI d = eventData.pointerDrag.GetComponent<CardUI>();
             if (d != null && d.Playable && IsAcceptableTarget(d))

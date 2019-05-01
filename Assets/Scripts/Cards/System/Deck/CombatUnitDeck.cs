@@ -45,6 +45,14 @@ public class CombatUnitDeck : CombatDeck
         return cards;
     }
 
+    public override List<Card> Redraw(IEnumerable<Card> cards_)
+    {
+        Card card = new List<Card>(cards_)[0];
+        cards.Add(card);
+        Shuffle();
+        return new List<Card> { Draw() };
+    }
+
     public override void RemoveCard(Card card, Unit owner = null)
     {
         cards.Remove(card);

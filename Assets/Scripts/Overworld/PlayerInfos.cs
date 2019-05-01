@@ -13,12 +13,13 @@ public class PlayerInfos : MonoBehaviour
     public static PlayerInfos Instance { get => _instance; }
 
     public CardCollection collection;
+    public EffectDatabase effectDatabase;
+    public CardDatabase cardDatabase;
     public UIDisplay cardsDisplay;
 
     public MapNode currentPosition;
     public List<Compagnion> compagnions;
     public PartyMenu unitsWindow;
-    public PartyMenu deckMenu;
     public PersistentPartyDeck persistentPartyDeck;
     public PersistentPartyDeck persistentEnemyPartyDeck;
 
@@ -43,24 +44,24 @@ public class PlayerInfos : MonoBehaviour
         {
             enemy.Setup();
             List<Card> cards = new List<Card>();
-            for (int i = 0; i < 15; i++)
+            foreach (Card card in cardDatabase.GetCardsFromClass(enemy.availableCards))
             {
-                cards.Add(new Card(enemy, collection.cards[0]));
+                cards.Add(new Card(enemy, card));
             }
-            cards.Add(new Card(enemy, collection.cards[1]));
             enemy.persistentDeck = new PersistentUnitDeck(cards);
             decks.Add(enemy.persistentDeck);
         }
         persistentEnemyPartyDeck = new PersistentPartyDeck(enemies, decks);
 
+        cardDatabase.Setup();
         decks = new List<PersistentUnitDeck>();
         foreach(Compagnion c in compagnions)
         {
             c.Setup();
             List<Card> cards = new List<Card>();
-            for (int i = 0; i < collection.cards.Count; i++)
+            foreach(Card card in cardDatabase.GetCardsFromClass(c.availableCards))
             {
-                cards.Add(new Card(c, collection.cards[i]));
+                cards.Add(new Card(c, card));
             }
            // cards.Add(new Card(c, collection.cards[5]));
             c.persistentDeck = new PersistentUnitDeck(cards);

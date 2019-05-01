@@ -12,5 +12,7 @@ public abstract class CombatDeck : IDeck
     public abstract void Shuffle(IEnumerable<Unit> owners = null);
     public abstract void RemoveCard(Card card, Unit owner=null);
     public abstract List<Card> GetCards(IEnumerable<Unit> owners = null);
+
+    public abstract List<Card> Redraw(IEnumerable<Card> cards_);
     
 }

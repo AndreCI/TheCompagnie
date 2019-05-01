@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     public Card card;
@@ -157,10 +157,20 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         }
         if (target != null && target.Count > 0) 
         {
-        Debug.Log("jere" + target.Count);
             Play(target.Select(x=>x.unit).ToList());
         }
 
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        UnitSelector.Instance.ForceSelection(new List<Unit> { card.owner }, UnitSelector.SELECTION_MODE.SELECT);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+
+        UnitSelector.Instance.EndForceSelection(UnitSelector.SELECTION_MODE.SELECT);
     }
 }
 

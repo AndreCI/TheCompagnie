@@ -15,7 +15,7 @@ namespace DuloGames.UI
 		}
 		
 		[SerializeField] private GameObject m_TargetContent;
-		
+        public Unit realTarget;
 		[SerializeField] private Image m_ImageTarget;
 		[SerializeField] private Transition m_ImageTransition = Transition.None;
 		[SerializeField] private ColorBlockExtended m_ImageColors = ColorBlockExtended.defaultColorBlock;
@@ -85,15 +85,19 @@ namespace DuloGames.UI
 		/// </summary>
 		private void EvaluateAndToggleContent()
 		{
-			if (this.m_TargetContent != null)
-				m_TargetContent.SetActive(this.isOn);
-		}
-		
-		/// <summary>
-		/// Internaly evaluates and transitions to the current state.
-		/// </summary>
-		/// <param name="instant">If set to <c>true</c> instant.</param>
-		private void InternalEvaluateAndTransitionState(bool instant)
+            if (this.realTarget != null)
+            {
+                UnitSelector.Instance.ToggleSelection(this.realTarget, UnitSelector.SELECTION_MODE.SELECT, this.isOn, !this.isOn);
+                PlayerInfos.Instance.unitsWindow.SetInfos(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT));
+            }
+            //m_TargetContent.SetActive(this.isOn);
+        }
+
+        /// <summary>
+        /// Internaly evaluates and transitions to the current state.
+        /// </summary>
+        /// <param name="instant">If set to <c>true</c> instant.</param>
+        private void InternalEvaluateAndTransitionState(bool instant)
 		{
 			// Toggle the content
 			this.EvaluateAndToggleContent();

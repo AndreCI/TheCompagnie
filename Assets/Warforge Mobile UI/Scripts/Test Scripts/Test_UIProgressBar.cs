@@ -74,14 +74,18 @@ namespace DuloGames.UI
 		//	this.StartTween((this.bar.fillAmount == 0f ? 1f : 0f), this.Duration);
 		}
 		
-		public void StartTween(float targetFloat, float duration = 0.3f)
+		public void StartTween(float targetFloat, float duration = 0.3f, float maxTargetFloat=1f)
 		{
 			if (this.bar == null)
 				return;
 
-            if(targetFloat > 1f)
+            if(maxTargetFloat !=1f)
             {
-                targetFloat = targetFloat / (float)m_TextValue;
+                targetFloat = targetFloat / maxTargetFloat;
+                if(targetFloat == 0f)
+                {
+                    targetFloat = 0.001f;
+                }
             }
 			
 			var floatTween = new FloatTween { duration = duration, startFloat = this.bar.fillAmount, targetFloat = targetFloat };

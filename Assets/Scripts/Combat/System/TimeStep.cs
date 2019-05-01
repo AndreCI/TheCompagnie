@@ -13,8 +13,8 @@ public class TimeStep : MonoBehaviour
     public int index;
     public Slider mask;
     public Image image;
-    public VerticalLayoutGroup enemiesIntents;
-    public VerticalLayoutGroup compIntents;
+    public GridLayoutGroup enemiesIntents;
+    public GridLayoutGroup compIntents;
     public float duration;
 
     public bool active;

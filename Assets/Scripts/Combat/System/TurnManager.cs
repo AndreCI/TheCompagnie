@@ -6,14 +6,17 @@ using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
+    public float timeMin = 2f;
+    public float timePerEvent = 0.5f;
 
     public Intent intent;
     public Button endTurnButton;
     public GameObject timeHolder;
     public List<TimeStep> timeSteps;
     public CardUI cardPlaceHolder;
-    public List<VerticalLayoutGroup> enemiesIntents;
-    public List<VerticalLayoutGroup> compIntents;
+    public List<GridLayoutGroup> enemiesIntents;
+    public List<GridLayoutGroup> compIntents;
+    public float currentDuration = 0f;
     private List<Queue<CombatEvent>> registeredEvents;
     private static TurnManager instance;
     private List<GeneralUtils.SUBJECT_TRIGGER> triggers;
@@ -35,8 +38,8 @@ public class TurnManager : MonoBehaviour
         triggers = new List<GeneralUtils.SUBJECT_TRIGGER>();
       //  observers = new List<List<Observer>>();
         instance = this;
-        enemiesIntents = new List<VerticalLayoutGroup>();
-        compIntents = new List<VerticalLayoutGroup>();
+        enemiesIntents = new List<GridLayoutGroup>();
+        compIntents = new List<GridLayoutGroup>();
         foreach (TimeStep timeStep in timeSteps)
         {
             enemiesIntents.Add(timeStep.enemiesIntents);
@@ -51,7 +54,7 @@ public class TurnManager : MonoBehaviour
 
         registeredEvents[newEvent.timeIndex].Enqueue(newEvent);
         Intent newIntent = Instantiate(intent);
-        List<VerticalLayoutGroup> intentsLayout = (newEvent.source.GetType() == typeof(Compagnion)) ? compIntents : enemiesIntents;
+        List<GridLayoutGroup> intentsLayout = (newEvent.source.GetType() == typeof(Compagnion)) ? compIntents : enemiesIntents;
         newIntent.transform.SetParent(intentsLayout[newEvent.timeIndex].transform);
         newIntent.Setup(newEvent.cardSource, cardPlaceHolder, newEvent);
         newEvent.intent = newIntent;
@@ -101,15 +104,18 @@ public class TurnManager : MonoBehaviour
 
     private IEnumerator PerformTimeStep(int i)
     {
+        int eventNbr = registeredEvents[i].Count;
+        currentDuration = Mathf.Max(eventNbr * timePerEvent, timeMin / (float)timeSteps.Count);
         NotifyAll?.Invoke(GeneralUtils.SUBJECT_TRIGGER.TIMESTEP_TICK);
-        timeSteps[i].Activate();
+        timeSteps[i].Activate(currentDuration);
         while(registeredEvents[i].Count > 0)
         {
             CombatEvent currentEvent = registeredEvents[i].Dequeue();
             currentEvent.PerformEffect();
-            Destroy(currentEvent.intent.gameObject, 0.5f);
+            currentEvent.intent.Trigger(timePerEvent);
+            yield return new WaitForSeconds(timePerEvent);
         }
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(timeMin/(float)timeSteps.Count);
     }
 
 }

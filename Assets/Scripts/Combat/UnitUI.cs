@@ -15,11 +15,17 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     public ParticleSystem targetAnimation;
     public UnitPortrait portraitInfos;
 
+    public Animator test;
+
     void Start()
     {
         targeting = false;
         selectorNotified = true;
         CardSelector.Notify += SelectedCardUpdate;
+        if (test != null)
+        {
+        //    test.gameObject.SetActive(false);
+        }
 
     }
 
@@ -42,16 +48,6 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
         }
         
     }
-
-    private void TargetNotification()
-    {
-        throw new NotImplementedException();
-        List<UnitUI> uis = new List<UnitUI>(transform.parent.GetComponentsInChildren<UnitUI>());
-        foreach(UnitUI ui in uis)
-        {
-            UnitSelector.Instance.ToggleSelection(ui.unit, UnitSelector.SELECTION_MODE.TCURRENT);
-        }
-    }
     private void SelectedCardUpdate(List<Card> selectedCard)
     {
         if(selectedCard.FindAll(x=> x.potential_target != target_type).Count == 0 && selectedCard.Count>0)
@@ -68,6 +64,11 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.SELECT);
+        if (test != null)
+        {
+            test.Play("recover");
+           // test.gameObject.SetActive(true);
+        }
     }
 
     private void SelectedUnitsUpdate(List<Unit> selectedUnits, UnitSelector.SELECTION_MODE mode)
@@ -127,10 +128,6 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     public void UpdateInfo()
     {
         portraitInfos.UpdatePortrait();
-        if (unit.CurrentHealth <= 0)
-        {
-            CombatManager.Instance.OnUnitDeath(unit);
-        }
     }
     private void OnDestroy()
     {

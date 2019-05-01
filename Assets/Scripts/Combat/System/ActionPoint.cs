@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class ActionPoint : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ActionPoint : MonoBehaviour
 {
 
     public Image image;
@@ -16,15 +16,7 @@ public class ActionPoint : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public Unit unit;
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        throw new NotImplementedException();
-    }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        throw new NotImplementedException();
-    }
 
     public ActionPoint Setup(Unit u)
     {
@@ -40,7 +32,6 @@ public class ActionPoint : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void UpdateInfos()
     {
-        Debug.Log(unit.CurrentAction + " " + index);
         image.gameObject.SetActive(unit.CurrentAction > index);
     }
 }
