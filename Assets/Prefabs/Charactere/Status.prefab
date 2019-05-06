@@ -186,6 +186,7 @@ MonoBehaviour:
     duration: 0
     trigger: 0
     ui: {fileID: 0}
+    animator: {fileID: 0}
   setDestroy: 0
 --- !u!1 &1513170493298425837
 GameObject:

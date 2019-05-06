@@ -27,6 +27,7 @@ public class CardSelector : MonoBehaviour
         _instance = this;
         cardSelected = new List<Card>();
         singleCardSelected = false;
+        Notify = null;
     }
 
     void Update()

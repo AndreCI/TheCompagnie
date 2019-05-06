@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 3c246032dc1b324429d159c629c22460
+  - enabled: 1
     path: Assets/Scenes/Overworld.unity
     guid: 85debdae00ae76b46badafd9127f16f0
   - enabled: 1

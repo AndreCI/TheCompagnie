@@ -20,14 +20,14 @@ public class Card
     public int actionCost = 1;
     [Header("UI & Animations")]
     public Sprite sprite;
-    public AnimationList.ANIMATION_TYPES atype;
     public string Description;
     [Header("Mechanics & effects")]
     public bool multipleTarget;
     public POTENTIAL_TARGET potential_target;
     public List<CombatEffect> effects;
 
-    [Header("Database infos (no settings)")]
+    [Header("Database infos")]
+    public CardDatabase.RARITY rarity;
     public string databasePath;
     public CardDatabase.CARDCLASS cardClass;
 
@@ -39,19 +39,28 @@ public class Card
 
     public Card(Unit owner_, Card baseCard)
     {
-        owner = owner_;
-        sprite = baseCard.sprite;
-        effects = new List<CombatEffect>(baseCard.effects);
-        manaCost = baseCard.manaCost;
-        potential_target = baseCard.potential_target;
-        actionCost = baseCard.actionCost;
-        multipleTarget = baseCard.multipleTarget;
-        Name = baseCard.Name;
-        delay = baseCard.delay;
-        ID = baseCard.ID;
-        Description = baseCard.Description;
 
-    }
+        /*Card copy = GeneralUtils.Copy<Card>(baseCard);
+        copy.owner = owner_;
+        this = copy;*/
+        
+
+        ID = baseCard.ID;
+        Name = baseCard.Name;
+        manaCost = baseCard.manaCost;
+        delay = baseCard.delay;
+        actionCost = baseCard.actionCost;
+        sprite = baseCard.sprite;
+        Description = baseCard.Description;
+        multipleTarget = baseCard.multipleTarget;
+        potential_target = baseCard.potential_target;
+        effects = new List<CombatEffect>(baseCard.effects);
+        rarity = baseCard.rarity;
+        databasePath = baseCard.databasePath;
+        cardClass = baseCard.cardClass;
+        owner = owner_;
+
+}
 
 
     public virtual void Play(List<Unit> targets)

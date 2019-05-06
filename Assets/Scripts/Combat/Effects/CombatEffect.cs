@@ -10,11 +10,15 @@ public class CombatEffect
 {
     public enum TYPE {DAMAGE,
     HEAL,
-    APPLY_STATUS};
+    APPLY_STATUS,
+    DRAW};
     public TYPE type;
+    public AnimationClipDatabase.T animation;
+    public CardEffectVariable.VARIABLE variable;
     public int amount;
     [Header("Status (only if APPLY_STATUS)")]
     public List<CombatStatusFactory> statusFactories;
+    
 
 
     public void Perform(Unit target, Unit source)
@@ -23,6 +27,8 @@ public class CombatEffect
         {
             Debug.Log("Issue with combat effect " + type.ToString() + ";" + amount.ToString() + "; target:" + target.ToString() + "; source:" + source.ToString());
         }
+        amount = CardEffectVariable.GetVariable(this, target, source);
+        PlayerInfos.Instance.animationDatabase.Get(animation).Activate(CombatManager.Instance.GetUnitUI(target));
         switch (type)
         {
             case TYPE.DAMAGE:
@@ -37,6 +43,10 @@ public class CombatEffect
                             CombatStatus status = statusFactory.GenerateApply(target);
            
                         }
+                break;
+            case TYPE.DRAW:
+                List<Card> drawnCards = CombatManager.Instance.compagnionDeck.DrawCards(new List<int> { amount }, new List<Unit> { target });
+                Hand.Instance.AddToHand(drawnCards);
                 break;
         }
         

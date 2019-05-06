@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: cf3787bdd5963be4fa3d7395c58c06f4, type: 2}
   m_Color: {r: 0.9254902, g: 0.80784315, b: 0.6862745, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1745,7 +1745,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconGraphic: {fileID: 6601840115190174939}
   m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 0
+  m_DragEnabled: 1
+  m_DropEnabled: 1
+  m_SwapEnabled: 1
   m_IsStatic: 0
   m_AllowThrowAway: 1
   m_DragKeyModifier: 0
@@ -1769,6 +1771,7 @@ MonoBehaviour:
   pressPressTrigger: Pressed
   m_PressTransitionInstaOut: 0
   m_PressForceHoverNormal: 0
+  DragEnded: 0
   m_SlotGroup: 0
   m_ID: 2
   onAssign:
@@ -3581,7 +3584,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: cf3787bdd5963be4fa3d7395c58c06f4, type: 2}
   m_Color: {r: 0.9254902, g: 0.80784315, b: 0.6862745, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -4621,7 +4624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6601840114888857197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4662,7 +4665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.81960785}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.46666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4939,11 +4942,13 @@ MonoBehaviour:
     delay: 0
     actionCost: 0
     sprite: {fileID: 0}
-    atype: 0
     Description: 
     multipleTarget: 0
     potential_target: 0
     effects: []
+    rarity: 0
+    databasePath: 
+    cardClass: 0
   header: {fileID: 1432318999726643815}
   image: {fileID: 6601840114172887541}
   manaCost: {fileID: 6601840115269721203}
@@ -6169,7 +6174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6601840115190174948
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6210,7 +6215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.46666667}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6671,7 +6676,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: cf3787bdd5963be4fa3d7395c58c06f4, type: 2}
   m_Color: {r: 0.9254902, g: 0.80784315, b: 0.6862745, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -8530,7 +8535,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconGraphic: {fileID: 6601840114888857196}
   m_CloneTarget: {fileID: 0}
-  m_DragAndDropEnabled: 0
+  m_DragEnabled: 1
+  m_DropEnabled: 1
+  m_SwapEnabled: 1
   m_IsStatic: 0
   m_AllowThrowAway: 1
   m_DragKeyModifier: 0
@@ -8554,6 +8561,7 @@ MonoBehaviour:
   pressPressTrigger: Pressed
   m_PressTransitionInstaOut: 0
   m_PressForceHoverNormal: 0
+  DragEnded: 0
   m_SlotGroup: 0
   m_ID: 2
   onAssign:

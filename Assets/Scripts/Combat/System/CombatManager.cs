@@ -3,17 +3,16 @@ using Unity;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class CombatManager : MonoBehaviour
 {
     private static CombatManager instance;
     public static CombatManager Instance { get => instance; }
-    public UnitUI player;
-    public UnitUI p2;
-    public UnitUI enemyUI1;
-    public UnitUI enemyUI2;
-    public CombatStatusUI combaStatusUI;
+    public List<UnitUI> playersUI;
+    public List<UnitUI> enemiesUI;
     public WinWindow winWindow;
+    public CombatStatusUI combaStatusUI;
 
     public List<Compagnion> compagnions;
     public CombatPartyDeck compagnionDeck;
@@ -21,24 +20,51 @@ public class CombatManager : MonoBehaviour
     public List<Enemy> enemies;
     public CombatPartyDeck enemiesDeck;
     public CombatPartyDeck enemiesDiscard;
+    private int winXpValue;
 
     void Start()
     {
         instance = this;
-        player.SetInfos(PlayerInfos.Instance.compagnions[0]);
-        p2.SetInfos(PlayerInfos.Instance.compagnions[1]);
-        enemyUI1.SetInfos(PlayerInfos.Instance.enemies[0]);
-        enemyUI2.SetInfos(PlayerInfos.Instance.enemies[1]);
+        for (int i = 0; i < playersUI.Count; i++)
+        {
+            playersUI[i].gameObject.SetActive(true);
+            if (i < PlayerInfos.Instance.compagnions.Count)
+            {
+                playersUI[i].SetInfos(PlayerInfos.Instance.compagnions[i]);
+            }
+            else
+            {
+                playersUI[i].Disable();
+            }
+        }
+          
 
-        StartCombat(PlayerInfos.Instance.compagnions, PlayerInfos.Instance.enemies);
+            StartCombat(PlayerInfos.Instance.compagnions, EnemyGenerator.Instance.GenerateEnemies());
     }
 
     public void StartCombat(List<Compagnion> compagnions_, List<Enemy> enemies_)
     {
+
         compagnions = compagnions_;
         enemies = enemies_;
+        winXpValue = 0;
+        foreach (Enemy e in enemies) {
+            winXpValue += e.xpValue;
+        }
+        for (int i = 0; i < enemiesUI.Count; i++)
+        {
+            enemiesUI[i].gameObject.SetActive(true);
+            if (i < enemies.Count)
+            {
+                enemiesUI[i].SetInfos(enemies[i]);
+            }
+            else
+            {
+                enemiesUI[i].Disable();
+            }
+        }
         compagnionDeck = PlayerInfos.Instance.persistentPartyDeck.GenerateCombatDeck(compagnions);
-        enemiesDeck = PlayerInfos.Instance.persistentEnemyPartyDeck.GenerateCombatDeck(enemies);
+        enemiesDeck = new PersistentPartyDeck(enemies, enemies.Select(x => x.persistentDeck).ToList()).GenerateCombatDeck(enemies);
 
         compagnionDeck.Shuffle();
         enemiesDeck.Shuffle();
@@ -46,36 +72,32 @@ public class CombatManager : MonoBehaviour
         compagnionDiscard = new CombatPartyDeck(compagnions, null);
         enemiesDiscard = new CombatPartyDeck(enemies, null);
 
+        foreach(Compagnion c in compagnions)
+        {
+            c.CurrentAction = 0;
+        }
         List<Card> drawnCards = compagnionDeck.DrawCards(new List<int> { 2, 2 }, compagnions);
         Hand.Instance.AddToHand(drawnCards);
+        AddEnemiesIntents();
         TurnManager.Instance.StartTurn();
+        TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBAT);
+
     }
 
     public void OnUnitDeath(Enemy unit)
     {
-        if (enemies.Count == 1)
-        {
-            Win();
-        }
-        else
-        {
-            enemies.Remove(unit);
-            if(enemyUI1.unit == unit){
-                enemyUI1.gameObject.SetActive(false);
-            }else if (enemyUI2.unit == unit)
-            {
-                enemyUI2.gameObject.SetActive(false);
-            }
-        }
+         enemies.Remove(unit);
+         enemiesUI.Find(x => x.unit == unit)?.gameObject.SetActive(false);
+        
     }
 
     public void AddEnemiesIntents()
     {
-        List<Card> cards = enemiesDeck.DrawCards();
+        List<Card> cards = enemiesDeck.DrawCards(owners:enemies);
         for(int i = 0; i < cards.Count; i ++)
         {
             Card card = cards[i];
-            if (card.manaCost <= card.owner.CurrentMana)
+            if (card.manaCost > card.owner.CurrentMana)
             {
                 card = enemiesDeck.Redraw(new List<Card> { card })[0];
             }
@@ -112,21 +134,45 @@ public class CombatManager : MonoBehaviour
 
     public void Win()
     {
+        foreach(Compagnion c in compagnions)
+        {
+            foreach(CombatStatus cs in c.CurrentStatus)
+            {
+                TurnManager.NotifyAll -= cs.Notified;
+                GameObject.Destroy(cs.ui.gameObject);
+            }
+            c.CurrentStatus = new List<CombatStatus>();
+        }
+
         winWindow.gameObject.SetActive(true);
-        winWindow.Setup(24);
+        winWindow.Setup(winXpValue);
     }
 
     public void DisplayDeck()
     {
         PlayerInfos.Instance.unitsWindow.gameObject.SetActive(true);
-        PlayerInfos.Instance.unitsWindow.deckDisplay.Setup(
-            compagnionDeck.GetCards(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT)));
+        IEnumerable<Unit> selected = UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT);
+        
+       PlayerInfos.Instance.unitsWindow.deckDisplay.Setup(
+            compagnionDeck.GetCards(selected.All(x => x.GetType() == typeof(Compagnion)) ? selected : null));
     }
 
     public void DisplayDiscard()
     {
         PlayerInfos.Instance.unitsWindow.gameObject.SetActive(true);
+        IEnumerable<Unit> selected = UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT);
+
         PlayerInfos.Instance.unitsWindow.deckDisplay.Setup(
-            compagnionDiscard.GetCards(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT)));
+             compagnionDiscard.GetCards(selected.All(x => x.GetType() == typeof(Compagnion)) ? selected : null));
+    }
+
+    public UnitUI GetUnitUI(Unit u)
+    {
+        UnitUI s = playersUI.Find(x => x.unit == u);
+        if (s == null)
+        {
+            s = enemiesUI.Find(x => x.unit == u);
+        }
+        return s;
     }
 }

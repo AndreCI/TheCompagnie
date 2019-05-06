@@ -46,13 +46,20 @@ public class CombatStatusUI : MonoBehaviour
         combatStatus = s;
         iconMask.sprite = PlayerInfos.Instance.effectDatabase.Get(s.status);
         icon.sprite = PlayerInfos.Instance.effectDatabase.Get(s.status);
+        if (combatStatus.trigger == GeneralUtils.SUBJECT_TRIGGER.PERMANENT)
+        {
+            text2.transform.parent.parent.gameObject.SetActive(false);
+        }
         UpdateData();
     }
 
     public void UpdateData()
     {
         text1.text = combatStatus.value.ToString();
-        text2.text = combatStatus.duration.ToString();
+        if (combatStatus.trigger != GeneralUtils.SUBJECT_TRIGGER.PERMANENT)
+        {
+            text2.text = combatStatus.duration.ToString();
+        }
     }
 
     public void Trigger(float duration_ = 0.3f)

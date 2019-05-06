@@ -12,22 +12,21 @@ public class PlayerInfos : MonoBehaviour
     private static PlayerInfos _instance;
     public static PlayerInfos Instance { get => _instance; }
 
+    public PlayerSettings settings;
     public CardCollection collection;
     public EffectDatabase effectDatabase;
     public CardDatabase cardDatabase;
-    public UIDisplay cardsDisplay;
+    public CompagnionsDatabase compagnionsDatabase;
+    public AnimationClipDatabase animationDatabase;
 
     public MapNode currentPosition;
     public List<Compagnion> compagnions;
     public PartyMenu unitsWindow;
     public PersistentPartyDeck persistentPartyDeck;
-    public PersistentPartyDeck persistentEnemyPartyDeck;
 
-    public List<Enemy> enemies;
+    public OverworldMap globalMap;
 
-    private OverworldMap globalMap;
-
-    void Start()
+    void Awake()
     {
         if(_instance != null)
         {
@@ -35,36 +34,21 @@ public class PlayerInfos : MonoBehaviour
             return;
         }
         _instance = this;
-        GameObject.DontDestroyOnLoad(gameObject);
-        globalMap = OverworldMap.Instance;
-        SceneManager.sceneLoaded += OnLevelFinishedLoading;
-        List<PersistentUnitDeck> decks = new List<PersistentUnitDeck>();
 
-        foreach (Enemy enemy in enemies)
-        {
-            enemy.Setup();
-            List<Card> cards = new List<Card>();
-            foreach (Card card in cardDatabase.GetCardsFromClass(enemy.availableCards))
-            {
-                cards.Add(new Card(enemy, card));
-            }
-            enemy.persistentDeck = new PersistentUnitDeck(cards);
-            decks.Add(enemy.persistentDeck);
-        }
-        persistentEnemyPartyDeck = new PersistentPartyDeck(enemies, decks);
+
+        GameObject.DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+        settings = new PlayerSettings(1f);
+        List<Compagnion> originals = new List<Compagnion> { compagnionsDatabase.Get(0) };
+        compagnions = new List<Compagnion>();
 
         cardDatabase.Setup();
-        decks = new List<PersistentUnitDeck>();
-        foreach(Compagnion c in compagnions)
+        animationDatabase.Setup();
+        List<PersistentUnitDeck> decks = new List<PersistentUnitDeck>();
+        foreach(Compagnion o in originals)
         {
-            c.Setup();
-            List<Card> cards = new List<Card>();
-            foreach(Card card in cardDatabase.GetCardsFromClass(c.availableCards))
-            {
-                cards.Add(new Card(c, card));
-            }
-           // cards.Add(new Card(c, collection.cards[5]));
-            c.persistentDeck = new PersistentUnitDeck(cards);
+            Compagnion c = o.Setup() as Compagnion;
+            compagnions.Add(c);
             decks.Add(c.persistentDeck);
         }
 
@@ -80,5 +64,11 @@ public class PlayerInfos : MonoBehaviour
         {
             globalMap.gameObject.SetActive(scene.name == "Overworld");
         }
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+
     }
 }

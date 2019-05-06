@@ -11,20 +11,53 @@ Deal X damage
 1 action
 ?? speed
 
+Basic deck:
+Hide: Quick block
+Defend: medium paced block
+Strike : basic attack
+Killing blow: slow attack based on something
+
+basic cards (with mana?):
+parry: gain parry & 1 action
+big defense: slow paced block + 1 action
+doublie strike: 2 async attacks?
+quick strike: quick damage + 1 card?
+Basic status? Inflame, disarm, etc?
+
+
 
 Initiative + cast time OR Speed + rapidity for consistence (final time = SUM(v1, v2))
 
 
 Only spell have cast time? 
 
-fix leveling for all units
+	fix leveling for all units
 animate 2D with 2Danimation package
 	Generate cards with a generator
 effects icon
 	multiple units zone
 Perlin animation: multiple images for 1 quad using offset on image pixel index?
 	clean cards attributes
-card database
-
+	card database
+Recursif animator? Algo:
+Wait for -animation- trigger
+when trigger: if(current state != null){copy(self).trigger(-animation-)}
+else{play(-animation-)}
+Animator handler?
 
 Idea: link card to unit level: mage: fire blast: deal 5 damage + burn for  damage for 5 ticks. If you have more than X points in fire mastery, deal 5 additional damage.
+
+
+OBJECTIF DEMO:
+[]	SOUND
+[]	ANIMATION
+[]	DEBUG
+
+
+
+
+This is the Overworld. Right now, you are located on the bottom right of the map.
+You can see your team and learn more about it with the button "Party" and adjust the settings with the button "Menu" on the top right.
+Otherwise, you can click on the next node on the Overworld to start your first combat.
+
+Welcome to The Compagnie. This is currently an alpha version, build v0.1.

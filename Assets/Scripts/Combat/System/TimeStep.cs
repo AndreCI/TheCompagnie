@@ -18,17 +18,19 @@ public class TimeStep : MonoBehaviour
     public float duration;
 
     public bool active;
+    public bool activeBackwards;
 
     private void Start()
     {
         active = false;
-
+        activeBackwards = false;
     }
 
     private void Update()
     {
         if (active)
         {
+            activeBackwards = false;
             if(mask.value >= 1) {
                 active = false;
             }
@@ -37,13 +39,32 @@ public class TimeStep : MonoBehaviour
                 mask.value += Time.deltaTime / duration;
             }
         }
+        else if (activeBackwards)
+        {
+            if (mask.value <= 0)
+            {
+                activeBackwards = false;
+            }
+            else
+            {
+                mask.value -= Time.deltaTime / duration;
+            }
+        }
     }
 
-    public void Activate(float duration_ = 0.3f)
+    public void Activate(float duration_ = 0.3f, bool backwards=false)
     {
         duration = duration_;
-        active = true;
+        if (backwards)
+        {
+            activeBackwards = true;
+        }
+        else
+        {
+            active = true;
+        }
     }
+
 
     public void Reset()
     {

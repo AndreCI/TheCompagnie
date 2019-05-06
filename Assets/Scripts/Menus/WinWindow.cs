@@ -28,12 +28,24 @@ public class WinWindow : MonoBehaviour
         units = new List<Unit>(PlayerInfos.Instance.compagnions);
         portraits = new List<UnitPortrait>(GetComponentsInChildren<UnitPortrait>());
 
-        for (int i = 0; i < units.Count; i++)
+        for (int i = 0; i < portraits.Count; i++)
         {
-            xpButtons[i].Setup(units[i], this);
-            portraits[i].Setup(units[i]);
+            if (i < units.Count)
+            {
+                portraits[i].transform.parent.parent.gameObject.SetActive(true);
+                xpButtons[i].gameObject.SetActive(true);
+                xpButtons[i].Setup(units[i], this);
+                portraits[i].Setup(units[i]);
+            }
+            else
+            {
+                xpButtons[i].transform.parent.parent.gameObject.SetActive(false);
+                portraits[i].gameObject.SetActive(false);
+            }
         }
         closeButton.interactable = false;
+        TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATWIN);
+
     }
 
     public void OnXPAdds()
@@ -53,7 +65,8 @@ public class WinWindow : MonoBehaviour
         {
             foreach(DuloGames.UI.UIStatsAdd b in xpButtons)
             {
-                b.Toggle(false);
+                if(b.isActiveAndEnabled)
+                    b.Toggle(false);
             }
             closeButton.interactable = true;
         }
@@ -64,6 +77,6 @@ public class WinWindow : MonoBehaviour
 
     public void Close()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

@@ -97,7 +97,7 @@ namespace DuloGames.UI
 			if (source is UIItemSlot)
 			{
 				UIItemSlot sourceSlot = source as UIItemSlot;
-				
+                if (!sourceSlot.DragEnded) { sourceSlot.OnEndDrag(null); }
 				// Check if the equipment type matches the target slot
 				if (!this.CheckEquipType(sourceSlot.GetItemInfo()))
 					return false;

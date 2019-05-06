@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: warrior_starter
+  m_EditorClassIdentifier: 
+  Name: Warrior_Start
+  cardClass: 5
+  rarityLevel: 1
+  childrenDatabase: []
+  items:
+  - ID: 376
+    Name: Strike
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 94aac892adeabd64fbbc0afa00078d47, type: 3}
+    Description: Deals 20 damages.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      animation: 3
+      variable: 0
+      amount: 20
+      statusFactories: []
+    rarity: 1
+    databasePath: Warrior_Start/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 377
+    Name: Defend
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: f5281722176c3b54095d26051b2b6625, type: 3}
+    Description: Gain 18 blocks.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 1
+      variable: 0
+      amount: 0
+      statusFactories:
+      - status: 1
+        value: 18
+        duration: 1
+        trigger: 0
+    rarity: 1
+    databasePath: Warrior_Start/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 378
+    Name: Move Back
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    sprite: {fileID: 21300000, guid: c0340de7e339fa24eab1f455b817b88c, type: 3}
+    Description: Gain 9 blocks and gain 1 action.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 1
+      variable: 0
+      amount: 0
+      statusFactories:
+      - status: 1
+        value: 9
+        duration: 1
+        trigger: 0
+    rarity: 1
+    databasePath: Warrior_Start/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 379
+    Name: Finishing Blow
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 2ec898c183f15cf42b47852f0df9591c, type: 3}
+    Description: Deals 20 damage + 1 per missing health point.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      animation: 0
+      variable: 0
+      amount: 20
+      statusFactories: []
+    - type: 0
+      animation: 0
+      variable: 1
+      amount: 0
+      statusFactories: []
+    rarity: 1
+    databasePath: Warrior_Start/Warrior/COMPAGNION/All
+    cardClass: 5

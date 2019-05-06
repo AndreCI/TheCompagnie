@@ -46,10 +46,15 @@ namespace DuloGames.UI
         [SerializeField, Tooltip("The game object that should be cloned on drag.")]
         private GameObject m_CloneTarget;
 
-		[SerializeField, Tooltip("Should the drag and drop functionallty be enabled.")]
-		private bool m_DragAndDropEnabled = true;
+		[SerializeField, Tooltip("Should the drag functionallty be enabled.")]
+		private bool m_DragEnabled = true;
+        [SerializeField, Tooltip("Should the drop functionallty be enabled.")]
+        private bool m_DropEnabled = true;
+        [SerializeField, Tooltip("Should the swap functionallty be enabled.")]
+        private bool m_SwapEnabled = true;
 
-		[SerializeField, Tooltip("If set to static the slot won't be unassigned when drag and drop is preformed.")]
+
+        [SerializeField, Tooltip("If set to static the slot won't be unassigned when drag and drop is preformed.")]
 		private bool m_IsStatic = false;
 		
 		[SerializeField, Tooltip("Should the icon assigned to the slot be throwable.")]
@@ -93,6 +98,8 @@ namespace DuloGames.UI
 		private bool m_DragHasBegan = false;
 		private bool m_DropPreformed = false;
 		private bool m_IsTooltipShown = false;
+
+        public bool DragEnded;
 		
 		/// <summary>
 		/// Gets or sets a value indicating whether this <see cref="UISlotBase"/> drag and drop is enabled.
@@ -102,19 +109,25 @@ namespace DuloGames.UI
 		{
 			get
 			{
-				return this.m_DragAndDropEnabled;
+				return this.m_DragEnabled && this.m_DropEnabled;
 			}
 			set
 			{
-				this.m_DragAndDropEnabled = value;
+				this.m_DragEnabled = value;
+                this.m_DropEnabled = value;
 			}
 		}
 		
-		/// <summary>
-		/// Gets or sets a value indicating whether this <see cref="UISlotBase"/> is static.
-		/// </summary>
-		/// <value><c>true</c> if is static; otherwise, <c>false</c>.</value>
-		public bool isStatic
+        public bool dragEnabled { get => this.m_DragEnabled; set => this.m_DragEnabled = value; }
+        public bool dropEnabled { get => this.m_DropEnabled; set => this.m_DropEnabled = value; }
+        public bool swapEnabled { get => this.m_SwapEnabled; set => this.m_SwapEnabled = value; }
+
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="UISlotBase"/> is static.
+        /// </summary>
+        /// <value><c>true</c> if is static; otherwise, <c>false</c>.</value>
+        public bool isStatic
 		{
 			get
 			{
@@ -459,9 +472,9 @@ namespace DuloGames.UI
 					break;
 				}
 			}
-			
-			// If we should force normal state transition on the hover target
-			if (this.m_PressForceHoverNormal)
+
+            // If we should force normal state transition on the hover target
+            if (this.m_PressForceHoverNormal)
 				this.EvaluateAndTransitionHoveredState(false);
 		}
 		
@@ -723,9 +736,10 @@ namespace DuloGames.UI
 		/// <param name="eventData">Event data.</param>
 		public virtual void OnBeginDrag(PointerEventData eventData)
 		{
-			if (!this.enabled || !this.IsAssigned() || !this.m_DragAndDropEnabled)
+            DragEnded = false;
+			if (!this.enabled || !this.IsAssigned() || !this.m_DragEnabled)
 			{
-				eventData.Reset();
+			    eventData.Reset();
 				return;
 			}
 			
@@ -791,50 +805,53 @@ namespace DuloGames.UI
 			UISlotBase source = (eventData.pointerPress != null) ? eventData.pointerPress.GetComponent<UISlotBase>() : null;
 			
 			// Make sure we have the source slot
-			if (source == null || !source.IsAssigned())
+			if (source == null || !source.IsAssigned() || !source.m_DragEnabled)
 				return;
 			
 			// Notify the source that a drop was performed so it does not unassign
 			source.dropPreformed = true;
 			
 			// Check if this slot is enabled and it's drag and drop feature is enabled
-			if (!this.enabled || !this.m_DragAndDropEnabled)
+			if (!this.enabled || !this.m_DropEnabled)
 				return;
 			
 			// Prepare a variable indicating whether the assign process was successful
 			bool assignSuccess = false;
-			
-			// Normal empty slot assignment
-			if (!this.IsAssigned())
-			{
-				// Assign the target slot with the info from the source
-				assignSuccess = this.Assign(source);
-				
-				// Unassign the source on successful assignment and the source is not static
-				if (assignSuccess && !source.isStatic)
-					source.Unassign();
-			}
-			// The target slot is assigned
-			else
-			{
-				// If the target slot is not static
-				// and we have a source slot that is not static
-				if (!this.isStatic && !source.isStatic)
-				{
-					// Check if we can swap
-					if (this.CanSwapWith(source) && source.CanSwapWith(this))
-					{
-						// Swap the slots
-						assignSuccess = source.PerformSlotSwap(this);
-					}
-				}
-				// If the target slot is not static
-				// and the source slot is a static one
-				else if (!this.isStatic && source.isStatic)
-				{
-					assignSuccess = this.Assign(source);
-				}
-			}
+
+            // Normal empty slot assignment
+            if (!this.IsAssigned())
+            {
+                // Assign the target slot with the info from the source
+                assignSuccess = this.Assign(source);
+
+                // Unassign the source on successful assignment and the source is not static
+                if (assignSuccess && !source.isStatic)
+                    source.Unassign();
+            }
+            // The target slot is assigned
+            else if (m_SwapEnabled && source.m_SwapEnabled)
+            {
+                // If the target slot is not static
+                // and we have a source slot that is not static
+                if (!this.isStatic && !source.isStatic)
+                {
+                    // Check if we can swap
+                    if (this.CanSwapWith(source) && source.CanSwapWith(this))
+                    {
+                        // Swap the slots
+                        assignSuccess = source.PerformSlotSwap(this);
+                    }
+                }
+                // If the target slot is not static
+                // and the source slot is a static one
+                else if (!this.isStatic && source.isStatic)
+                {
+                    assignSuccess = this.Assign(source);
+                }
+            }
+            else {
+                return;
+            }
 			
 			// If this slot failed to be assigned
 			if (!assignSuccess)
@@ -849,13 +866,14 @@ namespace DuloGames.UI
 		/// <param name="eventData">Event data.</param>
 		public virtual void OnEndDrag(PointerEventData eventData)
 		{
+            DragEnded = true;
 			// Check if a drag was initialized at all
 			if (!this.m_DragHasBegan)
 				return;
 			
 			// Reset the drag begin bool
 			this.m_DragHasBegan = false;
-			
+
 			// Destroy the dragged icon object
 			if (this.m_CurrentDraggedObject != null)
 			{
@@ -868,7 +886,7 @@ namespace DuloGames.UI
 			
 			// Check if we are returning the icon to the same slot
 			// By checking if the slot is highlighted
-			if (this.IsHighlighted(eventData))
+			if (eventData != null && this.IsHighlighted(eventData))
 				return;
 			
 			// Check if no drop was preformed
@@ -891,7 +909,7 @@ namespace DuloGames.UI
 		/// <param name="target">Target.</param>
 		public virtual bool CanSwapWith(Object target)
 		{
-			return (target is UISlotBase);
+			return (target is UISlotBase) && m_SwapEnabled && (target as UISlotBase).m_SwapEnabled;
 		}
 		
 		/// <summary>

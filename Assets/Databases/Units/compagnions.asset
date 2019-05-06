@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0aa8eb7b9a7e09458707f99990bafe0, type: 3}
+  m_Name: compagnions
+  m_EditorClassIdentifier: 
+  compagnions:
+  - availableCards: 5
+    maxHealth: 60
+    maxMana: 0
+    maxAction: 1
+    currentHealth: 60
+    combatSprite: {fileID: -2161452722950810151, guid: 93cca47c5bc6c304fb4e49eb5d2560df,
+      type: 3}
+    portraitSprite: {fileID: -5365230053113113844, guid: 155684d45ac6a644099a9e9744cb63bf,
+      type: 3}
+    unitName: Jack The Warrior
+    level:
+      currentXP: 0
+      nextLevelThreshold: 5
+      talentPoints: 0
+      currentLevel: 0
+    baseSpeed: 2
+    currentSpeed: 2

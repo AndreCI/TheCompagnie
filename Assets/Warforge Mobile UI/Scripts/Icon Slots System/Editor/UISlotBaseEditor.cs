@@ -12,8 +12,10 @@ namespace DuloGamesEditor.UI
 		
 		private SerializedProperty m_IconGraphicProperty;
         private SerializedProperty m_CloneTargetProperty;
-        private SerializedProperty m_DragAndDropEnabledProperty;
-		private SerializedProperty m_IsStaticProperty;
+        private SerializedProperty m_DragEnabledProperty;
+        private SerializedProperty m_DropEnabledProperty;
+        private SerializedProperty m_SwapEnabledProperty;
+        private SerializedProperty m_IsStaticProperty;
 		private SerializedProperty m_AllowThrowAwayProperty;
 		private SerializedProperty m_DragKeyModifierProperty;
 		private SerializedProperty m_TooltipEnabledProperty;
@@ -41,8 +43,10 @@ namespace DuloGamesEditor.UI
 		{
 			this.m_IconGraphicProperty = this.serializedObject.FindProperty("iconGraphic");
             this.m_CloneTargetProperty = this.serializedObject.FindProperty("m_CloneTarget");
-            this.m_DragAndDropEnabledProperty = this.serializedObject.FindProperty("m_DragAndDropEnabled");
-			this.m_IsStaticProperty = this.serializedObject.FindProperty("m_IsStatic");
+            this.m_DragEnabledProperty = this.serializedObject.FindProperty("m_DragEnabled");
+            this.m_DropEnabledProperty = this.serializedObject.FindProperty("m_DropEnabled");
+            this.m_SwapEnabledProperty = this.serializedObject.FindProperty("m_SwapEnabled");
+            this.m_IsStaticProperty = this.serializedObject.FindProperty("m_IsStatic");
 			this.m_AllowThrowAwayProperty = this.serializedObject.FindProperty("m_AllowThrowAway");
 			this.m_DragKeyModifierProperty = this.serializedObject.FindProperty("m_DragKeyModifier");
 			this.m_TooltipEnabledProperty = this.serializedObject.FindProperty("m_TooltipEnabled");
@@ -99,9 +103,12 @@ namespace DuloGamesEditor.UI
 			EditorGUI.indentLevel = (EditorGUI.indentLevel + 1);
 			EditorGUIUtility.labelWidth = 150f;
 			
-			EditorGUILayout.PropertyField(this.m_DragAndDropEnabledProperty, new GUIContent("Enabled"));
-			if (this.m_DragAndDropEnabledProperty.boolValue)
+			EditorGUILayout.PropertyField(this.m_DragEnabledProperty, new GUIContent("Drag Enabled"));
+            EditorGUILayout.PropertyField(this.m_DropEnabledProperty, new GUIContent("Drop Enabled"));
+
+            if (this.m_DragEnabledProperty.boolValue || this.m_DropEnabledProperty.boolValue)
 			{
+                EditorGUILayout.PropertyField(this.m_SwapEnabledProperty, new GUIContent("Swap Enabled"));
 				EditorGUILayout.PropertyField(this.m_DragKeyModifierProperty, new GUIContent("Drag Key Modifier"));
 				EditorGUILayout.PropertyField(this.m_IsStaticProperty, new GUIContent("Is Static"));
 				EditorGUILayout.PropertyField(this.m_AllowThrowAwayProperty, new GUIContent("Allow Throw Away"));

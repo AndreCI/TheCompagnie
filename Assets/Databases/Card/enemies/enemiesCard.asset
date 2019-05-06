@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: enemiesCard
+  m_EditorClassIdentifier: 
+  Name: ENEMIES
+  cardClass: 4
+  rarityLevel: 0
+  childrenDatabase:
+  - {fileID: 11400000, guid: 259372e91dd68d844841ca6c6bf78b36, type: 2}
+  - {fileID: 11400000, guid: 2dc7c87d4079fc2418ec02209506426c, type: 2}
+  items:
+  - ID: 396
+    Name: Bite
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 1ee87670a5423394a9f36661d3932e93, type: 3}
+    Description: Deal 20 Damages
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      animation: 0
+      amount: 20
+      statusFactories: []
+    rarity: 1
+    databasePath: WOLF/ENEMIES/All
+    cardClass: 2
+  - ID: 397
+    Name: Defend
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 8b7d9a94927760a41abfa4e16441a305, type: 3}
+    Description: Gain 20 block.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 0
+      amount: 0
+      statusFactories:
+      - status: 1
+        value: 20
+        duration: 1
+        trigger: 0
+    rarity: 1
+    databasePath: WOLF/ENEMIES/All
+    cardClass: 2
+  - ID: 398
+    Name: Hide
+    manaCost: 0
+    delay: 1
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: a0e3596a59487b741bdfdb96bedb6460, type: 3}
+    Description: Gain 8 blocks
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 0
+      amount: 0
+      statusFactories:
+      - status: 1
+        value: 8
+        duration: 1
+        trigger: 0
+    rarity: 1
+    databasePath: WOLF/ENEMIES/All
+    cardClass: 2
+  - ID: 474
+    Name: Brutal Mutation
+    manaCost: 0
+    delay: 1
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 8b7d9a94927760a41abfa4e16441a305, type: 3}
+    Description: Heal for 20 and gain 9 block.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 0
+      amount: 0
+      statusFactories:
+      - status: 1
+        value: 9
+        duration: 1
+        trigger: 0
+    - type: 1
+      animation: 0
+      amount: 20
+      statusFactories: []
+    rarity: 0
+    databasePath: ABOMINATION/ENEMIES/All
+    cardClass: 3
+  - ID: 475
+    Name: Toxic Cloud
+    manaCost: 5
+    delay: 4
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 55ab685267846ee44ab2360ae523d32d, type: 3}
+    Description: Apply 1 poison for 30 ticks to all enemies
+    multipleTarget: 1
+    potential_target: 0
+    effects:
+    - type: 2
+      animation: 0
+      amount: 0
+      statusFactories:
+      - status: 5
+        value: 1
+        duration: 30
+        trigger: 1
+    rarity: 0
+    databasePath: ABOMINATION/ENEMIES/All
+    cardClass: 3
+  - ID: 476
+    Name: Slow Mutation
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: e73a0b640e143cc4484d9c3b0eb9e7fd, type: 3}
+    Description: Gain 5 regen for 6 turn and 9 block.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 0
+      amount: 5
+      statusFactories:
+      - status: 0
+        value: 5
+        duration: 6
+        trigger: 0
+      - status: 1
+        value: 9
+        duration: 1
+        trigger: 0
+    rarity: 0
+    databasePath: ABOMINATION/ENEMIES/All
+    cardClass: 3
+  - ID: 477
+    Name: Poison Burst
+    manaCost: 10
+    delay: 2
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 5c4b257a9932c40409e2ebbd78d8f42c, type: 3}
+    Description: Apply 20 poison for 1 tick.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 2
+      animation: 0
+      amount: 0
+      statusFactories:
+      - status: 5
+        value: 20
+        duration: 1
+        trigger: 1
+    rarity: 0
+    databasePath: ABOMINATION/ENEMIES/All
+    cardClass: 3

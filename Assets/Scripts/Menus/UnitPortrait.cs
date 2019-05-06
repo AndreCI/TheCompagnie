@@ -21,11 +21,18 @@ public class UnitPortrait : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public Image portraitImage;
     public Text levelText;
     public Image levelImage;
+    public Text talentPoints;
     public Text unitName;
     public Unit linkedUnit;
     public GridLayoutGroup status;
     public Image selectionImage;
 
+    public Text NotificationText;
+    public float FixedNotificationDuration = 0.4f;
+    public float notificationDuration = 0.4f;
+    private float currentTime = 0f;
+    private bool activateNotification = false;
+    private bool deactivateNotification = false;
     public void OnPointerClick(PointerEventData eventData)
     {
         if (selectionImage != null)
@@ -38,6 +45,7 @@ public class UnitPortrait : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerEnter(PointerEventData eventData)
     {
         if(xpBar == null) {
+            if(linkedUnit == null) { gameObject.SetActive(false); return; }
             unitName.text = linkedUnit.unitName;
             levelImage.gameObject.SetActive(true);
         }
@@ -74,10 +82,12 @@ public class UnitPortrait : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             actionsPoints = new List<ActionPoint>();
             foreach(ActionPoint ap in actionPointsHolder.GetComponentsInChildren<ActionPoint>())
             {
+                ap.gameObject.SetActive(true);
                 ActionPoint Nap = ap.Setup(unit);
                 if(Nap != null) { actionsPoints.Add(Nap); }
             }
         }
+        if(talentPoints != null) { talentPoints.text = unit.level.talentPoints.ToString(); }
 
         if (selectionImage != null)
         {
@@ -89,7 +99,7 @@ public class UnitPortrait : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void UpdatePortrait(float duration=0.3f)
     {
         healthBar.StartTween(linkedUnit.CurrentHealth, duration, linkedUnit.maxHealth);
-        manaBar.StartTween(linkedUnit.CurrentMana, duration, linkedUnit.maxMana);
+        if (linkedUnit.maxMana > 0) { manaBar.StartTween(linkedUnit.CurrentMana, duration, linkedUnit.maxMana); }
         if (xpBar != null) { xpBar.StartTween(linkedUnit.level.currentXP, duration, linkedUnit.level.nextLevelThreshold); }
         if(status != null)
         {
@@ -121,5 +131,35 @@ public class UnitPortrait : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         ui.transform.localScale = new Vector3(1, 1, 1);
         ui.Setup(cs);
         cs.ui = ui;
+    }
+
+    public void PlayNotificationText(string text, Color color)
+    {
+        if (NotificationText != null)
+        {
+            notificationDuration = FixedNotificationDuration * PlayerInfos.Instance.settings.eventSpeed;
+            NotificationText.text = text;
+            NotificationText.color = color;
+            activateNotification = true;
+            currentTime = 0f;
+            NotificationText.CrossFadeAlpha(1f, notificationDuration, false);
+        }
+    }
+
+    void Update()
+    {
+        if (NotificationText != null)
+        {
+            if (activateNotification)
+            {
+                currentTime += Time.deltaTime;
+                if (currentTime > notificationDuration)
+                {
+                    currentTime = 0f;
+                    activateNotification = false;
+                    NotificationText.CrossFadeAlpha(0f, notificationDuration, false);
+                }
+            }
+        }
     }
 }

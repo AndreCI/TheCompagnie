@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: ironclad
+  m_EditorClassIdentifier: 
+  Name: Crusader
+  cardClass: 0
+  rarityLevel: 0
+  childrenDatabase: []
+  items:
+  - ID: 0
+    Name: Bash
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 2ec898c183f15cf42b47852f0df9591c, type: 3}
+    Description: Deal 10 damage and reduce strength by 4 for 2 turns.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      animation: 0
+      amount: 10
+      statusFactories: []
+    - type: 2
+      animation: 0
+      amount: 0
+      statusFactories:
+      - status: 6
+        value: 4
+        duration: 2
+        trigger: 0
+    rarity: 0
+    databasePath: Crusader/COMPAGNION/All
+    cardClass: 0
+  - ID: 1
+    Name: Vicious Strike
+    manaCost: 0
+    delay: 2
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 08943cc2cc5055b4d96e6aa54e72b7b7, type: 3}
+    Description: Deal 14 damage and apply 5 bleed for 3 turns.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      animation: 0
+      amount: 14
+      statusFactories: []
+    - type: 2
+      animation: 0
+      amount: 0
+      statusFactories:
+      - status: 4
+        value: 5
+        duration: 3
+        trigger: 0
+    rarity: 0
+    databasePath: Crusader/COMPAGNION/All
+    cardClass: 0
+  - ID: 2
+    Name: Burning Rage
+    manaCost: 6
+    delay: 1
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: dd1642a615d9b56458db33fc579e897e, type: 3}
+    Description: Burn self for 5 damage during 4 turns, and gain 5 strength.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 0
+      amount: 0
+      statusFactories:
+      - status: 3
+        value: 5
+        duration: 4
+        trigger: 0
+      - status: 7
+        value: 5
+        duration: 10
+        trigger: 0
+    rarity: 0
+    databasePath: Crusader/COMPAGNION/All
+    cardClass: 0
+  - ID: 3
+    Name: Parry
+    manaCost: 4
+    delay: 2
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 459f1c2a69f0a7244b62a4cc48f68e7a, type: 3}
+    Description: Gain 2 parry for 3 ticks. Next turn, gain 1 action.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 0
+      amount: 0
+      statusFactories:
+      - status: 2
+        value: 2
+        duration: 3
+        trigger: 1
+      - status: 8
+        value: 1
+        duration: 1
+        trigger: 0
+    rarity: 0
+    databasePath: Crusader/COMPAGNION/All
+    cardClass: 0
+  - ID: 4
+    Name: Defense Mastery
+    manaCost: 8
+    delay: 2
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: f5281722176c3b54095d26051b2b6625, type: 3}
+    Description: All party member gain 12 blocks for 1 turn.
+    multipleTarget: 1
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 0
+      amount: 0
+      statusFactories:
+      - status: 1
+        value: 12
+        duration: 1
+        trigger: 0
+    rarity: 0
+    databasePath: Crusader/COMPAGNION/All
+    cardClass: 0
+  - ID: 5
+    Name: Quick Retreat
+    manaCost: 2
+    delay: 0
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 67b09a274e7d302488a8c535956c0053, type: 3}
+    Description: Gain 6 block for 1 turn. Gain 1 action and draw a card next turn.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 0
+      amount: 0
+      statusFactories:
+      - status: 1
+        value: 6
+        duration: 1
+        trigger: 0
+      - status: 8
+        value: 1
+        duration: 1
+        trigger: 0
+      - status: 9
+        value: 1
+        duration: 1
+        trigger: 0
+    rarity: 0
+    databasePath: Crusader/COMPAGNION/All
+    cardClass: 0
+  - ID: 6
+    Name: Obliterate
+    manaCost: 0
+    delay: 5
+    actionCost: 2
+    sprite: {fileID: 21300000, guid: 2646bde935b4ac64c90c1bfd4d951be2, type: 3}
+    Description: Deal 34 damages. Cost 2 actions.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      animation: 0
+      amount: 34
+      statusFactories: []
+    rarity: 0
+    databasePath: Crusader/COMPAGNION/All
+    cardClass: 0
+  - ID: 7
+    Name: Purifing Fire
+    manaCost: 12
+    delay: 3
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 9b83ce6bd738f644a91922caa22095ca, type: 3}
+    Description: Heal for 40 and apply burn for 5 damage during 4 turns;
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 1
+      animation: 0
+      amount: 40
+      statusFactories: []
+    - type: 2
+      animation: 0
+      amount: 40
+      statusFactories:
+      - status: 3
+        value: 5
+        duration: 0
+        trigger: 0
+    rarity: 0
+    databasePath: Crusader/COMPAGNION/All
+    cardClass: 0

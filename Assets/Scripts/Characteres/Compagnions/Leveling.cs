@@ -8,16 +8,28 @@ using System.Threading.Tasks;
 public class Leveling
 {
     public int currentXP;
-    public int currentLevel;
     public int nextLevelThreshold;
     public int talentPoints;
+    public int currentLevel;
+    private List<(CardDatabase.RARITY, float)> rarityDistribution;
+    private Unit source;
 
-    public Leveling(int level = 0)
+    public Leveling(Unit source_, int level = 0)
     {
+        source = source_;
         currentLevel = level;
         currentXP = 0;
-        nextLevelThreshold = 10;
+        if (level == 0) { nextLevelThreshold = 5; }
+        else
+        {
+            nextLevelThreshold = 10;
+        }
         talentPoints = 0;
+        rarityDistribution = new List<(CardDatabase.RARITY, float)>();
+        foreach(CardDatabase.RARITY r in Enum.GetValues(typeof(CardDatabase.RARITY)))
+        {
+            rarityDistribution.Add((r, 0f));
+        }
     }
 
     public void GainXP(int xp)
@@ -28,6 +40,29 @@ public class Leveling
             currentXP -= nextLevelThreshold;
             currentLevel += 1;
             talentPoints += 1;
+            nextLevelThreshold = 10;
+            if(currentLevel == 1)
+            {
+                source.maxMana = 20;
+                source.CurrentMana = 20;
+                source.maxHealth += 20;
+                talentPoints += 3;
+                source.persistentDeck.AddCardSlot();
+                source.persistentDeck.AddCardSlot();
+                source.persistentDeck.AddCardSlot();
+            }
+            else if(currentLevel == 2)
+            {
+                source.maxAction += 1;
+                talentPoints += 3;
+                source.persistentDeck.AddCardSlot();
+                source.persistentDeck.AddCardSlot();
+                source.persistentDeck.AddCardSlot();
+            }
+            source.currentHealth = source.maxHealth;
+            source.CurrentMana = source.maxMana;
         }
     }
+
+    
 }

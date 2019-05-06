@@ -22,7 +22,8 @@ public class ActionPoint : MonoBehaviour
     {
         if(u.maxAction <= index)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+           // Destroy(gameObject);
             return null;
         }
         u.NotifyUpdate += UpdateInfos;
@@ -33,5 +34,11 @@ public class ActionPoint : MonoBehaviour
     public void UpdateInfos()
     {
         image.gameObject.SetActive(unit.CurrentAction > index);
+    }
+
+    private void OnDestroy()
+    {
+        if(unit!=null)
+            unit.NotifyUpdate -= UpdateInfos;
     }
 }

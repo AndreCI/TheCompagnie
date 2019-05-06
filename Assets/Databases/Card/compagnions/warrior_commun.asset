@@ -1,0 +1,246 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: warrior_commun
+  m_EditorClassIdentifier: 
+  Name: WARRIOR_COM
+  cardClass: 5
+  rarityLevel: 2
+  childrenDatabase: []
+  items:
+  - ID: 56
+    Name: Brutal Hit
+    manaCost: 10
+    delay: 0
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 14588b867fa78604c8d529067caf5296, type: 3}
+    Description: Deal 30 damages
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      animation: 0
+      variable: 0
+      amount: 30
+      statusFactories: []
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 57
+    Name: Cleave
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: f97562aae3f806c468422d760c993237, type: 3}
+    Description: Deal 16 damages to all enemies
+    multipleTarget: 1
+    potential_target: 0
+    effects:
+    - type: 0
+      animation: 3
+      variable: 0
+      amount: 16
+      statusFactories: []
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 58
+    Name: Inflame
+    manaCost: 7
+    delay: 5
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: dd1642a615d9b56458db33fc579e897e, type: 3}
+    Description: Gain 6 strength.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 7
+      variable: 0
+      amount: 0
+      statusFactories:
+      - status: 7
+        value: 6
+        duration: -1
+        trigger: 2
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 58
+    Name: Burning pact
+    manaCost: 4
+    delay: 2
+    actionCost: 0
+    sprite: {fileID: 21300000, guid: c5b7fdf6b6ac881418c5866982b395af, type: 3}
+    Description: Draw 3 cards, gain 1 action. Apply 5 burn for 2 turns on self.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 7
+      variable: 0
+      amount: 3
+      statusFactories:
+      - status: 3
+        value: 5
+        duration: 2
+        trigger: 0
+    - type: 3
+      animation: 4
+      variable: 0
+      amount: 3
+      statusFactories: []
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 58
+    Name: Fire Breathing
+    manaCost: 15
+    delay: 3
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 295b0ed9fe67f0447bb21eac73690948, type: 3}
+    Description: Apply 12 burn for 4 turns to all enemies.
+    multipleTarget: 1
+    potential_target: 0
+    effects:
+    - type: 2
+      animation: 6
+      variable: 0
+      amount: 3
+      statusFactories:
+      - status: 3
+        value: 12
+        duration: 4
+        trigger: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 58
+    Name: Dagger strike
+    manaCost: 0
+    delay: 1
+    actionCost: 0
+    sprite: {fileID: 21300000, guid: 08943cc2cc5055b4d96e6aa54e72b7b7, type: 3}
+    Description: Deal 7 damages. Gain 1 action.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      animation: 8
+      variable: 0
+      amount: 7
+      statusFactories: []
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 58
+    Name: Raise shield
+    manaCost: 2
+    delay: 4
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 9b58810d0e320004d8988bab33813de0, type: 3}
+    Description: Gain 14 blocks. Draw a card.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 1
+      variable: 0
+      amount: 7
+      statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        trigger: 0
+    - type: 3
+      animation: 1
+      variable: 0
+      amount: 1
+      statusFactories: []
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 58
+    Name: Dagger Throw
+    manaCost: 6
+    delay: 3
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: dfee287de3205ab4caa1ede52ea23411, type: 3}
+    Description: Deal 4 times 6 damages.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      animation: 8
+      variable: 0
+      amount: 6
+      statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        trigger: 0
+    - type: 0
+      animation: 8
+      variable: 0
+      amount: 6
+      statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        trigger: 0
+    - type: 0
+      animation: 8
+      variable: 0
+      amount: 6
+      statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        trigger: 0
+    - type: 0
+      animation: 8
+      variable: 0
+      amount: 6
+      statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        trigger: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 58
+    Name: Preparation
+    manaCost: 12
+    delay: 2
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 02df63a06cd69144f9315df066c08433, type: 3}
+    Description: Lose 20 strength for 2 turns. Gain 14 strength.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      animation: 4
+      variable: 0
+      amount: 6
+      statusFactories:
+      - status: 6
+        value: 20
+        duration: 2
+        trigger: 0
+      - status: 7
+        value: 14
+        duration: -1
+        trigger: 2
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5

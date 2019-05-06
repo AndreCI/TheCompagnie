@@ -40,39 +40,47 @@ public abstract class Unit
                 }
             }return baseVal;
         } }
-    public virtual void Setup()
+    public virtual Unit Setup()
     {
         currentHealth = maxHealth;
         currentMana = maxMana;
         currentAction = maxAction;
-        level = new Leveling();
+        level = new Leveling(this);
+        Unit copy = GeneralUtils.Copy<Unit>(this);
+        return copy;
 
     }
 
     public int CurrentHealth {  get => currentHealth; set {
+            CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText((currentHealth - value).ToString(), (currentHealth - value) < 0 ? Color.red : Color.green);
+
             currentHealth = value;
             if (currentHealth > maxHealth) { currentHealth = maxHealth; }
             if (currentHealth < 0) { currentHealth = 0;}
-            NotifyUpdate();
-        } }
+            NotifyUpdate?.Invoke();
+        }
+    }
     public int CurrentMana
     {
         get => currentMana; set
         {
+
+            CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText((currentMana - value).ToString(), Color.blue);
             currentMana = value;
             if (currentMana > maxMana) { currentMana = maxMana; }
             if (currentMana < 0) { currentMana = 0; }
-            NotifyUpdate();
+            NotifyUpdate?.Invoke();
         }
     }
     public int CurrentAction
     {
         get => currentAction; set
         {
+            
             currentAction = value;
             if (currentAction > maxAction) { currentAction = maxAction; }
             if (currentAction < 0) { currentAction = 0; }
-            NotifyUpdate();
+            NotifyUpdate?.Invoke();
         }
     }
 
@@ -93,6 +101,7 @@ public abstract class Unit
             }
             return currentStatus;
         }
+        set { currentStatus = value; }
     }
 
     public void AddStatus(CombatStatus status)
@@ -102,7 +111,7 @@ public abstract class Unit
             currentStatus = new List<CombatStatus>();
         }
         currentStatus.Add(status);
-        NotifyUpdate();
+        NotifyUpdate?.Invoke();
     }
 
     public void RemoveStatus(CombatStatus status)
@@ -115,9 +124,9 @@ public abstract class Unit
         {
             currentStatus.Remove(status);
         }
-        NotifyUpdate();
+        NotifyUpdate?.Invoke();
     }
-        public CombatUnitDeck GetNewDeck()
+    public CombatUnitDeck GetNewDeck()
     {
         return persistentDeck.GenerateCombatDeck();
     }
@@ -132,15 +141,20 @@ public abstract class Unit
             {
                 amount = 0;
                 cs.value -= 1;
-                cs.CheckUpdate();
+                cs.CheckUpdate(forceAnimation:true);
+
+                CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText("Parry", Color.grey);
                 return;
             }
             if(cs.status == CombatStatus.STATUS.BLOCK)
             {
                 cs.value -= amount;
-                if(cs.value < 0) { amount = -1 * cs.value; }
-                else { amount = 0; }
-                cs.CheckUpdate();
+                if(cs.value < 0) { amount = -1 * cs.value; cs.value = 0; }
+                else
+                {
+                    CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText(amount.ToString(), Color.gray);
+                    amount = 0; }
+                cs.CheckUpdate(forceAnimation:true);
             }
         }
         if (amount > 0)

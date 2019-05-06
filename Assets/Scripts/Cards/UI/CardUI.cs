@@ -72,6 +72,8 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATPLAY);
+
         CardSelector.Instance.ToggleSelection(card);
     }
 
@@ -157,6 +159,11 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         }
         if (target != null && target.Count > 0) 
         {
+            TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATENDTURN);
+            if (card.manaCost > 0)
+            {
+                TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATMANA);
+            }
             Play(target.Select(x=>x.unit).ToList());
         }
 
@@ -165,6 +172,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     public void OnPointerEnter(PointerEventData eventData)
     {
         UnitSelector.Instance.ForceSelection(new List<Unit> { card.owner }, UnitSelector.SELECTION_MODE.SELECT);
+
     }
 
     public void OnPointerExit(PointerEventData eventData)

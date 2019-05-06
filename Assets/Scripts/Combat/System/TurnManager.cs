@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
-    public float timeMin = 2f;
-    public float timePerEvent = 0.5f;
+    
+    private float fixedTimeMin = 10f;
+    private float fixedTimePerEvent = 1f;
+    [HideInInspector]
+    public float timeMin;
+    [HideInInspector]
+    public float timePerEvent;
 
     public Intent intent;
     public Button endTurnButton;
@@ -28,6 +34,8 @@ public class TurnManager : MonoBehaviour
 
     void Start()
     {
+        timeMin = fixedTimeMin * PlayerInfos.Instance.settings.timeSpeed;
+        timePerEvent = fixedTimePerEvent * PlayerInfos.Instance.settings.eventSpeed;
         timeSteps = new List<TimeStep>(timeHolder.GetComponentsInChildren<TimeStep>());
         timeSteps.Sort((x, y) => x.index.CompareTo(y.index));
         registeredEvents = new List<Queue<CombatEvent>>();
@@ -60,7 +68,26 @@ public class TurnManager : MonoBehaviour
         newEvent.intent = newIntent;
        
     }
-
+    /*
+    public void RemoveAllEvent(Unit removed)
+    {
+        List<Queue<CombatEvent>> newRegisteredEvents = new List<Queue<CombatEvent>>();
+        foreach (Queue<CombatEvent> events in registeredEvents)
+        {
+            Queue<CombatEvent> newEvents = new Queue<CombatEvent>();
+            newEvents = events.
+            while (events.Count > 0)
+            {
+                CombatEvent e = events.Dequeue();
+                if(e.source != removed)
+                {
+                    newEvents.Enqueue(e);
+                }
+            }
+            newEvents.
+        }
+    }
+    */
     /*Turn slicing:
      * 1) Effect Phase
      * 2) Draw Phase
@@ -69,10 +96,21 @@ public class TurnManager : MonoBehaviour
      */
     public void StartTurn()
     {
+        if(CombatManager.Instance.enemies.Count == 0) { CombatManager.Instance.Win(); return; }
+        timeMin = fixedTimeMin * PlayerInfos.Instance.settings.timeSpeed;
+        timePerEvent = fixedTimePerEvent * PlayerInfos.Instance.settings.eventSpeed;
+        foreach (UnitUI ui in CombatManager.Instance.enemiesUI)
+        {
+            ui.statusAnimator.ResetAll();
+        }
+        foreach (UnitUI ui in CombatManager.Instance.playersUI)
+        {
+            ui.statusAnimator.ResetAll();
+        }
         NotifyAll?.Invoke(GeneralUtils.SUBJECT_TRIGGER.START_OF_TURN);
         foreach(TimeStep timeStep in timeSteps)
         {
-            timeStep.Reset();
+            timeStep.Activate(timeMin/((float)timeSteps.Count * 2), backwards:true);
         }
         List<Card> drawnCards = CombatManager.Instance.compagnionDeck.DrawCards();
         Hand.Instance.AddToHand(drawnCards);
@@ -97,13 +135,18 @@ public class TurnManager : MonoBehaviour
         {
             yield return StartCoroutine(PerformTimeStep(i));
         }
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         CombatManager.Instance.AddEnemiesIntents();
+        yield return new WaitForSeconds(0.5f);
         StartTurn();
     }
 
     private IEnumerator PerformTimeStep(int i)
     {
+
+        timeMin = fixedTimeMin * PlayerInfos.Instance.settings.timeSpeed;
+        timePerEvent = fixedTimePerEvent * PlayerInfos.Instance.settings.eventSpeed;
+
         int eventNbr = registeredEvents[i].Count;
         currentDuration = Mathf.Max(eventNbr * timePerEvent, timeMin / (float)timeSteps.Count);
         NotifyAll?.Invoke(GeneralUtils.SUBJECT_TRIGGER.TIMESTEP_TICK);

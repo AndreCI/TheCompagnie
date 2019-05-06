@@ -50,12 +50,19 @@ namespace DuloGames.UI
 		/// The unassign event delegate.
 		/// </summary>
 		public OnUnassignEvent onUnassign = new OnUnassignEvent();
-		
-		/// <summary>
-		/// Gets the item info of the item assigned to this slot.
-		/// </summary>
-		/// <returns>The spell info.</returns>
-		public Card GetItemInfo()
+
+
+   /*     protected override void OnEnable()
+        {
+            onAssign = new OnAssignEvent();
+            onUnassign = new OnUnassignEvent();
+        }*/
+        /// <summary>
+        /// Gets the item info of the item assigned to this slot.
+        /// </summary>
+        /// <returns>The spell info.</returns>
+        /// 
+        public Card GetItemInfo()
 		{
 			return this.m_ItemInfo;
 		}
@@ -104,9 +111,11 @@ namespace DuloGames.UI
 			if (source is UIItemSlot)
 			{
 				UIItemSlot sourceSlot = source as UIItemSlot;
-				
-				if (sourceSlot != null)
-					return this.Assign(sourceSlot.GetItemInfo());
+                if (sourceSlot != null)
+                {
+                    if (!sourceSlot.DragEnded) { sourceSlot.OnEndDrag(null); }
+                    return this.Assign(sourceSlot.GetItemInfo());
+                }
 			}
 			else if (source is UIEquipSlot)
 			{
@@ -128,12 +137,12 @@ namespace DuloGames.UI
 			// Remove the icon
 			base.Unassign();
 			
-			// Clear the spell info
-			this.m_ItemInfo = null;
-			
 			// Invoke the on unassign event
 			if (this.onUnassign != null)
 				this.onUnassign.Invoke(this);
+			// Clear the spell info
+			this.m_ItemInfo = null;
+			
 		}
 		
 		/// <summary>
@@ -257,12 +266,12 @@ namespace DuloGames.UI
                 // Show the tooltip
 
                 //UITooltip.Show();
-                this.transform.parent.parent.parent.parent.parent.GetComponentInParent<PartyMenu>().ShowCardHolder(this.m_ItemInfo);
+                PlayerInfos.Instance.unitsWindow.ShowCardHolder(this.m_ItemInfo);
 			}
 			else
 			{
                 // Hide the tooltip
-                this.transform.parent.parent.parent.parent.parent.GetComponentInParent<PartyMenu>().HideCardHolder();
+                PlayerInfos.Instance.unitsWindow.HideCardHolder();
                 //UITooltip.Hide();
             }
         }

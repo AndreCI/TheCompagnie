@@ -4,12 +4,15 @@ using System.Linq;
 using System;
 
 public class CardDatabase : ScriptableObject
-    {
-    public enum CARDCLASS { CRUSADER, ALCHEMIST, WOLF, ABOMINATION, GLOBAL};
+{
+   public enum RARITY {NONE, STARTER, COMMON };
+
+    public enum CARDCLASS { CRUSADER, ALCHEMIST, WOLF, ABOMINATION, GLOBAL, WARRIOR};
 
 
     public string Name;
     public CARDCLASS cardClass;
+    public RARITY rarityLevel;
     public List<CardDatabase> childrenDatabase;
         public Card[] items;
 
@@ -39,13 +42,14 @@ public class CardDatabase : ScriptableObject
             {
                 card.databasePath = Name;
                 card.cardClass = cardClass;
+                card.rarity = rarityLevel;
             }
         }
     }
 
-    public IEnumerable<Card> GetCardsFromClass(CARDCLASS cClass)
+    public IEnumerable<Card> GetCardsFromClass(CARDCLASS cClass, RARITY rarity = RARITY.NONE)
     {
-        if(cardClass == cClass)
+        if(childrenDatabase.Count == 0 && cardClass == cClass && (rarity == rarityLevel || rarity == RARITY.NONE))
         {
             return items;
         }
@@ -57,7 +61,7 @@ public class CardDatabase : ScriptableObject
             List<Card> cards = new List<Card>();
             foreach(CardDatabase database in childrenDatabase)
             {
-                cards.AddRange(database.GetCardsFromClass(cClass));
+                cards.AddRange(database.GetCardsFromClass(cClass, rarity));
             }
             return cards; 
         }

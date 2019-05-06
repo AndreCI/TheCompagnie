@@ -15,7 +15,7 @@ public class PartyMenu : MonoBehaviour
     public Button levelUp;
     public Image image;
     public DeckDisplayUI deckDisplay;
-    public DeckDisplayUI levelUpDisplay;
+    public GettableCardsDisplay levelUpDisplay;
 
     public CardUI cardHolder;
 
@@ -24,7 +24,7 @@ public class PartyMenu : MonoBehaviour
         
     }
 
-    public void SetInfos(IEnumerable<Unit> units = null)
+    public void SetInfos(IEnumerable<Unit> units = null, IDeck deck=null)
     {
         if(units == null || units.Count() == 0) { units = PlayerInfos.Instance.compagnions; }
 
@@ -33,16 +33,19 @@ public class PartyMenu : MonoBehaviour
         if (portrait != null)
         {
             portrait.Setup(unit);
+            if (portrait.talentPoints != null) { portrait.talentPoints.text = unit.level.talentPoints.ToString(); }
         }
         //Level up setup
-        if(levelUp != null)
+        if (levelUp != null)
         {
             levelUp.interactable = unit.level.talentPoints > 0;
         }
         if(image != null) { image.sprite = unit.combatSprite; }
         //Deck display setup
-        
-        deckDisplay.Setup(PlayerInfos.Instance.persistentPartyDeck.GetCards(units), 0);// PlayerInfos.Instance.persistentPartyDeck.GetCardSlots(units));
+        units = new List<Unit>(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT));
+        deckDisplay.Setup(deck ?? PlayerInfos.Instance.persistentPartyDeck.GetDeck(unit));
+        TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.PARTYMENU);
+
 
     }
     private void OnDestroy()
@@ -54,7 +57,12 @@ public class PartyMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        SetInfos(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT));
+        IEnumerable<Unit> selected = UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT);
+        if(!selected.All(x=>x.GetType() == typeof(Compagnion)))
+        {
+            selected = null;
+        }
+        SetInfos(selected);
     }
     public void ShowCardHolder(Card card)
     {
@@ -69,6 +77,13 @@ public class PartyMenu : MonoBehaviour
     public void ShowLevelUp()
     {
         levelUpDisplay.gameObject.SetActive(true);
-        levelUpDisplay.Setup(PlayerInfos.Instance.cardDatabase.GetRandomCards(3, PlayerInfos.Instance.cardDatabase.GetCardsFromClass(unit.availableCards)));
+        levelUpDisplay.Setup((unit as Compagnion).DiscoverCard());
+        unit.level.talentPoints -= 1;
+        if(portrait != null && portrait.talentPoints != null) { portrait.talentPoints.text = unit.level.talentPoints.ToString(); }
+
+        if (levelUp != null)
+        {
+            levelUp.interactable = unit.level.talentPoints > 0;
+        }
     }
 }

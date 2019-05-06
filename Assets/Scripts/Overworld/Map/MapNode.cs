@@ -7,20 +7,53 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class MapNode : MonoBehaviour, IPointerDownHandler
+public class MapNode : MonoBehaviour
 {
+    public enum NODETYPE { COMBAT, EVENT};
     public List<MapNode> nextNodes;
-    public CombatNodeEvent nodeEvent;
+    public NODETYPE type;
     public Image icon;
+    public bool visited;
+    public Button button;
 
-
-    public void OnPointerDown(PointerEventData eventData)
+    public void Setup()
     {
-        if (nextNodes.Contains(PlayerInfos.Instance.currentPosition))
+        if (nextNodes.Contains(PlayerInfos.Instance.currentPosition) || visited)
         {
+            if(type == NODETYPE.COMBAT)
+            {
+                icon.sprite = OverworldMap.Instance.combat;
+            }else if(type == NODETYPE.EVENT)
+            {
+                icon.sprite = OverworldMap.Instance.unknown;
+            }
+            button.interactable = true;
+        }
+        else
+        {
+            icon.sprite = OverworldMap.Instance.locked;
+            button.interactable = false;
+        }
+        if (visited)
+        {
+            button.interactable = false;
+            icon.sprite = OverworldMap.Instance.visited;
+        }
+    }
+
+    public void OnClick()
+    {
+        if (button.interactable)
+        {
+            visited = true;
             PlayerInfos.Instance.currentPosition = this;
-            nodeEvent.Perform();
-            icon.color = Color.red;
+            if(type == NODETYPE.COMBAT)
+            {
+                OverworldMap.Instance.StartCombat();
+            }else if(type == NODETYPE.EVENT)
+            {
+                OverworldMap.Instance.StartEvent();
+            }
         }
     }
 }

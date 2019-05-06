@@ -11,6 +11,7 @@ public class Hand : UICardDropZone
 {
     public CardUI cardUI;
     public List<CardUI> cards;
+    private bool currentTurn;
     private static Hand instance;
     public static Hand Instance { get => instance; }
 
@@ -18,6 +19,7 @@ public class Hand : UICardDropZone
     {
         instance = this;
         cards = new List<CardUI>();
+        currentTurn = false;
     }
 
 
@@ -38,14 +40,15 @@ public class Hand : UICardDropZone
         UI.placeholderParent = transform;
         UI.transform.localScale = new Vector3(1f, 1f, 1f);
         cards.Add(UI);
-        UI.Playable = true;
+        UI.Playable = !currentTurn;
     }
 
-    public void SetLock(bool locked)
+    public void SetLock(bool locked_)
     {
+        currentTurn = locked_;
         foreach(CardUI card in cards)
         {
-            card.Playable = !locked;
+            card.Playable = !currentTurn;
         }
     }
 }

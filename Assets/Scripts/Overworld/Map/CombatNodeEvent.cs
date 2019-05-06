@@ -13,6 +13,6 @@ public class CombatNodeEvent : NodeEvent
 
     public override void Perform()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

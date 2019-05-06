@@ -15,17 +15,17 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     public ParticleSystem targetAnimation;
     public UnitPortrait portraitInfos;
 
-    public Animator test;
+    public StatusAnimator statusAnimator;
+    public SpriteRenderer effectSpriteRenderer;
+    public EffectAnimation currentAnimation;
 
     void Start()
     {
+       // currentAnimation = new List<EffectAnimation>();
         targeting = false;
         selectorNotified = true;
         CardSelector.Notify += SelectedCardUpdate;
-        if (test != null)
-        {
-        //    test.gameObject.SetActive(false);
-        }
+   
 
     }
 
@@ -64,11 +64,7 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.SELECT);
-        if (test != null)
-        {
-            test.Play("recover");
-           // test.gameObject.SetActive(true);
-        }
+        
     }
 
     private void SelectedUnitsUpdate(List<Unit> selectedUnits, UnitSelector.SELECTION_MODE mode)
@@ -115,6 +111,7 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     }
     public void SetInfos(Unit unit_)
     {
+        portraitInfos.gameObject.SetActive(true);
         unit = unit_;
         Image.sprite = unit_.combatSprite;
         //Image.preserveAspect = true;
@@ -124,6 +121,13 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
         partyDropZone = false;
         UpdateInfo();
     }
+
+    public void Disable()
+    {
+
+            portraitInfos.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+    }
     
     public void UpdateInfo()
     {
@@ -131,8 +135,15 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     }
     private void OnDestroy()
     {
-        unit.NotifyUpdate -= UpdateInfo;
-        UnitSelector.Notify -= this.SelectedUnitsUpdate;
-        CardSelector.Notify -= this.SelectedCardUpdate;
+        if (unit != null)
+        {
+            unit.NotifyUpdate -= UpdateInfo;
+            UnitSelector.Notify -= this.SelectedUnitsUpdate;
+            CardSelector.Notify -= this.SelectedCardUpdate;
+        }
+    }
+    private void FixedUpdate()
+    {
+        currentAnimation?.FixedUpdate(Time.fixedDeltaTime);
     }
 }

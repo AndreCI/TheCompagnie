@@ -28,6 +28,7 @@ public class CombatStatus
     public GeneralUtils.SUBJECT_TRIGGER trigger;
     public Unit target;
     public CombatStatusUI ui;
+    public StatusAnimator animator;
 
     public CombatStatus(STATUS status_, int value_, int duration_, GeneralUtils.SUBJECT_TRIGGER trigger_, Unit target_)
     {
@@ -37,10 +38,16 @@ public class CombatStatus
         duration = duration_;
         trigger = trigger_;
         target = target_;
+        animator = CombatManager.Instance.GetUnitUI(target).statusAnimator;
         TurnManager.NotifyAll += Notified;
         target.AddStatus(this);
        
     }
+
+    
+
+
+    
 
     public void Notified(GeneralUtils.SUBJECT_TRIGGER currentTrigger)
     {
@@ -78,6 +85,7 @@ public class CombatStatus
                     {
                         s.duration = Mathf.Max(s.duration, duration);
                         s.value = Mathf.Max(s.value, value);
+                        s.ui.UpdateData();
                         return false;
                     }
                 }
@@ -115,11 +123,15 @@ public class CombatStatus
         CheckUpdate();
     }
 
-    public void CheckUpdate()
+    public void CheckUpdate(bool forceAnimation = false)
     {
         ui.UpdateData();
-        if(value == 0 || duration <= 0)
+        if (animator != null && (trigger == GeneralUtils.SUBJECT_TRIGGER.START_OF_TURN || forceAnimation)) {
+            animator.PlayAnimation(status);
+        }
+        if(value <= 0 || (duration <= 0 && trigger != GeneralUtils.SUBJECT_TRIGGER.PERMANENT))
         {
+            if(status == STATUS.POISON && animator != null) { animator.ResetSpecific(status); }
             target.RemoveStatus(this);
             TurnManager.NotifyAll -= Notified;
             ui.Trigger(1f);
