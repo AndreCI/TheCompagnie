@@ -16,7 +16,8 @@ public class UnitSelectorTab : MonoBehaviour
     {
         tabs = new List<DuloGames.UI.UITab>(GetComponentsInChildren<DuloGames.UI.UITab>(true));
 
-        units = new List<Unit>(PlayerInfos.Instance.compagnions);
+        units = new List<Unit>((PlayerInfos.Instance?.compagnions ?? new List<Compagnion>()));
+        
         for(int i=0; i < tabs.Count; i++)
         {
             tabs[i].gameObject.SetActive(i < units.Count);
