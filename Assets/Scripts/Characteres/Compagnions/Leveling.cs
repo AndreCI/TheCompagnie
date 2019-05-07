@@ -53,6 +53,7 @@ public class Leveling
             }
             else if(currentLevel == 2)
             {
+                TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.ACTIONPOINT);
                 source.maxAction += 1;
                 talentPoints += 3;
                 source.persistentDeck.AddCardSlot();

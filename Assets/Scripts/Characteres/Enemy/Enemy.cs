@@ -12,6 +12,7 @@ public class Enemy : Unit
 
     public override Unit Setup()
     {
+        int deckSizeFactor = 3;
         Unit copy = base.Setup();
         List<Card> cards = new List<Card>();
         foreach (Card card in PlayerInfos.Instance.cardDatabase.GetCardsFromClass(availableCards))
@@ -44,7 +45,8 @@ public class Enemy : Unit
             {
                 i = 2;
             }
-            for (int j = 0; j < i; j++)
+
+            for (int j = 0; j < i * deckSizeFactor; j++)
             {
                 cards.Add(new Card(copy, card));
             }

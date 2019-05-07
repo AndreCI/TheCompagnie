@@ -61,3 +61,10 @@ You can see your team and learn more about it with the button "Party" and adjust
 Otherwise, you can click on the next node on the Overworld to start your first combat.
 
 Welcome to The Compagnie. This is currently an alpha version, build v0.1.
+Please note that this is far from a final build and that everything that you see here can be subject to change.
+It would help me a lot if you provide some feedback. In the meantime, I hope you enjoy this!
+
+
+BASIC FEEDBACK:
+More UI: see intent when dragging a card, alongside potential damage (greying health bar) and mana cost (greying mana bar). Present
+poison damage (green overlay Sts? dégradé suivant l'intensité?).

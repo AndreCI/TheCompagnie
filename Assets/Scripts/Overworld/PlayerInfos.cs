@@ -13,7 +13,6 @@ public class PlayerInfos : MonoBehaviour
     public static PlayerInfos Instance { get => _instance; }
 
     public PlayerSettings settings;
-    public CardCollection collection;
     public EffectDatabase effectDatabase;
     public CardDatabase cardDatabase;
     public CompagnionsDatabase compagnionsDatabase;
@@ -25,6 +24,7 @@ public class PlayerInfos : MonoBehaviour
     public PersistentPartyDeck persistentPartyDeck;
 
     public OverworldMap globalMap;
+    public GameObject gameOver;
 
     void Awake()
     {
@@ -55,7 +55,7 @@ public class PlayerInfos : MonoBehaviour
         persistentPartyDeck = new PersistentPartyDeck(compagnions, decks);
 
 
-
+        unitsWindow?.gameObject.SetActive(false);
     }
 
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
@@ -69,6 +69,7 @@ public class PlayerInfos : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+        
 
     }
 }

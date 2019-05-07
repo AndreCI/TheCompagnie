@@ -11,7 +11,7 @@ public class TutorialManager : MonoBehaviour
 {
     private static TutorialManager instance;
     public static TutorialManager Instance { get => instance; }
-    public enum TUTOTRIGGER { OVERWORLD, COMBAT, PARTYMENU, COMBATENDTURN, COMBATPLAY, COMBATATTACKED,COMBATWIN, COMBATMANA, WELCOME};
+    public enum TUTOTRIGGER { OVERWORLD, COMBAT, PARTYMENU, COMBATENDTURN, COMBATPLAY, COMBATATTACKED,COMBATWIN, COMBATMANA, WELCOME, ACTIONPOINT};
     public GameObject windows;
     public Text currentText;
     public Dictionary<TUTOTRIGGER, string> texts;
@@ -25,6 +25,7 @@ public class TutorialManager : MonoBehaviour
     public float currentTime;
     public Queue<String> tokenizedText;
     private string currentWord;
+    public bool deactivateTutorialScroll = false;
 
     private System.Random rdn;
     public void Start()
@@ -65,11 +66,18 @@ public class TutorialManager : MonoBehaviour
     {
         if (!status[trigger]){
             windows.gameObject.SetActive(true);
-            activated = true;
-            tokenizedText = new Queue<string>(texts[trigger].Split(' '));
-            currentText.text = tokenizedText.Dequeue();
-            currentWord = tokenizedText.Dequeue();
             current = trigger;
+            if (!deactivateTutorialScroll)
+            {
+                activated = true;
+                tokenizedText = new Queue<string>(texts[trigger].Split(' '));
+                currentText.text = tokenizedText.Dequeue();
+                currentWord = tokenizedText.Dequeue();
+            }
+            else
+            {
+                currentText.text = texts[trigger];
+            }
         }
     }
     
@@ -77,7 +85,10 @@ public class TutorialManager : MonoBehaviour
     {
         status[current] = true;
     }
-
+    public void DeactivateTutorialScroll(bool v)
+    {
+        deactivateTutorialScroll = v;
+    }
     public void ResetTuto()
     {
         foreach (TUTOTRIGGER trigger in Enum.GetValues(typeof(TUTOTRIGGER)))
@@ -101,26 +112,27 @@ public class TutorialManager : MonoBehaviour
             case TUTOTRIGGER.WELCOME:
                 return "Welcome to The Compagnie. This is currently an alpha version, build v0.1. \n" +
                     "Please note that this is far from a final build and that everything that you see here can be subject to change.\n"+
-                    "It would help me a lot if you provide some feedback.In the meantime, I hope you enjoy this!";
+                    "It would help me a lot if you provide some feedback. In the meantime, I hope you enjoy this!";
             case TUTOTRIGGER.OVERWORLD:
                 return "This is the Overworld. Right now, you are located on the bottom right of the map. \n" +
-                    "You can see your team and learn more about it with the button Party and adjust the settings with the button Menu on the top right. \n"+
-                    "Otherwise, you can click on the next node on the Overworld to start your first combat.";
+                    "You can click on the next node on the Overworld to start your first combat. \n" +
+                    "Otherwise, you can see your team and learn more about it with the button Party and adjust the settings with the button Menu on the top right.";
+                    
             case TUTOTRIGGER.PARTYMENU:
                 return "Here, you can see your compagnions, their health, mana and current experience points. Their cards are also displayed. \n" +
-                    "If you hover over them, you can see what they do. Finally, you can also discover new cards when you level up. Be sure to have " +
+                    "If you hover over them, you can see what they do.\n Finally, you can also discover new cards when you level up. Be sure to have " +
                     "enough room!";
             case TUTOTRIGGER.COMBAT:
                 return "You are under attack! You can defend yourself and defeat the enemies by playing cards each turn. The ennemies will also " +
                     "attack you!";
             case TUTOTRIGGER.COMBATENDTURN:
-                return "You are out of action! Each turn, you can play a limited number of cards. You gain 1 action point per turn (blue square on the top left)!\n" +
-                    "It's time to end the turn. Press end turn and see the action that you and the ennemies planned happend! Be sure to pay attention to the order in which the intents will go! \n" +
+                return "You are out of action! Each turn, you can play a limited number of cards. You gain 1 action point per turn!\n" +
+                    "It's time to end the turn. Press end turn and see the action that you and the ennemies planned happend! Pay attention to the order in which the intents will go! \n" +
                    "You can also explore the intent by hovering over them.";
 
             case TUTOTRIGGER.COMBATPLAY:
                 return "You can play a card by dragging it over a potential target (see the green sign). \n" +
-                    "You can see the speed of each card on it (bottom number). The bigger it is, the latter it will happens. It adds to your initiative (3) and so do enemies cards!";
+                    "You can see the delay of each card on it (bottom number). The bigger it is, the latter it will happens.";
                     
             case TUTOTRIGGER.COMBATWIN:
                 return "Congratulation! You just won a fight! \n" +
@@ -134,6 +146,9 @@ public class TutorialManager : MonoBehaviour
                 return "You just used mana! \n" +
                     "Mana is used to perform powerful attack. It is displayed as the top number on a card. Each turn, you gain 2 mana. Your current mana is represented as a blue bar.\n" +
                     "If you don't have enough mana, you won't be able to play the card.";
+            case TUTOTRIGGER.ACTIONPOINT:
+                return "You gained another action point placeholder! During combat, they are represented as blue square on the top left.\n Now you can bank " +
+                    "action point as you still gain 1 per turn if you decide to pass your turn.";
         }
         return "Tutorial text not found :( ";
     }

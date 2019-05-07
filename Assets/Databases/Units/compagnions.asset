@@ -28,5 +28,5 @@ MonoBehaviour:
       nextLevelThreshold: 5
       talentPoints: 0
       currentLevel: 0
-    baseSpeed: 2
-    currentSpeed: 2
+    baseSpeed: 0
+    currentSpeed: 0

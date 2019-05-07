@@ -90,6 +90,17 @@ public class CombatStatus
                     }
                 }
                 break;
+            case STATUS.BUFF_STR:
+                foreach(CombatStatus s in target.CurrentStatus)
+                {
+                    if(s.status == status && s.trigger == GeneralUtils.SUBJECT_TRIGGER.PERMANENT && trigger == GeneralUtils.SUBJECT_TRIGGER.PERMANENT)
+                    {
+                        s.value += value;
+                        s.ui.UpdateData();
+                        return false;
+                    }
+                }
+                break;
         }
 
         return true;

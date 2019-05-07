@@ -37,6 +37,7 @@ public class Compagnion : Unit
         copy.persistentDeck.AddCardSlot();
         copy.persistentDeck.AddCardSlot();
         copy.persistentDeck.AddCardSlot();
+        copy.id = Unit.currentId++;
         return copy;
     }
 
@@ -56,7 +57,7 @@ public class Compagnion : Unit
         base.TakeDamage(amount);
         if(currentHealth <= 0)
         {
-            PlayerInfos.Instance.Quit();
+            PlayerInfos.Instance.gameOver.SetActive(true);
         }
     }
 }

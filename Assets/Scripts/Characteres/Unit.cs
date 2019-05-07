@@ -24,7 +24,8 @@ public abstract class Unit
     public event InfoUpdate NotifyUpdate;
 
     public Leveling level;
-
+    public int id;
+    public static int currentId = 0;
     public int currentStrength { get
         {
             int baseVal = 0;
@@ -52,7 +53,7 @@ public abstract class Unit
     }
 
     public int CurrentHealth {  get => currentHealth; set {
-            CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText((currentHealth - value).ToString(), (currentHealth - value) < 0 ? Color.red : Color.green);
+            CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText((currentHealth - value).ToString(), (currentHealth - value) > 0 ? Color.red : Color.green);
 
             currentHealth = value;
             if (currentHealth > maxHealth) { currentHealth = maxHealth; }

@@ -23,7 +23,7 @@ public class TurnManager : MonoBehaviour
     public List<GridLayoutGroup> enemiesIntents;
     public List<GridLayoutGroup> compIntents;
     public float currentDuration = 0f;
-    private List<Queue<CombatEvent>> registeredEvents;
+    private List<List<CombatEvent>> registeredEvents;
     private static TurnManager instance;
     private List<GeneralUtils.SUBJECT_TRIGGER> triggers;
    // private List<List<Observer>> observers;
@@ -38,10 +38,10 @@ public class TurnManager : MonoBehaviour
         timePerEvent = fixedTimePerEvent * PlayerInfos.Instance.settings.eventSpeed;
         timeSteps = new List<TimeStep>(timeHolder.GetComponentsInChildren<TimeStep>());
         timeSteps.Sort((x, y) => x.index.CompareTo(y.index));
-        registeredEvents = new List<Queue<CombatEvent>>();
+        registeredEvents = new List<List<CombatEvent>>();
         for (int i = 0; i < 10; i++)
         {
-            registeredEvents.Add(new Queue<CombatEvent>());
+            registeredEvents.Add(new List<CombatEvent>());
         }
         triggers = new List<GeneralUtils.SUBJECT_TRIGGER>();
       //  observers = new List<List<Observer>>();
@@ -60,7 +60,7 @@ public class TurnManager : MonoBehaviour
     public void AddCombatEvent(CombatEvent newEvent)
     {
 
-        registeredEvents[newEvent.timeIndex].Enqueue(newEvent);
+        registeredEvents[newEvent.timeIndex].Add(newEvent);
         Intent newIntent = Instantiate(intent);
         List<GridLayoutGroup> intentsLayout = (newEvent.source.GetType() == typeof(Compagnion)) ? compIntents : enemiesIntents;
         newIntent.transform.SetParent(intentsLayout[newEvent.timeIndex].transform);
@@ -68,26 +68,22 @@ public class TurnManager : MonoBehaviour
         newEvent.intent = newIntent;
        
     }
-    /*
+    
     public void RemoveAllEvent(Unit removed)
     {
-        List<Queue<CombatEvent>> newRegisteredEvents = new List<Queue<CombatEvent>>();
-        foreach (Queue<CombatEvent> events in registeredEvents)
+        foreach (List<CombatEvent> revents in registeredEvents)
         {
-            Queue<CombatEvent> newEvents = new Queue<CombatEvent>();
-            newEvents = events.
-            while (events.Count > 0)
+            foreach(CombatEvent e in revents)
             {
-                CombatEvent e = events.Dequeue();
-                if(e.source != removed)
+                if(e.source == removed)
                 {
-                    newEvents.Enqueue(e);
+                    Destroy(e.intent.gameObject);
                 }
             }
-            newEvents.
+            revents.RemoveAll(x => x.source == removed);
         }
     }
-    */
+    
     /*Turn slicing:
      * 1) Effect Phase
      * 2) Draw Phase
@@ -96,6 +92,7 @@ public class TurnManager : MonoBehaviour
      */
     public void StartTurn()
     {
+        if (CombatManager.Instance.compagnions.All(x=>x.currentHealth <= 0)) { PlayerInfos.Instance.Quit(); }
         if(CombatManager.Instance.enemies.Count == 0) { CombatManager.Instance.Win(); return; }
         timeMin = fixedTimeMin * PlayerInfos.Instance.settings.timeSpeed;
         timePerEvent = fixedTimePerEvent * PlayerInfos.Instance.settings.eventSpeed;
@@ -153,7 +150,8 @@ public class TurnManager : MonoBehaviour
         timeSteps[i].Activate(currentDuration);
         while(registeredEvents[i].Count > 0)
         {
-            CombatEvent currentEvent = registeredEvents[i].Dequeue();
+            CombatEvent currentEvent = registeredEvents[i][registeredEvents[i].Count - 1];
+            registeredEvents[i].RemoveAt(registeredEvents[i].Count - 1);
             currentEvent.PerformEffect();
             currentEvent.intent.Trigger(timePerEvent);
             yield return new WaitForSeconds(timePerEvent);

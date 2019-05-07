@@ -13,6 +13,7 @@ public class SettingsMenu : MonoBehaviour
     public Slider volume;
     public Toggle resetTuto;
     public Toggle deactivateTUto;
+    public Toggle deactivateTutorialScroll;
 
     PlayerSettings settings;
     private void OnEnable()
@@ -44,6 +45,10 @@ public class SettingsMenu : MonoBehaviour
         if (deactivateTUto.isOn)
         {
             TutorialManager.Instance?.DeactivateTuto();
+        }
+        if (TutorialManager.Instance != null)
+        {
+            TutorialManager.Instance?.DeactivateTutorialScroll(deactivateTutorialScroll.isOn);
         }
         PlayerInfos.Instance.settings = settings;
     }

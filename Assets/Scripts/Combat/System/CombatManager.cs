@@ -86,6 +86,7 @@ public class CombatManager : MonoBehaviour
 
     public void OnUnitDeath(Enemy unit)
     {
+        TurnManager.Instance.RemoveAllEvent(unit);
          enemies.Remove(unit);
          enemiesUI.Find(x => x.unit == unit)?.gameObject.SetActive(false);
         
@@ -94,13 +95,14 @@ public class CombatManager : MonoBehaviour
     public void AddEnemiesIntents()
     {
         List<Card> cards = enemiesDeck.DrawCards(owners:enemies);
-        for(int i = 0; i < cards.Count; i ++)
+        foreach(Enemy e in enemies)
         {
-            Card card = cards[i];
-            if (card.manaCost > card.owner.CurrentMana)
+            enemiesDeck.Shuffle();
+            Card card = enemiesDeck.Draw(e as Unit);
+          /*  if (card.manaCost > card.owner.CurrentMana)
             {
                 card = enemiesDeck.Redraw(new List<Card> { card })[0];
-            }
+            }*/
             if (enemies.Contains((Enemy)card.owner))
             {
                 if (card.potential_target == Card.POTENTIAL_TARGET.ENEMIES)

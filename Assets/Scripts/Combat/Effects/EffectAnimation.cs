@@ -56,6 +56,7 @@ public class EffectAnimation
             if(index >= animationList.Count)
             {
                 playing = false;
+                renderer.sprite = null;
                 ui.currentAnimation = null;
 
             }

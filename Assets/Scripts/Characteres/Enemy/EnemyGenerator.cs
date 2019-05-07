@@ -42,6 +42,8 @@ public class EnemyGenerator : MonoBehaviour
         foreach(Enemy enemy in enemies)
         {
             Enemy copy = enemy.Setup() as Enemy;
+
+            copy.id = Unit.currentId++;
             copies.Add(copy);
             
         }

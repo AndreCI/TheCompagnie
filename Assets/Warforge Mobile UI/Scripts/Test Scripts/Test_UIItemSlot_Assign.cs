@@ -23,7 +23,7 @@ namespace DuloGames.UI
                 return;
             }
 
-            this.slot.Assign(PlayerInfos.Instance.collection.cards[0]);
+            this.slot.Assign(PlayerInfos.Instance.cardDatabase.Get(0));
             this.Destruct();
         }
 

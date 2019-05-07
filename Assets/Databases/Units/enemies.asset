@@ -26,8 +26,8 @@ MonoBehaviour:
       nextLevelThreshold: 0
       talentPoints: 0
       currentLevel: 0
-    baseSpeed: 1
-    currentSpeed: 1
+    baseSpeed: 0
+    currentSpeed: 0
     xpValue: 5
   - availableCards: 3
     maxHealth: 100
@@ -42,6 +42,6 @@ MonoBehaviour:
       nextLevelThreshold: 0
       talentPoints: 0
       currentLevel: 3
-    baseSpeed: 2
-    currentSpeed: 2
+    baseSpeed: 0
+    currentSpeed: 0
     xpValue: 8

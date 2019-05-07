@@ -84,7 +84,7 @@ public class CombatPartyDeck : CombatDeck
 
     public override void Shuffle(IEnumerable<Unit> owners = null)
     {
-                if (owners == null || (new List<Unit>(owners)).Count == 0)
+        if (owners == null || (new List<Unit>(owners)).Count == 0)
         {
             owners = owners_;
         }

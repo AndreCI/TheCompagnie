@@ -31,6 +31,7 @@ public abstract class CardDIsplayWindow : MonoBehaviour
         }
     }
 
+
     public virtual void Setup(List<Card> cards, int slotNumber = 0)
     {
         Clear();
