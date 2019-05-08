@@ -1,3 +1,16 @@
+POST DEMO TODO LIST:
+card ui
+hand ui
+multiple heros (color? around intent?)
+
+mage: fire & ice
+theme: combo damage (fire branch) / control support (mana management, ice slow enemies)
+tutorial on more complex card (fire combos based on burn effects?) and support/non dps usefulness (card drawn, mana regen, slow down
+to allow block to happen, etc.)
+Opens the channeling possibilities!
+
+group block?
+
 
 
 Variable:

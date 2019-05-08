@@ -1698,11 +1698,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6601840114226240008}
-  - component: {fileID: 6601840114226240003}
   - component: {fileID: 6601840114226240012}
   - component: {fileID: 6601840114226240013}
   - component: {fileID: 6601840114226240014}
-  - component: {fileID: 6601840114226240015}
   m_Layer: 5
   m_Name: Delay
   m_TagString: Untagged
@@ -1731,64 +1729,6 @@ RectTransform:
   m_AnchoredPosition: {x: 254, y: 478}
   m_SizeDelta: {x: 182, y: 182}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6601840114226240003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601840114226240009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3586bc509b21ba342a225296e6d60f14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 6601840115190174939}
-  m_CloneTarget: {fileID: 0}
-  m_DragEnabled: 1
-  m_DropEnabled: 1
-  m_SwapEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 6601840115190174939}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  DragEnded: 0
-  m_SlotGroup: 0
-  m_ID: 2
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: DuloGames.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: DuloGames.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onClick:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: DuloGames.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!222 &6601840114226240012
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1841,21 +1781,6 @@ MonoBehaviour:
   m_RadiusInPercents: 1
   m_Radius: 50
   m_Offset: {x: 0, y: 0}
---- !u!114 &6601840114226240015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601840114226240009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffc2cdd6e3425b0449655905c020bc2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slot: {fileID: 6601840114226240003}
-  spellDatabase: {fileID: 11400000, guid: cacdc738fd7665e478986589bfbb5266, type: 2}
-  assignSpell: 2
 --- !u!1 &6601840114258612200
 GameObject:
   m_ObjectHideFlags: 0
@@ -4624,7 +4549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6601840114888857197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6174,7 +6099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6601840115190174948
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8488,11 +8413,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6601840115685421415}
-  - component: {fileID: 6601840115685421402}
   - component: {fileID: 6601840115685421403}
   - component: {fileID: 6601840115685421412}
   - component: {fileID: 6601840115685421413}
-  - component: {fileID: 6601840115685421414}
   m_Layer: 5
   m_Name: Manacost
   m_TagString: Untagged
@@ -8521,64 +8444,6 @@ RectTransform:
   m_AnchoredPosition: {x: 254.09999, y: 219.00002}
   m_SizeDelta: {x: -378, y: -676}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6601840115685421402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601840115685421408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3586bc509b21ba342a225296e6d60f14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iconGraphic: {fileID: 6601840114888857196}
-  m_CloneTarget: {fileID: 0}
-  m_DragEnabled: 1
-  m_DropEnabled: 1
-  m_SwapEnabled: 1
-  m_IsStatic: 0
-  m_AllowThrowAway: 1
-  m_DragKeyModifier: 0
-  m_TooltipEnabled: 0
-  m_TooltipDelay: 1
-  hoverTransition: 0
-  hoverTargetGraphic: {fileID: 0}
-  hoverNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverHighlightColor: {r: 1, g: 1, b: 1, a: 1}
-  hoverTransitionDuration: 0.15
-  hoverOverrideSprite: {fileID: 0}
-  hoverNormalTrigger: Normal
-  hoverHighlightTrigger: Highlighted
-  pressTransition: 1
-  pressTargetGraphic: {fileID: 6601840114888857196}
-  pressNormalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressPressColor: {r: 0.6117, g: 0.6117, b: 0.6117, a: 1}
-  pressTransitionDuration: 0.15
-  pressOverrideSprite: {fileID: 0}
-  pressNormalTrigger: Normal
-  pressPressTrigger: Pressed
-  m_PressTransitionInstaOut: 0
-  m_PressForceHoverNormal: 0
-  DragEnded: 0
-  m_SlotGroup: 0
-  m_ID: 2
-  onAssign:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: DuloGames.UI.UISpellSlot+OnAssignEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onUnassign:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: DuloGames.UI.UISpellSlot+OnUnassignEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onClick:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: DuloGames.UI.UISpellSlot+OnClickEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!222 &6601840115685421403
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8631,21 +8496,6 @@ MonoBehaviour:
   m_RadiusInPercents: 1
   m_Radius: 50
   m_Offset: {x: 0, y: 0}
---- !u!114 &6601840115685421414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6601840115685421408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffc2cdd6e3425b0449655905c020bc2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slot: {fileID: 6601840115685421402}
-  spellDatabase: {fileID: 11400000, guid: cacdc738fd7665e478986589bfbb5266, type: 2}
-  assignSpell: 2
 --- !u!1 &6601840115691413751
 GameObject:
   m_ObjectHideFlags: 0

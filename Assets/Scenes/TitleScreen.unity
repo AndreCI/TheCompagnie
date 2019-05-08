@@ -1013,6 +1013,7 @@ MonoBehaviour:
   volume: {fileID: 0}
   resetTuto: {fileID: 0}
   deactivateTUto: {fileID: 0}
+  deactivateTutorialScroll: {fileID: 0}
 --- !u!225 &224877891
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2805,6 +2806,7 @@ MonoBehaviour:
   timePerWord: 0.12
   timePerLetter: 0.015
   currentTime: 0
+  deactivateTutorialScroll: 0
 --- !u!1 &965194312
 GameObject:
   m_ObjectHideFlags: 0
