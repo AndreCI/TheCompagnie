@@ -18,6 +18,7 @@ MonoBehaviour:
   childrenDatabase:
   - {fileID: 11400000, guid: 259372e91dd68d844841ca6c6bf78b36, type: 2}
   - {fileID: 11400000, guid: 2dc7c87d4079fc2418ec02209506426c, type: 2}
+  - {fileID: 11400000, guid: c6d5c3ee1dede854cb1686d3ef635f1e, type: 2}
   items:
   - ID: 396
     Name: Bite
@@ -31,6 +32,7 @@ MonoBehaviour:
     effects:
     - type: 0
       animation: 0
+      variable: 0
       amount: 20
       statusFactories: []
     rarity: 1
@@ -48,6 +50,7 @@ MonoBehaviour:
     effects:
     - type: 2
       animation: 0
+      variable: 0
       amount: 0
       statusFactories:
       - status: 1
@@ -69,6 +72,7 @@ MonoBehaviour:
     effects:
     - type: 2
       animation: 0
+      variable: 0
       amount: 0
       statusFactories:
       - status: 1
@@ -90,6 +94,7 @@ MonoBehaviour:
     effects:
     - type: 2
       animation: 0
+      variable: 0
       amount: 0
       statusFactories:
       - status: 1
@@ -98,6 +103,7 @@ MonoBehaviour:
         trigger: 0
     - type: 1
       animation: 0
+      variable: 0
       amount: 20
       statusFactories: []
     rarity: 0
@@ -115,6 +121,7 @@ MonoBehaviour:
     effects:
     - type: 2
       animation: 0
+      variable: 0
       amount: 0
       statusFactories:
       - status: 5
@@ -136,6 +143,7 @@ MonoBehaviour:
     effects:
     - type: 2
       animation: 0
+      variable: 0
       amount: 5
       statusFactories:
       - status: 0
@@ -161,6 +169,7 @@ MonoBehaviour:
     effects:
     - type: 2
       animation: 0
+      variable: 0
       amount: 0
       statusFactories:
       - status: 5

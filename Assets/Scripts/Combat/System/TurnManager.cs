@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
-    
+ 
+    public static bool timeIsRunning;
     private float fixedTimeMin = 10f;
     private float fixedTimePerEvent = 1f;
     [HideInInspector]
@@ -34,6 +35,8 @@ public class TurnManager : MonoBehaviour
 
     void Start()
     {
+        endTurnButton.interactable = true;
+        timeIsRunning = false;
         timeMin = fixedTimeMin * PlayerInfos.Instance.settings.timeSpeed;
         timePerEvent = fixedTimePerEvent * PlayerInfos.Instance.settings.eventSpeed;
         timeSteps = new List<TimeStep>(timeHolder.GetComponentsInChildren<TimeStep>());
@@ -117,12 +120,20 @@ public class TurnManager : MonoBehaviour
             u.GainAction(1);
             Hand.Instance.SetLock(false);
         }
+
+        timeIsRunning = false;
+        endTurnButton.interactable = true;
     }
 
     public void EndTurn()
     {
-        Hand.Instance.SetLock(true);
-        StartCoroutine(PerformTime());
+        if (!timeIsRunning)
+        {
+            endTurnButton.interactable = false;
+            timeIsRunning = true;
+            Hand.Instance.SetLock(true);
+            StartCoroutine(PerformTime());
+        }
     }
 
     private IEnumerator PerformTime()
