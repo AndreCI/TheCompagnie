@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity;
+using System.IO;
 using UnityEngine;
-
 [Serializable]
 public class PlayerSettings
 {
     public float timeSpeed;
     public float eventSpeed;
     public float themeVolume;
+    public bool disableTutorial;
 
 
     private static PlayerSettings instance;
@@ -19,16 +15,55 @@ public class PlayerSettings
     {
         get
         {
-            if(instance == null){ instance = new PlayerSettings(1f, 1f, 1f); }
+            if(instance == null){ SetInstance(); }
             return instance;
         }
     }
 
+    private static void SetInstance()
+    {
+        if (LoadFromDisk())
+        {
+            return;
+        }
+        instance = new PlayerSettings();
+        instance.WriteToDisk();
+    }
+
     private PlayerSettings(float timeSpeed_ = 1f, float eventSpeed_ = 1f, float themeVolume_=1f)
     {
+        
         timeSpeed = timeSpeed_;
         eventSpeed = eventSpeed_;
         themeVolume = themeVolume_;
+        disableTutorial = false;
+    }
+
+    private static bool LoadFromDisk()
+    
+        {
+            string path = "PlayerSettings.json";
+        if (File.Exists(path))
+        {
+
+            using (StreamReader r = new StreamReader(path))
+            {
+                string json = r.ReadToEnd();
+                instance = JsonUtility.FromJson<PlayerSettings>(json);
+                return true;
+            }
+        }
+        return false;
+        }
+
+    public void WriteToDisk()
+    {
+        string path = "PlayerSettings.json";
+        string result = JsonUtility.ToJson(this);
+        using(StreamWriter w = new StreamWriter(File.Open(path, FileMode.OpenOrCreate, FileAccess.ReadWrite)))
+        {
+            w.WriteLine(result);
+        }
     }
 
 }

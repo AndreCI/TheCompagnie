@@ -26,7 +26,6 @@ public class TutorialManager : MonoBehaviour
     public Queue<String> tokenizedText;
     private string currentWord;
     public bool deactivateTutorialScroll = false;
-    public bool deactivateTuto = false;
     public void Start()
     {
         status = new Dictionary<TUTOTRIGGER, bool>();
@@ -62,7 +61,7 @@ public class TutorialManager : MonoBehaviour
 
     public void Activate(TUTOTRIGGER trigger, bool forceNonScrolling=false)
     {
-        if (!status[trigger]){
+        if (!status[trigger] && !PlayerSettings.Instance.disableTutorial){
             windows.gameObject.SetActive(true);
             current = trigger;
             if (!deactivateTutorialScroll && !forceNonScrolling)
@@ -93,16 +92,12 @@ public class TutorialManager : MonoBehaviour
         {
             status[trigger] = false;
         }
-        deactivateTuto = false;
+        PlayerSettings.Instance.disableTutorial = false;
     }
 
     public void DeactivateTuto()
     {
-        deactivateTuto = true;
-        foreach (TUTOTRIGGER trigger in Enum.GetValues(typeof(TUTOTRIGGER)))
-        {
-            status[trigger] = true;
-        }
+        PlayerSettings.Instance.disableTutorial = true;
     }
 
     private string GetText(TUTOTRIGGER trigger)

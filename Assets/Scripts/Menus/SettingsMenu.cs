@@ -24,36 +24,33 @@ public class SettingsMenu : MonoBehaviour
 
     private void SetWindows()
     {
+
         float ts = settings.timeSpeed;
-        Debug.Log(ts);
-        ts = Mathf.Sqrt(ts);
-        Debug.Log(ts);
         ts -= 0.5f;
-        Debug.Log(ts);
         timeSpeed.value = ts;
-        Debug.Log(ts);
 
         ts = settings.eventSpeed;
-        Debug.Log(ts);
         ts = Mathf.Sqrt(ts);
-        Debug.Log(ts);
         ts -= 0.5f;
-        Debug.Log(ts);
         eventSpeed.value = ts;
-        Debug.Log(ts);
 
         ts = settings.themeVolume;
-        Debug.Log(ts);
         volume.value= ts;
 
+        resetTuto.isOn = false;
         
-        if (TutorialManager.Instance == null || TutorialManager.Instance.deactivateTuto)
+        if (TutorialManager.Instance == null || PlayerSettings.Instance.disableTutorial)
         {
-            deactivateTUto.SetIsOnWithoutNotify(true);
+            deactivateTUto.isOn = true;
+        }
+        else
+        {
+            deactivateTUto.isOn = false;
+
         }
         if (TutorialManager.Instance != null && TutorialManager.Instance.deactivateTutorialScroll)
         {
-            deactivateTutorialScroll.SetIsOnWithoutNotify(true);
+            deactivateTutorialScroll.isOn = true;
         }
     }
 
@@ -72,17 +69,22 @@ public class SettingsMenu : MonoBehaviour
         settings.themeVolume = ts;
         AudioManager.Instance.volume = ts;
 
-        if (resetTuto.isOn)
-        {
-            TutorialManager.Instance?.ResetTuto();
-        }
         if (deactivateTUto.isOn)
         {
             TutorialManager.Instance?.DeactivateTuto();
+        }
+        else
+        {
+            PlayerSettings.Instance.disableTutorial = false;
+        }
+        if (resetTuto.isOn)
+        {
+            TutorialManager.Instance?.ResetTuto();
         }
         if (TutorialManager.Instance != null)
         {
             TutorialManager.Instance?.DeactivateTutorialScroll(deactivateTutorialScroll.isOn);
         }
+        settings.WriteToDisk();
     }
 }
