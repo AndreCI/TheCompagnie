@@ -38,7 +38,7 @@ public class PlayerInfos : MonoBehaviour
 
         GameObject.DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
-        settings = new PlayerSettings(1f);
+        settings = PlayerSettings.Instance;
         List<Compagnion> originals = new List<Compagnion> { compagnionsDatabase.Get(0) };
         compagnions = new List<Compagnion>();
 

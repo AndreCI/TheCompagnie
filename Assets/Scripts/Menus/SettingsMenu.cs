@@ -18,10 +18,44 @@ public class SettingsMenu : MonoBehaviour
     PlayerSettings settings;
     private void OnEnable()
     {
-        settings = GeneralUtils.Copy<PlayerSettings>(PlayerInfos.Instance.settings);
+        settings = PlayerSettings.Instance;
+        SetWindows();
     }
 
- 
+    private void SetWindows()
+    {
+        float ts = settings.timeSpeed;
+        Debug.Log(ts);
+        ts = Mathf.Sqrt(ts);
+        Debug.Log(ts);
+        ts -= 0.5f;
+        Debug.Log(ts);
+        timeSpeed.value = ts;
+        Debug.Log(ts);
+
+        ts = settings.eventSpeed;
+        Debug.Log(ts);
+        ts = Mathf.Sqrt(ts);
+        Debug.Log(ts);
+        ts -= 0.5f;
+        Debug.Log(ts);
+        eventSpeed.value = ts;
+        Debug.Log(ts);
+
+        ts = settings.themeVolume;
+        Debug.Log(ts);
+        volume.value= ts;
+
+        
+        if (TutorialManager.Instance == null || TutorialManager.Instance.deactivateTuto)
+        {
+            deactivateTUto.SetIsOnWithoutNotify(true);
+        }
+        if (TutorialManager.Instance != null && TutorialManager.Instance.deactivateTutorialScroll)
+        {
+            deactivateTutorialScroll.SetIsOnWithoutNotify(true);
+        }
+    }
 
     public void SetSettings()
     {
@@ -50,6 +84,5 @@ public class SettingsMenu : MonoBehaviour
         {
             TutorialManager.Instance?.DeactivateTutorialScroll(deactivateTutorialScroll.isOn);
         }
-        PlayerInfos.Instance.settings = settings;
     }
 }

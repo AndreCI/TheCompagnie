@@ -20,14 +20,13 @@ public class TutorialManager : MonoBehaviour
     public TUTOTRIGGER current;
 
     private bool activated;
-    public float timePerWord = 0.12f;
-    public float timePerLetter = 0.015f;
+    public float timePerWord = 0.05f;
+    public float timePerLetter = 0.0f;
     public float currentTime;
     public Queue<String> tokenizedText;
     private string currentWord;
     public bool deactivateTutorialScroll = false;
-
-    private System.Random rdn;
+    public bool deactivateTuto = false;
     public void Start()
     {
         status = new Dictionary<TUTOTRIGGER, bool>();
@@ -39,9 +38,8 @@ public class TutorialManager : MonoBehaviour
             texts.Add(trigger, GetText(trigger));
         }
         instance = this;
-        rdn = new System.Random();
         DontDestroyOnLoad(gameObject);
-        Activate(TUTOTRIGGER.WELCOME);
+        Activate(TUTOTRIGGER.WELCOME, forceNonScrolling:true);
     }
 
     public void Update()
@@ -51,7 +49,7 @@ public class TutorialManager : MonoBehaviour
             currentTime += (Time.deltaTime);// + rdn.Next(-1, 1));
             if ((currentTime) > timePerWord + currentWord.Count() * timePerLetter)
             {
-                currentTime = 0f;
+                currentTime -= timePerWord + currentWord.Count() * timePerLetter;
                 currentText.text += " " + currentWord;
                 currentWord = tokenizedText.Dequeue();
             }
@@ -62,12 +60,12 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    public void Activate(TUTOTRIGGER trigger)
+    public void Activate(TUTOTRIGGER trigger, bool forceNonScrolling=false)
     {
         if (!status[trigger]){
             windows.gameObject.SetActive(true);
             current = trigger;
-            if (!deactivateTutorialScroll)
+            if (!deactivateTutorialScroll && !forceNonScrolling)
             {
                 activated = true;
                 tokenizedText = new Queue<string>(texts[trigger].Split(' '));
@@ -95,10 +93,12 @@ public class TutorialManager : MonoBehaviour
         {
             status[trigger] = false;
         }
+        deactivateTuto = false;
     }
 
     public void DeactivateTuto()
     {
+        deactivateTuto = true;
         foreach (TUTOTRIGGER trigger in Enum.GetValues(typeof(TUTOTRIGGER)))
         {
             status[trigger] = true;
