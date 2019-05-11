@@ -11,7 +11,7 @@ using ArrayExtensions;
 public static class GeneralUtils
     {
         private static readonly MethodInfo CloneMethod = typeof(Object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
-    public enum SUBJECT_TRIGGER { START_OF_TURN, TIMESTEP_TICK, PERMANENT};
+    public enum SUBJECT_TRIGGER { START_OF_TURN, TIMESTEP_TICK, NONE };
 
         public static bool IsPrimitive(this Type type)
         {

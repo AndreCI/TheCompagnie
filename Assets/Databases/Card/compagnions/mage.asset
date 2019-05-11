@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: mage
+  m_EditorClassIdentifier: 
+  Name: Mage
+  cardClass: 1
+  rarityLevel: 0
+  childrenDatabase:
+  - {fileID: 11400000, guid: 19ca669490f7a6d4da376fe0d305131d, type: 2}
+  - {fileID: 11400000, guid: 759e1ece90bb5f84db61ee3edf7b84e8, type: 2}
+  items:
+  - ID: 279
+    Name: Fire Blast
+    manaCost: 2
+    delay: 3
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: c6d6d59efe2287e4f8a8a5a5d1b14f2d, type: 3}
+    Description: Deal 5 damage and apply 6 burns for 3 turns.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 10
+      variable: 0
+      amount: 5
+      statusFactories: []
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 0
+      statusFactories:
+      - status: 3
+        value: 6
+        duration: 3
+        trigger: 0
+    rarity: 1
+    databasePath: Mage_start/Mage/COMPAGNION/All
+    cardClass: 1
+  - ID: 279
+    Name: Barrier
+    manaCost: 0
+    delay: 2
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 60d1e054a6d9a5b4cba34171bc6a9717, type: 3}
+    Description: Gain 14 blocks.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 1
+      variable: 0
+      amount: 0
+      statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        trigger: 0
+    rarity: 1
+    databasePath: Mage_start/Mage/COMPAGNION/All
+    cardClass: 1
+  - ID: 279
+    Name: Time Shift
+    manaCost: 0
+    delay: 2
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 4b1dbc4cd4feaa54d9ab567fb73eb4d4, type: 3}
+    Description: Retard an enemys intent by 2. Gain 6 mana. Draw 2 cards.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 5
+      alternative: 0
+      condition: 0
+      animation: 9
+      variable: 0
+      amount: 2
+      statusFactories: []
+    - type: 4
+      alternative: 1
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 6
+      statusFactories: []
+    - type: 3
+      alternative: 1
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 2
+      statusFactories: []
+    rarity: 1
+    databasePath: Mage_start/Mage/COMPAGNION/All
+    cardClass: 1
+  - ID: 279
+    Name: Consume
+    manaCost: 12
+    delay: 6
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 4634c54f0589cb949865708f4f973eaa, type: 3}
+    Description: Deal 20 damage per burn status
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 11
+      variable: 2
+      amount: 20
+      statusFactories: []
+    rarity: 1
+    databasePath: Mage_start/Mage/COMPAGNION/All
+    cardClass: 1

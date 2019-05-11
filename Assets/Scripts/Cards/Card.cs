@@ -25,6 +25,8 @@ public class Card
     public bool multipleTarget;
     public POTENTIAL_TARGET potential_target;
     public List<CombatEffect> effects;
+    public bool channel = false;
+    public int channelLenght;
 
     [Header("Database infos")]
     public CardDatabase.RARITY rarity;
@@ -55,6 +57,8 @@ public class Card
         multipleTarget = baseCard.multipleTarget;
         potential_target = baseCard.potential_target;
         effects = new List<CombatEffect>(baseCard.effects);
+        channel = baseCard.channel;
+        channelLenght = baseCard.channelLenght;
         rarity = baseCard.rarity;
         databasePath = baseCard.databasePath;
         cardClass = baseCard.cardClass;
@@ -65,16 +69,27 @@ public class Card
 
     public virtual void Play(List<Unit> targets)
     {
-        owner.CurrentMana -= manaCost;
         owner.CurrentAction -= actionCost;
-        int timeIndex = owner.currentSpeed + delay;
-        if (timeIndex > 9) { timeIndex = 9; }
-        foreach (Unit target in targets)
+        if (!channel) { 
+            AddEvent(owner.currentSpeed + delay, targets);
+        }
+        else
         {
-            CombatEvent cardEvent = new CombatEvent(owner, target, timeIndex, effects, this);
-            TurnManager.Instance.AddCombatEvent(cardEvent);
+            for(int i = 0; i < channelLenght; i++)
+            {
+                AddEvent(owner.currentSpeed + delay + i, targets);
+            }
         }
         
+        
+    }
+
+    private void AddEvent(int timeIndex, List<Unit> targets)
+    {
+        owner.CurrentMana -= manaCost;
+       // if (timeIndex > 9) { timeIndex = 9; }
+        CombatEvent cardEvent = new CombatEvent(owner, targets, timeIndex, effects, this, channel);
+        TurnManager.Instance.AddCombatEvent(cardEvent);
     }
 
 

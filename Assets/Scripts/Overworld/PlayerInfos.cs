@@ -39,23 +39,24 @@ public class PlayerInfos : MonoBehaviour
         GameObject.DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
         settings = PlayerSettings.Instance;
-        List<Compagnion> originals = new List<Compagnion> { compagnionsDatabase.Get(0) };
         compagnions = new List<Compagnion>();
 
         cardDatabase.Setup();
         animationDatabase.Setup();
-        List<PersistentUnitDeck> decks = new List<PersistentUnitDeck>();
-        foreach(Compagnion o in originals)
-        {
-            Compagnion c = o.Setup() as Compagnion;
-            compagnions.Add(c);
-            decks.Add(c.persistentDeck);
-        }
 
-        persistentPartyDeck = new PersistentPartyDeck(compagnions, decks);
+        persistentPartyDeck = new PersistentPartyDeck();
 
+        AddCompagnion(compagnionsDatabase.Get(0));
 
+      //  AddCompagnion(compagnionsDatabase.Get(1));
         unitsWindow?.gameObject.SetActive(false);
+    }
+
+    public void AddCompagnion(Compagnion newComp)
+    {        
+        Compagnion c = newComp.Setup() as Compagnion;
+        compagnions.Add(c);
+        persistentPartyDeck.AddDeck(c, c.persistentDeck);
     }
 
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)

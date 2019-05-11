@@ -75,6 +75,11 @@ public class TutorialManager : MonoBehaviour
             {
                 currentText.text = texts[trigger];
             }
+        }else if(trigger == TUTOTRIGGER.WELCOME)
+        {
+            windows.gameObject.SetActive(true);
+            current = trigger;
+            currentText.text = texts[trigger];
         }
     }
     
@@ -105,7 +110,7 @@ public class TutorialManager : MonoBehaviour
         switch (trigger)
         {
             case TUTOTRIGGER.WELCOME:
-                return "Welcome to The Compagnie. This is currently an alpha version, build v0.1. \n" +
+                return "Welcome to The Compagnie. This is currently an alpha version, build v0.1.2. \n" +
                     "Please note that this is far from a final build and that everything that you see here can be subject to change.\n"+
                     "It would help me a lot if you provide some feedback. In the meantime, I hope you enjoy this!";
             case TUTOTRIGGER.OVERWORLD:

@@ -12,9 +12,10 @@ public class TimeStep : MonoBehaviour
 {
     public int index;
     public Slider mask;
+    public Image alternateMask;
     public Image image;
-    public GridLayoutGroup enemiesIntents;
-    public GridLayoutGroup compIntents;
+    public StretchyGridLayoutGroup enemiesIntents;
+    public StretchyGridLayoutGroup compIntents;
     public float duration;
 
     public bool active;
@@ -31,23 +32,23 @@ public class TimeStep : MonoBehaviour
         if (active)
         {
             activeBackwards = false;
-            if(mask.value >= 1) {
+            if(alternateMask.fillAmount >= 1) {
                 active = false;
             }
             else
             {
-                mask.value += Time.deltaTime / duration;
+                alternateMask.fillAmount += Time.deltaTime / duration;
             }
         }
         else if (activeBackwards)
         {
-            if (mask.value <= 0)
+            if (alternateMask.fillAmount <= 0)
             {
                 activeBackwards = false;
             }
             else
             {
-                mask.value -= Time.deltaTime / duration;
+                alternateMask.fillAmount -= Time.deltaTime / duration;
             }
         }
     }
@@ -69,7 +70,7 @@ public class TimeStep : MonoBehaviour
     public void Reset()
     {
         active = false;
-        mask.value = 0;
+        alternateMask.fillAmount = 0;
     }
 
 

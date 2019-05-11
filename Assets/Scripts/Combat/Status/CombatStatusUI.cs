@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class CombatStatusUI : MonoBehaviour
+public class CombatStatusUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Image icon;
     public Image iconMask;
@@ -20,7 +21,7 @@ public class CombatStatusUI : MonoBehaviour
     private bool activated;
     [HideInInspector]
     public bool setDestroy;
-
+    [HideInInspector] private CombatStatusData data;
     private void Update()
     {
         if (activated)
@@ -44,9 +45,10 @@ public class CombatStatusUI : MonoBehaviour
     public void Setup(CombatStatus s)
     {
         combatStatus = s;
-        iconMask.sprite = PlayerInfos.Instance.effectDatabase.Get(s.status);
-        icon.sprite = PlayerInfos.Instance.effectDatabase.Get(s.status);
-        if (combatStatus.trigger == GeneralUtils.SUBJECT_TRIGGER.PERMANENT)
+        data = PlayerInfos.Instance.effectDatabase.Get(s.status);
+        iconMask.sprite = data.icon;
+        icon.sprite = data.icon;
+        if (s.permanent)
         {
             text2.transform.parent.parent.gameObject.SetActive(false);
         }
@@ -56,7 +58,7 @@ public class CombatStatusUI : MonoBehaviour
     public void UpdateData()
     {
         text1.text = combatStatus.value.ToString();
-        if (combatStatus.trigger != GeneralUtils.SUBJECT_TRIGGER.PERMANENT)
+        if (combatStatus.permanent)
         {
             text2.text = combatStatus.duration.ToString();
         }
@@ -72,4 +74,13 @@ public class CombatStatusUI : MonoBehaviour
         }
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        icon.sprite = data.highlightedSprite;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        icon.sprite = data.icon;
+    }
 }

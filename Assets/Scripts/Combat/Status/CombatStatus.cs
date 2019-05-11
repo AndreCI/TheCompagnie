@@ -25,19 +25,21 @@ public class CombatStatus
     public STATUS status;
     public int value;
     public int duration;
+    public bool permanent = false;
     public GeneralUtils.SUBJECT_TRIGGER trigger;
     public Unit target;
     public CombatStatusUI ui;
     public StatusAnimator animator;
 
-    public CombatStatus(STATUS status_, int value_, int duration_, GeneralUtils.SUBJECT_TRIGGER trigger_, Unit target_)
+    public CombatStatus(STATUS status_, int value_, int duration_, bool permanent_, GeneralUtils.SUBJECT_TRIGGER trigger_, Unit target_)
     {
-        if (!CheckStatus(status_, target_, duration_, value_, trigger_)) { return; }
+        if (!CheckStatus(status_, target_, duration_, value_, permanent_, trigger_)) { return; }
         status = status_;
         value = value_;
         duration = duration_;
         trigger = trigger_;
         target = target_;
+        permanent = permanent_;
         animator = CombatManager.Instance.GetUnitUI(target).statusAnimator;
         TurnManager.NotifyAll += Notified;
         target.AddStatus(this);
@@ -54,7 +56,7 @@ public class CombatStatus
         if (currentTrigger == trigger)
         {
             Apply();
-            duration -= 1;
+            if (!permanent) { duration -= 1; }
             CheckUpdate();
             if(ui != null)
             {
@@ -63,10 +65,20 @@ public class CombatStatus
             }
         }
     }
-    private bool CheckStatus(STATUS status, Unit target, int duration, int value, GeneralUtils.SUBJECT_TRIGGER trigger)
+    private bool CheckStatus(STATUS status, Unit target, int duration, int value, bool permenent, GeneralUtils.SUBJECT_TRIGGER trigger)
     {
         switch (status)
         {
+            case STATUS.BLOCK:
+                foreach(CombatStatus s in target.CurrentStatus)
+                {
+                    if(s.status==status && s.trigger == trigger && s.duration == duration)
+                    {
+                        s.value += value;
+                        s.ui.UpdateData();
+                        return false;
+                    }
+                }break;
             case STATUS.BLEED:
                 foreach(CombatStatus s in target.CurrentStatus)
                 {
@@ -90,10 +102,10 @@ public class CombatStatus
                     }
                 }
                 break;
-            case STATUS.BUFF_STR:
+            case STATUS.BURN:
                 foreach(CombatStatus s in target.CurrentStatus)
                 {
-                    if(s.status == status && s.trigger == GeneralUtils.SUBJECT_TRIGGER.PERMANENT && trigger == GeneralUtils.SUBJECT_TRIGGER.PERMANENT)
+                    if(s.status == status && s.trigger == trigger && s.duration == duration)
                     {
                         s.value += value;
                         s.ui.UpdateData();
@@ -101,8 +113,32 @@ public class CombatStatus
                     }
                 }
                 break;
+            case STATUS.BUFF_STR:
+                foreach(CombatStatus s in target.CurrentStatus)
+                {
+                    if(s.status == status && (s.duration == duration || (s.permanent && permanent)))
+                    {
+                        s.value += value;
+                        s.ui.UpdateData();
+                        return false;
+                    }
+                }
+                break;
+            case STATUS.REGEN:
+                foreach(CombatStatus s in target.CurrentStatus)
+                {
+                    if(s.status == status && (
+                        (s.duration == duration) ||
+                        (s.permanent && permanent)
+                        ))
+                    {
+                        s.value += value;
+                        s.ui.UpdateData();
+                        return false;
+                    }
+                }break;
         }
-
+       
         return true;
     }
 
@@ -140,7 +176,7 @@ public class CombatStatus
         if (animator != null && (trigger == GeneralUtils.SUBJECT_TRIGGER.START_OF_TURN || forceAnimation)) {
             animator.PlayAnimation(status);
         }
-        if(value <= 0 || (duration <= 0 && trigger != GeneralUtils.SUBJECT_TRIGGER.PERMANENT))
+        if(value <= 0 || (duration <= 0 && !permanent))
         {
             if(status == STATUS.POISON && animator != null) { animator.ResetSpecific(status); }
             target.RemoveStatus(this);

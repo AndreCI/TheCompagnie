@@ -50,6 +50,8 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     public void Play(List<Unit> target)
     {
         card.Play(target);
+        Hand.Instance.cards.Remove(this);
+        Hand.Instance.SetCardUIs();
         CombatManager.Instance.compagnionDiscard.AddCard(card, card.owner);
         Destroy(gameObject);
     }
@@ -107,6 +109,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
 
+        ResetTransform();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -135,7 +138,13 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         placeholder.transform.SetSiblingIndex(newSiblingIndex);
 
     }
-
+    private void ResetTransform()
+    {
+        RectTransform current = GetComponentsInChildren<RectTransform>()[1];
+        current.localPosition = new Vector2(0f,
+            0f);
+        current.eulerAngles = (new Vector3(0f, 0f, 0f));
+    }
     public virtual void OnEndDrag(PointerEventData eventData)
     {
         CardSelector.Instance.UnselectOne();
@@ -166,19 +175,41 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
             }
             Play(target.Select(x=>x.unit).ToList());
         }
+        else
+        {
+            Hand.Instance.SetCardUIs();
+        }
 
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        UnitSelector.Instance.ForceSelection(new List<Unit> { card.owner }, UnitSelector.SELECTION_MODE.SELECT);
+       // UnitSelector.Instance.ForceSelection(new List<Unit> { card.owner }, UnitSelector.SELECTION_MODE.SELECT);
+        if (Hand.Instance.cards.Contains(this))
+        {
+            ResetTransform();
+            RectTransform current = GetComponentsInChildren<RectTransform>()[1];
+            current.localPosition = new Vector2(current.localPosition.x,
+                GetComponent<RectTransform>().sizeDelta.y * 0.1f + current.localPosition.y);
+            transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            CardUI UI = TurnManager.Instance.cardPlaceHolder;
+            UI.gameObject.SetActive(true);
+            UI.Setup(card);
+            UI.Playable = false;
+        }
 
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
 
-        UnitSelector.Instance.EndForceSelection(UnitSelector.SELECTION_MODE.SELECT);
+    //    UnitSelector.Instance.EndForceSelection(UnitSelector.SELECTION_MODE.SELECT);
+        if (Hand.Instance.cards.Contains(this))
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            Hand.Instance.SetCardUIs();
+            TurnManager.Instance.cardPlaceHolder.gameObject.SetActive(false);
+        }
     }
 }
 

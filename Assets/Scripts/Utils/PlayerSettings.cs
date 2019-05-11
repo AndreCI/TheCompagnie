@@ -49,7 +49,13 @@ public class PlayerSettings
             using (StreamReader r = new StreamReader(path))
             {
                 string json = r.ReadToEnd();
-                instance = JsonUtility.FromJson<PlayerSettings>(json);
+                try
+                {
+                    instance = JsonUtility.FromJson<PlayerSettings>(json);
+                }catch(ArgumentException e)
+                {
+                    return false;
+                }
                 return true;
             }
         }

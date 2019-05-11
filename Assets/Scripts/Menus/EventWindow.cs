@@ -16,7 +16,7 @@ public class EventWindow : MonoBehaviour
     public bool waiting;
     public float waitingTime;
     public float currentTime;
-
+    public bool addComp = false;
     public void Update()
     {
         if (waiting)
@@ -25,6 +25,7 @@ public class EventWindow : MonoBehaviour
             slider.value = currentTime / waitingTime;
             if(currentTime>= waitingTime)
             {
+                AddCompagnion();
                 waiting = false;
                 slider.value = 0;
                 wait.interactable = true;
@@ -39,5 +40,15 @@ public class EventWindow : MonoBehaviour
         leave.interactable = false;
         currentTime = 0;
         waiting = true;
+    }
+
+    public void AddCompagnion()
+    {
+        if (!addComp)
+        {
+            addComp = true;
+            PlayerInfos.Instance.AddCompagnion(PlayerInfos.Instance.compagnionsDatabase.Get(1));
+            leave.GetComponentInChildren<Text>().text = "Go";
+        }
     }
 }

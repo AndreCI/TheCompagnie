@@ -32,7 +32,8 @@ public class AudioManager : MonoBehaviour
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
         database.Setup();
         source = gameObject.AddComponent<AudioSource>();
-        volume = 1f;
+        volume_ = 1f;
+        volume = PlayerSettings.Instance.themeVolume;
         Play("TitleTheme");
     }
 

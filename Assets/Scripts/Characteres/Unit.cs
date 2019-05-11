@@ -53,7 +53,7 @@ public abstract class Unit
     }
 
     public int CurrentHealth {  get => currentHealth; set {
-            CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText((currentHealth - value).ToString(), (currentHealth - value) > 0 ? Color.red : Color.green);
+            CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText((value - currentHealth).ToString(), (value - currentHealth) < 0 ? Color.red : Color.green);
 
             currentHealth = value;
             if (currentHealth > maxHealth) { currentHealth = maxHealth; }
@@ -66,7 +66,7 @@ public abstract class Unit
         get => currentMana; set
         {
 
-            CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText((currentMana - value).ToString(), Color.blue);
+            CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText((value - currentMana).ToString(), Color.blue);
             currentMana = value;
             if (currentMana > maxMana) { currentMana = maxMana; }
             if (currentMana < 0) { currentMana = 0; }

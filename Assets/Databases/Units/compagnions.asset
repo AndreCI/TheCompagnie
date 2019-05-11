@@ -18,9 +18,9 @@ MonoBehaviour:
     maxMana: 0
     maxAction: 1
     currentHealth: 60
-    combatSprite: {fileID: -2161452722950810151, guid: 93cca47c5bc6c304fb4e49eb5d2560df,
+    combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
       type: 3}
-    portraitSprite: {fileID: -5365230053113113844, guid: 155684d45ac6a644099a9e9744cb63bf,
+    portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
       type: 3}
     unitName: Jack The Warrior
     level:
@@ -28,5 +28,26 @@ MonoBehaviour:
       nextLevelThreshold: 5
       talentPoints: 0
       currentLevel: 0
+    id: 0
     baseSpeed: 0
     currentSpeed: 0
+    startingWeights: 04000000030000000200000001000000
+  - availableCards: 1
+    maxHealth: 40
+    maxMana: 20
+    maxAction: 1
+    currentHealth: 40
+    combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+      type: 3}
+    unitName: Elana The Mage
+    level:
+      currentXP: 0
+      nextLevelThreshold: 5
+      talentPoints: 0
+      currentLevel: 0
+    id: 1
+    baseSpeed: 0
+    currentSpeed: 0
+    startingWeights: 04000000030000000200000001000000

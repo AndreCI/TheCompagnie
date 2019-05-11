@@ -19,6 +19,7 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private float duration;
     private bool activated;
 
+    public bool setToDestroy = true;
     private void Update()
     {
         if (activated)
@@ -27,7 +28,14 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 activated = false;
                 iconMask.fillAmount = 0f;
-                Destroy(gameObject);
+                if (setToDestroy)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    setToDestroy = true;
+                }
             }
             else
             {
@@ -35,13 +43,19 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
         }
     }
-    public void Setup(Card card_, CardUI ui_, CombatEvent linkedEvent_)
+    public void Setup(Card card_, CardUI ui_, CombatEvent linkedEvent_, bool inverseSprite)
     {
+        transform.localScale = new Vector3(1f, inverseSprite ? -1f : 1f, 1f);
         card = card_;
         UI = ui_;
         linkedEvent = linkedEvent_;
         icon.sprite = card.sprite;
         iconMask.sprite = card.sprite;
+        if (linkedEvent.channel)
+        {
+            iconMask.fillMethod = Image.FillMethod.Horizontal;
+        }
+        setToDestroy = true;
     }
 
     public void Trigger(float duration_)
@@ -57,7 +71,7 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         UI.gameObject.SetActive(true);
         UI.Setup(card);
         UI.Playable = false;
-        UnitSelector.Instance.ForceSelection(new List<Unit> { linkedEvent.target }, UnitSelector.SELECTION_MODE.TCURRENT);
+        UnitSelector.Instance.ForceSelection(linkedEvent.targets , UnitSelector.SELECTION_MODE.TCURRENT);
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -19,51 +19,157 @@ MonoBehaviour:
     timePerFrame: 0.085
     width: 5
     height: 5
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
   - type: 2
     animationSpriteList: {fileID: 21300000, guid: 71c58186304d5a542bb84c6431f6f572,
       type: 3}
     timePerFrame: 0.09
     width: 5
     height: 2
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
   - type: 4
     animationSpriteList: {fileID: 21300000, guid: b30bfda4fbf6e81489b704015d65f96f,
       type: 3}
     timePerFrame: 0.085
     width: 5
     height: 4
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
   - type: 0
     animationSpriteList: {fileID: 21300000, guid: 2305073c7e715624bb1d5d4eb3f08a57,
       type: 3}
     timePerFrame: 0.09
     width: 5
     height: 1
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
   - type: 3
     animationSpriteList: {fileID: 21300000, guid: 8713257a1c1725e4ba1dce7770c25ec2,
       type: 3}
     timePerFrame: 0.09
     width: 5
     height: 1
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
   - type: 5
     animationSpriteList: {fileID: 21300000, guid: ca525ec86022aa643a98fee15af86b24,
       type: 3}
     timePerFrame: 0.09
     width: 5
     height: 3
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
   - type: 6
     animationSpriteList: {fileID: 21300000, guid: f050aa66830b41347a33fb386870f69a,
       type: 3}
     timePerFrame: 0.09
     width: 5
     height: 5
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
   - type: 7
     animationSpriteList: {fileID: 21300000, guid: 8c6a18a6b1597f146a3a568d9bd41043,
       type: 3}
     timePerFrame: 0.09
     width: 5
     height: 2
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
   - type: 8
     animationSpriteList: {fileID: 21300000, guid: 90b95a0a99d9d224180676e076de5304,
       type: 3}
     timePerFrame: 0.09
     width: 5
     height: 2
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+  - type: 9
+    animationSpriteList: {fileID: 21300000, guid: 45b1a02621df67043a6e5708b7a300bf,
+      type: 3}
+    timePerFrame: 0.09
+    width: 5
+    height: 3
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+  - type: 10
+    animationSpriteList: {fileID: 21300000, guid: 7487ac1df80457443beedd39442309c9,
+      type: 3}
+    timePerFrame: 0.09
+    width: 5
+    height: 3
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+  - type: 11
+    animationSpriteList: {fileID: 21300000, guid: b8f11e166a87e63479b6b8f4cf4c7f87,
+      type: 3}
+    timePerFrame: 0.09
+    width: 5
+    height: 6
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+  - type: 12
+    animationSpriteList: {fileID: 21300000, guid: 49ff1cc5cb19b09409e9c40edb85ca76,
+      type: 3}
+    timePerFrame: 0.09
+    width: 5
+    height: 2
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+  - type: 13
+    animationSpriteList: {fileID: 21300000, guid: 47b75e363f079c74eaf1ef9e40c78253,
+      type: 3}
+    timePerFrame: 0.09
+    width: 5
+    height: 3
+    minWidth: 0
+    minHeight: 2
+    maxWidth: 0
+    maxHeight: 0
+  - type: 14
+    animationSpriteList: {fileID: 21300000, guid: 9fea13b5693b8c34ca6738cee6071af4,
+      type: 3}
+    timePerFrame: 0.09
+    width: 5
+    height: 3
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+  - type: 15
+    animationSpriteList: {fileID: 21300000, guid: 4f06575f940c2314c91a8a6d4f57f9f6,
+      type: 3}
+    timePerFrame: 0.09
+    width: 5
+    height: 6
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0

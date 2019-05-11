@@ -17,7 +17,7 @@ MonoBehaviour:
   rarityLevel: 2
   childrenDatabase: []
   items:
-  - ID: 140
+  - ID: 266
     Name: Brutal Hit
     manaCost: 10
     delay: 0
@@ -28,14 +28,18 @@ MonoBehaviour:
     potential_target: 0
     effects:
     - type: 0
+      alternative: 0
+      condition: 0
       animation: 0
       variable: 0
       amount: 30
       statusFactories: []
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 141
+  - ID: 267
     Name: Cleave
     manaCost: 0
     delay: 3
@@ -46,14 +50,18 @@ MonoBehaviour:
     potential_target: 0
     effects:
     - type: 0
+      alternative: 0
+      condition: 0
       animation: 3
       variable: 0
       amount: 16
       statusFactories: []
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 142
+  - ID: 268
     Name: Inflame
     manaCost: 7
     delay: 5
@@ -64,6 +72,8 @@ MonoBehaviour:
     potential_target: 1
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
       animation: 7
       variable: 0
       amount: 0
@@ -71,11 +81,14 @@ MonoBehaviour:
       - status: 7
         value: 6
         duration: -1
+        permanent: 1
         trigger: 2
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 142
+  - ID: 268
     Name: Burning pact
     manaCost: 4
     delay: 2
@@ -86,6 +99,8 @@ MonoBehaviour:
     potential_target: 1
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
       animation: 7
       variable: 0
       amount: 3
@@ -93,16 +108,21 @@ MonoBehaviour:
       - status: 3
         value: 5
         duration: 2
+        permanent: 0
         trigger: 0
     - type: 3
+      alternative: 0
+      condition: 0
       animation: 4
       variable: 0
       amount: 3
       statusFactories: []
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 142
+  - ID: 268
     Name: Fire Breathing
     manaCost: 15
     delay: 3
@@ -113,6 +133,8 @@ MonoBehaviour:
     potential_target: 0
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
       animation: 6
       variable: 0
       amount: 3
@@ -120,11 +142,14 @@ MonoBehaviour:
       - status: 3
         value: 12
         duration: 4
+        permanent: 0
         trigger: 0
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 142
+  - ID: 268
     Name: Dagger strike
     manaCost: 0
     delay: 1
@@ -135,14 +160,18 @@ MonoBehaviour:
     potential_target: 0
     effects:
     - type: 0
+      alternative: 0
+      condition: 0
       animation: 8
       variable: 0
       amount: 7
       statusFactories: []
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 142
+  - ID: 268
     Name: Raise shield
     manaCost: 6
     delay: 0
@@ -153,6 +182,8 @@ MonoBehaviour:
     potential_target: 1
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
       animation: 1
       variable: 0
       amount: 7
@@ -160,16 +191,21 @@ MonoBehaviour:
       - status: 1
         value: 14
         duration: 1
+        permanent: 0
         trigger: 0
     - type: 3
+      alternative: 0
+      condition: 0
       animation: 1
       variable: 0
       amount: 2
       statusFactories: []
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 142
+  - ID: 268
     Name: Daggers Throw
     manaCost: 6
     delay: 3
@@ -180,6 +216,8 @@ MonoBehaviour:
     potential_target: 0
     effects:
     - type: 0
+      alternative: 0
+      condition: 0
       animation: 8
       variable: 0
       amount: 6
@@ -187,8 +225,11 @@ MonoBehaviour:
       - status: 1
         value: 14
         duration: 1
+        permanent: 0
         trigger: 0
     - type: 0
+      alternative: 0
+      condition: 0
       animation: 8
       variable: 0
       amount: 6
@@ -196,8 +237,11 @@ MonoBehaviour:
       - status: 1
         value: 14
         duration: 1
+        permanent: 0
         trigger: 0
     - type: 0
+      alternative: 0
+      condition: 0
       animation: 8
       variable: 0
       amount: 6
@@ -205,8 +249,11 @@ MonoBehaviour:
       - status: 1
         value: 14
         duration: 1
+        permanent: 0
         trigger: 0
     - type: 0
+      alternative: 0
+      condition: 0
       animation: 8
       variable: 0
       amount: 6
@@ -214,11 +261,14 @@ MonoBehaviour:
       - status: 1
         value: 14
         duration: 1
+        permanent: 0
         trigger: 0
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 142
+  - ID: 268
     Name: Preparation
     manaCost: 12
     delay: 2
@@ -229,6 +279,8 @@ MonoBehaviour:
     potential_target: 1
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
       animation: 4
       variable: 0
       amount: 6
@@ -236,15 +288,19 @@ MonoBehaviour:
       - status: 6
         value: 20
         duration: 5
+        permanent: 0
         trigger: 0
       - status: 7
         value: 14
         duration: -1
+        permanent: 1
         trigger: 2
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 142
+  - ID: 268
     Name: Parry
     manaCost: 0
     delay: 2
@@ -255,6 +311,8 @@ MonoBehaviour:
     potential_target: 1
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
       animation: 4
       variable: 0
       amount: 1
@@ -262,16 +320,21 @@ MonoBehaviour:
       - status: 2
         value: 1
         duration: 4
+        permanent: 0
         trigger: 1
     - type: 3
+      alternative: 0
+      condition: 0
       animation: 4
       variable: 0
       amount: 1
       statusFactories: []
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 142
+  - ID: 268
     Name: Bandage Up
     manaCost: 0
     delay: 5
@@ -282,14 +345,18 @@ MonoBehaviour:
     potential_target: 1
     effects:
     - type: 1
+      alternative: 0
+      condition: 0
       animation: 4
       variable: 0
       amount: 14
       statusFactories: []
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 142
+  - ID: 268
     Name: Twin Strike
     manaCost: 0
     delay: 5
@@ -300,19 +367,25 @@ MonoBehaviour:
     potential_target: 0
     effects:
     - type: 0
+      alternative: 0
+      condition: 0
       animation: 3
       variable: 0
       amount: 14
       statusFactories: []
     - type: 0
+      alternative: 0
+      condition: 0
       animation: 3
       variable: 0
       amount: 14
       statusFactories: []
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 142
+  - ID: 268
     Name: Flex
     manaCost: 0
     delay: 0
@@ -323,6 +396,8 @@ MonoBehaviour:
     potential_target: 1
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
       animation: 4
       variable: 0
       amount: 0
@@ -330,12 +405,17 @@ MonoBehaviour:
       - status: 7
         value: 4
         duration: 1
+        permanent: 0
         trigger: 0
     - type: 3
+      alternative: 0
+      condition: 0
       animation: 4
       variable: 0
       amount: 1
       statusFactories: []
+    channel: 0
+    channelLenght: 0
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
     cardClass: 5

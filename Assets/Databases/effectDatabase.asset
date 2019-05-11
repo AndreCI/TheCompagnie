@@ -12,15 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201986ae631fcdb4ca6d64bbb435ca49, type: 3}
   m_Name: effectDatabase
   m_EditorClassIdentifier: 
-  status: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
-  sprites:
-  - {fileID: 2089316530606557333, guid: 0f01698d67d322048833746f43c903ad, type: 3}
-  - {fileID: 5186327475281492939, guid: 0f01698d67d322048833746f43c903ad, type: 3}
-  - {fileID: 7398067855506635011, guid: 0f01698d67d322048833746f43c903ad, type: 3}
-  - {fileID: 94592334007545441, guid: 0f01698d67d322048833746f43c903ad, type: 3}
-  - {fileID: -3562896200445918687, guid: 0f01698d67d322048833746f43c903ad, type: 3}
-  - {fileID: 258179898762336802, guid: 0f01698d67d322048833746f43c903ad, type: 3}
-  - {fileID: -7564531039104685784, guid: 0f01698d67d322048833746f43c903ad, type: 3}
-  - {fileID: 1051530557967077447, guid: 0f01698d67d322048833746f43c903ad, type: 3}
-  - {fileID: 3639649512935966595, guid: 0f01698d67d322048833746f43c903ad, type: 3}
-  - {fileID: -156692291178953082, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+  combatStatusDatas:
+  - status: 0
+    icon: {fileID: 2089316530606557333, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: 2089316530606557333, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+  - status: 1
+    icon: {fileID: 851372423496182684, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: -4684697020561092922, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+  - status: 2
+    icon: {fileID: 1069709688772938668, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: 2632801368705440561, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+  - status: 3
+    icon: {fileID: 94592334007545441, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: -2912744744730483065, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+  - status: 5
+    icon: {fileID: 258179898762336802, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: 8966057872377901990, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+  - status: 6
+    icon: {fileID: -7564531039104685784, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: -2387106143319436092, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+  - status: 7
+    icon: {fileID: 6604391179462050616, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: -7724225455362694082, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+  - status: 8
+    icon: {fileID: -3092383872609349401, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: 910873792039224631, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+  - status: 9
+    icon: {fileID: 0}
+    highlightedSprite: {fileID: 0}
+  - status: 0
+    icon: {fileID: 0}
+    highlightedSprite: {fileID: 0}

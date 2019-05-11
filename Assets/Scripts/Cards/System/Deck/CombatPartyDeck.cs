@@ -29,6 +29,20 @@ public class CombatPartyDeck : CombatDeck
         cards[owners_.IndexOf(owner)].AddCard(card);
     }
 
+    public void AddCards(List<Card> cards, List<Unit> owners_ = null)
+    {
+        if(owners_ == null)
+        {
+            owners_ = new List<Unit>(cards.Select(x => x.owner));
+        }
+        int i = 0;
+        foreach(Card c in cards)
+        {
+            AddCard(c, owners_[i]);
+            i++;
+        }
+    }
+
     public override Card Draw(Unit owner = null)
     {
         return cards[owners_.IndexOf(owner)].Draw();
@@ -45,10 +59,12 @@ public class CombatPartyDeck : CombatDeck
             owners = owners_;
         }
         List<Card> drawn = new List<Card>();
+        int j = 0;
         foreach(Unit owner in owners)
         {
             int i = owners_.IndexOf(owner);
-            drawn.AddRange(cards[i].DrawCards(new List<int> { number[i] }));
+            drawn.AddRange(cards[i].DrawCards(new List<int> { number[j] }));
+            j++;
         }
         return drawn;
     }

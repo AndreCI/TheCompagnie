@@ -7,7 +7,7 @@ public class CardDatabase : ScriptableObject
 {
    public enum RARITY {NONE, STARTER, COMMON };
 
-    public enum CARDCLASS { CRUSADER, ALCHEMIST, WOLF, ABOMINATION, GLOBAL, WARRIOR};
+    public enum CARDCLASS { CRUSADER, MAGE, WOLF, ABOMINATION, GLOBAL, WARRIOR};
 
 
     public string Name;

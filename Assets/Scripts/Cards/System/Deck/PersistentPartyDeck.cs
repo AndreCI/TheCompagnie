@@ -27,12 +27,24 @@ public class PersistentPartyDeck : PersistentDeck
                 i += cards[owners_.IndexOf(owner)].GetCardSlots();
             }
             return i;
-        } 
+        }
+    
+    public PersistentPartyDeck()
+    {
+        owners_ = new List<Unit>();
+        cards = new List<PersistentUnitDeck>();
+    }
 
     public PersistentPartyDeck(IEnumerable<Unit> owners, List<PersistentUnitDeck> decks)
     {
         owners_ = new List<Unit>(owners);
         cards = decks;
+    }
+
+    public void AddDeck(Unit added, PersistentUnitDeck deck)
+    {
+        owners_.Add(added);
+        cards.Add(deck);
     }
     public override void AddCard(Card card, Unit owner = null)
     {

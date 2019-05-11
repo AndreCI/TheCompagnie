@@ -19,24 +19,431 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a3057d64afab0484b978d621cb765496, type: 2}
   - {fileID: 11400000, guid: bfbb71653fc3fb04aaf67641ea8cbead, type: 2}
   items:
-  - ID: 308
+  - ID: 266
+    Name: Brutal Hit
+    manaCost: 10
+    delay: 0
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 14588b867fa78604c8d529067caf5296, type: 3}
+    Description: Deal 30 damages
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 30
+      statusFactories: []
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 267
+    Name: Cleave
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: f97562aae3f806c468422d760c993237, type: 3}
+    Description: Deal 16 damages to all enemies
+    multipleTarget: 1
+    potential_target: 0
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 3
+      variable: 0
+      amount: 16
+      statusFactories: []
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 268
+    Name: Inflame
+    manaCost: 7
+    delay: 5
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: dd1642a615d9b56458db33fc579e897e, type: 3}
+    Description: Gain 6 strength until end of combat.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 7
+      variable: 0
+      amount: 0
+      statusFactories:
+      - status: 7
+        value: 6
+        duration: -1
+        permanent: 1
+        trigger: 2
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 268
+    Name: Burning pact
+    manaCost: 4
+    delay: 2
+    actionCost: 0
+    sprite: {fileID: 21300000, guid: c5b7fdf6b6ac881418c5866982b395af, type: 3}
+    Description: Cost no action. Draw 3 cards. Apply 5 burn for 2 turns on self.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 7
+      variable: 0
+      amount: 3
+      statusFactories:
+      - status: 3
+        value: 5
+        duration: 2
+        permanent: 0
+        trigger: 0
+    - type: 3
+      alternative: 0
+      condition: 0
+      animation: 4
+      variable: 0
+      amount: 3
+      statusFactories: []
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 268
+    Name: Fire Breathing
+    manaCost: 15
+    delay: 3
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 295b0ed9fe67f0447bb21eac73690948, type: 3}
+    Description: Apply 12 burn for 4 turns to all enemies.
+    multipleTarget: 1
+    potential_target: 0
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 6
+      variable: 0
+      amount: 3
+      statusFactories:
+      - status: 3
+        value: 12
+        duration: 4
+        permanent: 0
+        trigger: 0
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 268
+    Name: Dagger strike
+    manaCost: 0
+    delay: 1
+    actionCost: 0
+    sprite: {fileID: 21300000, guid: 08943cc2cc5055b4d96e6aa54e72b7b7, type: 3}
+    Description: Deal 7 damages. Cost no action.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 8
+      variable: 0
+      amount: 7
+      statusFactories: []
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 268
+    Name: Raise shield
+    manaCost: 6
+    delay: 0
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 9b58810d0e320004d8988bab33813de0, type: 3}
+    Description: Gain 4 blocks. Draw 2 cards.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 1
+      variable: 0
+      amount: 7
+      statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        permanent: 0
+        trigger: 0
+    - type: 3
+      alternative: 0
+      condition: 0
+      animation: 1
+      variable: 0
+      amount: 2
+      statusFactories: []
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 268
+    Name: Daggers Throw
+    manaCost: 6
+    delay: 3
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: dfee287de3205ab4caa1ede52ea23411, type: 3}
+    Description: Deal 4 times 6 damages.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 8
+      variable: 0
+      amount: 6
+      statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        permanent: 0
+        trigger: 0
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 8
+      variable: 0
+      amount: 6
+      statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        permanent: 0
+        trigger: 0
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 8
+      variable: 0
+      amount: 6
+      statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        permanent: 0
+        trigger: 0
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 8
+      variable: 0
+      amount: 6
+      statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        permanent: 0
+        trigger: 0
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 268
+    Name: Preparation
+    manaCost: 12
+    delay: 2
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 02df63a06cd69144f9315df066c08433, type: 3}
+    Description: Lose 20 strength for 5 turns. Gain 14 strength until end of combat.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 4
+      variable: 0
+      amount: 6
+      statusFactories:
+      - status: 6
+        value: 20
+        duration: 5
+        permanent: 0
+        trigger: 0
+      - status: 7
+        value: 14
+        duration: -1
+        permanent: 1
+        trigger: 2
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 268
+    Name: Parry
+    manaCost: 0
+    delay: 2
+    actionCost: 0
+    sprite: {fileID: 21300000, guid: 459f1c2a69f0a7244b62a4cc48f68e7a, type: 3}
+    Description: Gain 1 parry for 4 ticks. Draw a card. Cost no action.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 4
+      variable: 0
+      amount: 1
+      statusFactories:
+      - status: 2
+        value: 1
+        duration: 4
+        permanent: 0
+        trigger: 1
+    - type: 3
+      alternative: 0
+      condition: 0
+      animation: 4
+      variable: 0
+      amount: 1
+      statusFactories: []
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 268
+    Name: Bandage Up
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: 35a635c7f2f2fa24b9fdbe03cfddbb13, type: 3}
+    Description: Gain 14 heal.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 1
+      alternative: 0
+      condition: 0
+      animation: 4
+      variable: 0
+      amount: 14
+      statusFactories: []
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 268
+    Name: Twin Strike
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    sprite: {fileID: 21300000, guid: f556378adf3382f49bf317e20ad50f01, type: 3}
+    Description: Deal 14 damages twice.
+    multipleTarget: 0
+    potential_target: 0
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 3
+      variable: 0
+      amount: 14
+      statusFactories: []
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 3
+      variable: 0
+      amount: 14
+      statusFactories: []
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 268
+    Name: Flex
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    sprite: {fileID: 21300000, guid: 3e2958b2712e7eb48ae29f248dd06c69, type: 3}
+    Description: Gain 4 strength for 1 turn. Draw a card. Cost no action.
+    multipleTarget: 0
+    potential_target: 1
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 4
+      variable: 0
+      amount: 0
+      statusFactories:
+      - status: 7
+        value: 4
+        duration: 1
+        permanent: 0
+        trigger: 0
+    - type: 3
+      alternative: 0
+      condition: 0
+      animation: 4
+      variable: 0
+      amount: 1
+      statusFactories: []
+    channel: 0
+    channelLenght: 0
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+  - ID: 619
     Name: Strike
     manaCost: 0
     delay: 4
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 08943cc2cc5055b4d96e6aa54e72b7b7, type: 3}
+    sprite: {fileID: 21300000, guid: 94aac892adeabd64fbbc0afa00078d47, type: 3}
     Description: Deals 20 damages.
     multipleTarget: 0
     potential_target: 0
     effects:
     - type: 0
-      animation: 0
+      alternative: 0
+      condition: 0
+      animation: 3
+      variable: 0
       amount: 20
       statusFactories: []
+    channel: 0
+    channelLenght: 0
     rarity: 1
     databasePath: Warrior_Start/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 309
+  - ID: 620
     Name: Defend
     manaCost: 0
     delay: 3
@@ -47,38 +454,50 @@ MonoBehaviour:
     potential_target: 1
     effects:
     - type: 2
-      animation: 0
+      alternative: 0
+      condition: 0
+      animation: 1
+      variable: 0
       amount: 0
       statusFactories:
       - status: 1
         value: 18
         duration: 1
+        permanent: 0
         trigger: 0
+    channel: 0
+    channelLenght: 0
     rarity: 1
     databasePath: Warrior_Start/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 310
+  - ID: 621
     Name: Move Back
     manaCost: 0
     delay: 0
-    actionCost: 1
+    actionCost: 0
     sprite: {fileID: 21300000, guid: c0340de7e339fa24eab1f455b817b88c, type: 3}
-    Description: Gain 9 blocks.
+    Description: Gain 9 blocks. Cost no action.
     multipleTarget: 0
     potential_target: 1
     effects:
     - type: 2
-      animation: 0
+      alternative: 0
+      condition: 0
+      animation: 1
+      variable: 0
       amount: 0
       statusFactories:
       - status: 1
         value: 9
         duration: 1
+        permanent: 0
         trigger: 0
+    channel: 0
+    channelLenght: 0
     rarity: 1
     databasePath: Warrior_Start/Warrior/COMPAGNION/All
     cardClass: 5
-  - ID: 311
+  - ID: 622
     Name: Finishing Blow
     manaCost: 0
     delay: 6
@@ -89,13 +508,21 @@ MonoBehaviour:
     potential_target: 0
     effects:
     - type: 0
+      alternative: 0
+      condition: 0
       animation: 0
+      variable: 0
       amount: 20
       statusFactories: []
     - type: 0
+      alternative: 0
+      condition: 0
       animation: 0
-      amount: 20
+      variable: 1
+      amount: 5
       statusFactories: []
+    channel: 0
+    channelLenght: 0
     rarity: 1
     databasePath: Warrior_Start/Warrior/COMPAGNION/All
     cardClass: 5

@@ -77,7 +77,8 @@ public class CombatManager : MonoBehaviour
             c.CurrentAction = 0;
         }
         List<Card> drawnCards = compagnionDeck.DrawCards(new List<int> { 2, 2 }, compagnions);
-        Hand.Instance.AddToHand(drawnCards);
+        List<Card> returned = Hand.Instance.AddToHand(drawnCards);
+        compagnionDeck.AddCards(returned);
         AddEnemiesIntents();
         TurnManager.Instance.StartTurn();
         TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBAT);

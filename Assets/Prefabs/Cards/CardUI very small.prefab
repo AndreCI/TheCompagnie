@@ -206,7 +206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 96, y: 45.925003}
+  m_AnchoredPosition: {x: -85, y: 45.925003}
   m_SizeDelta: {x: -133.76999, y: -279.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &517589868328987854
@@ -631,7 +631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.32, y: 71.603}
+  m_AnchoredPosition: {x: 13, y: 71.603}
   m_SizeDelta: {x: -46.6, y: -227.81}
   m_Pivot: {x: 0.49999997, y: 0.5000002}
 --- !u!222 &6686242766738333011
@@ -5780,7 +5780,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 96, y: 110}
+  m_AnchoredPosition: {x: -85, y: 110}
   m_SizeDelta: {x: -133.77, y: -279.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6686242768143616969
@@ -9036,6 +9036,8 @@ MonoBehaviour:
     multipleTarget: 0
     potential_target: 0
     effects: []
+    channel: 0
+    channelLenght: 0
     rarity: 0
     databasePath: 
     cardClass: 0
