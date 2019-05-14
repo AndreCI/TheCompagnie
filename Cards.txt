@@ -1,3 +1,8 @@
+Add potions: you have a bag with 10 invent (<=hand size) slots where you can store potions (heal/action/mana).
+Potion can be played for no action, On Play effect and switch between hand/inventory is easy. Potion as reward/buyable is great!
+Equipement can apply on start of combat effect: free perma block, str bonus, regen, mana regen, etc...!!
+v0.1.5?
+
 POST DEMO TODO LIST:
 card ui
 hand ui

@@ -17,53 +17,44 @@ MonoBehaviour:
   rarityLevel: 2
   childrenDatabase: []
   items:
-  - ID: 385
-    Name: Knowledge Rush
+  - Name: Knowledge Rush
     manaCost: 5
     delay: 1
     actionCost: 1
-    sprite: {fileID: 21300000, guid: b8b83cfc392395441ba5750998c97262, type: 3}
-    Description: Firendly target draw 2 cards. Speed its intent by 1
-    multipleTarget: 0
-    potential_target: 1
     effects:
-    - type: 3
-      alternative: 0
-      condition: 0
+    - statusFactories: []
+      amount: 2
+      type: 3
       animation: 15
       variable: 0
-      amount: 2
-      statusFactories: []
-    - type: 5
       alternative: 0
       condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: -1
+      type: 5
       animation: 0
       variable: 0
-      amount: -1
-      statusFactories: []
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 0
     channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: b8b83cfc392395441ba5750998c97262, type: 3}
+    Description: Firendly target draw 2 cards. Speed its intent by 1
     rarity: 2
     databasePath: MageCom/Mage/COMPAGNION/All
     cardClass: 1
-  - ID: 385
-    Name: Pulsating Strength
-    manaCost: 5
+    ID: 35
+  - Name: Pulsating Strength
+    manaCost: 3
     delay: 4
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 85b9576a2e131974ebb6d222d2fc7116, type: 3}
-    Description: Channel 3. All friendly units gain 1 strength and 1 regen for the
-      rest of the combat.
-    multipleTarget: 1
-    potential_target: 1
     effects:
-    - type: 2
-      alternative: 0
-      condition: 0
-      animation: 4
-      variable: 0
-      amount: 0
-      statusFactories:
+    - statusFactories:
       - status: 0
         value: 1
         duration: 20
@@ -74,29 +65,31 @@ MonoBehaviour:
         duration: 0
         permanent: 1
         trigger: 2
+      amount: 0
+      type: 2
+      animation: 4
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 1
     channelLenght: 3
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 85b9576a2e131974ebb6d222d2fc7116, type: 3}
+    Description: Channel 3. All friendly units gain 1 strength and 1 regen for the
+      rest of the combat.
     rarity: 2
     databasePath: MageCom/Mage/COMPAGNION/All
     cardClass: 1
-  - ID: 385
-    Name: Mana Shield
-    manaCost: 10
+    ID: 36
+  - Name: Mana Shield
+    manaCost: 6
     delay: 0
     actionCost: 0
-    sprite: {fileID: 21300000, guid: bedd47c32bd41a148b796829d8cb866f, type: 3}
-    Description: Gain 5 blocks for the end of the turn and 1 parry for 6 ticks. Cost
-      no action.
-    multipleTarget: 0
-    potential_target: 1
     effects:
-    - type: 2
-      alternative: 1
-      condition: 0
-      animation: 1
-      variable: 0
-      amount: 0
-      statusFactories:
+    - statusFactories:
       - status: 1
         value: 5
         duration: 1
@@ -107,28 +100,31 @@ MonoBehaviour:
         duration: 6
         permanent: 0
         trigger: 1
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
     channel: 0
     channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: bedd47c32bd41a148b796829d8cb866f, type: 3}
+    Description: Gain 5 blocks for the end of the turn and 1 parry for 6 ticks. Cost
+      no action.
     rarity: 2
     databasePath: MageCom/Mage/COMPAGNION/All
     cardClass: 1
-  - ID: 385
-    Name: Premonition
-    manaCost: 3
+    ID: 37
+  - Name: Premonition
+    manaCost: 2
     delay: 12
     actionCost: 1
-    sprite: {fileID: 21300000, guid: a873f14b328f96d4d811b4fddbdf9f74, type: 3}
-    Description: Gain 20 blocks. Gain 10 mana.
-    multipleTarget: 0
-    potential_target: 1
     effects:
-    - type: 2
-      alternative: 1
-      condition: 0
-      animation: 1
-      variable: 0
-      amount: 0
-      statusFactories:
+    - statusFactories:
       - status: 1
         value: 20
         duration: 1
@@ -139,173 +135,202 @@ MonoBehaviour:
         duration: 4
         permanent: 0
         trigger: 1
-    - type: 4
-      alternative: 1
-      condition: 0
-      animation: 0
-      variable: 0
-      amount: 10
-      statusFactories: []
-    channel: 0
-    channelLenght: 0
-    rarity: 2
-    databasePath: MageCom/Mage/COMPAGNION/All
-    cardClass: 1
-  - ID: 385
-    Name: Premonition
-    manaCost: 3
-    delay: 12
-    actionCost: 1
-    sprite: {fileID: 21300000, guid: a873f14b328f96d4d811b4fddbdf9f74, type: 3}
-    Description: Gain 20 blocks. Gain 10 mana.
-    multipleTarget: 0
-    potential_target: 1
-    effects:
-    - type: 2
-      alternative: 1
-      condition: 0
+      amount: 0
+      type: 2
       animation: 1
       variable: 0
-      amount: 0
-      statusFactories:
-      - status: 1
-        value: 20
-        duration: 1
-        permanent: 0
-        trigger: 0
-      - status: 2
-        value: 1
-        duration: 4
-        permanent: 0
-        trigger: 1
-    - type: 4
       alternative: 1
       condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 10
+      type: 4
       animation: 0
       variable: 0
-      amount: 10
-      statusFactories: []
+      alternative: 1
+      condition: 0
+      OnPlay: 0
     channel: 0
     channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 21300000, guid: a873f14b328f96d4d811b4fddbdf9f74, type: 3}
+    Description: Gain 20 blocks. Gain 10 mana.
     rarity: 2
     databasePath: MageCom/Mage/COMPAGNION/All
     cardClass: 1
-  - ID: 385
-    Name: Time Fracture
+    ID: 38
+  - Name: Interruption
+    manaCost: 0
+    delay: 0
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 10
+      type: 4
+      animation: 15
+      variable: 0
+      alternative: 1
+      condition: 2
+      OnPlay: 1
+    - statusFactories: []
+      amount: 5
+      type: 0
+      animation: 8
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 9f5c4949c03b648479781019eb5e1470, type: 3}
+    Description: 'On Play: If the target is channeling, gain 10 mana. Deal 5 damages.'
+    rarity: 2
+    databasePath: MageCom/Mage/COMPAGNION/All
+    cardClass: 1
+    ID: 39
+  - Name: Time Fracture
     manaCost: 10
     delay: 28
     actionCost: 1
-    sprite: {fileID: 21300000, guid: e3777f2e114bc1a47afe7506ce7de6b6, type: 3}
-    Description: Deal 68 damages. Take 15 damages.
-    multipleTarget: 0
-    potential_target: 0
     effects:
-    - type: 0
-      alternative: 0
-      condition: 0
+    - statusFactories: []
+      amount: 55
+      type: 0
       animation: 12
       variable: 0
-      amount: 68
-      statusFactories: []
-    - type: 0
-      alternative: 1
+      alternative: 0
       condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 15
+      type: 0
       animation: 0
       variable: 0
-      amount: 15
-      statusFactories: []
-    channel: 0
-    channelLenght: 0
-    rarity: 2
-    databasePath: MageCom/Mage/COMPAGNION/All
-    cardClass: 1
-  - ID: 385
-    Name: Slowed Destiny
-    manaCost: 1
-    delay: 3
-    actionCost: 1
-    sprite: {fileID: 21300000, guid: 565569495a58f0447a2eec667bc2f0cc, type: 3}
-    Description: Channel 4. Slow next intent by 2. Gain 3 mana.
-    multipleTarget: 0
-    potential_target: 0
-    effects:
-    - type: 5
-      alternative: 0
-      condition: 0
-      animation: 12
-      variable: 0
-      amount: 2
-      statusFactories: []
-    - type: 4
       alternative: 1
       condition: 0
-      animation: 15
-      variable: 0
-      amount: 3
-      statusFactories: []
-    channel: 1
-    channelLenght: 4
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: e3777f2e114bc1a47afe7506ce7de6b6, type: 3}
+    Description: Deal 55 damages. Take 15 damages.
     rarity: 2
     databasePath: MageCom/Mage/COMPAGNION/All
     cardClass: 1
-  - ID: 385
-    Name: Burning Ray
+    ID: 40
+  - Name: Mana Tempest
+    manaCost: 0
+    delay: 1
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 3
+        value: 1
+        duration: 3
+        permanent: 0
+        trigger: 0
+      - status: 1
+        value: 3
+        duration: 1
+        permanent: 0
+        trigger: 0
+      amount: 2
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 3
+      type: 4
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 4
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 565569495a58f0447a2eec667bc2f0cc, type: 3}
+    Description: Channel 4. All friendly units gain 3 mana, 3 blocks and 1 burn for
+      3 turns.
+    rarity: 2
+    databasePath: MageCom/Mage/COMPAGNION/All
+    cardClass: 1
+    ID: 41
+  - Name: Burning Ray
     manaCost: 2
     delay: 3
     actionCost: 1
-    sprite: {fileID: 21300000, guid: b0b0f27ea526a35499eb6e73e169e659, type: 3}
-    Description: Channel 3. Deal 5 damages and apply 3 burn for 4 turns.
-    multipleTarget: 0
-    potential_target: 0
     effects:
-    - type: 0
-      alternative: 0
-      condition: 0
+    - statusFactories: []
+      amount: 5
+      type: 0
       animation: 6
       variable: 0
-      amount: 5
-      statusFactories: []
-    - type: 2
       alternative: 0
       condition: 0
-      animation: 0
-      variable: 0
-      amount: 0
-      statusFactories:
+      OnPlay: 0
+    - statusFactories:
       - status: 3
-        value: 3
+        value: 5
         duration: 4
         permanent: 0
         trigger: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 1
     channelLenght: 3
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: b0b0f27ea526a35499eb6e73e169e659, type: 3}
+    Description: Channel 3. Deal 5 damages and apply 5 burn for 4 turns.
     rarity: 2
     databasePath: MageCom/Mage/COMPAGNION/All
     cardClass: 1
-  - ID: 385
-    Name: Safe Zone
+    ID: 42
+  - Name: Safe Zone
     manaCost: 3
     delay: 3
     actionCost: 0
-    sprite: {fileID: 21300000, guid: c12009513743d414ca89825f0100eb68, type: 3}
-    Description: Channel 6. All friendly units gain 6 block. Cost no action.
-    multipleTarget: 1
-    potential_target: 1
     effects:
-    - type: 2
-      alternative: 0
-      condition: 0
-      animation: 1
-      variable: 0
-      amount: 0
-      statusFactories:
+    - statusFactories:
       - status: 1
         value: 6
         duration: 1
         permanent: 0
         trigger: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 1
     channelLenght: 5
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: c12009513743d414ca89825f0100eb68, type: 3}
+    Description: Channel 6. All friendly units gain 6 block. Cost no action.
     rarity: 2
     databasePath: MageCom/Mage/COMPAGNION/All
     cardClass: 1
+    ID: 43

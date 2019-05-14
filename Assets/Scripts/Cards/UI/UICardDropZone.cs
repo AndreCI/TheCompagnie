@@ -10,7 +10,7 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
     public Card.POTENTIAL_TARGET target_type;
     public bool partyDropZone;
 
-	public void OnPointerEnter(PointerEventData eventData) {
+	public virtual void OnPointerEnter(PointerEventData eventData) {
         if (!locked)
         {
             if (eventData.pointerDrag == null)
@@ -26,7 +26,7 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
         }
 	}
 	
-	public void OnPointerExit(PointerEventData eventData) { 
+	public virtual void OnPointerExit(PointerEventData eventData) { 
         if (!locked)
         {
             if (eventData.pointerDrag == null)
@@ -42,7 +42,7 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
         }
 	}
 	
-	public void OnDrop(PointerEventData eventData) {
+	public virtual void OnDrop(PointerEventData eventData) {
         if (!locked)
         {
 //            Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
@@ -58,8 +58,8 @@ public class UICardDropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler,
 
 	}
 
-    public bool IsAcceptableTarget(CardUI card)
+    public virtual bool IsAcceptableTarget(CardUI card)
     {
-        return card.card.potential_target == target_type && card.card.multipleTarget == partyDropZone;
+        return card.card.potential_target == target_type;// && card.card.multipleTarget == partyDropZone;
     }
 }

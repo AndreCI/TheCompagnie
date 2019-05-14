@@ -49,19 +49,42 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         card = card_;
         UI = ui_;
         linkedEvent = linkedEvent_;
-        icon.sprite = card.sprite;
-        iconMask.sprite = card.sprite;
+        icon.sprite = card.hidden ? CombatManager.Instance.HiddenCard.sprite : card.sprite;
+        iconMask.sprite = icon.sprite;
         if (linkedEvent.channel)
         {
             iconMask.fillMethod = Image.FillMethod.Horizontal;
         }
         setToDestroy = true;
+        if (card.hidden)
+        {
+            TurnManager.NotifyAll += TurnManager_NotifyAll;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        TurnManager.NotifyAll -= TurnManager_NotifyAll;
+    }
+
+    private void TurnManager_NotifyAll(GeneralUtils.SUBJECT_TRIGGER trigger)
+    {
+        if(trigger == GeneralUtils.SUBJECT_TRIGGER.START_OF_TIME)
+        {
+            if (card.hidden)
+            {
+                icon.sprite = card.sprite;
+                iconMask.sprite = icon.sprite;
+                card.hidden = false;
+            }
+        }
     }
 
     public void Trigger(float duration_)
     {
-        if (!activated)
+        if (!activated || setToDestroy)
         {
+            iconMask.fillAmount = 0f;
             activated = true;
             duration = duration_;
         }
@@ -69,14 +92,27 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         UI.gameObject.SetActive(true);
-        UI.Setup(card);
+        if (card.hidden && !Hand.Instance.locked)
+        {
+            UI.Setup(CombatManager.Instance.HiddenCard);
+        }
+        else
+        {
+            UI.Setup(card);
+            UnitSelector.Instance.ForceSelection(new List<Unit> { linkedEvent.source }, UnitSelector.SELECTION_MODE.SHOWSOURCE);
+            UnitSelector.Instance.ForceSelection(linkedEvent.targets , UnitSelector.SELECTION_MODE.TCURRENT);
+        }
         UI.Playable = false;
-        UnitSelector.Instance.ForceSelection(linkedEvent.targets , UnitSelector.SELECTION_MODE.TCURRENT);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         UI.gameObject.SetActive(false);
-        UnitSelector.Instance.EndForceSelection(UnitSelector.SELECTION_MODE.TCURRENT);
+        if (!card.hidden || Hand.Instance.locked)
+        {
+            UnitSelector.Instance.EndForceSelection(UnitSelector.SELECTION_MODE.SHOWSOURCE);
+            UnitSelector.Instance.EndForceSelection(UnitSelector.SELECTION_MODE.TCURRENT);
+
+        }
     }
 }

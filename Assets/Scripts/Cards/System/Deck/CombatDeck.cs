@@ -14,5 +14,5 @@ public abstract class CombatDeck : IDeck
     public abstract List<Card> GetCards(IEnumerable<Unit> owners = null);
 
     public abstract List<Card> Redraw(IEnumerable<Card> cards_);
-    
+    public abstract int Count(IEnumerable<Unit> owners = null);
 }

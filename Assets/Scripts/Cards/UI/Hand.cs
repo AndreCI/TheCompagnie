@@ -152,8 +152,9 @@ public class Hand : UICardDropZone
         List<CardUI> cardsToSet = new List<CardUI>(cards.FindAll(c => c.isActiveAndEnabled));
         additionalCards.text = "+" + (cards.Count - cardsToSet.Count).ToString() + "\n\n" +
             (cards.Count).ToString() + "/10";
-
+        CombatManager.Instance.deckButton.GetComponentInChildren<Text>().text = "Deck (" + CombatManager.Instance.compagnionDeck.Count(activatedUnits).ToString() + ")";
         //cards = new List<CardUI>(GetComponentsInChildren<CardUI>());
+        if(cardsToSet.Count == 0) { return; }
         cardsToSet.Sort((x,y) => x.transform.GetSiblingIndex().CompareTo(y.transform.GetSiblingIndex()));
         GetComponent<HorizontalLayoutGroup>().spacing = - (cardsToSet.Count - 1.5f) * cardsToSet[0].GetComponent<RectTransform>().sizeDelta.x * 0.07f;
         float maximum = GetHeight(((float)cardsToSet.Count - 1) / 2f, cardsToSet.Count);

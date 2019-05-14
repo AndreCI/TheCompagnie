@@ -17,6 +17,7 @@ public class EventWindow : MonoBehaviour
     public float waitingTime;
     public float currentTime;
     public bool addComp = false;
+    public bool tavern = false;
     public void Update()
     {
         if (waiting)
@@ -25,7 +26,15 @@ public class EventWindow : MonoBehaviour
             slider.value = currentTime / waitingTime;
             if(currentTime>= waitingTime)
             {
-                AddCompagnion();
+                if (!tavern)
+                {
+                    AddCompagnion();
+                wait.interactable = true;
+                }
+                else
+                {
+                    FullHeal();
+                }
                 waiting = false;
                 slider.value = 0;
                 wait.interactable = true;
@@ -36,8 +45,8 @@ public class EventWindow : MonoBehaviour
 
     public void Activate()
     {
-        wait.interactable = false;
-        leave.interactable = false;
+        wait.interactable = true;
+        leave.interactable = true;
         currentTime = 0;
         waiting = true;
     }
@@ -47,8 +56,17 @@ public class EventWindow : MonoBehaviour
         if (!addComp)
         {
             addComp = true;
-            PlayerInfos.Instance.AddCompagnion(PlayerInfos.Instance.compagnionsDatabase.Get(1));
-            leave.GetComponentInChildren<Text>().text = "Go";
+            if (!tavern)
+                PlayerInfos.Instance.AddCompagnion(PlayerInfos.Instance.compagnionsDatabase.Get(1));
+        }
+    }
+
+    private void FullHeal()
+    {
+        foreach (Compagnion c in PlayerInfos.Instance.compagnions)
+        {
+            c.CurrentHealth = c.maxHealth;
+            c.CurrentMana = c.maxMana;
         }
     }
 }

@@ -202,13 +202,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e1aa0781c59f847a70741fbeef55ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextNodes:
-  - {fileID: 0}
-  - {fileID: 7996608936018503321}
+  nextNodes: []
   type: 0
   icon: {fileID: 5235685243508036442}
   visited: 1
   button: {fileID: 5235685243508213222}
+  discovered: 0
 --- !u!114 &5235685243508213222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +234,7 @@ MonoBehaviour:
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 0}
     m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}

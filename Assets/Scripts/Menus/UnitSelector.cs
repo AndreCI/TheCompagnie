@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 public class UnitSelector : MonoBehaviour
 {
-    public enum SELECTION_MODE { SELECT, TPOTENTIAL, TCURRENT}
+    public enum SELECTION_MODE { SELECT, TPOTENTIAL, TCURRENT, SHOWSOURCE}
     private static UnitSelector _instance;
     public static UnitSelector Instance { get { return _instance; } }
     //private List<Unit> unitSelected;

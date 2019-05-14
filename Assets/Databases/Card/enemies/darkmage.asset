@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: darkmage
+  m_EditorClassIdentifier: 
+  Name: darkmage
+  cardClass: 8
+  rarityLevel: 1
+  childrenDatabase: []
+  items:
+  - Name: Freezing Ray
+    manaCost: 8
+    delay: 2
+    actionCost: 1
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 14
+      variable: 0
+      amount: 13
+      OnPlay: 0
+      statusFactories: []
+    - type: 5
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 1
+      OnPlay: 0
+      statusFactories: []
+    channel: 1
+    channelLenght: 2
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 51a245a7f393519469c2c761dc7d9818, type: 3}
+    Description: Channel 2. Deal 13 damages and retard enemy intent by 1.
+    rarity: 1
+    databasePath: darkmage/ENEMIES/All
+    cardClass: 8
+    ID: 59
+  - Name: Burning Ray
+    manaCost: 5
+    delay: 2
+    actionCost: 1
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 10
+      variable: 0
+      amount: 5
+      OnPlay: 0
+      statusFactories: []
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 0
+      OnPlay: 0
+      statusFactories:
+      - status: 3
+        value: 1
+        duration: 0
+        permanent: 1
+        trigger: 0
+    channel: 1
+    channelLenght: 4
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: b0b0f27ea526a35499eb6e73e169e659, type: 3}
+    Description: Channel 4. Deal 5 damages and apply 1 burn until end of combat.
+    rarity: 1
+    databasePath: darkmage/ENEMIES/All
+    cardClass: 8
+    ID: 60
+  - Name: Magical Ward
+    manaCost: 9
+    delay: 4
+    actionCost: 1
+    effects:
+    - type: 2
+      alternative: 1
+      condition: 0
+      animation: 1
+      variable: 0
+      amount: 0
+      OnPlay: 0
+      statusFactories:
+      - status: 1
+        value: 4
+        duration: 2
+        permanent: 0
+        trigger: 0
+      - status: 2
+        value: 1
+        duration: 2
+        permanent: 0
+        trigger: 0
+    channel: 1
+    channelLenght: 3
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 28291ba3426c33e46821767f685438d8, type: 3}
+    Description: Channel 3. Gain 4 blocks and 1 parry for 2 turns.
+    rarity: 1
+    databasePath: darkmage/ENEMIES/All
+    cardClass: 8
+    ID: 61
+  - Name: Mana Concentration
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    effects:
+    - type: 4
+      alternative: 0
+      condition: 0
+      animation: 15
+      variable: 0
+      amount: 20
+      OnPlay: 0
+      statusFactories: []
+    channel: 1
+    channelLenght: 3
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: e3777f2e114bc1a47afe7506ce7de6b6, type: 3}
+    Description: Channel 3. Gain 20 mana.
+    rarity: 1
+    databasePath: darkmage/ENEMIES/All
+    cardClass: 8
+    ID: 62
+  - Name: Mana Potion
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects:
+    - type: 4
+      alternative: 0
+      condition: 0
+      animation: 15
+      variable: 0
+      amount: 20
+      OnPlay: 1
+      statusFactories: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: cbc2ff3197d21f2489369949a93f3b66, type: 3}
+    Description: 'On Play: Gain 20 mana. Play another action.'
+    rarity: 1
+    databasePath: darkmage/ENEMIES/All
+    cardClass: 8
+    ID: 63

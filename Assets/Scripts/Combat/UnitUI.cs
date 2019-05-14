@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnitUI : UICardDropZone, IPointerClickHandler
+public class UnitUI : UICardDropZone, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Unit unit;
     public SpriteRenderer Image;
@@ -19,6 +19,83 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     public SpriteRenderer effectSpriteRenderer;
     public EffectAnimation currentAnimation;
 
+    public override void OnPointerExit(PointerEventData eventData)
+    {
+        if (!locked)
+        {
+            if (eventData.pointerDrag == null)
+                return;
+
+            CardUI d = eventData.pointerDrag.GetComponent<CardUI>();
+            if (d != null && d.Playable && IsAcceptableTarget(d) && d.placeholderParent == this.transform)
+            {
+                d.placeholderParent = d.parentToReturnTo;
+                targeting = false;
+                selectorNotified = false;
+                CursorManager.Instance.type = CursorManager.CURSOR_TYPE.GRAB;
+
+                if (d.card.multipleTarget)
+                {
+                    foreach (UnitUI friendUI in CombatManager.Instance.GetFriendsUnitUI(unit))
+                    {
+                        friendUI.targeting = false;
+                        friendUI.selectorNotified = false;
+                    }
+                }
+            }
+        }
+    }
+    public override void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!locked)
+        {
+            if (eventData.pointerDrag == null)
+                return;
+
+            CardUI d = eventData.pointerDrag.GetComponent<CardUI>();
+            if (d != null && d.Playable && IsAcceptableTarget(d))
+            {
+                d.placeholderParent = this.transform;
+                targeting = true;
+                selectorNotified = false;
+                CursorManager.Instance.type = CursorManager.CURSOR_TYPE.ATTACK;
+
+                if (d.card.multipleTarget)
+                {
+                    foreach(UnitUI friendUI in CombatManager.Instance.GetFriendsUnitUI(unit))
+                    {
+                        friendUI.targeting = true;
+                        friendUI.selectorNotified = false;
+
+                    }
+                }
+            }
+        }
+    }
+    public override void OnDrop(PointerEventData eventData)
+    {
+        if (!locked)
+        {
+            //            Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+
+            CardUI d = eventData.pointerDrag.GetComponent<CardUI>();
+            if (d != null && d.Playable && IsAcceptableTarget(d))
+            {
+                d.parentToReturnTo = this.transform;
+                targeting = false;
+                selectorNotified = false;
+                if (d.card.multipleTarget)
+                {
+                    foreach (UnitUI friendUI in CombatManager.Instance.GetFriendsUnitUI(unit))
+                    {
+                        friendUI.targeting = false;
+                        friendUI.selectorNotified = false;
+                    }
+                }
+            }
+        }
+
+    }
     void Start()
     {
        // currentAnimation = new List<EffectAnimation>();
@@ -34,23 +111,14 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
 
         if (!selectorNotified)
         {
-            /*  if(CardSelector.Instance.GetSelectedCard().All(x => x.multipleTarget) && CardSelector.Instance.GetSelectedCard().Count()>0)
-              {
-                  TargetNotification();
-              }
-              else
-              {
-                  UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TCURRENT);
-              }*/
             UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TCURRENT);
             selectorNotified = true;
-
         }
         
     }
     private void SelectedCardUpdate(List<Card> selectedCard)
     {
-        if(selectedCard.FindAll(x=> x.potential_target != target_type).Count == 0 && selectedCard.Count>0)
+        if(selectedCard.FindAll(x=> !IsAcceptableTarget(x)).Count == 0 && selectedCard.Count>0)
         {
             UnitSelector.Instance.ToggleSelection(unit, UnitSelector.SELECTION_MODE.TPOTENTIAL, forceAdd:true);
         }
@@ -83,11 +151,14 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
                     
                     this.SelectedUnitsUpdate(new List<Unit>(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.TPOTENTIAL)),
                         UnitSelector.SELECTION_MODE.TPOTENTIAL);
-                 //   targetAnimation.gameObject.SetActive(false);
                     break;
-
+                case UnitSelector.SELECTION_MODE.SHOWSOURCE:
+                    selectionAnimation.startColor = Color.cyan;
+                    this.SelectedUnitsUpdate(new List<Unit>(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT)),
+                        UnitSelector.SELECTION_MODE.SELECT);
+                    break;
             }
-            
+
         }
         else
         {
@@ -104,6 +175,11 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
                     targetAnimation.startColor = Color.red;
 
                     targetAnimation.gameObject.SetActive(true);
+                    break;
+
+                case UnitSelector.SELECTION_MODE.SHOWSOURCE:
+                    selectionAnimation.startColor = Color.blue;
+                    selectionAnimation.gameObject.SetActive(true);
                     break;
 
             }
@@ -145,5 +221,17 @@ public class UnitUI : UICardDropZone, IPointerClickHandler
     private void FixedUpdate()
     {
         currentAnimation?.FixedUpdate(Time.fixedDeltaTime);
+    }
+
+    private bool IsAcceptableTarget(Card card)
+    {
+        return (card.potential_target == Card.POTENTIAL_TARGET.SELF && card.owner == unit) ||
+            (card.potential_target == target_type);
+    }
+
+    public override bool IsAcceptableTarget(CardUI card)
+    {
+        return base.IsAcceptableTarget(card) || (card.card.potential_target == Card.POTENTIAL_TARGET.SELF && card.card.owner == unit);
+
     }
 }

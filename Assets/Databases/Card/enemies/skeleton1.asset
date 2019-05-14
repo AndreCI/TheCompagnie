@@ -1,0 +1,196 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: skeleton1
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 10
+  rarityLevel: 1
+  childrenDatabase: []
+  items:
+  - Name: Heavy Defense
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 35
+        duration: 1
+        permanent: 0
+        trigger: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: f5281722176c3b54095d26051b2b6625, type: 3}
+    Description: All friendly units gain 35 blocks.
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 10
+    ID: 68
+  - Name: Dark Embrace
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 0
+        value: 5
+        duration: 0
+        permanent: 1
+        trigger: 0
+      - status: 1
+        value: 15
+        duration: 1
+        permanent: 0
+        trigger: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 3325286240a1c854c87b5f7e1249e79e, type: 3}
+    Description: Gain 15 blocks for 1 turn and 5 regen until end of combat.
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 10
+    ID: 69
+  - Name: Quick Parry
+    manaCost: 0
+    delay: 1
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 2
+        value: 1
+        duration: 4
+        permanent: 0
+        trigger: 1
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 459f1c2a69f0a7244b62a4cc48f68e7a, type: 3}
+    Description: Gain 1 parry for 4 ticks. Cost no action.
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 10
+    ID: 70
+  - Name: Rapid Strike
+    manaCost: 0
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 12
+      type: 0
+      animation: 3
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: a10c287c11fe84448b5b9ae6e6eb80a3, type: 3}
+    Description: Deal 12 damages to a target.
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 10
+    ID: 71
+  - Name: Duelists Hit
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 2
+        value: 1
+        duration: 4
+        permanent: 0
+        trigger: 1
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 10
+      type: 0
+      animation: 3
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 67b09a274e7d302488a8c535956c0053, type: 3}
+    Description: Deal 10 damages and gain 1 parry for 4 ticks.
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 10
+    ID: 72
+  - Name: Heavy Assault
+    manaCost: 0
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 34
+      type: 0
+      animation: 3
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 263108969075c2b4d8b56889d860589c, type: 3}
+    Description: Deal 34 damages.
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 10
+    ID: 73

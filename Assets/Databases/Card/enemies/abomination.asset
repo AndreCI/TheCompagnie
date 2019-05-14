@@ -17,126 +17,166 @@ MonoBehaviour:
   rarityLevel: 1
   childrenDatabase: []
   items:
-  - ID: 846
-    Name: Brutal Mutation
+  - Name: Brutal Mutation
     manaCost: 0
     delay: 2
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 8b7d9a94927760a41abfa4e16441a305, type: 3}
-    Description: Heal for 20 and gain 9 block.
-    multipleTarget: 0
-    potential_target: 1
     effects:
-    - type: 2
-      animation: 1
-      variable: 0
-      amount: 0
-      statusFactories:
+    - statusFactories:
       - status: 1
         value: 9
         duration: 1
+        permanent: 0
         trigger: 0
-    - type: 1
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 20
+      type: 1
       animation: 0
       variable: 0
-      amount: 20
-      statusFactories: []
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 8b7d9a94927760a41abfa4e16441a305, type: 3}
+    Description: Heal for 20 and gain 9 block.
     rarity: 1
     databasePath: ABOMINATION/ENEMIES/All
     cardClass: 3
-  - ID: 847
-    Name: Toxic Cloud
+    ID: 846
+  - Name: Toxic Cloud
     manaCost: 5
     delay: 4
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 55ab685267846ee44ab2360ae523d32d, type: 3}
-    Description: Apply 1 poison for 30 ticks to all enemies
-    multipleTarget: 1
-    potential_target: 0
     effects:
-    - type: 2
-      animation: 5
-      variable: 0
-      amount: 0
-      statusFactories:
+    - statusFactories:
       - status: 5
         value: 1
         duration: 30
+        permanent: 0
         trigger: 1
+      amount: 0
+      type: 2
+      animation: 5
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 55ab685267846ee44ab2360ae523d32d, type: 3}
+    Description: Apply 1 poison for 30 ticks to all enemies
     rarity: 1
     databasePath: ABOMINATION/ENEMIES/All
     cardClass: 3
-  - ID: 848
-    Name: Slow Mutation
+    ID: 847
+  - Name: Slow Mutation
     manaCost: 0
     delay: 5
     actionCost: 1
-    sprite: {fileID: 21300000, guid: e73a0b640e143cc4484d9c3b0eb9e7fd, type: 3}
-    Description: Gain 5 health regeneration for 6 turn and 9 block.
-    multipleTarget: 0
-    potential_target: 1
     effects:
-    - type: 2
-      animation: 1
-      variable: 0
-      amount: 5
-      statusFactories:
+    - statusFactories:
       - status: 0
         value: 5
         duration: 6
+        permanent: 0
         trigger: 0
       - status: 1
         value: 9
         duration: 1
+        permanent: 0
         trigger: 0
+      amount: 5
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: e73a0b640e143cc4484d9c3b0eb9e7fd, type: 3}
+    Description: Gain 5 health regeneration for 6 turn and 9 block.
     rarity: 1
     databasePath: ABOMINATION/ENEMIES/All
     cardClass: 3
-  - ID: 849
-    Name: Poison Burst
+    ID: 848
+  - Name: Poison Burst
     manaCost: 10
     delay: 2
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 5c4b257a9932c40409e2ebbd78d8f42c, type: 3}
-    Description: Apply 20 poison for 1 tick.
-    multipleTarget: 0
-    potential_target: 0
     effects:
-    - type: 2
+    - statusFactories:
+      - status: 5
+        value: 7
+        duration: 3
+        permanent: 0
+        trigger: 1
+      amount: 0
+      type: 2
       animation: 5
       variable: 0
-      amount: 0
-      statusFactories:
-      - status: 5
-        value: 20
-        duration: 1
-        trigger: 1
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 5c4b257a9932c40409e2ebbd78d8f42c, type: 3}
+    Description: Apply 7 poison for 3 tick.
     rarity: 1
     databasePath: ABOMINATION/ENEMIES/All
     cardClass: 3
-  - ID: 849
-    Name: Crippling Poison
+    ID: 849
+  - Name: Crippling Poison
     manaCost: 4
     delay: 2
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 9ae7fcb7d34b30448ad602378614ae98, type: 3}
-    Description: Apply 3 poison for 5 ticks and reduce strength by 5 for 3 turns.
-    multipleTarget: 0
-    potential_target: 0
     effects:
-    - type: 2
-      animation: 5
-      variable: 0
-      amount: 0
-      statusFactories:
+    - statusFactories:
       - status: 5
-        value: 3
-        duration: 5
+        value: 2
+        duration: 12
+        permanent: 0
         trigger: 1
       - status: 6
         value: 5
         duration: 3
+        permanent: 0
         trigger: 0
+      amount: 0
+      type: 2
+      animation: 5
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 9ae7fcb7d34b30448ad602378614ae98, type: 3}
+    Description: Apply 2 poison for 12 ticks and reduce strength by 5 for 3 turns.
     rarity: 1
     databasePath: ABOMINATION/ENEMIES/All
     cardClass: 3
+    ID: 849

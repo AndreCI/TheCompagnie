@@ -58,7 +58,7 @@ public class CombatStatusUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void UpdateData()
     {
         text1.text = combatStatus.value.ToString();
-        if (combatStatus.permanent)
+        if (!combatStatus.permanent)
         {
             text2.text = combatStatus.duration.ToString();
         }

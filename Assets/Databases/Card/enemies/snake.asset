@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: snake
+  m_EditorClassIdentifier: 
+  Name: Snake
+  cardClass: 6
+  rarityLevel: 1
+  childrenDatabase: []
+  items:
+  - Name: Poisonous Bite
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 8
+      variable: 0
+      amount: 6
+      statusFactories: []
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 0
+      statusFactories:
+      - status: 5
+        value: 1
+        duration: 8
+        permanent: 0
+        trigger: 1
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 1
+    sprite: {fileID: 21300000, guid: 0ebbd895585f2d844994556c05d81acb, type: 3}
+    Description: Deal 6 damages and apply 1 poison for 8 ticks.
+    rarity: 1
+    databasePath: Snake/ENEMIES/All
+    cardClass: 6
+    ID: 52
+  - Name: Constriction
+    manaCost: 0
+    delay: 2
+    actionCost: 1
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 3
+      variable: 0
+      amount: 5
+      statusFactories: []
+    channel: 1
+    channelLenght: 5
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 80e81b34137fb7d41baeb66ccbda5269, type: 3}
+    Description: Channel 5. Deal 5 damages.
+    rarity: 1
+    databasePath: Snake/ENEMIES/All
+    cardClass: 6
+    ID: 53
+  - Name: Hide
+    manaCost: 0
+    delay: 1
+    actionCost: 1
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 1
+      variable: 0
+      amount: 0
+      statusFactories:
+      - status: 1
+        value: 8
+        duration: 1
+        permanent: 0
+        trigger: 0
+      - status: 7
+        value: 3
+        duration: 0
+        permanent: 1
+        trigger: 2
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: a0e3596a59487b741bdfdb96bedb6460, type: 3}
+    Description: Gain 8 blocks. Gain 3 strength.
+    rarity: 1
+    databasePath: Snake/ENEMIES/All
+    cardClass: 6
+    ID: 54
+  - Name: Intimidation
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - type: 2
+      alternative: 1
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 0
+      statusFactories:
+      - status: 2
+        value: 1
+        duration: 4
+        permanent: 0
+        trigger: 1
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 0
+      statusFactories:
+      - status: 6
+        value: 4
+        duration: 2
+        permanent: 0
+        trigger: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: a34b1d14a6657ea45becfec894794cb7, type: 3}
+    Description: Gain 1 parry for 4 ticks. All enemies lose 3 strength for 2 turns.
+    rarity: 1
+    databasePath: Snake/ENEMIES/All
+    cardClass: 6
+    ID: 55

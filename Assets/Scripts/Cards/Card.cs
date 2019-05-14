@@ -11,27 +11,29 @@ using UnityEngine.UI;
 [Serializable]
 public class Card
 {
-    public enum POTENTIAL_TARGET {ENEMIES, PARTY, NONE };
+    public enum POTENTIAL_TARGET {ENEMIES, PARTY, NONE, SELF, FRIEND };
     [Header("Basic Informations")]
-    public int ID;
     public string Name;
     public int manaCost;
     public int delay;
     public int actionCost = 1;
-    [Header("UI & Animations")]
-    public Sprite sprite;
-    public string Description;
     [Header("Mechanics & effects")]
-    public bool multipleTarget;
-    public POTENTIAL_TARGET potential_target;
     public List<CombatEffect> effects;
     public bool channel = false;
     public int channelLenght;
+    public bool multipleTarget;
+    public POTENTIAL_TARGET potential_target;
+    public bool hidden = false;
+
+    [Header("UI & Animations")]
+    public Sprite sprite;
+    public string Description;
 
     [Header("Database infos")]
     public CardDatabase.RARITY rarity;
     public string databasePath;
     public CardDatabase.CARDCLASS cardClass;
+    public int ID;
 
 
     [HideInInspector]
@@ -59,6 +61,7 @@ public class Card
         effects = new List<CombatEffect>(baseCard.effects);
         channel = baseCard.channel;
         channelLenght = baseCard.channelLenght;
+        hidden = baseCard.hidden;
         rarity = baseCard.rarity;
         databasePath = baseCard.databasePath;
         cardClass = baseCard.cardClass;
@@ -86,10 +89,13 @@ public class Card
 
     private void AddEvent(int timeIndex, List<Unit> targets)
     {
-        owner.CurrentMana -= manaCost;
-       // if (timeIndex > 9) { timeIndex = 9; }
-        CombatEvent cardEvent = new CombatEvent(owner, targets, timeIndex, effects, this, channel);
-        TurnManager.Instance.AddCombatEvent(cardEvent);
+        if (manaCost <= owner.CurrentMana)
+        {
+            owner.CurrentMana -= manaCost;
+            // if (timeIndex > 9) { timeIndex = 9; }
+            CombatEvent cardEvent = new CombatEvent(owner, targets, timeIndex, effects, this, channel);
+            TurnManager.Instance.AddCombatEvent(cardEvent);
+        }
     }
 
 

@@ -10,8 +10,10 @@ using ArrayExtensions;
 
 public static class GeneralUtils
     {
-        private static readonly MethodInfo CloneMethod = typeof(Object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
-    public enum SUBJECT_TRIGGER { START_OF_TURN, TIMESTEP_TICK, NONE };
+
+
+    private static readonly MethodInfo CloneMethod = typeof(Object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
+    public enum SUBJECT_TRIGGER { START_OF_TURN, TIMESTEP_TICK, NONE, START_OF_TIME };
 
         public static bool IsPrimitive(this Type type)
         {

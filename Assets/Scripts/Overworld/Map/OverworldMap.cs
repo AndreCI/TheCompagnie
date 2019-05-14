@@ -17,7 +17,13 @@ public class OverworldMap: MonoBehaviour
     public Sprite locked;
     public Sprite unknown;
     public Sprite visited;
+    public Sprite current;
+    public Sprite eventIcon;
+
     public GameObject eventWindow;
+    public GameObject townWindow;
+
+    public bool noTavern = true;
     void Start()
     {
         if(_instance != null)
@@ -34,24 +40,22 @@ public class OverworldMap: MonoBehaviour
 
     private void OnEnable()
     {
-        int i = 0;
         foreach(MapNode n in nodes)
         {
-            n.nextNodes = new List<MapNode>();
-            if (i > 0)
-            {
-                n.nextNodes.Add(nodes[i - 1]);
-            }
-            if(i < nodes.Count - 1)
-            {
-                n.nextNodes.Add(nodes[i + 1]);
-            }
-            i++;
-            n.Setup();
+           
+            n.Setup(nodes);
         }
+        UpdateNodes();
         TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.OVERWORLD);
     }
 
+    public void UpdateNodes()
+    {
+        foreach(MapNode n in nodes)
+        {
+            n.UpdateNode();
+        }
+    }
     public void StartCombat()
     {
         SceneManager.LoadScene(2);
@@ -61,6 +65,11 @@ public class OverworldMap: MonoBehaviour
     public void StartEvent()
     {
         eventWindow.SetActive(true);
-        OnEnable();
+        UpdateNodes();
+    }
+
+    public void StartTown()
+    {
+        townWindow.SetActive(true);
     }
 }

@@ -3836,10 +3836,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69657661335df8f4dbcf3cd6e8f75593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_WindowId: 0
+  m_WindowId: 2
   m_CustomWindowId: 1
   m_StartingState: 0
-  m_EscapeKeyAction: 1
+  m_EscapeKeyAction: 0
   m_Transition: 0
   m_TransitionEasing: 13
   m_TransitionDuration: 0.1

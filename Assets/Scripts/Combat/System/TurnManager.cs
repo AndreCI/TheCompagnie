@@ -64,6 +64,19 @@ public class TurnManager : MonoBehaviour
 
     }
 
+    public List<CombatEvent> GetCurrentEvents(bool addFuture = false)
+    {
+        List<CombatEvent> eventsR = new List<CombatEvent>();
+        foreach(List<CombatEvent> e in registeredEvents)
+        {
+            eventsR.AddRange(e);
+        }
+        if (addFuture)
+        {
+            eventsR.AddRange(futurEvents);
+        }
+        return eventsR;
+    }
 
     public CombatEvent GetNextCombatEvent(Unit u = null)
     {
@@ -104,17 +117,20 @@ public class TurnManager : MonoBehaviour
             }
             return;
         }
-        e.intent.setToDestroy = false;
-        e.intent.Trigger(timePerEvent);
-        registeredEvents[e.timeIndex].Add(e);
-        List<StretchyGridLayoutGroup> intentsLayout = (e.source.GetType() == typeof(Compagnion)) ? compIntents : enemiesIntents;
-        e.intent.transform.SetParent(intentsLayout[e.timeIndex].transform);
-        e.intent.Setup(e.cardSource, cardPlaceHolder, e, !(e.source.GetType() == typeof(Compagnion)));
+        if (e.intent != null)
+        {
+            //e.intent.setToDestroy = false;
+            //e.intent.Trigger(timePerEvent);
+            registeredEvents[e.timeIndex].Add(e);
+            List<StretchyGridLayoutGroup> intentsLayout = (e.source.GetType() == typeof(Compagnion)) ? compIntents : enemiesIntents;
+            e.intent.transform.SetParent(intentsLayout[e.timeIndex].transform);
+            e.intent.Setup(e.cardSource, cardPlaceHolder, e, !(e.source.GetType() == typeof(Compagnion)));
+        }
     }
 
     public void AddCombatEvent(CombatEvent newEvent)
     {
-        if(newEvent.timeIndex > timeSteps.Count)
+        if(newEvent.timeIndex >= timeSteps.Count)
         {
             futurEvents.Add(newEvent);
             return;
@@ -203,6 +219,7 @@ public class TurnManager : MonoBehaviour
             endTurnButton.interactable = false;
             timeIsRunning = true;
             Hand.Instance.SetLock(true);
+            NotifyAll?.Invoke(GeneralUtils.SUBJECT_TRIGGER.START_OF_TIME);
             StartCoroutine(PerformTime());
         }
     }

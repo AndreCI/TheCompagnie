@@ -20,6 +20,9 @@ public class CombatManager : MonoBehaviour
     public List<Enemy> enemies;
     public CombatPartyDeck enemiesDeck;
     public CombatPartyDeck enemiesDiscard;
+
+    public Button deckButton;
+    [HideInInspector] public Card HiddenCard;
     private int winXpValue;
 
     void Start()
@@ -37,10 +40,12 @@ public class CombatManager : MonoBehaviour
                 playersUI[i].Disable();
             }
         }
-          
+        HiddenCard = new Card(null, PlayerInfos.Instance.cardDatabase.GetByName("Hidden"));
+        StartCombat(PlayerInfos.Instance.compagnions, EnemyGenerator.Instance.GenerateEnemies());
+        UnitSelector.Instance.Unselect();
 
-            StartCombat(PlayerInfos.Instance.compagnions, EnemyGenerator.Instance.GenerateEnemies());
     }
+
 
     public void StartCombat(List<Compagnion> compagnions_, List<Enemy> enemies_)
     {
@@ -93,44 +98,69 @@ public class CombatManager : MonoBehaviour
         
     }
 
+    private bool IACardPlay(Card card)
+    {
+        if(card == null || card.manaCost > card.owner.CurrentMana)
+        {
+            return true;
+        }
+        bool returnValue = true;
+
+        if (enemies.Contains((Enemy)card.owner))
+        {
+            if (card.potential_target == Card.POTENTIAL_TARGET.ENEMIES)
+            {
+                if (card.multipleTarget)
+                {
+                    card.Play(new List<Unit>(compagnions));
+
+                }
+                else
+                {
+                    card.Play(new List<Unit> { compagnions[(new System.Random()).Next(compagnions.Count)] });
+                }
+            }
+            else if (card.potential_target == Card.POTENTIAL_TARGET.PARTY)
+            {
+                if (card.multipleTarget)
+                {
+                    card.Play(new List<Unit>(enemies));
+
+                }
+                else
+                {
+                    card.Play(new List<Unit> { card.owner });
+                }
+            }
+        }
+        if(card.actionCost == 0) {  Debug.Log("what"); return returnValue = false;}
+        return returnValue;
+    }
+
     public void AddEnemiesIntents()
     {
-        List<Card> cards = enemiesDeck.DrawCards(owners:enemies);
+     //   List<Card> cards = enemiesDeck.DrawCards(owners:enemies);
         foreach(Enemy e in enemies)
         {
             enemiesDeck.Shuffle();
             Card card = enemiesDeck.Draw(e as Unit);
-          /*  if (card.manaCost > card.owner.CurrentMana)
+            bool b = IACardPlay(card);
+            int noPermanentLoopVerification = 0; //Rare case if a unit has no mana & all cards cost mana...
+            while (!b && card != null && noPermanentLoopVerification < 100)
             {
-                card = enemiesDeck.Redraw(new List<Card> { card })[0];
-            }*/
-            if (enemies.Contains((Enemy)card.owner))
-            {
-                if (card.potential_target == Card.POTENTIAL_TARGET.ENEMIES)
-                {
-                    if (card.multipleTarget)
-                    {
-                        card.Play(new List<Unit>(compagnions));
-
-                    }
-                    else
-                    {
-                        card.Play(new List<Unit> { compagnions[(new System.Random()).Next(compagnions.Count)] });
-                    }
-                }
-                else if (card.potential_target == Card.POTENTIAL_TARGET.PARTY)
-                {
-                    if (card.multipleTarget)
-                    {
-                        card.Play(new List<Unit>(enemies));
-
-                    }
-                    else
-                    {
-                        card.Play(new List<Unit> { card.owner });
-                    }
-                }
+                noPermanentLoopVerification += 1;
+                card = enemiesDeck.Draw(e as Unit);
+                b = IACardPlay(card);
             }
+            if(card == null)
+            {
+                enemiesDeck.RenewDeck(e as Unit, e.persistentDeck.GenerateCombatDeck());
+            }
+            /*  if (card.manaCost > card.owner.CurrentMana)
+              {
+                  card = enemiesDeck.Redraw(new List<Card> { card })[0];
+              }*/
+            //IACardPlay(card);
         }
 
     }
@@ -177,5 +207,21 @@ public class CombatManager : MonoBehaviour
             s = enemiesUI.Find(x => x.unit == u);
         }
         return s;
+    }
+
+    public List<UnitUI> GetFriendsUnitUI(Unit original)
+    {
+        List<UnitUI> uis = new List<UnitUI>();
+        UnitUI s = playersUI.Find(x => x.unit == original);
+        if (s == null)
+        {
+            s = enemiesUI.Find(x => x.unit == original);
+            uis = new List<UnitUI>(enemiesUI.Except(new List<UnitUI> { s }));
+        }
+        else
+        {
+            uis = new List<UnitUI>(playersUI.Except(new List<UnitUI> { s }));
+        }
+        return uis.FindAll(x => x.isActiveAndEnabled);
     }
 }

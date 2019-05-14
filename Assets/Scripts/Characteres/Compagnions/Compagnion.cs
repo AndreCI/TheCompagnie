@@ -8,6 +8,7 @@ public class Compagnion : Unit
     public List<int> startingWeights;
     public override Unit Setup()
     {
+        level = new Leveling(this);
         Unit copy = base.Setup();
         List<Card> cards = new List<Card>();
         int index = 0;

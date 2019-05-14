@@ -7,7 +7,7 @@ public class CardDatabase : ScriptableObject
 {
    public enum RARITY {NONE, STARTER, COMMON };
 
-    public enum CARDCLASS { CRUSADER, MAGE, WOLF, ABOMINATION, GLOBAL, WARRIOR};
+    public enum CARDCLASS { CRUSADER, MAGE, WOLF, ABOMINATION, GLOBAL, WARRIOR, SNAKE, GHOST, DARK_MAGE, DARK_KNIGHT, SKELETON1};
 
 
     public string Name;
@@ -38,11 +38,14 @@ public class CardDatabase : ScriptableObject
         }
         else
         {
+            int id = 0;
             foreach (Card card in items)
             {
                 card.databasePath = Name;
                 card.cardClass = cardClass;
                 card.rarity = rarityLevel;
+                card.ID = id;
+                id++;
             }
         }
     }

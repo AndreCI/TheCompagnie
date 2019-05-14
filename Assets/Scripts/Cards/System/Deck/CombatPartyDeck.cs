@@ -10,6 +10,11 @@ public class CombatPartyDeck : CombatDeck
     private List<Unit> owners_;
     private List<CombatUnitDeck> cards;
 
+    public void RenewDeck(Unit owner, CombatUnitDeck deck)
+    {
+
+        cards[owners_.IndexOf(owner)] = deck;
+    }
     public CombatPartyDeck(IEnumerable<Unit> owners, List<CombatUnitDeck> decks)
     {
         owners_ = new List<Unit>(owners);
@@ -41,6 +46,20 @@ public class CombatPartyDeck : CombatDeck
             AddCard(c, owners_[i]);
             i++;
         }
+    }
+
+    public override int Count(IEnumerable<Unit> owners = null)
+    {
+        int totalCount = 0;
+        if (owners == null || (new List<Unit>(owners)).Count == 0)
+        {
+            owners = owners_;
+        }
+        foreach (Unit owner in owners)
+        {
+            totalCount += cards[owners_.IndexOf(owner)].Count();
+        }
+        return totalCount;
     }
 
     public override Card Draw(Unit owner = null)

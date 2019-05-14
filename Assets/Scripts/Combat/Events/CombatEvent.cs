@@ -29,7 +29,28 @@ public class CombatEvent
         currentCasterHealth = source_.currentHealth;
         if (channel)
         {
-            source_.NotifyUpdate += Remove;
+            source_.SpecificUpdate += Remove;
+                }
+        foreach(CombatEffect e in effects)
+        {
+            if (e.OnPlay)
+            {
+                PerformEffect(e, TurnManager.Instance.timePerEvent);
+            }
+        }
+    }
+
+
+    private void PerformEffect(CombatEffect effect, float timePerEvent)
+    {
+        foreach (Unit target in targets)
+        {
+
+            effect.Perform(target, source, forcedTime: GetTime(timePerEvent));
+            if (channel)
+            {
+                source.SpecificUpdate -= Remove;
+            }
         }
     }
 
@@ -40,25 +61,28 @@ public class CombatEvent
         {
             for (int i = 0; i < effects.Count; i++)
             {
-                effects[i].Perform(target, source, forcedTime:GetTime(timePerEvent));
-                if (channel)
+                if (!effects[i].OnPlay)
                 {
-                    source.NotifyUpdate -= Remove;
+                    effects[i].Perform(target, source, forcedTime: GetTime(timePerEvent));
+                    if (channel)
+                    {
+                        source.SpecificUpdate -= Remove;
+                    }
                 }
             }
         }
     }
 
-    public void Remove()
+    private void Remove(Unit.UNIT_SPECIFIC_TRIGGER trigger)
     {
         if(intent == null)
         {
-            source.NotifyUpdate -= Remove;
+            source.SpecificUpdate -= Remove;
             return;
         }
-        if(channel && currentCasterHealth > source.currentHealth && timeIndex >= TurnManager.Instance.currentIndex)
+        if(channel && trigger == Unit.UNIT_SPECIFIC_TRIGGER.ATTACKED)
         {
-            source.NotifyUpdate -= Remove;
+            source.SpecificUpdate -= Remove;
             source.CurrentMana += cardSource.manaCost;
 
             TurnManager.Instance.RemoveCombatEvent(this);

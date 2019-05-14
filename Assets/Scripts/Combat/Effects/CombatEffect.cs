@@ -15,18 +15,21 @@ public class CombatEffect
     MANA_GAIN,
     MOVE_INTENT};
 
+    
     public enum ALTERNATIVE_TARGET { NONE, SELF};
-    public enum CONDITION { NONE, STATUS_BURN};
+    public enum CONDITION { NONE, STATUS_BURN, TARGET_CHANNEL};
 
-    public TYPE type;
-    public ALTERNATIVE_TARGET alternative;
-    public CONDITION condition;
-    public AnimationClipDatabase.T animation;
-    public CardEffectVariable.VARIABLE variable;
-    public int amount;
     [Header("Status (only if APPLY_STATUS)")]
     public List<CombatStatusFactory> statusFactories;
-    
+    [Header("General Information")]
+    public int amount;
+    public TYPE type;
+    public AnimationClipDatabase.T animation;
+    [Header("Specific parameters")]
+    public CardEffectVariable.VARIABLE variable;
+    public ALTERNATIVE_TARGET alternative;
+    public CONDITION condition;
+    public bool OnPlay = false;
 
     private bool CheckCondition(Unit target, Unit source)
     {
@@ -36,7 +39,8 @@ public class CombatEffect
                 return true;
             case CONDITION.STATUS_BURN:
                 return target.CurrentStatus.Any(x => x.status == CombatStatus.STATUS.BURN);
-
+            case CONDITION.TARGET_CHANNEL:
+                return TurnManager.Instance.GetCurrentEvents(true).Find(x => x.channel && x.source == source) != null;
           
         }
         return true;
@@ -48,14 +52,16 @@ public class CombatEffect
         {
             Debug.Log("Issue with combat effect " + type.ToString() + ";" + amount.ToString() + "; target:" + target.ToString() + "; source:" + source.ToString());
         }
-        if(alternative == ALTERNATIVE_TARGET.SELF) { target = source; }
         if(!CheckCondition(target, source)) { return; }
+        if(alternative == ALTERNATIVE_TARGET.SELF) { target = source; }
         amount = CardEffectVariable.GetVariable(this, target, source);
         PlayerInfos.Instance.animationDatabase.Get(animation)?.Activate(CombatManager.Instance.GetUnitUI(target), timeFactor:timeFactor, forcedTime:forcedTime);
         switch (type)
         {
             case TYPE.DAMAGE:
                 //if(variable == CardEffectVariable.VARIABLE.BURN_STATUS) { Debug.Log(amount); }
+                source.TriggerSpecificUpdate(Unit.UNIT_SPECIFIC_TRIGGER.ATTACKS);
+                target.TriggerSpecificUpdate(Unit.UNIT_SPECIFIC_TRIGGER.ATTACKED);
                 target.TakeDamage(amount + source.currentStrength);
                 break;
             case TYPE.HEAL:

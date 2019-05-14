@@ -14,211 +14,304 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: All
   cardClass: 4
+  rarityLevel: 0
   childrenDatabase:
   - {fileID: 11400000, guid: c478737fd28c8ec4eb8bac56ffacc2ab, type: 2}
   - {fileID: 11400000, guid: 6ecaaa6fcae221f469cd3c7686f470c5, type: 2}
+  - {fileID: 11400000, guid: 09cf04156abf4994bb1eafd7b2c0004e, type: 2}
   items:
-  - ID: 0
-    Name: Bash
+  - Name: Bash
     manaCost: 0
     delay: 4
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 2ec898c183f15cf42b47852f0df9591c, type: 3}
-    atype: 0
-    Description: Deal 10 damage and reduce strength by 4 for 2 turns.
-    multipleTarget: 0
-    potential_target: 0
     effects:
     - type: 0
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 10
       statusFactories: []
     - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 0
       statusFactories:
       - status: 6
         value: 4
         duration: 2
+        permanent: 0
         trigger: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 2ec898c183f15cf42b47852f0df9591c, type: 3}
+    Description: Deal 10 damage and reduce strength by 4 for 2 turns.
+    rarity: 0
     databasePath: Crusader/COMPAGNION/All
     cardClass: 0
-  - ID: 1
-    Name: Vicious Strike
+    ID: 0
+  - Name: Vicious Strike
     manaCost: 0
     delay: 2
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 08943cc2cc5055b4d96e6aa54e72b7b7, type: 3}
-    atype: 0
-    Description: Deal 14 damage and apply 1 bleed for 14 ticks.
-    multipleTarget: 0
-    potential_target: 0
     effects:
     - type: 0
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 14
       statusFactories: []
     - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 0
       statusFactories:
       - status: 4
         value: 1
         duration: 14
+        permanent: 0
         trigger: 1
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 08943cc2cc5055b4d96e6aa54e72b7b7, type: 3}
+    Description: Deal 14 damage and apply 1 bleed for 14 ticks.
+    rarity: 0
     databasePath: Crusader/COMPAGNION/All
     cardClass: 0
-  - ID: 2
-    Name: Burning Rage
+    ID: 1
+  - Name: Burning Rage
     manaCost: 6
     delay: 1
     actionCost: 1
-    sprite: {fileID: 21300000, guid: dd1642a615d9b56458db33fc579e897e, type: 3}
-    atype: 0
-    Description: Burn self for 5 damage during 4 turns, and gain 5 strength.
-    multipleTarget: 0
-    potential_target: 1
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 0
       statusFactories:
       - status: 3
         value: 5
         duration: 4
+        permanent: 0
         trigger: 0
       - status: 7
         value: 5
         duration: 10
+        permanent: 0
         trigger: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: dd1642a615d9b56458db33fc579e897e, type: 3}
+    Description: Burn self for 5 damage during 4 turns, and gain 5 strength.
+    rarity: 0
     databasePath: Crusader/COMPAGNION/All
     cardClass: 0
-  - ID: 3
-    Name: Parry
+    ID: 2
+  - Name: Parry
     manaCost: 4
     delay: 2
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 459f1c2a69f0a7244b62a4cc48f68e7a, type: 3}
-    atype: 0
-    Description: Gain 2 parry for 3 ticks. Next turn, gain 1 action.
-    multipleTarget: 0
-    potential_target: 1
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 0
       statusFactories:
       - status: 2
         value: 2
         duration: 3
+        permanent: 0
         trigger: 1
       - status: 8
         value: 1
         duration: 1
+        permanent: 0
         trigger: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 459f1c2a69f0a7244b62a4cc48f68e7a, type: 3}
+    Description: Gain 2 parry for 3 ticks. Next turn, gain 1 action.
+    rarity: 0
     databasePath: Crusader/COMPAGNION/All
     cardClass: 0
-  - ID: 4
-    Name: Defense Mastery
+    ID: 3
+  - Name: Defense Mastery
     manaCost: 8
     delay: 2
     actionCost: 1
-    sprite: {fileID: 21300000, guid: f5281722176c3b54095d26051b2b6625, type: 3}
-    atype: 0
-    Description: All party member gain 12 blocks for 1 turn.
-    multipleTarget: 1
-    potential_target: 1
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 0
       statusFactories:
       - status: 1
         value: 12
         duration: 1
+        permanent: 0
         trigger: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: f5281722176c3b54095d26051b2b6625, type: 3}
+    Description: All party member gain 12 blocks for 1 turn.
+    rarity: 0
     databasePath: Crusader/COMPAGNION/All
     cardClass: 0
-  - ID: 5
-    Name: Quick Retreat
+    ID: 4
+  - Name: Quick Retreat
     manaCost: 2
     delay: 0
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 67b09a274e7d302488a8c535956c0053, type: 3}
-    atype: 0
-    Description: Gain 6 block for 1 turn. Gain 1 action and draw a card next turn.
-    multipleTarget: 0
-    potential_target: 1
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 0
       statusFactories:
       - status: 1
         value: 6
         duration: 1
+        permanent: 0
         trigger: 0
       - status: 8
         value: 1
         duration: 1
+        permanent: 0
         trigger: 0
       - status: 9
         value: 1
         duration: 1
+        permanent: 0
         trigger: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 67b09a274e7d302488a8c535956c0053, type: 3}
+    Description: Gain 6 block for 1 turn. Gain 1 action and draw a card next turn.
+    rarity: 0
     databasePath: Crusader/COMPAGNION/All
     cardClass: 0
-  - ID: 6
-    Name: Obliterate
+    ID: 5
+  - Name: Obliterate
     manaCost: 0
     delay: 5
     actionCost: 2
-    sprite: {fileID: 21300000, guid: 2646bde935b4ac64c90c1bfd4d951be2, type: 3}
-    atype: 0
-    Description: Deal 34 damages. Cost 2 actions.
-    multipleTarget: 0
-    potential_target: 0
     effects:
     - type: 0
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 34
       statusFactories: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 2646bde935b4ac64c90c1bfd4d951be2, type: 3}
+    Description: Deal 34 damages. Cost 2 actions.
+    rarity: 0
     databasePath: Crusader/COMPAGNION/All
     cardClass: 0
-  - ID: 7
-    Name: Purifing Fire
+    ID: 6
+  - Name: Purifing Fire
     manaCost: 12
     delay: 3
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 9b83ce6bd738f644a91922caa22095ca, type: 3}
-    atype: 0
-    Description: Heal for 40 and apply burn for 5 damage during 4 turns;
-    multipleTarget: 0
-    potential_target: 1
     effects:
     - type: 1
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 40
       statusFactories: []
     - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 40
       statusFactories:
       - status: 3
         value: 5
         duration: 0
+        permanent: 0
         trigger: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 9b83ce6bd738f644a91922caa22095ca, type: 3}
+    Description: Heal for 40 and apply burn for 5 damage during 4 turns;
+    rarity: 0
     databasePath: Crusader/COMPAGNION/All
     cardClass: 0
-  - ID: 72
-    Name: Poisoned Stab
+    ID: 7
+  - Name: Poisoned Stab
     manaCost: 1
     delay: 1
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 0ebbd895585f2d844994556c05d81acb, type: 3}
-    atype: 0
-    Description: Deal 12 damages and applies 8 poisons for 10 ticks.
-    multipleTarget: 0
-    potential_target: 0
     effects:
     - type: 0
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 12
       statusFactories: []
     - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
       amount: 0
       statusFactories:
       - status: 5
         value: 8
         duration: 10
+        permanent: 0
         trigger: 1
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 0ebbd895585f2d844994556c05d81acb, type: 3}
+    Description: Deal 12 damages and applies 8 poisons for 10 ticks.
+    rarity: 0
     databasePath: Alchemist/COMPAGNION/All
     cardClass: 1
+    ID: 72

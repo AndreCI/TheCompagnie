@@ -9,6 +9,7 @@ using UnityEngine.UI;
 [Serializable]
 public abstract class Unit
 {
+    public enum UNIT_SPECIFIC_TRIGGER { ATTACKS, BLOCKED, ATTACKED};
     public CardDatabase.CARDCLASS availableCards;
     public int maxHealth;
     public int maxMana;
@@ -23,9 +24,17 @@ public abstract class Unit
     public delegate void InfoUpdate();
     public event InfoUpdate NotifyUpdate;
 
+    public delegate void SpecificUpdateDelegate(UNIT_SPECIFIC_TRIGGER trigger);
+    public event SpecificUpdateDelegate SpecificUpdate;
+
     public Leveling level;
     public int id;
     public static int currentId = 0;
+
+    public void TriggerSpecificUpdate(UNIT_SPECIFIC_TRIGGER trigger)
+    {
+        SpecificUpdate?.Invoke(trigger);
+    }
     public int currentStrength { get
         {
             int baseVal = 0;
@@ -46,14 +55,13 @@ public abstract class Unit
         currentHealth = maxHealth;
         currentMana = maxMana;
         currentAction = maxAction;
-        level = new Leveling(this);
         Unit copy = GeneralUtils.Copy<Unit>(this);
         return copy;
 
     }
 
     public int CurrentHealth {  get => currentHealth; set {
-            CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText((value - currentHealth).ToString(), (value - currentHealth) < 0 ? Color.red : Color.green);
+            CombatManager.Instance?.GetUnitUI(this)?.portraitInfos?.PlayNotificationText((value - currentHealth).ToString(), (value - currentHealth) < 0 ? Color.red : Color.green);
 
             currentHealth = value;
             if (currentHealth > maxHealth) { currentHealth = maxHealth; }
@@ -153,6 +161,7 @@ public abstract class Unit
                 if(cs.value < 0) { amount = -1 * cs.value; cs.value = 0; }
                 else
                 {
+                    TriggerSpecificUpdate(UNIT_SPECIFIC_TRIGGER.BLOCKED);
                     CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText(amount.ToString(), Color.gray);
                     amount = 0; }
                 cs.CheckUpdate(forceAnimation:true);

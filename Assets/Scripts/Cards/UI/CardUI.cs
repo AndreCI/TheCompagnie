@@ -20,6 +20,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     public Text description;
 
     private bool playable = true;
+    private bool setuped = false;
     public bool Playable
     {
         get => playable &&
@@ -35,6 +36,17 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
 
     public void Setup(Card card_)
     {
+        if (!setuped && card_.owner != null)
+        {
+            CardSelector.Notify += SelectedCardUpdate;
+            card_.owner.NotifyUpdate += UnitUpdate_Notify;
+            setuped = true;
+        }
+        else if(card.owner != null && card_.owner != null)
+        {
+            card.owner.NotifyUpdate -= UnitUpdate_Notify;
+            card_.owner.NotifyUpdate += UnitUpdate_Notify;
+        }
         card = card_;
         image.sprite = card.sprite;
         manaCost.text = card.manaCost.ToString();
@@ -44,9 +56,20 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         {
             head.text = card.Name;
         }
-
-        CardSelector.Notify += SelectedCardUpdate; 
     }
+
+    private void UnitUpdate_Notify()
+    {
+        if(card.manaCost > card.owner.CurrentMana)
+        {
+            manaCost.color = Color.red;
+        }
+        else
+        {
+            manaCost.color = Color.white;
+        }
+    }
+
     public void Play(List<Unit> target)
     {
         card.Play(target);
@@ -59,11 +82,19 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     public void OnDisable()
     {
         CardSelector.Notify -= SelectedCardUpdate;
+        if (card.owner != null)
+        {
+            card.owner.NotifyUpdate -= UnitUpdate_Notify;
+        }
     }
 
     public void OnDestroy()
     {
         CardSelector.Notify -= SelectedCardUpdate;
+        if (card.owner != null)
+        {
+            card.owner.NotifyUpdate -= UnitUpdate_Notify;
+        }
 
     }
 
@@ -108,13 +139,15 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         this.transform.SetParent(this.transform.parent.parent);
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
-
+        CursorManager.Instance.type = CursorManager.CURSOR_TYPE.GRAB;
         ResetTransform();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         this.transform.position = eventData.position;
+        if(CursorManager.Instance.type != CursorManager.CURSOR_TYPE.GRAB && CursorManager.Instance.type != CursorManager.CURSOR_TYPE.ATTACK)
+            CursorManager.Instance.type = CursorManager.CURSOR_TYPE.GRAB;
 
         if (placeholder.transform.parent != placeholderParent)
             placeholder.transform.SetParent(placeholderParent);
@@ -160,14 +193,18 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         }
         else
         {
-            PartyUI pui= this.transform.parent.GetComponent<PartyUI>();
-            target = null;
-            if (pui != null) {
-                target = new List<UnitUI>(pui.units);
-            }
+            target = new List<UnitUI>(this.transform.GetComponentsInParent<UnitUI>());
         }
         if (target != null && target.Count > 0) 
         {
+
+            if (card.multipleTarget)
+            {
+                Debug.Log(target.Count);
+                target.AddRange(CombatManager.Instance.GetFriendsUnitUI(target[0].unit));
+                Debug.Log(target.Count);
+                
+            }
             TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATENDTURN);
             if (card.manaCost > 0)
             {
@@ -179,6 +216,8 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         {
             Hand.Instance.SetCardUIs();
         }
+        CursorManager.Instance.type = CursorManager.CURSOR_TYPE.DEFAULT;
+
 
     }
 
@@ -187,6 +226,8 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
        // UnitSelector.Instance.ForceSelection(new List<Unit> { card.owner }, UnitSelector.SELECTION_MODE.SELECT);
         if (Hand.Instance.cards.Contains(this))
         {
+            CursorManager.Instance.type = CursorManager.CURSOR_TYPE.PREGRAB;
+
             ResetTransform();
             RectTransform current = GetComponentsInChildren<RectTransform>()[1];
             current.localPosition = new Vector2(current.localPosition.x,
@@ -202,8 +243,8 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
 
     public void OnPointerExit(PointerEventData eventData)
     {
-
-    //    UnitSelector.Instance.EndForceSelection(UnitSelector.SELECTION_MODE.SELECT);
+        CursorManager.Instance.type = CursorManager.CURSOR_TYPE.DEFAULT;
+        //    UnitSelector.Instance.EndForceSelection(UnitSelector.SELECTION_MODE.SELECT);
         if (Hand.Instance.cards.Contains(this))
         {
             transform.localScale = new Vector3(1f, 1f, 1f);

@@ -19,4 +19,10 @@ public class MainMenuWindows : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void OpenFeedback()
+    {
+        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSdT7eLixwCpVmH7yRivF5uhUOrrlG5AMcv9gIkEjU8gDCVWFg/viewform");
+
+    }
 }

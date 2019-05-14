@@ -11,11 +11,14 @@ public class TutorialManager : MonoBehaviour
 {
     private static TutorialManager instance;
     public static TutorialManager Instance { get => instance; }
-    public enum TUTOTRIGGER { OVERWORLD, COMBAT, PARTYMENU, COMBATENDTURN, COMBATPLAY, COMBATATTACKED,COMBATWIN, COMBATMANA, WELCOME, ACTIONPOINT};
+    public enum TUTOTRIGGER { OVERWORLD, COMBAT, PARTYMENU, COMBATENDTURN, COMBATPLAY, COMBATATTACKED,COMBATWIN, COMBATMANA, WELCOME, ACTIONPOINT, PATCHNOTE};
     public GameObject windows;
     public Text currentText;
     public Dictionary<TUTOTRIGGER, string> texts;
     public Dictionary<TUTOTRIGGER, bool> status;
+
+    public static string versionNumber = "0.1.4";
+    public static string patchNote = "Added content! Starts to feel like a real game now: how far can one go? Progression system (enemies & compagnions)";
 
     public TUTOTRIGGER current;
 
@@ -105,12 +108,21 @@ public class TutorialManager : MonoBehaviour
         PlayerSettings.Instance.disableTutorial = true;
     }
 
+    public void ShowPatchNotes()
+    {
+        windows.gameObject.SetActive(true);
+        current = TUTOTRIGGER.PATCHNOTE;
+        currentText.text = texts[TUTOTRIGGER.PATCHNOTE];
+    }
     private string GetText(TUTOTRIGGER trigger)
     {
         switch (trigger)
         {
+            case TUTOTRIGGER.PATCHNOTE:
+            return "PATCH NOTE 13/05 v" + versionNumber +".\n" +
+                    patchNote;
             case TUTOTRIGGER.WELCOME:
-                return "Welcome to The Compagnie. This is currently an alpha version, build v0.1.2. \n" +
+                return "Welcome to The Compagnie. This is currently an alpha version, build v"+versionNumber+". \n" +
                     "Please note that this is far from a final build and that everything that you see here can be subject to change.\n"+
                     "It would help me a lot if you provide some feedback. In the meantime, I hope you enjoy this!";
             case TUTOTRIGGER.OVERWORLD:

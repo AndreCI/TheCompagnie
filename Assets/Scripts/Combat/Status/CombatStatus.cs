@@ -40,7 +40,7 @@ public class CombatStatus
         trigger = trigger_;
         target = target_;
         permanent = permanent_;
-        animator = CombatManager.Instance.GetUnitUI(target).statusAnimator;
+        animator = CombatManager.Instance.GetUnitUI(target)?.statusAnimator;
         TurnManager.NotifyAll += Notified;
         target.AddStatus(this);
        
@@ -75,7 +75,7 @@ public class CombatStatus
                     if(s.status==status && s.trigger == trigger && s.duration == duration)
                     {
                         s.value += value;
-                        s.ui.UpdateData();
+                        s.ui?.UpdateData();
                         return false;
                     }
                 }break;
@@ -119,8 +119,25 @@ public class CombatStatus
                     if(s.status == status && (s.duration == duration || (s.permanent && permanent)))
                     {
                         s.value += value;
-                        s.ui.UpdateData();
+                        s.ui?.UpdateData();
                         return false;
+                    }else if(s.status == STATUS.REDUCE_STR && (s.duration == duration || s.permanent && permanent))
+                    {
+                        if(s.value >= value)
+                        {
+                            s.value -= value;
+                            s.ui?.UpdateData();
+                            return false;
+                        }
+                        else
+                        {
+                            value -= s.value;
+                            s.value = 0;
+                            if(s.ui != null)
+                                s.ui.setDestroy = true;
+                            s.ui?.Trigger();
+                            
+                        }
                     }
                 }
                 break;
@@ -133,7 +150,7 @@ public class CombatStatus
                         ))
                     {
                         s.value += value;
-                        s.ui.UpdateData();
+                        s.ui?.UpdateData();
                         return false;
                     }
                 }break;

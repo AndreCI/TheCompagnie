@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,6 +21,7 @@ public class PlayerInfos : MonoBehaviour
 
     public OverworldMap globalMap;
     public GameObject gameOver;
+    public Text versionText;
 
     void Awake()
     {
@@ -50,6 +47,7 @@ public class PlayerInfos : MonoBehaviour
 
       //  AddCompagnion(compagnionsDatabase.Get(1));
         unitsWindow?.gameObject.SetActive(false);
+        versionText.text = "v" + TutorialManager.versionNumber;
     }
 
     public void AddCompagnion(Compagnion newComp)
@@ -73,4 +71,12 @@ public class PlayerInfos : MonoBehaviour
         
 
     }
+
+    public void OpenFeedback()
+    {
+        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSdT7eLixwCpVmH7yRivF5uhUOrrlG5AMcv9gIkEjU8gDCVWFg/viewform");
+
+    }
+    
+
 }

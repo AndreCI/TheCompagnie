@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: darkknight
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 9
+  rarityLevel: 1
+  childrenDatabase: []
+  items:
+  - Name: 
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 2646bde935b4ac64c90c1bfd4d951be2, type: 3}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 9
+    ID: 64
+  - Name: 
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 0
+      type: 0
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 0
+      type: 0
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 0}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 9
+    ID: 65
+  - Name: 
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 0}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 9
+    ID: 66
+  - Name: 
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 0}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 9
+    ID: 67

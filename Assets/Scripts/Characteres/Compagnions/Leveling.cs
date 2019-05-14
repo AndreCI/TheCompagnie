@@ -39,12 +39,11 @@ public class Leveling
         {
             currentXP -= nextLevelThreshold;
             currentLevel += 1;
-            talentPoints += 1;
+            //talentPoints += 1;
             nextLevelThreshold = 10;
             if(currentLevel == 1)
             {
-                source.maxMana = 20;
-                source.CurrentMana = 20;
+                source.maxMana += 20;
                 source.maxHealth += 20;
                 talentPoints += 3;
                 source.persistentDeck.AddCardSlot();
@@ -59,6 +58,28 @@ public class Leveling
                 source.persistentDeck.AddCardSlot();
                 source.persistentDeck.AddCardSlot();
                 source.persistentDeck.AddCardSlot();
+            }else if(currentLevel == 3)
+            {
+                source.maxMana += 20;
+                source.maxHealth += 20;
+                talentPoints += 3;
+                source.persistentDeck.AddCardSlot();
+                source.persistentDeck.AddCardSlot();
+                source.persistentDeck.AddCardSlot();
+            }
+            else if (currentLevel == 4)
+            {
+                source.maxAction += 1;
+                talentPoints += 3;
+                source.persistentDeck.AddCardSlot();
+                source.persistentDeck.AddCardSlot();
+                source.persistentDeck.AddCardSlot();
+            }
+            else
+            {
+                source.maxMana += 2;
+                source.maxHealth += 5;
+                nextLevelThreshold = 12;
             }
             source.currentHealth = source.maxHealth;
             source.CurrentMana = source.maxMana;

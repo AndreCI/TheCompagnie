@@ -23,20 +23,35 @@ public class EnemyGenerator : MonoBehaviour
     {
         List<Enemy> enemies = new List<Enemy>() ;
         if (combatIndex == 0)
-        {
-            enemies = new List<Enemy> { GeneralUtils.Copy<Enemy>(database.Get(0))};
+        {//database.Get(7)) };//d
+            enemies = database.GetRandomFromType(Enemy.ENEMY_TYPE.BEAST, 1);
 
         }
-        else if (combatIndex == 1)
+        else if (combatIndex == 1 || combatIndex == 2)
         {
-            enemies = new List<Enemy> { GeneralUtils.Copy<Enemy>(database.Get(0)), GeneralUtils.Copy<Enemy>(database.Get(0)) };
-        }else if (combatIndex == 2)
+            enemies = database.GetRandomFromType(Enemy.ENEMY_TYPE.BEAST, 2);
+        }
+        else if (combatIndex == 3)
         {
-            enemies = new List<Enemy> { GeneralUtils.Copy<Enemy>(database.Get(1)) };
-        }else if(combatIndex == 3)
+            enemies = database.GetRandomFromType(Enemy.ENEMY_TYPE.UNDEAD, 1);
+        }
+        else //if(combatIndex == 3)
         {
-            enemies = new List<Enemy> { GeneralUtils.Copy<Enemy>(database.Get(1)), GeneralUtils.Copy<Enemy>(database.Get(1)) };
+            if (combatIndex % 4 == 0)
+            {
+                enemies = database.GetRandomFromType(Enemy.ENEMY_TYPE.BEAST, 2);
 
+            }
+            else
+            {
+                //  enemies = new List<Enemy> { GeneralUtils.Copy<Enemy>(database.GetRandom()), GeneralUtils.Copy<Enemy>(database.GetRandom()) };
+                enemies = database.GetRandomFromType(Enemy.ENEMY_TYPE.UNDEAD, 2);
+            }
+        }
+        while(enemies.Select(x=>x.level.currentLevel).Sum() < PlayerInfos.Instance.compagnions.Select(y => y.level.currentLevel).Sum() -2)
+        {
+            Enemy nextEnemy = EnemiesDatabase.Shuffle(enemies).First();
+            nextEnemy.AddLevel();
         }
         List<Enemy> copies = new List<Enemy>();
         foreach(Enemy enemy in enemies)
@@ -51,4 +66,6 @@ public class EnemyGenerator : MonoBehaviour
         combatIndex++;
         return copies;
     }
+
+ 
 }

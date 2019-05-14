@@ -18,6 +18,10 @@ public class CombatUnitDeck : CombatDeck
         cards.Add(card);
     }
 
+    public override int Count(IEnumerable<Unit> owners = null)
+    {
+        return cards.Count;
+    }
 
     public override Card Draw(Unit owner = null)
     {

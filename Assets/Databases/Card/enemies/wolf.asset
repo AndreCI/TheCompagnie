@@ -17,8 +17,7 @@ MonoBehaviour:
   rarityLevel: 1
   childrenDatabase: []
   items:
-  - ID: 606
-    Name: Bite
+  - Name: Bite
     manaCost: 0
     delay: 5
     actionCost: 1
@@ -28,14 +27,19 @@ MonoBehaviour:
     potential_target: 0
     effects:
     - type: 0
+      alternative: 0
+      condition: 0
       animation: 2
+      variable: 0
       amount: 10
       statusFactories: []
+    channel: 0
+    channelLenght: 0
     rarity: 1
     databasePath: WOLF/ENEMIES/All
     cardClass: 2
-  - ID: 607
-    Name: Defend
+    ID: 44
+  - Name: Defend
     manaCost: 0
     delay: 3
     actionCost: 1
@@ -45,34 +49,52 @@ MonoBehaviour:
     potential_target: 1
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
       animation: 1
+      variable: 0
       amount: 0
       statusFactories:
       - status: 1
         value: 15
         duration: 1
+        permanent: 0
         trigger: 0
+    channel: 0
+    channelLenght: 0
     rarity: 1
     databasePath: WOLF/ENEMIES/All
     cardClass: 2
-  - ID: 608
-    Name: Hide
+    ID: 45
+  - Name: Hide
     manaCost: 0
     delay: 1
     actionCost: 1
     sprite: {fileID: 21300000, guid: a0e3596a59487b741bdfdb96bedb6460, type: 3}
-    Description: Gain 8 blocks
+    Description: Gain 8 blocks. Gain 3 strength.
     multipleTarget: 0
     potential_target: 1
     effects:
     - type: 2
+      alternative: 0
+      condition: 0
       animation: 1
+      variable: 0
       amount: 0
       statusFactories:
       - status: 1
         value: 8
         duration: 1
+        permanent: 0
         trigger: 0
+      - status: 7
+        value: 3
+        duration: 1
+        permanent: 1
+        trigger: 2
+    channel: 0
+    channelLenght: 0
     rarity: 1
     databasePath: WOLF/ENEMIES/All
     cardClass: 2
+    ID: 46

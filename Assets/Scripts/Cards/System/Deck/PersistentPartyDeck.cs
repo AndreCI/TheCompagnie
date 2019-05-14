@@ -88,4 +88,9 @@ public class PersistentPartyDeck : PersistentDeck
     {
         cards[owners_.IndexOf(owner)].AddCardSlot();
     }
+
+    public override int Count(IEnumerable<Unit> owners = null)
+    {
+        throw new NotImplementedException();
+    }
 }

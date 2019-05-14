@@ -19,163 +19,779 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 259372e91dd68d844841ca6c6bf78b36, type: 2}
   - {fileID: 11400000, guid: 2dc7c87d4079fc2418ec02209506426c, type: 2}
   - {fileID: 11400000, guid: c6d5c3ee1dede854cb1686d3ef635f1e, type: 2}
+  - {fileID: 11400000, guid: 12ffe29717252734ea3d5dfdbd6d69b4, type: 2}
+  - {fileID: 11400000, guid: 543788848132de6438a9a46e6dad91ca, type: 2}
+  - {fileID: 11400000, guid: fd3a0a1b5b1de2d42aeb334fbc4bd462, type: 2}
+  - {fileID: 11400000, guid: dfbf88cfd24e04349bf5617a7a4f6297, type: 2}
+  - {fileID: 11400000, guid: a5927c0fe18d3484d87f432df9c9af9b, type: 2}
   items:
-  - ID: 396
-    Name: Bite
+  - Name: Bite
     manaCost: 0
     delay: 5
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 1ee87670a5423394a9f36661d3932e93, type: 3}
-    Description: Deal 20 Damages
-    multipleTarget: 0
-    potential_target: 0
     effects:
     - type: 0
-      animation: 0
+      alternative: 0
+      condition: 0
+      animation: 2
       variable: 0
-      amount: 20
+      amount: 10
+      OnPlay: 0
       statusFactories: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 1ee87670a5423394a9f36661d3932e93, type: 3}
+    Description: Deal 10 Damages
     rarity: 1
     databasePath: WOLF/ENEMIES/All
     cardClass: 2
-  - ID: 397
-    Name: Defend
+    ID: 44
+  - Name: Defend
     manaCost: 0
     delay: 3
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 8b7d9a94927760a41abfa4e16441a305, type: 3}
-    Description: Gain 20 block.
-    multipleTarget: 0
-    potential_target: 1
     effects:
     - type: 2
-      animation: 0
+      alternative: 0
+      condition: 0
+      animation: 1
       variable: 0
       amount: 0
+      OnPlay: 0
       statusFactories:
       - status: 1
-        value: 20
+        value: 15
         duration: 1
+        permanent: 0
         trigger: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 8b7d9a94927760a41abfa4e16441a305, type: 3}
+    Description: Gain 15 block.
     rarity: 1
     databasePath: WOLF/ENEMIES/All
     cardClass: 2
-  - ID: 398
-    Name: Hide
+    ID: 45
+  - Name: Hide
     manaCost: 0
     delay: 1
     actionCost: 1
-    sprite: {fileID: 21300000, guid: a0e3596a59487b741bdfdb96bedb6460, type: 3}
-    Description: Gain 8 blocks
-    multipleTarget: 0
-    potential_target: 1
     effects:
     - type: 2
-      animation: 0
+      alternative: 0
+      condition: 0
+      animation: 1
       variable: 0
       amount: 0
+      OnPlay: 0
       statusFactories:
       - status: 1
         value: 8
         duration: 1
+        permanent: 0
         trigger: 0
+      - status: 7
+        value: 3
+        duration: 1
+        permanent: 1
+        trigger: 2
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: a0e3596a59487b741bdfdb96bedb6460, type: 3}
+    Description: Gain 8 blocks. Gain 3 strength.
     rarity: 1
     databasePath: WOLF/ENEMIES/All
     cardClass: 2
-  - ID: 474
-    Name: Brutal Mutation
+    ID: 46
+  - Name: Brutal Mutation
     manaCost: 0
-    delay: 1
+    delay: 2
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 8b7d9a94927760a41abfa4e16441a305, type: 3}
-    Description: Heal for 20 and gain 9 block.
-    multipleTarget: 0
-    potential_target: 1
     effects:
     - type: 2
-      animation: 0
+      alternative: 0
+      condition: 0
+      animation: 1
       variable: 0
       amount: 0
+      OnPlay: 0
       statusFactories:
       - status: 1
         value: 9
         duration: 1
+        permanent: 0
         trigger: 0
     - type: 1
+      alternative: 0
+      condition: 0
       animation: 0
       variable: 0
       amount: 20
+      OnPlay: 0
       statusFactories: []
-    rarity: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 8b7d9a94927760a41abfa4e16441a305, type: 3}
+    Description: Heal for 20 and gain 9 block.
+    rarity: 1
     databasePath: ABOMINATION/ENEMIES/All
     cardClass: 3
-  - ID: 475
-    Name: Toxic Cloud
+    ID: 47
+  - Name: Toxic Cloud
     manaCost: 5
     delay: 4
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 55ab685267846ee44ab2360ae523d32d, type: 3}
-    Description: Apply 1 poison for 30 ticks to all enemies
-    multipleTarget: 1
-    potential_target: 0
     effects:
     - type: 2
-      animation: 0
+      alternative: 0
+      condition: 0
+      animation: 5
       variable: 0
       amount: 0
+      OnPlay: 0
       statusFactories:
       - status: 5
         value: 1
         duration: 30
+        permanent: 0
         trigger: 1
-    rarity: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 55ab685267846ee44ab2360ae523d32d, type: 3}
+    Description: Apply 1 poison for 30 ticks to all enemies
+    rarity: 1
     databasePath: ABOMINATION/ENEMIES/All
     cardClass: 3
-  - ID: 476
-    Name: Slow Mutation
+    ID: 48
+  - Name: Slow Mutation
     manaCost: 0
     delay: 5
     actionCost: 1
-    sprite: {fileID: 21300000, guid: e73a0b640e143cc4484d9c3b0eb9e7fd, type: 3}
-    Description: Gain 5 regen for 6 turn and 9 block.
-    multipleTarget: 0
-    potential_target: 1
     effects:
     - type: 2
-      animation: 0
+      alternative: 0
+      condition: 0
+      animation: 1
       variable: 0
       amount: 5
+      OnPlay: 0
       statusFactories:
       - status: 0
         value: 5
         duration: 6
+        permanent: 0
         trigger: 0
       - status: 1
         value: 9
         duration: 1
+        permanent: 0
         trigger: 0
-    rarity: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: e73a0b640e143cc4484d9c3b0eb9e7fd, type: 3}
+    Description: Gain 5 health regeneration for 6 turn and 9 block.
+    rarity: 1
     databasePath: ABOMINATION/ENEMIES/All
     cardClass: 3
-  - ID: 477
-    Name: Poison Burst
+    ID: 49
+  - Name: Poison Burst
     manaCost: 10
     delay: 2
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 5c4b257a9932c40409e2ebbd78d8f42c, type: 3}
-    Description: Apply 20 poison for 1 tick.
-    multipleTarget: 0
-    potential_target: 0
     effects:
     - type: 2
-      animation: 0
+      alternative: 0
+      condition: 0
+      animation: 5
       variable: 0
       amount: 0
+      OnPlay: 0
       statusFactories:
       - status: 5
         value: 20
         duration: 1
+        permanent: 0
         trigger: 1
-    rarity: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 5c4b257a9932c40409e2ebbd78d8f42c, type: 3}
+    Description: Apply 20 poison for 1 tick.
+    rarity: 1
     databasePath: ABOMINATION/ENEMIES/All
     cardClass: 3
+    ID: 50
+  - Name: Crippling Poison
+    manaCost: 4
+    delay: 2
+    actionCost: 1
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 5
+      variable: 0
+      amount: 0
+      OnPlay: 0
+      statusFactories:
+      - status: 5
+        value: 3
+        duration: 5
+        permanent: 0
+        trigger: 1
+      - status: 6
+        value: 5
+        duration: 3
+        permanent: 0
+        trigger: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 9ae7fcb7d34b30448ad602378614ae98, type: 3}
+    Description: Apply 3 poison for 5 ticks and reduce strength by 5 for 3 turns.
+    rarity: 1
+    databasePath: ABOMINATION/ENEMIES/All
+    cardClass: 3
+    ID: 51
+  - Name: Poisonous Bite
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 8
+      variable: 0
+      amount: 6
+      OnPlay: 0
+      statusFactories: []
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 0
+      OnPlay: 0
+      statusFactories:
+      - status: 5
+        value: 1
+        duration: 8
+        permanent: 0
+        trigger: 1
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 1
+    sprite: {fileID: 21300000, guid: 0ebbd895585f2d844994556c05d81acb, type: 3}
+    Description: Deal 6 damages and apply 1 poison for 8 ticks.
+    rarity: 1
+    databasePath: Snake/ENEMIES/All
+    cardClass: 6
+    ID: 52
+  - Name: Constriction
+    manaCost: 0
+    delay: 2
+    actionCost: 1
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 3
+      variable: 0
+      amount: 5
+      OnPlay: 0
+      statusFactories: []
+    channel: 1
+    channelLenght: 5
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 80e81b34137fb7d41baeb66ccbda5269, type: 3}
+    Description: Channel 5. Deal 5 damages.
+    rarity: 1
+    databasePath: Snake/ENEMIES/All
+    cardClass: 6
+    ID: 53
+  - Name: Hide
+    manaCost: 0
+    delay: 1
+    actionCost: 1
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 1
+      variable: 0
+      amount: 0
+      OnPlay: 0
+      statusFactories:
+      - status: 1
+        value: 8
+        duration: 1
+        permanent: 0
+        trigger: 0
+      - status: 7
+        value: 3
+        duration: 0
+        permanent: 1
+        trigger: 2
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: a0e3596a59487b741bdfdb96bedb6460, type: 3}
+    Description: Gain 8 blocks. Gain 3 strength.
+    rarity: 1
+    databasePath: Snake/ENEMIES/All
+    cardClass: 6
+    ID: 54
+  - Name: Intimidation
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - type: 2
+      alternative: 1
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 0
+      OnPlay: 0
+      statusFactories:
+      - status: 2
+        value: 1
+        duration: 4
+        permanent: 0
+        trigger: 1
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 0
+      OnPlay: 0
+      statusFactories:
+      - status: 6
+        value: 4
+        duration: 2
+        permanent: 0
+        trigger: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: a34b1d14a6657ea45becfec894794cb7, type: 3}
+    Description: Gain 1 parry for 4 ticks. All enemies lose 3 strength for 2 turns.
+    rarity: 1
+    databasePath: Snake/ENEMIES/All
+    cardClass: 6
+    ID: 55
+  - Name: Hidden Attack
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 2
+      variable: 0
+      amount: 22
+      OnPlay: 0
+      statusFactories: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 1
+    sprite: {fileID: 21300000, guid: 0b67eccd6595d4347b74bba63191ce6c, type: 3}
+    Description: Hidden. Deal 22 damages to all enemies.
+    rarity: 1
+    databasePath: Ghost/ENEMIES/All
+    cardClass: 7
+    ID: 56
+  - Name: Hidden Protection
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 15
+      variable: 0
+      amount: 0
+      OnPlay: 0
+      statusFactories:
+      - status: 1
+        value: 15
+        duration: 1
+        permanent: 0
+        trigger: 0
+      - status: 2
+        value: 2
+        duration: 4
+        permanent: 0
+        trigger: 1
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 1
+    sprite: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
+      type: 3}
+    Description: Hidden. Gain 15 blocks and 2 parry for 4 ticks.
+    rarity: 1
+    databasePath: Ghost/ENEMIES/All
+    cardClass: 7
+    ID: 57
+  - Name: Vampirism
+    manaCost: 5
+    delay: 1
+    actionCost: 1
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 13
+      variable: 0
+      amount: 5
+      OnPlay: 0
+      statusFactories: []
+    - type: 1
+      alternative: 1
+      condition: 0
+      animation: 15
+      variable: 0
+      amount: 5
+      OnPlay: 0
+      statusFactories: []
+    channel: 1
+    channelLenght: 8
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: f81950996f64389408a1d906c3363d0e, type: 3}
+    Description: Channel 8. Deal 5 damages and heal for 5.
+    rarity: 1
+    databasePath: Ghost/ENEMIES/All
+    cardClass: 7
+    ID: 58
+  - Name: Freezing Ray
+    manaCost: 8
+    delay: 2
+    actionCost: 1
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 14
+      variable: 0
+      amount: 13
+      OnPlay: 0
+      statusFactories: []
+    - type: 5
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 1
+      OnPlay: 0
+      statusFactories: []
+    channel: 1
+    channelLenght: 2
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 51a245a7f393519469c2c761dc7d9818, type: 3}
+    Description: Channel 2. Deal 13 damages and retard enemy intent by 1.
+    rarity: 1
+    databasePath: darkmage/ENEMIES/All
+    cardClass: 8
+    ID: 59
+  - Name: Burning Ray
+    manaCost: 5
+    delay: 2
+    actionCost: 1
+    effects:
+    - type: 0
+      alternative: 0
+      condition: 0
+      animation: 10
+      variable: 0
+      amount: 5
+      OnPlay: 0
+      statusFactories: []
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 0
+      variable: 0
+      amount: 0
+      OnPlay: 0
+      statusFactories:
+      - status: 3
+        value: 1
+        duration: 0
+        permanent: 1
+        trigger: 0
+    channel: 1
+    channelLenght: 4
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: b0b0f27ea526a35499eb6e73e169e659, type: 3}
+    Description: Channel 4. Deal 5 damages and apply 1 burn until end of combat.
+    rarity: 1
+    databasePath: darkmage/ENEMIES/All
+    cardClass: 8
+    ID: 60
+  - Name: Magical Ward
+    manaCost: 9
+    delay: 4
+    actionCost: 1
+    effects:
+    - type: 2
+      alternative: 1
+      condition: 0
+      animation: 1
+      variable: 0
+      amount: 0
+      OnPlay: 0
+      statusFactories:
+      - status: 1
+        value: 4
+        duration: 2
+        permanent: 0
+        trigger: 0
+      - status: 2
+        value: 1
+        duration: 2
+        permanent: 0
+        trigger: 0
+    channel: 1
+    channelLenght: 3
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 28291ba3426c33e46821767f685438d8, type: 3}
+    Description: Channel 3. Gain 4 blocks and 1 parry for 2 turns.
+    rarity: 1
+    databasePath: darkmage/ENEMIES/All
+    cardClass: 8
+    ID: 61
+  - Name: Mana Concentration
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    effects:
+    - type: 4
+      alternative: 0
+      condition: 0
+      animation: 15
+      variable: 0
+      amount: 20
+      OnPlay: 0
+      statusFactories: []
+    channel: 1
+    channelLenght: 3
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: e3777f2e114bc1a47afe7506ce7de6b6, type: 3}
+    Description: Channel 3. Gain 20 mana.
+    rarity: 1
+    databasePath: darkmage/ENEMIES/All
+    cardClass: 8
+    ID: 62
+  - Name: Mana Potion
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects:
+    - type: 4
+      alternative: 0
+      condition: 0
+      animation: 15
+      variable: 0
+      amount: 20
+      OnPlay: 1
+      statusFactories: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: cbc2ff3197d21f2489369949a93f3b66, type: 3}
+    Description: 'On Play: Gain 20 mana. Play another action.'
+    rarity: 1
+    databasePath: darkmage/ENEMIES/All
+    cardClass: 8
+    ID: 63
+  - Name: 
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 2646bde935b4ac64c90c1bfd4d951be2, type: 3}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 9
+    ID: 64
+  - Name: 
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 0}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 9
+    ID: 65
+  - Name: 
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 0}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 9
+    ID: 66
+  - Name: 
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 0}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 9
+    ID: 67
+  - Name: Heavy Defense
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - type: 2
+      alternative: 0
+      condition: 0
+      animation: 1
+      variable: 0
+      amount: 0
+      OnPlay: 0
+      statusFactories:
+      - status: 1
+        value: 35
+        duration: 1
+        permanent: 0
+        trigger: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: f5281722176c3b54095d26051b2b6625, type: 3}
+    Description: All friendly units gain 35 blocks.
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 10
+    ID: 68
+  - Name: Slash
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 0b67eccd6595d4347b74bba63191ce6c, type: 3}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 10
+    ID: 69
+  - Name: 
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 0}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 10
+    ID: 70
+  - Name: 
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 0}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 10
+    ID: 71

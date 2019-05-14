@@ -51,4 +51,9 @@ public class PersistentUnitDeck : PersistentDeck
     {
         return cardSlots;
     }
+
+    public override int Count(IEnumerable<Unit> owners = null)
+    {
+        throw new NotImplementedException();
+    }
 }

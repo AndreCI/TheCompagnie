@@ -8,6 +8,24 @@ TextureImporter:
   - first:
       213: 6363169731357551551
     second: PC Computer - RPG Maker MV - Enemies & Bosses_1
+  - first:
+      213: -3240935945041059116
+    second: PC Computer - RPG Maker MV - Enemies & Bosses_2
+  - first:
+      213: -8175145840460673030
+    second: PC Computer - RPG Maker MV - Enemies & Bosses_3
+  - first:
+      213: -8889448464429604872
+    second: PC Computer - RPG Maker MV - Enemies & Bosses_4
+  - first:
+      213: 6080263995737009490
+    second: PC Computer - RPG Maker MV - Enemies & Bosses_5
+  - first:
+      213: -3785760131957737021
+    second: PC Computer - RPG Maker MV - Enemies & Bosses_6
+  - first:
+      213: 4553243053996602268
+    second: PC Computer - RPG Maker MV - Enemies & Bosses_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -127,6 +145,132 @@ TextureImporter:
       bones: []
       spriteID: 3403549792903e44fb4a7e186dd47bfe
       internalID: 6363169731357551551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - RPG Maker MV - Enemies & Bosses_2
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 195
+        width: 211
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ebb6763017d2df40b0d536c1904f499
+      internalID: -3240935945041059116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - RPG Maker MV - Enemies & Bosses_3
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 3
+        width: 135
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9664a0fbb5fca7449a80653c8bd600f
+      internalID: -8175145840460673030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - RPG Maker MV - Enemies & Bosses_4
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 425
+        width: 206
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8a30b57e94daf746888f42b936bb0af
+      internalID: -8889448464429604872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - RPG Maker MV - Enemies & Bosses_5
+      rect:
+        serializedVersion: 2
+        x: 1931
+        y: 965
+        width: 221
+        height: 274
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c628cef8d164c84793f502ac9f3447c
+      internalID: 6080263995737009490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - RPG Maker MV - Enemies & Bosses_6
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 963
+        width: 297
+        height: 284
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83a169c833837ab47886645636511215
+      internalID: -3785760131957737021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - RPG Maker MV - Enemies & Bosses_7
+      rect:
+        serializedVersion: 2
+        x: 1551
+        y: 194
+        width: 124
+        height: 195
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fbb9ab4887736a4aa2d2332e1f4cbbd
+      internalID: 4553243053996602268
       vertices: []
       indices: 
       edges: []
