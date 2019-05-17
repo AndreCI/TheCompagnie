@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
- 
+
+    public int turnNumber = 0;
     public static bool timeIsRunning;
     private float fixedTimeMin = 10f;
     private float fixedTimePerEvent = 1f;
@@ -26,9 +27,9 @@ public class TurnManager : MonoBehaviour
     public float currentDuration = 0f;
     private List<List<CombatEvent>> registeredEvents;
     private List<CombatEvent> futurEvents;
+    private List<CombatEvent> phantomEvents;
     private static TurnManager instance;
     private List<GeneralUtils.SUBJECT_TRIGGER> triggers;
-    // private List<List<Observer>> observers;
     public int currentIndex;
     public static TurnManager Instance { get => instance; }
 
@@ -37,6 +38,7 @@ public class TurnManager : MonoBehaviour
 
     void Start()
     {
+        turnNumber = 0;
         currentIndex = 0;
         endTurnButton.interactable = true;
         timeIsRunning = false;
@@ -44,6 +46,7 @@ public class TurnManager : MonoBehaviour
         timePerEvent = fixedTimePerEvent * PlayerInfos.Instance.settings.eventSpeed;
         timeSteps = new List<TimeStep>(timeHolder.GetComponentsInChildren<TimeStep>());
         timeSteps.Sort((x, y) => x.index.CompareTo(y.index));
+        phantomEvents = new List<CombatEvent>();   
         futurEvents = new List<CombatEvent>();
         registeredEvents = new List<List<CombatEvent>>();
         for (int i = 0; i < 10; i++)
@@ -62,6 +65,21 @@ public class TurnManager : MonoBehaviour
 
         }
 
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            EndTurn();
+        }else if (Input.GetKeyDown(KeyCode.X))
+        {
+            CombatManager.Instance.DisplayDeck();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            CombatManager.Instance.DisplayDiscard();
+        }
     }
 
     public List<CombatEvent> GetCurrentEvents(bool addFuture = false)
@@ -101,6 +119,10 @@ public class TurnManager : MonoBehaviour
 
     public void MoveCombatEvent(CombatEvent e, int amount)
     {
+        if (e.channel && e.nextChannelEvent != null)
+        {
+            MoveCombatEvent(e.nextChannelEvent, amount);
+        }
         if (futurEvents.Contains(e))
         {
             e.timeIndex += amount;
@@ -126,6 +148,45 @@ public class TurnManager : MonoBehaviour
             e.intent.transform.SetParent(intentsLayout[e.timeIndex].transform);
             e.intent.Setup(e.cardSource, cardPlaceHolder, e, !(e.source.GetType() == typeof(Compagnion)));
         }
+    }
+
+    public void RemovePhantomEvents()
+    {
+        foreach(CombatEvent phantom in phantomEvents)
+        {
+
+            Destroy(phantom.intent.gameObject);
+        }
+        phantomEvents = new List<CombatEvent>();
+    }
+    public void AddPhantomCombatEvent(Card c)
+    {
+        if (!c.channel)
+        {
+            CombatEvent phantom = new CombatEvent(c.owner, new List<Unit>(), c.delay, new List<CombatEffect>(), c, false);
+            AddPhantom(phantom);
+        }
+        else
+        {
+            for (int i = 0; i < c.channelLenght; i++)
+            {
+                if((i+1) * c.manaCost <= c.owner.CurrentMana)
+                {
+                    CombatEvent phantom = new CombatEvent(c.owner, new List<Unit>(), c.delay + i, new List<CombatEffect>(), c, true);
+                    AddPhantom(phantom);
+                }
+            }
+        }
+    }
+
+    private void AddPhantom(CombatEvent phantom)
+    {
+        phantomEvents.Add(phantom);
+        Intent phantomIntent = Instantiate(intent);
+        List<StretchyGridLayoutGroup> intentsLayout = (phantom.source.GetType() == typeof(Compagnion)) ? compIntents : enemiesIntents;
+        phantomIntent.transform.SetParent(intentsLayout[phantom.timeIndex].transform);
+        phantomIntent.Setup(phantom.cardSource, cardPlaceHolder, phantom, !(phantom.source.GetType() == typeof(Compagnion)), _phantom: true);
+        phantom.intent = phantomIntent;
     }
 
     public void AddCombatEvent(CombatEvent newEvent)
@@ -167,6 +228,7 @@ public class TurnManager : MonoBehaviour
      */
     public void StartTurn()
     {
+        turnNumber += 1;
         currentIndex = 0;
         if (CombatManager.Instance.compagnions.All(x=>x.currentHealth <= 0)) { PlayerInfos.Instance.Quit(); }
         if(CombatManager.Instance.enemies.Count == 0) { CombatManager.Instance.Win(); return; }

@@ -36,7 +36,7 @@ public class PlayerSettings
         timeSpeed = timeSpeed_;
         eventSpeed = eventSpeed_;
         themeVolume = themeVolume_;
-        disableTutorial = false;
+        disableTutorial = true;
     }
 
     private static bool LoadFromDisk()

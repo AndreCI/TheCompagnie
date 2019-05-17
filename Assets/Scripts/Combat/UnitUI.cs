@@ -26,15 +26,18 @@ public class UnitUI : UICardDropZone, IPointerClickHandler, IPointerEnterHandler
             if (eventData.pointerDrag == null)
                 return;
 
-            CardUI d = eventData.pointerDrag.GetComponent<CardUI>();
-            if (d != null && d.Playable && IsAcceptableTarget(d) && d.placeholderParent == this.transform)
+            CardUI cardUI = eventData.pointerDrag.GetComponent<CardUI>();
+            if (cardUI != null && cardUI.Playable && IsAcceptableTarget(cardUI) && cardUI.placeholderParent == this.transform)
             {
-                d.placeholderParent = d.parentToReturnTo;
+                cardUI.placeholderParent = cardUI.parentToReturnTo;
                 targeting = false;
                 selectorNotified = false;
                 CursorManager.Instance.type = CursorManager.CURSOR_TYPE.GRAB;
-
-                if (d.card.multipleTarget)
+                if (portraitInfos != null)
+                {
+                    portraitInfos.phantomHealthLost = 0;
+                }
+                if (cardUI.card.multipleTarget)
                 {
                     foreach (UnitUI friendUI in CombatManager.Instance.GetFriendsUnitUI(unit))
                     {
@@ -52,15 +55,19 @@ public class UnitUI : UICardDropZone, IPointerClickHandler, IPointerEnterHandler
             if (eventData.pointerDrag == null)
                 return;
 
-            CardUI d = eventData.pointerDrag.GetComponent<CardUI>();
-            if (d != null && d.Playable && IsAcceptableTarget(d))
+            CardUI cardUI = eventData.pointerDrag.GetComponent<CardUI>();
+            if (cardUI != null && cardUI.Playable && IsAcceptableTarget(cardUI))
             {
-                d.placeholderParent = this.transform;
+                cardUI.placeholderParent = this.transform;
                 targeting = true;
                 selectorNotified = false;
                 CursorManager.Instance.type = CursorManager.CURSOR_TYPE.ATTACK;
 
-                if (d.card.multipleTarget)
+                if (portraitInfos != null)
+                {
+                    portraitInfos.phantomHealthLost = cardUI.card.GetPrevisionDamage(); 
+                }
+                if (cardUI.card.multipleTarget)
                 {
                     foreach(UnitUI friendUI in CombatManager.Instance.GetFriendsUnitUI(unit))
                     {
@@ -78,13 +85,17 @@ public class UnitUI : UICardDropZone, IPointerClickHandler, IPointerEnterHandler
         {
             //            Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
 
-            CardUI d = eventData.pointerDrag.GetComponent<CardUI>();
-            if (d != null && d.Playable && IsAcceptableTarget(d))
+            CardUI cardUI = eventData.pointerDrag.GetComponent<CardUI>();
+            if (cardUI != null && cardUI.Playable && IsAcceptableTarget(cardUI))
             {
-                d.parentToReturnTo = this.transform;
+                cardUI.parentToReturnTo = this.transform;
                 targeting = false;
                 selectorNotified = false;
-                if (d.card.multipleTarget)
+                if (portraitInfos != null)
+                {
+                    portraitInfos.phantomHealthLost = 0;
+                }
+                if (cardUI.card.multipleTarget)
                 {
                     foreach (UnitUI friendUI in CombatManager.Instance.GetFriendsUnitUI(unit))
                     {

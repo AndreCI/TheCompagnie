@@ -20,7 +20,7 @@ MonoBehaviour:
   - Name: Hidden
     manaCost: 0
     delay: 0
-    actionCost: 0
+    actionCost: 1
     effects: []
     channel: 0
     channelLenght: 0
@@ -30,6 +30,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: bf5dc5e83fabe25438fa3532a5f1bc3e, type: 3}
     Description: <i> Hidden until the turn start ... </i>
     rarity: 0
-    databasePath: 
-    cardClass: 0
-    ID: 0
+    databasePath: MiscCard/All
+    cardClass: 4
+    ID: 74

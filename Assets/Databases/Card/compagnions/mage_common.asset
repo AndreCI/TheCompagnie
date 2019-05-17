@@ -18,14 +18,14 @@ MonoBehaviour:
   childrenDatabase: []
   items:
   - Name: Knowledge Rush
-    manaCost: 5
+    manaCost: 7
     delay: 1
     actionCost: 1
     effects:
     - statusFactories: []
-      amount: 2
+      amount: 3
       type: 3
-      animation: 15
+      animation: 32
       variable: 0
       alternative: 0
       condition: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
     cardClass: 1
     ID: 36
   - Name: Mana Shield
-    manaCost: 6
+    manaCost: 9
     delay: 0
     actionCost: 0
     effects:
@@ -96,17 +96,17 @@ MonoBehaviour:
         permanent: 0
         trigger: 0
       - status: 2
-        value: 1
-        duration: 6
+        value: 2
+        duration: 1
         permanent: 0
-        trigger: 1
+        trigger: 0
       amount: 0
       type: 2
-      animation: 1
+      animation: 37
       variable: 0
-      alternative: 1
+      alternative: 0
       condition: 0
-      OnPlay: 0
+      OnPlay: 1
     channel: 0
     channelLenght: 0
     multipleTarget: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
     ID: 37
   - Name: Premonition
     manaCost: 2
-    delay: 12
+    delay: 11
     actionCost: 1
     effects:
     - statusFactories:
@@ -169,7 +169,7 @@ MonoBehaviour:
     - statusFactories: []
       amount: 10
       type: 4
-      animation: 15
+      animation: 17
       variable: 0
       alternative: 1
       condition: 2
@@ -177,7 +177,7 @@ MonoBehaviour:
     - statusFactories: []
       amount: 5
       type: 0
-      animation: 8
+      animation: 35
       variable: 0
       alternative: 0
       condition: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
     multipleTarget: 0
     potential_target: 0
     hidden: 0
-    sprite: {fileID: 21300000, guid: 9f5c4949c03b648479781019eb5e1470, type: 3}
+    sprite: {fileID: 21300000, guid: eff07ec5e35db944ab69b33b69b30367, type: 3}
     Description: 'On Play: If the target is channeling, gain 10 mana. Deal 5 damages.'
     rarity: 2
     databasePath: MageCom/Mage/COMPAGNION/All
@@ -201,13 +201,13 @@ MonoBehaviour:
     - statusFactories: []
       amount: 55
       type: 0
-      animation: 12
+      animation: 40
       variable: 0
       alternative: 0
       condition: 0
       OnPlay: 0
     - statusFactories: []
-      amount: 15
+      amount: 13
       type: 0
       animation: 0
       variable: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
     multipleTarget: 0
     potential_target: 0
     hidden: 0
-    sprite: {fileID: 21300000, guid: e3777f2e114bc1a47afe7506ce7de6b6, type: 3}
+    sprite: {fileID: 21300000, guid: 2413604834bf04a4481099eac224eb9a, type: 3}
     Description: Deal 55 damages. Take 15 damages.
     rarity: 2
     databasePath: MageCom/Mage/COMPAGNION/All
@@ -233,23 +233,23 @@ MonoBehaviour:
     - statusFactories:
       - status: 3
         value: 1
-        duration: 3
+        duration: 2
         permanent: 0
         trigger: 0
       - status: 1
-        value: 3
+        value: 5
         duration: 1
         permanent: 0
         trigger: 0
       amount: 2
       type: 2
-      animation: 1
+      animation: 38
       variable: 0
       alternative: 0
       condition: 0
       OnPlay: 0
     - statusFactories: []
-      amount: 3
+      amount: 5
       type: 4
       animation: 0
       variable: 0
@@ -269,14 +269,14 @@ MonoBehaviour:
     cardClass: 1
     ID: 41
   - Name: Burning Ray
-    manaCost: 2
+    manaCost: 5
     delay: 3
     actionCost: 1
     effects:
     - statusFactories: []
-      amount: 5
+      amount: 8
       type: 0
-      animation: 6
+      animation: 7
       variable: 0
       alternative: 0
       condition: 0
@@ -307,7 +307,7 @@ MonoBehaviour:
     ID: 42
   - Name: Safe Zone
     manaCost: 3
-    delay: 3
+    delay: 1
     actionCost: 0
     effects:
     - statusFactories:
@@ -329,6 +329,62 @@ MonoBehaviour:
     potential_target: 1
     hidden: 0
     sprite: {fileID: 21300000, guid: c12009513743d414ca89825f0100eb68, type: 3}
+    Description: Channel 6. All friendly units gain 6 block. Cost no action.
+    rarity: 2
+    databasePath: MageCom/Mage/COMPAGNION/All
+    cardClass: 1
+    ID: 43
+  - Name: Arcane Tempest
+    manaCost: 6
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 9
+      type: 0
+      animation: 9
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 4
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: cd524580e61f6b9478c8398bf9fe4e73, type: 3}
+    Description: Channel 6. All friendly units gain 6 block. Cost no action.
+    rarity: 2
+    databasePath: MageCom/Mage/COMPAGNION/All
+    cardClass: 1
+    ID: 43
+  - Name: Leeching Ray
+    manaCost: 8
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 4
+      type: 1
+      animation: 17
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 8
+      type: 0
+      animation: 25
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 3
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 06bed70bacb8fb0469b252083afabe84, type: 3}
     Description: Channel 6. All friendly units gain 6 block. Cost no action.
     rarity: 2
     databasePath: MageCom/Mage/COMPAGNION/All

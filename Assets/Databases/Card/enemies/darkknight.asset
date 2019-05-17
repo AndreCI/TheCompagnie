@@ -12,19 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
   m_Name: darkknight
   m_EditorClassIdentifier: 
-  Name: 
+  Name: DarkKnight
   cardClass: 9
   rarityLevel: 1
   childrenDatabase: []
   items:
-  - Name: 
+  - Name: Ground Hit
     manaCost: 0
-    delay: 0
-    actionCost: 0
-    effects: []
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 0
+        value: 0
+        duration: 0
+        permanent: 0
+        trigger: 0
+      amount: 21
+      type: 0
+      animation: 22
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 0
     channelLenght: 0
-    multipleTarget: 0
+    multipleTarget: 1
     potential_target: 0
     hidden: 0
     sprite: {fileID: 21300000, guid: 2646bde935b4ac64c90c1bfd4d951be2, type: 3}
@@ -33,67 +46,203 @@ MonoBehaviour:
     databasePath: /ENEMIES/All
     cardClass: 9
     ID: 64
-  - Name: 
+  - Name: Power Up!
     manaCost: 0
     delay: 0
-    actionCost: 0
+    actionCost: 1
     effects:
-    - statusFactories: []
+    - statusFactories:
+      - status: 0
+        value: 1
+        duration: 3
+        permanent: 0
+        trigger: 0
+      - status: 7
+        value: 1
+        duration: 3
+        permanent: 0
+        trigger: 0
       amount: 0
-      type: 0
-      animation: 0
+      type: 2
+      animation: 33
       variable: 0
-      alternative: 0
+      alternative: 1
       condition: 0
       OnPlay: 0
-    - statusFactories: []
-      amount: 0
-      type: 0
-      animation: 0
-      variable: 0
-      alternative: 0
-      condition: 0
-      OnPlay: 0
-    channel: 0
-    channelLenght: 0
+    channel: 1
+    channelLenght: 8
     multipleTarget: 0
-    potential_target: 0
+    potential_target: 1
     hidden: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 4ba234bd11fc2cf4799e615fb7963f16, type: 3}
     Description: 
     rarity: 1
     databasePath: /ENEMIES/All
     cardClass: 9
     ID: 65
-  - Name: 
+  - Name: Health Potion
     manaCost: 0
     delay: 0
     actionCost: 0
-    effects: []
+    effects:
+    - statusFactories:
+      - status: 0
+        value: 1
+        duration: 5
+        permanent: 0
+        trigger: 0
+      amount: 0
+      type: 2
+      animation: 15
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    - statusFactories: []
+      amount: 20
+      type: 1
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
     channel: 0
     channelLenght: 0
     multipleTarget: 0
-    potential_target: 0
+    potential_target: 1
     hidden: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 4db5ae9911c52d441be99ea73a6bf4ed, type: 3}
     Description: 
     rarity: 1
     databasePath: /ENEMIES/All
     cardClass: 9
     ID: 66
-  - Name: 
+  - Name: Shock Wave
     manaCost: 0
-    delay: 0
-    actionCost: 0
-    effects: []
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 2
+      type: 5
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 16
+      type: 0
+      animation: 24
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 0
     channelLenght: 0
-    multipleTarget: 0
+    multipleTarget: 1
     potential_target: 0
     hidden: 0
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: ff55bac8be65a8e46b329890f28cde5f, type: 3}
     Description: 
     rarity: 1
     databasePath: /ENEMIES/All
     cardClass: 9
     ID: 67
+  - Name: Combust
+    manaCost: 0
+    delay: 0
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 6
+        value: 1
+        duration: 3
+        permanent: 0
+        trigger: 0
+      - status: 3
+        value: 1
+        duration: 3
+        permanent: 0
+        trigger: 0
+      amount: 0
+      type: 2
+      animation: 33
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 8
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 9b83ce6bd738f644a91922caa22095ca, type: 3}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 9
+    ID: 68
+  - Name: Demonic Shield
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 2
+        value: 3
+        duration: 3
+        permanent: 0
+        trigger: 0
+      - status: 1
+        value: 50
+        duration: 3
+        permanent: 0
+        trigger: 0
+      amount: 2
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 14272a7ae25140547aa0440f8d30d0ee, type: 3}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 9
+    ID: 69
+  - Name: Burning Curse
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 3
+        value: 7
+        duration: 0
+        permanent: 1
+        trigger: 0
+      amount: 0
+      type: 2
+      animation: 6
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 2
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 1c6ee470d5a6ccd44aa20f51fe7d8f66, type: 3}
+    Description: 
+    rarity: 1
+    databasePath: /ENEMIES/All
+    cardClass: 9
+    ID: 70

@@ -22,6 +22,8 @@ public class CombatManager : MonoBehaviour
     public CombatPartyDeck enemiesDiscard;
 
     public Button deckButton;
+    public Button discardButton;
+
     [HideInInspector] public Card HiddenCard;
     private int winXpValue;
 
@@ -167,6 +169,11 @@ public class CombatManager : MonoBehaviour
 
     public void Win()
     {
+        if (PlayerInfos.Instance.readyForBoss)
+        {
+            PlayerInfos.Instance.gameOver.SetActive(true);
+            PlayerInfos.Instance.gameOverText.text = "Congratulation! You won! This is wonderful but keep in mind that all you can do is try again. \n";
+        }
         foreach(Compagnion c in compagnions)
         {
             foreach(CombatStatus cs in c.CurrentStatus)

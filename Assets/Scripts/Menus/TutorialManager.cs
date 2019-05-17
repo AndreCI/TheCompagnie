@@ -17,8 +17,8 @@ public class TutorialManager : MonoBehaviour
     public Dictionary<TUTOTRIGGER, string> texts;
     public Dictionary<TUTOTRIGGER, bool> status;
 
-    public static string versionNumber = "0.1.4";
-    public static string patchNote = "Added content! Starts to feel like a real game now: how far can one go? Progression system (enemies & compagnions)";
+    public static string versionNumber = "0.1.4.5";
+    public static string patchNote = "Remade Win window. Added shards! Continue to upgrade UI. Did some cleaning, added fading glowing color to intent activated. Also simple animations and tooltips";
 
     public TUTOTRIGGER current;
 

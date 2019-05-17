@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DuloGames.UI;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +10,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class CombatStatusUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CombatStatusUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ITooltipActivator
 {
     public Image icon;
     public Image iconMask;
@@ -22,6 +24,11 @@ public class CombatStatusUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [HideInInspector]
     public bool setDestroy;
     [HideInInspector] private CombatStatusData data;
+
+    public float tooltipDelay = 0.4f;
+    private bool tooltip = false;
+    public bool ToolTipShow { get => tooltip; set => tooltip = value; }
+
     private void Update()
     {
         if (activated)
@@ -32,6 +39,7 @@ public class CombatStatusUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                 iconMask.fillAmount = 0f;
                 if (setDestroy)
                 {
+                    if (ToolTipShow) { OnToolTip(false); }
                     Destroy(gameObject);
                 }
             }
@@ -77,10 +85,22 @@ public class CombatStatusUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnPointerEnter(PointerEventData eventData)
     {
         icon.sprite = data.highlightedSprite;
-    }
+        OnToolTip(true);
+     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         icon.sprite = data.icon;
+        OnToolTip(false);
+
+    }
+
+    public void OnToolTip(bool show)
+    {
+        ToggleTipWindow.Instance.gameObject.SetActive(show);
+        ToggleTipWindow.Instance.GetComponent<RectTransform>().pivot = new Vector2(typeof(Compagnion) == combatStatus.target.GetType() ? 0f : 1f, 1f);
+        ToggleTipWindow.Instance.ToggleText.text = combatStatus.GetDescription();
+        ToggleTipWindow.Instance.transform.position = Input.mousePosition;
+        ToolTipShow = show;
     }
 }

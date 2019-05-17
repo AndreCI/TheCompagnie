@@ -1,0 +1,244 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51d9ee69ac62d514aa47ff38e274ab34, type: 3}
+  m_Name: animationClipDatabase2
+  m_EditorClassIdentifier: 
+  animations:
+  - type: 25
+    animationSpriteList: {fileID: 21300000, guid: 7c181e24cc6446b47bea2c3e97d1ff8e,
+      type: 3}
+    width: 5
+    height: 2
+    scale: 1.5
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+    ID: 78
+  - type: 26
+    animationSpriteList: {fileID: 21300000, guid: 6bca0a777e81b4841a4e756bd1850875,
+      type: 3}
+    width: 5
+    height: 3
+    scale: 1.5
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+    ID: 78
+  - type: 27
+    animationSpriteList: {fileID: 21300000, guid: 413b0ea58e9005749a300a23dc1a777f,
+      type: 3}
+    width: 5
+    height: 4
+    scale: 2
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 1
+    maxWidth: 3
+    maxHeight: 0
+    ID: 78
+  - type: 28
+    animationSpriteList: {fileID: 21300000, guid: ac83aedff41fab14e8df0a6aa4ac875e,
+      type: 3}
+    width: 5
+    height: 3
+    scale: -2
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+    ID: 78
+  - type: 29
+    animationSpriteList: {fileID: 21300000, guid: c1d2550b4cfb0a74a958231f44b3cb56,
+      type: 3}
+    width: 5
+    height: 4
+    scale: 3
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 1
+    maxWidth: 3
+    maxHeight: 0
+    ID: 78
+  - type: 30
+    animationSpriteList: {fileID: 21300000, guid: 65ec2ae2b3e15d54681f9408b754d021,
+      type: 3}
+    width: 5
+    height: 5
+    scale: 3
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+    ID: 78
+  - type: 31
+    animationSpriteList: {fileID: 21300000, guid: cdd9c68df7980984498e763af3a01ab2,
+      type: 3}
+    width: 5
+    height: 4
+    scale: 3
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 1
+    maxWidth: 3
+    maxHeight: 0
+    ID: 78
+  - type: 32
+    animationSpriteList: {fileID: 21300000, guid: 6dca30e8776092442a85f3485777b757,
+      type: 3}
+    width: 5
+    height: 3
+    scale: 2
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+    ID: 78
+  - type: 33
+    animationSpriteList: {fileID: 21300000, guid: 52353f2b336c8bb4e8bf9ed3590f01da,
+      type: 3}
+    width: 5
+    height: 5
+    scale: 3
+    reverseTime: 0
+    minWidth: 1
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+    ID: 78
+  - type: 34
+    animationSpriteList: {fileID: 21300000, guid: 1803e79fd4eeef9469fc88142a845ee4,
+      type: 3}
+    width: 5
+    height: 6
+    scale: 2
+    reverseTime: 0
+    minWidth: 1
+    minHeight: 2
+    maxWidth: 2
+    maxHeight: 0
+    ID: 78
+  - type: 35
+    animationSpriteList: {fileID: 21300000, guid: fc4167403d573a942b7c8f101f10f1c6,
+      type: 3}
+    width: 5
+    height: 6
+    scale: 2
+    reverseTime: 1
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+    ID: 78
+  - type: 43
+    animationSpriteList: {fileID: 21300000, guid: 6a353232476879a468cc28f962e509be,
+      type: 3}
+    width: 5
+    height: 3
+    scale: 2.4
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+    ID: 78
+  - type: 36
+    animationSpriteList: {fileID: 21300000, guid: fc43871ac83326348af5757da34651fb,
+      type: 3}
+    width: 5
+    height: 4
+    scale: 3
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+    ID: 78
+  - type: 37
+    animationSpriteList: {fileID: 21300000, guid: 67fc3c43c16cdb8459e35a54e410330f,
+      type: 3}
+    width: 5
+    height: 5
+    scale: 2.5
+    reverseTime: 1
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 2
+    maxHeight: 0
+    ID: 78
+  - type: 38
+    animationSpriteList: {fileID: 21300000, guid: 7a3038623cccfeb45938221d30d844b8,
+      type: 3}
+    width: 5
+    height: 5
+    scale: 3
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+    ID: 78
+  - type: 39
+    animationSpriteList: {fileID: 21300000, guid: e4f11a27e3916974d90de37ebe21176a,
+      type: 3}
+    width: 5
+    height: 6
+    scale: 2
+    reverseTime: 0
+    minWidth: 2
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 2
+    ID: 78
+  - type: 40
+    animationSpriteList: {fileID: 21300000, guid: 9cf1fef7c4109f74ea84cee81dc5a627,
+      type: 3}
+    width: 5
+    height: 5
+    scale: 3
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+    ID: 78
+  - type: 41
+    animationSpriteList: {fileID: 21300000, guid: c6a82939c68888e409fa1b0571091a2b,
+      type: 3}
+    width: 5
+    height: 6
+    scale: 2
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 3
+    maxWidth: 1
+    maxHeight: 0
+    ID: 78
+  - type: 42
+    animationSpriteList: {fileID: 21300000, guid: cd796131cb02d064fb666d10667dcac6,
+      type: 3}
+    width: 5
+    height: 4
+    scale: 2
+    reverseTime: 0
+    minWidth: 0
+    minHeight: 0
+    maxWidth: 0
+    maxHeight: 0
+    ID: 78
+  children: []

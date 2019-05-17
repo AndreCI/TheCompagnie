@@ -93,7 +93,7 @@ MonoBehaviour:
         trigger: 1
       amount: 0
       type: 2
-      animation: 0
+      animation: 36
       variable: 0
       alternative: 1
       condition: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
         trigger: 1
       amount: 0
       type: 2
-      animation: 0
+      animation: 36
       variable: 0
       alternative: 1
       condition: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
     - statusFactories: []
       amount: 34
       type: 0
-      animation: 3
+      animation: 30
       variable: 0
       alternative: 0
       condition: 0

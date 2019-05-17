@@ -9,12 +9,13 @@ using UnityEngine.UI;
 [Serializable]
 public abstract class Unit
 {
-    public enum UNIT_SPECIFIC_TRIGGER { ATTACKS, BLOCKED, ATTACKED};
+    public enum UNIT_SPECIFIC_TRIGGER { ATTACKS, DAMAGE_BLOCKED, ATTACKED, DAMAGE_DEALT, DAMAGE_INSTANCE_END};
     public CardDatabase.CARDCLASS availableCards;
     public int maxHealth;
     public int maxMana;
     public int maxAction;
     public int currentHealth;
+    private int currentTalentPoints = 0;
     private int currentMana;
     private int currentAction;
     public Sprite combatSprite;
@@ -35,6 +36,25 @@ public abstract class Unit
     {
         SpecificUpdate?.Invoke(trigger);
     }
+    public int currentBlock
+    {
+        get
+        {
+            int baseVal = 0;
+            if (currentStatus != null)
+            {
+                foreach (CombatStatus s in currentStatus)
+                {
+                    if (s.status == CombatStatus.STATUS.BLOCK)
+                    {
+                        baseVal += s.value;
+                    }
+                }
+            }
+            return baseVal;
+        }
+    }
+
     public int currentStrength { get
         {
             int baseVal = 0;
@@ -46,7 +66,7 @@ public abstract class Unit
                 }else if(s.status == CombatStatus.STATUS.REDUCE_STR)
                 {
                     baseVal -= s.value;
-                    if(baseVal < 0) { baseVal = 0; }
+                //    if(baseVal < 0) { baseVal = 0; }
                 }
             }return baseVal;
         } }
@@ -74,7 +94,7 @@ public abstract class Unit
         get => currentMana; set
         {
 
-            CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText((value - currentMana).ToString(), Color.blue);
+            CombatManager.Instance?.GetUnitUI(this)?.portraitInfos?.PlayNotificationText((value - currentMana).ToString(), Color.blue);
             currentMana = value;
             if (currentMana > maxMana) { currentMana = maxMana; }
             if (currentMana < 0) { currentMana = 0; }
@@ -92,7 +112,14 @@ public abstract class Unit
             NotifyUpdate?.Invoke();
         }
     }
-
+    public int CurrentTalentPoints
+    { get => currentTalentPoints; set
+        {
+            if(value < 0) { return; }
+            currentTalentPoints = value;
+            NotifyUpdate?.Invoke();
+        }
+    }
     public int baseSpeed;
     public int currentSpeed;
 
@@ -146,35 +173,37 @@ public abstract class Unit
         foreach(CombatStatus cs in CurrentStatus.FindAll(x => x.status == CombatStatus.STATUS.PARRY ||
         x.status == CombatStatus.STATUS.BLOCK))
         {
-            if(cs.status == CombatStatus.STATUS.PARRY)
-            {
-                amount = 0;
-                cs.value -= 1;
-                cs.CheckUpdate(forceAnimation:true);
-
-                CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText("Parry", Color.grey);
-                return;
-            }
             if(cs.status == CombatStatus.STATUS.BLOCK)
             {
                 cs.value -= amount;
                 if(cs.value < 0) { amount = -1 * cs.value; cs.value = 0; }
                 else
                 {
-                    TriggerSpecificUpdate(UNIT_SPECIFIC_TRIGGER.BLOCKED);
+                    TriggerSpecificUpdate(UNIT_SPECIFIC_TRIGGER.DAMAGE_BLOCKED);
                     CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText(amount.ToString(), Color.gray);
                     amount = 0; }
                 cs.CheckUpdate(forceAnimation:true);
             }
+
+            if (cs.status == CombatStatus.STATUS.PARRY)
+            {
+                amount = 0;
+                cs.value -= 1;
+                cs.CheckUpdate(forceAnimation: true);
+
+                CombatManager.Instance?.GetUnitUI(this).portraitInfos.PlayNotificationText("Parry", Color.grey);
+            }
         }
         if (amount > 0)
         {
+            TriggerSpecificUpdate(UNIT_SPECIFIC_TRIGGER.DAMAGE_DEALT);
             CurrentHealth -= amount;
             if (currentHealth <= 0)
             {
                 Debug.Log("Dead");
             }
         }
+        TriggerSpecificUpdate(UNIT_SPECIFIC_TRIGGER.DAMAGE_INSTANCE_END);
     }
 
     public void Heal(int amount)
@@ -192,5 +221,11 @@ public abstract class Unit
     public void GainAction(int amount)
     {
         CurrentAction += amount;
+    }
+
+    public void GainXp(int amount)
+    {
+        level.GainXP(amount);
+        NotifyUpdate?.Invoke();
     }
 }

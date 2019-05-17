@@ -121,7 +121,7 @@ public class CombatStatus
                         s.value += value;
                         s.ui?.UpdateData();
                         return false;
-                    }else if(s.status == STATUS.REDUCE_STR && (s.duration == duration || s.permanent && permanent))
+                    }else if(s.status == STATUS.REDUCE_STR && (s.duration == duration || (s.permanent && permanent)))
                     {
                         if(s.value >= value)
                         {
@@ -141,6 +141,36 @@ public class CombatStatus
                     }
                 }
                 break;
+            case STATUS.REDUCE_STR:
+                foreach (CombatStatus s in target.CurrentStatus)
+                {
+                    if (s.status == status && (s.duration == duration || (s.permanent && permanent)))
+                    {
+                        s.value += value;
+                        s.ui?.UpdateData();
+                        return false;
+                    }
+                    else if (s.status == STATUS.BUFF_STR && (s.duration == duration || (s.permanent && permanent)))
+                    {
+                        if (s.value >= value)
+                        {
+                            s.value -= value;
+                            s.ui?.UpdateData();
+                            return false;
+                        }
+                        else
+                        {
+                            value -= s.value;
+                            s.value = 0;
+                            if (s.ui != null)
+                                s.ui.setDestroy = true;
+                            s.ui?.Trigger();
+
+                        }
+                    }
+                }
+                break;
+
             case STATUS.REGEN:
                 foreach(CombatStatus s in target.CurrentStatus)
                 {
@@ -201,6 +231,66 @@ public class CombatStatus
             ui.Trigger(1f);
             ui.setDestroy = true;
         }
+    }
+
+    public string GetDescription()
+    {
+        bool setFinalDamage = false;
+        string description = "No tool tip written yet...\n";
+        string timeMoment = "";
+        switch (trigger)
+        {
+            case GeneralUtils.SUBJECT_TRIGGER.START_OF_TURN:
+                timeMoment= " turn";
+                break;
+            case GeneralUtils.SUBJECT_TRIGGER.TIMESTEP_TICK:
+                timeMoment = " tick";
+                break;
+        }
+
+
+        switch (status)
+        {
+            case STATUS.BLOCK:
+                description = "Block: Prevent the next " + value.ToString() + " damages";
+                break;
+            case STATUS.BURN:
+                description = "Burn: Take " + value.ToString() + " damages each" + timeMoment;
+                setFinalDamage = true;
+                break;
+            case STATUS.POISON:
+                description = "<i> Mixing poisons can bring death quickly... </i>\n";
+                description += "Poison: Take " + value.ToString() + " damages each" + timeMoment;
+                setFinalDamage = true;
+                break;
+            case STATUS.REGEN:
+                description = "Regeneration: Gain " + value.ToString() + " health points each" + timeMoment;
+                setFinalDamage = true;
+                break;
+            case STATUS.BUFF_STR:
+                description = "Strength: Each instance of damage dealt by an attacks deals " + value.ToString() + " additional damages";
+                break;
+            case STATUS.REDUCE_STR:
+                description = "Strength: Each instance of damage dealt by an attacks deals " + value.ToString() + " less damages";
+                break;
+            case STATUS.PARRY:
+                description = "Parry: The next " + (value > 1 ? value.ToString() + " " : "") + "instance" + (value > 1 ? "s" : "") + "of damage from any attack going through block is prevented";
+                break;
+        }
+        if (permanent)
+        {
+            description += " until end of combat";
+        }
+        else
+        {
+            description += " for " + duration.ToString() + timeMoment + (duration>1?"s":"");
+            if (setFinalDamage)
+            {
+                description += " (" + (duration * value).ToString() + ")";
+            }
+        }
+        
+        return description;
     }
 
 }

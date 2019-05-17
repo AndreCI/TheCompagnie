@@ -9,7 +9,6 @@ public class Leveling
 {
     public int currentXP;
     public int nextLevelThreshold;
-    public int talentPoints;
     public int currentLevel;
     private List<(CardDatabase.RARITY, float)> rarityDistribution;
     private Unit source;
@@ -24,7 +23,6 @@ public class Leveling
         {
             nextLevelThreshold = 10;
         }
-        talentPoints = 0;
         rarityDistribution = new List<(CardDatabase.RARITY, float)>();
         foreach(CardDatabase.RARITY r in Enum.GetValues(typeof(CardDatabase.RARITY)))
         {
@@ -45,7 +43,6 @@ public class Leveling
             {
                 source.maxMana += 20;
                 source.maxHealth += 20;
-                talentPoints += 3;
                 source.persistentDeck.AddCardSlot();
                 source.persistentDeck.AddCardSlot();
                 source.persistentDeck.AddCardSlot();
@@ -54,7 +51,6 @@ public class Leveling
             {
                 TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.ACTIONPOINT);
                 source.maxAction += 1;
-                talentPoints += 3;
                 source.persistentDeck.AddCardSlot();
                 source.persistentDeck.AddCardSlot();
                 source.persistentDeck.AddCardSlot();
@@ -62,7 +58,6 @@ public class Leveling
             {
                 source.maxMana += 20;
                 source.maxHealth += 20;
-                talentPoints += 3;
                 source.persistentDeck.AddCardSlot();
                 source.persistentDeck.AddCardSlot();
                 source.persistentDeck.AddCardSlot();
@@ -70,7 +65,6 @@ public class Leveling
             else if (currentLevel == 4)
             {
                 source.maxAction += 1;
-                talentPoints += 3;
                 source.persistentDeck.AddCardSlot();
                 source.persistentDeck.AddCardSlot();
                 source.persistentDeck.AddCardSlot();
@@ -79,10 +73,10 @@ public class Leveling
             {
                 source.maxMana += 2;
                 source.maxHealth += 5;
-                nextLevelThreshold = 12;
+                nextLevelThreshold = 8;
             }
-            source.currentHealth = source.maxHealth;
-            source.CurrentMana = source.maxMana;
+            //source.currentHealth = source.maxHealth;
+           // source.CurrentMana = source.maxMana;
         }
     }
 

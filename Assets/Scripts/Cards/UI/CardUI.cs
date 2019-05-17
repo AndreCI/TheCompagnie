@@ -38,7 +38,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     {
         if (!setuped && card_.owner != null)
         {
-            CardSelector.Notify += SelectedCardUpdate;
+        //    CardSelector.Notify += SelectedCardUpdate;
             card_.owner.NotifyUpdate += UnitUpdate_Notify;
             setuped = true;
         }
@@ -50,8 +50,11 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         card = card_;
         image.sprite = card.sprite;
         manaCost.text = card.manaCost.ToString();
+        
+        manaCost.transform.parent.transform.parent.gameObject.SetActive(card.manaCost > 0);
+        
         delayCost.text = card.delay.ToString();
-        description.text = card.Description;
+        description.text = card.GetDescription();
         foreach(Text head in header.GetComponentsInChildren<Text>())
         {
             head.text = card.Name;
@@ -67,7 +70,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         else
         {
             manaCost.color = Color.white;
-        }
+        }description.text = card.GetDescription(source: card.owner);
     }
 
     public void Play(List<Unit> target)
@@ -81,7 +84,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
 
     public void OnDisable()
     {
-        CardSelector.Notify -= SelectedCardUpdate;
+    //    CardSelector.Notify -= SelectedCardUpdate;
         if (card.owner != null)
         {
             card.owner.NotifyUpdate -= UnitUpdate_Notify;
@@ -90,7 +93,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
 
     public void OnDestroy()
     {
-        CardSelector.Notify -= SelectedCardUpdate;
+   //     CardSelector.Notify -= SelectedCardUpdate;
         if (card.owner != null)
         {
             card.owner.NotifyUpdate -= UnitUpdate_Notify;
@@ -107,7 +110,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     {
         TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATPLAY);
 
-        CardSelector.Instance.ToggleSelection(card);
+       // CardSelector.Instance.ToggleSelection(card);
     }
 
     private void SelectedCardUpdate(List<Card> selectedCard)
@@ -141,6 +144,12 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         GetComponent<CanvasGroup>().blocksRaycasts = false;
         CursorManager.Instance.type = CursorManager.CURSOR_TYPE.GRAB;
         ResetTransform();
+        if(CombatManager.Instance.GetUnitUI(card.owner).portraitInfos != null)
+        {
+            CombatManager.Instance.GetUnitUI(card.owner).portraitInfos.phantomManaCost = card.channel ? card.channelLenght * card.manaCost : card.manaCost;
+        }
+        TurnManager.Instance.AddPhantomCombatEvent(card);
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -180,6 +189,8 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     }
     public virtual void OnEndDrag(PointerEventData eventData)
     {
+        TurnManager.Instance.RemovePhantomEvents();
+
         CardSelector.Instance.UnselectOne();
         this.transform.SetParent(parentToReturnTo);
         this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
@@ -187,6 +198,10 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
 
         Destroy(placeholder);
         List<UnitUI> target;
+        if (CombatManager.Instance.GetUnitUI(card.owner).portraitInfos != null)
+        {
+            CombatManager.Instance.GetUnitUI(card.owner).portraitInfos.phantomManaCost = 0f;
+        }
         if (!card.multipleTarget)
         {
             target = new List<UnitUI>(this.transform.GetComponentsInParent<UnitUI>());
@@ -200,9 +215,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
 
             if (card.multipleTarget)
             {
-                Debug.Log(target.Count);
                 target.AddRange(CombatManager.Instance.GetFriendsUnitUI(target[0].unit));
-                Debug.Log(target.Count);
                 
             }
             TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATENDTURN);
@@ -210,6 +223,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
             {
                 TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATMANA);
             }
+            AudioManager.Instance?.PlayFromSet(AudioSound.AUDIO_SET.CARD_PLAY);
             Play(target.Select(x=>x.unit).ToList());
         }
         else
@@ -236,6 +250,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
             CardUI UI = TurnManager.Instance.cardPlaceHolder;
             UI.gameObject.SetActive(true);
             UI.Setup(card);
+            UI.description.text = card.GetDescription(source: card.owner);
             UI.Playable = false;
         }
 

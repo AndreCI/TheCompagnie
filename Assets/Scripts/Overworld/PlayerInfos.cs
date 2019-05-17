@@ -15,13 +15,22 @@ public class PlayerInfos : MonoBehaviour
     public AnimationClipDatabase animationDatabase;
 
     public MapNode currentPosition;
+    private int currentShards;
+    public int CurrentShards { get => currentShards; set
+        {
+            ShardDisplay.Instance.AddShards(value - currentShards);
+            currentShards = value;
+        } }
     public List<Compagnion> compagnions;
     public PartyMenu unitsWindow;
+    public GameObject exitMenu;
     public PersistentPartyDeck persistentPartyDeck;
 
     public OverworldMap globalMap;
     public GameObject gameOver;
-    public Text versionText;
+    public Text gameOverText;
+    public Text versionText; //UI Text
+    public bool readyForBoss = false; //Summon boss with enemy gen
 
     void Awake()
     {
@@ -32,7 +41,7 @@ public class PlayerInfos : MonoBehaviour
         }
         _instance = this;
 
-
+        currentShards = 0;
         GameObject.DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
         settings = PlayerSettings.Instance;
@@ -48,6 +57,16 @@ public class PlayerInfos : MonoBehaviour
       //  AddCompagnion(compagnionsDatabase.Get(1));
         unitsWindow?.gameObject.SetActive(false);
         versionText.text = "v" + TutorialManager.versionNumber;
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            exitMenu.SetActive(!exitMenu.activeSelf);
+        }else if (Input.GetKeyDown(KeyCode.W))
+        {
+            unitsWindow.gameObject.SetActive(!unitsWindow.gameObject.activeSelf);
+        }
     }
 
     public void AddCompagnion(Compagnion newComp)

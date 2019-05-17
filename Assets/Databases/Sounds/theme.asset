@@ -17,6 +17,7 @@ MonoBehaviour:
   sounds:
   - Name: TitleTheme
     loop: 1
+    set: 0
     file: {fileID: 8300000, guid: f3ff25dabc42ea547904ef2ee1186ee3, type: 3}
     volume: 1
     pitch: 1
@@ -24,6 +25,7 @@ MonoBehaviour:
     audioType: 1
   - Name: OverworldTheme
     loop: 1
+    set: 1
     file: {fileID: 8300000, guid: fa3695bd8bef5a84f9f13949bdfe63e8, type: 3}
     volume: 1
     pitch: 1
@@ -31,8 +33,17 @@ MonoBehaviour:
     audioType: 1
   - Name: CombatTheme
     loop: 1
+    set: 2
     file: {fileID: 8300000, guid: 083699fc50bf4d54baeb134fcc7cb6fd, type: 3}
     volume: 1
     pitch: 1
-    ID: 1
+    ID: 2
+    audioType: 1
+  - Name: CombatTheme2
+    loop: 1
+    set: 2
+    file: {fileID: 8300000, guid: 5f5fbda03be3a374f9e305a9a4a46218, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 2
     audioType: 1

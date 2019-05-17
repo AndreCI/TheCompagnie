@@ -64,6 +64,7 @@ public class CombatUnitDeck : CombatDeck
 
     public override void Shuffle(IEnumerable<Unit> owners = null)
     {
+        AudioManager.Instance?.PlayFromSet(AudioSound.AUDIO_SET.CARD_SHUFFLE);
         Random rng = new Random();
         int n = cards.Count;
         while (n > 1)

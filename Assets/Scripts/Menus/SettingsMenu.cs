@@ -67,7 +67,7 @@ public class SettingsMenu : MonoBehaviour
 
         ts = volume.value;
         settings.themeVolume = ts;
-        AudioManager.Instance.volume = ts;
+        AudioManager.Instance.SetVolume(ts);
 
         if (deactivateTUto.isOn)
         {

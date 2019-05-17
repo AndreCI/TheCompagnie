@@ -22,13 +22,14 @@ MonoBehaviour:
     delay: 4
     actionCost: 1
     effects:
-    - type: 0
+    - statusFactories: []
+      amount: 19
+      type: 0
+      animation: 38
+      variable: 0
       alternative: 0
       condition: 0
-      animation: 2
-      variable: 0
-      amount: 22
-      statusFactories: []
+      OnPlay: 0
     channel: 0
     channelLenght: 0
     multipleTarget: 1
@@ -45,13 +46,7 @@ MonoBehaviour:
     delay: 4
     actionCost: 1
     effects:
-    - type: 2
-      alternative: 0
-      condition: 0
-      animation: 15
-      variable: 0
-      amount: 0
-      statusFactories:
+    - statusFactories:
       - status: 1
         value: 15
         duration: 1
@@ -62,6 +57,13 @@ MonoBehaviour:
         duration: 4
         permanent: 0
         trigger: 1
+      amount: 0
+      type: 2
+      animation: 15
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 0
     channelLenght: 0
     multipleTarget: 0
@@ -79,20 +81,22 @@ MonoBehaviour:
     delay: 1
     actionCost: 1
     effects:
-    - type: 0
+    - statusFactories: []
+      amount: 5
+      type: 0
+      animation: 39
+      variable: 0
       alternative: 0
       condition: 0
-      animation: 13
-      variable: 0
+      OnPlay: 0
+    - statusFactories: []
       amount: 5
-      statusFactories: []
-    - type: 1
+      type: 1
+      animation: 18
+      variable: 0
       alternative: 1
       condition: 0
-      animation: 15
-      variable: 0
-      amount: 5
-      statusFactories: []
+      OnPlay: 0
     channel: 1
     channelLenght: 8
     multipleTarget: 0

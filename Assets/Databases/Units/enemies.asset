@@ -128,7 +128,7 @@ MonoBehaviour:
     applyOnStart: []
     applyOnLevel: []
   - availableCards: 8
-    maxHealth: 60
+    maxHealth: 70
     maxMana: 60
     maxAction: 20
     currentHealth: 0
@@ -148,7 +148,20 @@ MonoBehaviour:
     type: 2
     xpValue: 6
     cardsWeights: 0400000004000000040000000200000004000000
-    applyOnStart: []
+    applyOnStart:
+    - statusFactories:
+      - status: 1
+        value: 3
+        duration: 10
+        permanent: 0
+        trigger: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     applyOnLevel: []
   - availableCards: 10
     maxHealth: 80
@@ -173,28 +186,41 @@ MonoBehaviour:
     cardsWeights: 010000000100000001000000010000000100000001000000
     applyOnStart: []
     applyOnLevel: []
-  - availableCards: 10
-    maxHealth: 80
+  - availableCards: 9
+    maxHealth: 120
     maxMana: 0
-    maxAction: 20
+    maxAction: 40
     currentHealth: 0
-    combatSprite: {fileID: 3938420086010364335, guid: c863d384149cea34da26c621f09e3d56,
+    combatSprite: {fileID: -3785760131957737021, guid: a95639a5f54aac54ba01b4a14670b34c,
       type: 3}
-    portraitSprite: {fileID: 2239216891938564055, guid: ad03845c1d656e54e83a85baef5114df,
+    portraitSprite: {fileID: -4266777927115785223, guid: ad03845c1d656e54e83a85baef5114df,
       type: 3}
-    unitName: Skeleton
+    unitName: Dark Knight
     level:
       currentXP: 0
       nextLevelThreshold: 0
       talentPoints: 0
-      currentLevel: 2
+      currentLevel: 7
     id: 0
     baseSpeed: 0
     currentSpeed: 0
-    type: 2
-    xpValue: 6
-    cardsWeights: 010000000100000001000000010000000100000001000000
-    applyOnStart: []
+    type: 0
+    xpValue: 12
+    cardsWeights: 04000000020000000300000002000000020000000300000001000000
+    applyOnStart:
+    - statusFactories:
+      - status: 1
+        value: 50
+        duration: 0
+        permanent: 1
+        trigger: 2
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     applyOnLevel: []
   - availableCards: 2
     maxHealth: 30

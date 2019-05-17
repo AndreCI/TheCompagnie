@@ -59,7 +59,6 @@ public class CombatEffect
         switch (type)
         {
             case TYPE.DAMAGE:
-                //if(variable == CardEffectVariable.VARIABLE.BURN_STATUS) { Debug.Log(amount); }
                 source.TriggerSpecificUpdate(Unit.UNIT_SPECIFIC_TRIGGER.ATTACKS);
                 target.TriggerSpecificUpdate(Unit.UNIT_SPECIFIC_TRIGGER.ATTACKED);
                 target.TakeDamage(amount + source.currentStrength);
@@ -97,4 +96,93 @@ public class CombatEffect
         }
         
     }
+    public string GetDescription(Unit source = null, Unit target = null, int channelLength=0)
+    {
+        string constrct = "";
+        if (OnPlay)
+        {
+            constrct += "0n Play: ";
+        }
+        switch (condition)
+        {
+            case CONDITION.NONE:
+                break;
+            case CONDITION.TARGET_CHANNEL:
+                constrct += "If target is channeling: ";
+                break;
+        }
+        string amountStr = "";
+        switch (variable)
+        {
+            case CardEffectVariable.VARIABLE.STATIC:
+                if (source == null || source.currentStrength == 0 ||type!= TYPE.DAMAGE)
+                {
+                    amountStr += amount.ToString();
+                }
+                else {
+                    string strgamount = (source.currentStrength > 0 ? "+" + source.currentStrength.ToString() : source.currentStrength.ToString());
+                    amountStr += (amount.ToString() + strgamount);
+                    if(channelLength <= 0) {
+                        amountStr += " (" + (amount + source.currentStrength > 0 ? amount + source.currentStrength : 0).ToString() + ")";
+                    }
+                }
+                if (channelLength > 0)
+                {
+                    int totalA = source == null || type != TYPE.DAMAGE ? amount : amount + source.currentStrength;
+                    if (totalA < 0) { totalA = 0; }
+                    amountStr += " (" + (totalA * channelLength).ToString() +")";
+                }
+                break;
+            case CardEffectVariable.VARIABLE.MISSING_CURRENT_HEALTH:
+                int v = (source != null && target != null) ? CardEffectVariable.GetVariable(this, target, source) : 0;
+                amountStr += v.ToString() + " (missing current health)";
+                break;
+            case CardEffectVariable.VARIABLE.BURN_STATUS:
+                if (source == null)
+                {
+                    amountStr += (amount).ToString();
+                }
+                else { amountStr += (amount + source?.currentStrength).ToString(); }
+
+                break;
+        }
+        if(alternative == ALTERNATIVE_TARGET.SELF && type != TYPE.DAMAGE)
+        {
+            constrct += "Self : ";
+        }
+
+        switch (type)
+        {
+            case TYPE.DAMAGE:
+                constrct += (alternative == ALTERNATIVE_TARGET.SELF ? "Take " : "Deal ");
+                constrct += amountStr + " damages";
+                break;
+            case TYPE.HEAL:
+                constrct += "Heal " + amountStr + " health points";
+                break;
+            case TYPE.MANA_GAIN:
+                constrct += "Gain " + amountStr + " mana points";
+                break;
+            case TYPE.DRAW:
+                constrct += "Draw " + amountStr + " cards";
+                break;
+            case TYPE.APPLY_STATUS:
+                foreach(CombatStatusFactory csf in statusFactories)
+                {
+                    constrct += csf.GetDescription() + " ";
+                }
+               // constrct = constrct.Remove(0, constrct.Length - 1);
+                break;
+            case TYPE.MOVE_INTENT:
+                constrct += "Move intent by " + amountStr + " ticks";
+                break;
+
+        }
+        if (type != TYPE.APPLY_STATUS)
+        {
+            constrct += ". ";
+        }
+        return constrct;
+    }
 }
+ 

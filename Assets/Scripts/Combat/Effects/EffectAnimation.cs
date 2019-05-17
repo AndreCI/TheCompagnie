@@ -11,10 +11,10 @@ public class EffectAnimation
 {
     public AnimationClipDatabase.T type;
     public Sprite animationSpriteList;
-    public float timePerFrame = 0.2f;
     public int width;
     public int height;
-
+    public float scale = 1f;
+    public bool reverseTime = false;
     [Header("Remove specific parts of the sprite")]
     public int minWidth;
     public int minHeight;
@@ -23,6 +23,7 @@ public class EffectAnimation
 
     [HideInInspector]
     private bool playing;
+    public int ID;
     [HideInInspector] private bool activate;
     [HideInInspector] private int index;
     [HideInInspector] private float currentTime;
@@ -50,7 +51,7 @@ public class EffectAnimation
         {
             for (int i =0; i< width ; i++)
             {
-                if (i >= istart && i <= iend && j >= jend && j <= jstart)
+                if ((i >= istart || j!=jstart) && (i <= iend || j!=jend) && j >= jend && j <= jstart)
                 {
                     float w = (float)(i * (float)texture.width / (float)width);
                     float h = (float)(j * (float)texture.height / (float)height);
@@ -63,7 +64,6 @@ public class EffectAnimation
                 }
             }
         }
-        updatedTimePerFrame = timePerFrame;
     }
     public void FixedUpdate(float fixedDeltaTime)
     {
@@ -80,12 +80,15 @@ public class EffectAnimation
                 {
                     playing = false;
                     renderer.sprite = null;
-                    ui.currentAnimation = null;
+                    if (ui != null)
+                    {
+                        ui.currentAnimation = null;
+                    }
 
                 }
                 else if (currentTime > updatedTimePerFrame)
                 {
-                    renderer.sprite = animationList[index];
+                    renderer.sprite = animationList[(reverseTime? animationList.Count - 1 - index : index)];
                     index += 1;
                     currentTime = 0f;
                 }
@@ -98,10 +101,23 @@ public class EffectAnimation
         {
             ui = ui_;
             renderer = ui.effectSpriteRenderer;
+            renderer.transform.localScale = new Vector3(scale, scale, 1f);
             activate = true;
             ui.currentAnimation = this;
             updatedTimePerFrame = forcedTime > 0 ? (forcedTime) : (timeFactor * TurnManager.Instance.timePerEvent);
             updatedTimePerFrame = (updatedTimePerFrame )/((float)animationList.Count);
+        }
+    }
+    public void ActivateFromRenderer(SpriteRenderer renderer_, float timeFactor = 1f, float forcedTime = 1f)
+    {
+        if (type != AnimationClipDatabase.T.NONE)
+        {
+            ui = null;
+            renderer = renderer_;
+            renderer.transform.localScale = new Vector3(scale, scale, 1f);
+            activate = true;
+            updatedTimePerFrame = forcedTime;
+            updatedTimePerFrame = (updatedTimePerFrame) / ((float)animationList.Count);
         }
     }
     private void Play()

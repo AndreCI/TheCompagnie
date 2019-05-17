@@ -11,7 +11,7 @@ public class CursorManager : MonoBehaviour
     private static CursorManager instance;
     public static CursorManager Instance { get => instance; }
 
-    public enum CURSOR_TYPE { DEFAULT, GRAB, PREGRAB, BOOK, ATTACK};
+    public enum CURSOR_TYPE { DEFAULT, GRAB, PREGRAB, BOOK, ATTACK, DEFAULT_ARROW};
     private CURSOR_TYPE type_ = CURSOR_TYPE.DEFAULT;
     public CURSOR_TYPE type { get
         {

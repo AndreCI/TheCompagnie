@@ -130,7 +130,7 @@ MonoBehaviour:
         trigger: 1
       amount: 0
       type: 2
-      animation: 5
+      animation: 27
       variable: 0
       alternative: 0
       condition: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
         trigger: 0
       amount: 0
       type: 2
-      animation: 5
+      animation: 28
       variable: 0
       alternative: 0
       condition: 0

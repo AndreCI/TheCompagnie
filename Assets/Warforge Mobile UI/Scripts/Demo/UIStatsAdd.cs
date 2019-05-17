@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+//LEGACY
+
 namespace DuloGames.UI
 {
 	public class UIStatsAdd : MonoBehaviour {
@@ -29,7 +31,7 @@ namespace DuloGames.UI
 			
 			this.m_ValueText.text = (int.Parse(this.m_ValueText.text) + 1).ToString();
             unit.level.GainXP(1);
-            source.OnXPAdds();
+       //     source.OnXPAdds();
 		}
 	}
 }

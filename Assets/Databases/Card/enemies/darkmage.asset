@@ -22,22 +22,22 @@ MonoBehaviour:
     delay: 2
     actionCost: 1
     effects:
-    - type: 0
-      alternative: 0
-      condition: 0
-      animation: 14
-      variable: 0
+    - statusFactories: []
       amount: 13
-      OnPlay: 0
-      statusFactories: []
-    - type: 5
+      type: 0
+      animation: 20
+      variable: 0
       alternative: 0
       condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 1
+      type: 5
       animation: 0
       variable: 0
-      amount: 1
+      alternative: 0
+      condition: 0
       OnPlay: 0
-      statusFactories: []
     channel: 1
     channelLenght: 2
     multipleTarget: 0
@@ -54,27 +54,27 @@ MonoBehaviour:
     delay: 2
     actionCost: 1
     effects:
-    - type: 0
-      alternative: 0
-      condition: 0
-      animation: 10
-      variable: 0
+    - statusFactories: []
       amount: 5
-      OnPlay: 0
-      statusFactories: []
-    - type: 2
+      type: 0
+      animation: 6
+      variable: 0
       alternative: 0
       condition: 0
-      animation: 0
-      variable: 0
-      amount: 0
       OnPlay: 0
-      statusFactories:
+    - statusFactories:
       - status: 3
         value: 1
         duration: 0
         permanent: 1
         trigger: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 1
     channelLenght: 4
     multipleTarget: 0
@@ -91,14 +91,7 @@ MonoBehaviour:
     delay: 4
     actionCost: 1
     effects:
-    - type: 2
-      alternative: 1
-      condition: 0
-      animation: 1
-      variable: 0
-      amount: 0
-      OnPlay: 0
-      statusFactories:
+    - statusFactories:
       - status: 1
         value: 4
         duration: 2
@@ -109,6 +102,13 @@ MonoBehaviour:
         duration: 2
         permanent: 0
         trigger: 0
+      amount: 0
+      type: 2
+      animation: 37
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
     channel: 1
     channelLenght: 3
     multipleTarget: 0
@@ -125,14 +125,14 @@ MonoBehaviour:
     delay: 5
     actionCost: 1
     effects:
-    - type: 4
+    - statusFactories: []
+      amount: 20
+      type: 4
+      animation: 23
+      variable: 0
       alternative: 0
       condition: 0
-      animation: 15
-      variable: 0
-      amount: 20
       OnPlay: 0
-      statusFactories: []
     channel: 1
     channelLenght: 3
     multipleTarget: 0
@@ -149,14 +149,14 @@ MonoBehaviour:
     delay: 0
     actionCost: 0
     effects:
-    - type: 4
+    - statusFactories: []
+      amount: 20
+      type: 4
+      animation: 18
+      variable: 0
       alternative: 0
       condition: 0
-      animation: 15
-      variable: 0
-      amount: 20
       OnPlay: 1
-      statusFactories: []
     channel: 0
     channelLenght: 0
     multipleTarget: 0

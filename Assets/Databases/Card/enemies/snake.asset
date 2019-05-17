@@ -22,25 +22,27 @@ MonoBehaviour:
     delay: 6
     actionCost: 1
     effects:
-    - type: 0
-      alternative: 0
-      condition: 0
-      animation: 8
-      variable: 0
+    - statusFactories: []
       amount: 6
-      statusFactories: []
-    - type: 2
+      type: 0
+      animation: 5
+      variable: 0
       alternative: 0
       condition: 0
-      animation: 0
-      variable: 0
-      amount: 0
-      statusFactories:
+      OnPlay: 0
+    - statusFactories:
       - status: 5
         value: 1
         duration: 8
         permanent: 0
         trigger: 1
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 0
     channelLenght: 0
     multipleTarget: 0
@@ -57,13 +59,14 @@ MonoBehaviour:
     delay: 2
     actionCost: 1
     effects:
-    - type: 0
+    - statusFactories: []
+      amount: 5
+      type: 0
+      animation: 18
+      variable: 0
       alternative: 0
       condition: 0
-      animation: 3
-      variable: 0
-      amount: 5
-      statusFactories: []
+      OnPlay: 0
     channel: 1
     channelLenght: 5
     multipleTarget: 0
@@ -80,13 +83,7 @@ MonoBehaviour:
     delay: 1
     actionCost: 1
     effects:
-    - type: 2
-      alternative: 0
-      condition: 0
-      animation: 1
-      variable: 0
-      amount: 0
-      statusFactories:
+    - statusFactories:
       - status: 1
         value: 8
         duration: 1
@@ -97,6 +94,13 @@ MonoBehaviour:
         duration: 0
         permanent: 1
         trigger: 2
+      amount: 0
+      type: 2
+      animation: 4
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 0
     channelLenght: 0
     multipleTarget: 0
@@ -113,30 +117,32 @@ MonoBehaviour:
     delay: 3
     actionCost: 1
     effects:
-    - type: 2
-      alternative: 1
-      condition: 0
-      animation: 0
-      variable: 0
-      amount: 0
-      statusFactories:
+    - statusFactories:
       - status: 2
         value: 1
         duration: 4
         permanent: 0
         trigger: 1
-    - type: 2
-      alternative: 0
-      condition: 0
-      animation: 0
-      variable: 0
       amount: 0
-      statusFactories:
+      type: 2
+      animation: 36
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
       - status: 6
         value: 4
         duration: 2
         permanent: 0
         trigger: 0
+      amount: 0
+      type: 2
+      animation: 43
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 0
     channelLenght: 0
     multipleTarget: 1

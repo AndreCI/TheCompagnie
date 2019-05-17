@@ -21,20 +21,22 @@ MonoBehaviour:
     manaCost: 0
     delay: 5
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 1ee87670a5423394a9f36661d3932e93, type: 3}
-    Description: Deal 10 Damages
-    multipleTarget: 0
-    potential_target: 0
     effects:
-    - type: 0
-      alternative: 0
-      condition: 0
+    - statusFactories: []
+      amount: 10
+      type: 0
       animation: 2
       variable: 0
-      amount: 10
-      statusFactories: []
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 0
     channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 1ee87670a5423394a9f36661d3932e93, type: 3}
+    Description: Deal 10 Damages
     rarity: 1
     databasePath: WOLF/ENEMIES/All
     cardClass: 2
@@ -43,25 +45,27 @@ MonoBehaviour:
     manaCost: 0
     delay: 3
     actionCost: 1
-    sprite: {fileID: 21300000, guid: 8b7d9a94927760a41abfa4e16441a305, type: 3}
-    Description: Gain 15 block.
-    multipleTarget: 0
-    potential_target: 1
     effects:
-    - type: 2
-      alternative: 0
-      condition: 0
-      animation: 1
-      variable: 0
-      amount: 0
-      statusFactories:
+    - statusFactories:
       - status: 1
         value: 15
         duration: 1
         permanent: 0
         trigger: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 0
     channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 8b7d9a94927760a41abfa4e16441a305, type: 3}
+    Description: Gain 15 block.
     rarity: 1
     databasePath: WOLF/ENEMIES/All
     cardClass: 2
@@ -70,18 +74,8 @@ MonoBehaviour:
     manaCost: 0
     delay: 1
     actionCost: 1
-    sprite: {fileID: 21300000, guid: a0e3596a59487b741bdfdb96bedb6460, type: 3}
-    Description: Gain 8 blocks. Gain 3 strength.
-    multipleTarget: 0
-    potential_target: 1
     effects:
-    - type: 2
-      alternative: 0
-      condition: 0
-      animation: 1
-      variable: 0
-      amount: 0
-      statusFactories:
+    - statusFactories:
       - status: 1
         value: 8
         duration: 1
@@ -92,8 +86,20 @@ MonoBehaviour:
         duration: 1
         permanent: 1
         trigger: 2
+      amount: 0
+      type: 2
+      animation: 4
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
     channel: 0
     channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: a0e3596a59487b741bdfdb96bedb6460, type: 3}
+    Description: Gain 8 blocks. Gain 3 strength.
     rarity: 1
     databasePath: WOLF/ENEMIES/All
     cardClass: 2

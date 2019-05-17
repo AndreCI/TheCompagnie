@@ -5,7 +5,7 @@ using System.Linq;
 
 public class SoundDatabase : ScriptableObject
 {
-    public enum SOUND_TYPE {GLOBAL, THEME, ANIMATION };
+    public enum SOUND_TYPE {GLOBAL, THEME, ANIMATION, MISC };
     public SOUND_TYPE type;
     public List<SoundDatabase> childrenDatabase;
     public List<AudioSound> sounds;
@@ -50,5 +50,23 @@ public class SoundDatabase : ScriptableObject
         return sounds.Find(x => x.Name == Name);
     }
 
+    public AudioSound GetRandom(AudioSound.AUDIO_SET set)
+    {
+        return Shuffle(sounds.FindAll(x => x.set == set).ToList()).First();
+    }
+    public static List<AudioSound> Shuffle(List<AudioSound> sounds)
+    {
+        System.Random rng = new System.Random();
+        int n = sounds.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            AudioSound value = sounds[k];
+            sounds[k] = sounds[n];
+            sounds[n] = value;
+        }
+        return sounds;
+    }
 
 }

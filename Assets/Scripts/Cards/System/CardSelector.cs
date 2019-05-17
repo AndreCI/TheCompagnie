@@ -29,7 +29,7 @@ public class CardSelector : MonoBehaviour
         singleCardSelected = false;
         Notify = null;
     }
-
+    /*
     void Update()
     {
         if (Input.GetMouseButtonDown(1))
@@ -37,7 +37,7 @@ public class CardSelector : MonoBehaviour
             Unselect();
         }
     }
-
+    */
     public void ToggleSelection(Card c)
     {
         if (!cardSelected.Contains(c))

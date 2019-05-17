@@ -107,7 +107,7 @@ MonoBehaviour:
     - statusFactories: []
       amount: 20
       type: 0
-      animation: 0
+      animation: 22
       variable: 0
       alternative: 0
       condition: 0

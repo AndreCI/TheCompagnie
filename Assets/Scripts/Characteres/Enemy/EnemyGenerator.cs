@@ -22,7 +22,11 @@ public class EnemyGenerator : MonoBehaviour
     public List<Enemy> GenerateEnemies()
     {
         List<Enemy> enemies = new List<Enemy>() ;
-        if (combatIndex == 0)
+        if (PlayerInfos.Instance.readyForBoss)
+        {
+           enemies.Add(GeneralUtils.Copy<Enemy>(database.Get(6)));
+        }
+        else if (combatIndex == 0)
         {//database.Get(7)) };//d
             enemies = database.GetRandomFromType(Enemy.ENEMY_TYPE.BEAST, 1);
 

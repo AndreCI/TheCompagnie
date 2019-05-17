@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b6c0d8c85a88443afe2f7fcf6d3724, type: 3}
+  m_Name: cardMisc
+  m_EditorClassIdentifier: 
+  type: 3
+  childrenDatabase: []
+  sounds:
+  - Name: draw1
+    loop: 0
+    set: 3
+    file: {fileID: 8300000, guid: 85994fa01cdec5c43ada09075352b62f, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 3
+    audioType: 3
+  - Name: draw2
+    loop: 0
+    set: 3
+    file: {fileID: 8300000, guid: 3fc36120500bc5f4bbf7f90a791fab1f, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 4
+    audioType: 3
+  - Name: draw3
+    loop: 0
+    set: 3
+    file: {fileID: 8300000, guid: ea8742150c43a8348ab120b845c10763, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 5
+    audioType: 3
+  - Name: draw4
+    loop: 0
+    set: 3
+    file: {fileID: 8300000, guid: ab0211a1427ca8948b8d2dddc74d98e9, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 6
+    audioType: 3
+  - Name: play
+    loop: 0
+    set: 4
+    file: {fileID: 8300000, guid: fe20a6e0530a4e943820b48549c20c1c, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 6
+    audioType: 3
+  - Name: play
+    loop: 0
+    set: 4
+    file: {fileID: 8300000, guid: 986e35e88748b1e46a97b560787b43ee, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 6
+    audioType: 3
+  - Name: play
+    loop: 0
+    set: 4
+    file: {fileID: 8300000, guid: 5e72d39def8a93c40a98d922500e2ed7, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 6
+    audioType: 3
+  - Name: play
+    loop: 0
+    set: 4
+    file: {fileID: 8300000, guid: 1b6524e29b29c3c4baa953b87468fc99, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 6
+    audioType: 3
+  - Name: Shuffle
+    loop: 0
+    set: 5
+    file: {fileID: 8300000, guid: 4d63ffe615cb35e40a8bdc1fc8035c36, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 6
+    audioType: 3

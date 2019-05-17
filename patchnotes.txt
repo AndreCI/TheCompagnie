@@ -1,2 +1,0 @@
-
-Fixed a bug where end turn button was still clickable after pressing it.

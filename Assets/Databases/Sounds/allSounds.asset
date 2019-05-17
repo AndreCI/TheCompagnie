@@ -15,4 +15,61 @@ MonoBehaviour:
   type: 0
   childrenDatabase:
   - {fileID: 11400000, guid: 8beafd4628d422b4e8a9854f99f9385c, type: 2}
-  sounds: []
+  - {fileID: 11400000, guid: 414548ff89c1cfa49820bb0f2952df0b, type: 2}
+  sounds:
+  - Name: TitleTheme
+    loop: 1
+    set: 0
+    file: {fileID: 8300000, guid: f3ff25dabc42ea547904ef2ee1186ee3, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 0
+    audioType: 1
+  - Name: OverworldTheme
+    loop: 1
+    set: 1
+    file: {fileID: 8300000, guid: fa3695bd8bef5a84f9f13949bdfe63e8, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 1
+    audioType: 1
+  - Name: CombatTheme
+    loop: 1
+    set: 2
+    file: {fileID: 8300000, guid: 083699fc50bf4d54baeb134fcc7cb6fd, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 2
+    audioType: 1
+  - Name: draw1
+    loop: 0
+    set: 3
+    file: {fileID: 8300000, guid: 85994fa01cdec5c43ada09075352b62f, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 3
+    audioType: 3
+  - Name: draw2
+    loop: 0
+    set: 3
+    file: {fileID: 8300000, guid: 3fc36120500bc5f4bbf7f90a791fab1f, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 4
+    audioType: 3
+  - Name: draw3
+    loop: 0
+    set: 3
+    file: {fileID: 8300000, guid: ea8742150c43a8348ab120b845c10763, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 5
+    audioType: 3
+  - Name: draw4
+    loop: 0
+    set: 3
+    file: {fileID: 8300000, guid: ab0211a1427ca8948b8d2dddc74d98e9, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 6
+    audioType: 3

@@ -9,13 +9,50 @@ using UnityEngine.EventSystems;
 
 public class MapNode : MonoBehaviour
 {
-    public enum NODETYPE { UNKNOWN, EVENT, COMBAT};
+    public enum NODETYPE { UNKNOWN, EVENT, COMBAT, BOSS};
     public List<MapNode> nextNodes;
     public NODETYPE type;
     public Image icon;
     public bool visited;
     public Button button;
+    public Image glowingIndicator;
+    public Color currentPositionColor;
+    public Color nextPositionColor;
+    public Color nextPositionVisitedColor;
     public bool discovered = false;
+
+    private float currentTime = 0f;
+    private float animationTime = 1f;
+    private float minScale = 1f;
+    private float maxScale = 1.7f;
+    private bool isCurrentPositionOrNext = false;
+    public bool IsCurrentPositionOrNext { get => isCurrentPositionOrNext; set {
+            glowingIndicator.gameObject.SetActive(value);
+            isCurrentPositionOrNext = value;
+        } }
+
+    private void Update()
+    {
+        if(IsCurrentPositionOrNext)
+        {
+            float progression = 0f;
+            currentTime += Time.deltaTime;
+            if(currentTime> animationTime * 2)
+            {
+                currentTime = 0f;
+            }else if(currentTime > animationTime)
+            {
+                progression = 2 - (currentTime / animationTime);
+            }
+            else
+            {
+                progression = currentTime / animationTime;
+            }
+            glowingIndicator.transform.localScale = new Vector3(maxScale * progression + minScale * (1 - progression),
+                maxScale * progression + minScale * (1 - progression),
+                1f);
+        }
+    }
 
     public void Setup(List<MapNode> nodes)
     {
@@ -36,8 +73,8 @@ public class MapNode : MonoBehaviour
         nextNodes.Add(nodes.Find(x => Vector3.Distance(transform.position, x.transform.position) == trdDist));
 
         nextNodes = Shuffle(nextNodes);
-        
-        if(type != NODETYPE.EVENT && !visited && !discovered)
+
+        if (type != NODETYPE.EVENT && !visited && !discovered && type != NODETYPE.BOSS) 
         {
             if (new System.Random().Next(100) > 66) 
             {
@@ -83,14 +120,20 @@ public class MapNode : MonoBehaviour
             }else if(type == NODETYPE.UNKNOWN)
             {
                 icon.sprite = OverworldMap.Instance.unknown;
+            }else if(type == NODETYPE.BOSS)
+            {
+                icon.sprite = OverworldMap.Instance.boss;
             }
-            
+
+            glowingIndicator.CrossFadeColor(nextPositionColor, 1f, true, true);
             if (visited)
             {
-            icon.sprite = OverworldMap.Instance.visited;
+                icon.sprite = OverworldMap.Instance.visited;
+                glowingIndicator.CrossFadeColor(nextPositionVisitedColor, 1f, true, true);
             }
             button.interactable = true;
             discovered = true;
+            IsCurrentPositionOrNext = true;
         }
         else
         {
@@ -103,28 +146,37 @@ public class MapNode : MonoBehaviour
                 icon.sprite = OverworldMap.Instance.locked;
             }
             button.interactable = false;
+            IsCurrentPositionOrNext = false;
         }
         if(PlayerInfos.Instance.currentPosition == this)
         {
             icon.sprite = OverworldMap.Instance.current;
+            IsCurrentPositionOrNext = true;
+            glowingIndicator.CrossFadeColor(currentPositionColor, 1f, true, true);
         }
+        currentTime = 0f;
     }
 
     public void OnClick()
     {
         if (button.interactable)
         {
-            PlayerInfos.Instance.currentPosition = this;
-            OverworldMap.Instance.UpdateNodes();
             if (visited)
             {
+                PlayerInfos.Instance.currentPosition = this;
+                OverworldMap.Instance.UpdateNodes();
+
                 return;
             }
             visited = true;
-            if(type == NODETYPE.COMBAT)
+            if (type == NODETYPE.COMBAT)
             {
                 OverworldMap.Instance.StartCombat();
                 OverworldMap.Instance.noTavern = false;
+            }else if(type == NODETYPE.BOSS) {
+                OverworldMap.Instance.StartBoss();
+                visited = false;
+                return;
             }else if(type == NODETYPE.EVENT)
             {
                 OverworldMap.Instance.StartEvent();
@@ -142,6 +194,10 @@ public class MapNode : MonoBehaviour
                     OverworldMap.Instance.noTavern = true;
                 }
             }
+
+            PlayerInfos.Instance.currentPosition = this;
+            OverworldMap.Instance.UpdateNodes();
+
         }
     }
 }

@@ -136,6 +136,7 @@ public class Hand : UICardDropZone
         UI.Playable = !currentTurn;
         UI.gameObject.SetActive(activatedUnits.Contains(card.owner));
         SetCardUIs();
+        AudioManager.Instance?.PlayFromSet(AudioSound.AUDIO_SET.CARD_DRAW);
     }
 
     public void SetLock(bool locked_)
@@ -153,8 +154,8 @@ public class Hand : UICardDropZone
         additionalCards.text = "+" + (cards.Count - cardsToSet.Count).ToString() + "\n\n" +
             (cards.Count).ToString() + "/10";
         CombatManager.Instance.deckButton.GetComponentInChildren<Text>().text = "Deck (" + CombatManager.Instance.compagnionDeck.Count(activatedUnits).ToString() + ")";
-        //cards = new List<CardUI>(GetComponentsInChildren<CardUI>());
-        if(cardsToSet.Count == 0) { return; }
+        CombatManager.Instance.discardButton.GetComponentInChildren<Text>().text = "Discard (" + CombatManager.Instance.compagnionDiscard.Count(activatedUnits).ToString() + ")";
+        if (cardsToSet.Count == 0) { return; }
         cardsToSet.Sort((x,y) => x.transform.GetSiblingIndex().CompareTo(y.transform.GetSiblingIndex()));
         GetComponent<HorizontalLayoutGroup>().spacing = - (cardsToSet.Count - 1.5f) * cardsToSet[0].GetComponent<RectTransform>().sizeDelta.x * 0.07f;
         float maximum = GetHeight(((float)cardsToSet.Count - 1) / 2f, cardsToSet.Count);

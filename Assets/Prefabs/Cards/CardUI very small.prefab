@@ -997,7 +997,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: d389a926436dfe643ac3f814aae00393, type: 3}
-    m_FontSize: 25
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -9026,21 +9026,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card:
-    ID: 0
     Name: 
     manaCost: 0
     delay: 0
     actionCost: 0
-    sprite: {fileID: 0}
-    Description: 
-    multipleTarget: 0
-    potential_target: 0
     effects: []
     channel: 0
     channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 0}
+    Description: 
     rarity: 0
     databasePath: 
     cardClass: 0
+    ID: 0
   header: {fileID: 6314508764645610542}
   image: {fileID: 6686242767507618663}
   manaCost: {fileID: 6686242768541492961}

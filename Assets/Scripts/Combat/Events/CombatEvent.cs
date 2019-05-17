@@ -16,9 +16,10 @@ public class CombatEvent
 
     public Intent intent;
 
-    private int currentCasterHealth;
+    private bool cancelChannel = false;
+    public CombatEvent nextChannelEvent;
 
-    public CombatEvent(Unit source_, List<Unit> targets_, int timeIndex_, List<CombatEffect> effects_, Card cardSource_, bool channel_)
+    public CombatEvent(Unit source_, List<Unit> targets_, int timeIndex_, List<CombatEffect> effects_, Card cardSource_, bool channel_, CombatEvent nextChannelEvent_ = null)
     {
         timeIndex = timeIndex_;
         cardSource = cardSource_;
@@ -26,11 +27,11 @@ public class CombatEvent
         targets = targets_;
         effects = effects_;
         channel = channel_;
-        currentCasterHealth = source_.currentHealth;
         if (channel)
         {
-            source_.SpecificUpdate += Remove;
-                }
+            nextChannelEvent = nextChannelEvent_;
+            source_.SpecificUpdate += SourceUnit_Update;
+        }
         foreach(CombatEffect e in effects)
         {
             if (e.OnPlay)
@@ -49,7 +50,7 @@ public class CombatEvent
             effect.Perform(target, source, forcedTime: GetTime(timePerEvent));
             if (channel)
             {
-                source.SpecificUpdate -= Remove;
+                source.SpecificUpdate -= SourceUnit_Update;
             }
         }
     }
@@ -66,23 +67,42 @@ public class CombatEvent
                     effects[i].Perform(target, source, forcedTime: GetTime(timePerEvent));
                     if (channel)
                     {
-                        source.SpecificUpdate -= Remove;
+                        source.SpecificUpdate -= SourceUnit_Update;
                     }
                 }
             }
         }
     }
 
-    private void Remove(Unit.UNIT_SPECIFIC_TRIGGER trigger)
+    private void SourceUnit_Update(Unit.UNIT_SPECIFIC_TRIGGER trigger)
     {
-        if(intent == null)
+        if (channel)
         {
-            source.SpecificUpdate -= Remove;
+            if (trigger == Unit.UNIT_SPECIFIC_TRIGGER.ATTACKED)
+            {
+                cancelChannel = true;
+            }
+            else if (trigger == Unit.UNIT_SPECIFIC_TRIGGER.DAMAGE_INSTANCE_END)
+            {
+                cancelChannel = false;
+            }
+            else if (trigger == Unit.UNIT_SPECIFIC_TRIGGER.DAMAGE_DEALT && cancelChannel)
+            {
+                Remove();
+            }
+        }
+        
+    }
+    private void Remove()
+    {
+        if (intent == null)
+        {
+            source.SpecificUpdate -= SourceUnit_Update;
             return;
         }
-        if(channel && trigger == Unit.UNIT_SPECIFIC_TRIGGER.ATTACKED)
+        if (channel)
         {
-            source.SpecificUpdate -= Remove;
+            source.SpecificUpdate -= SourceUnit_Update;
             source.CurrentMana += cardSource.manaCost;
 
             TurnManager.Instance.RemoveCombatEvent(this);

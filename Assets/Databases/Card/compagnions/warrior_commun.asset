@@ -25,7 +25,7 @@ MonoBehaviour:
     - statusFactories: []
       amount: 30
       type: 0
-      animation: 3
+      animation: 42
       variable: 0
       alternative: 0
       condition: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
         trigger: 2
       amount: 0
       type: 2
-      animation: 7
+      animation: 4
       variable: 0
       alternative: 0
       condition: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
         trigger: 0
       amount: 3
       type: 2
-      animation: 7
+      animation: 35
       variable: 0
       alternative: 0
       condition: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
       variable: 0
       alternative: 0
       condition: 0
-      OnPlay: 0
+      OnPlay: 1
     channel: 0
     channelLenght: 0
     multipleTarget: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
     effects:
     - statusFactories:
       - status: 1
-        value: 14
+        value: 8
         duration: 1
         permanent: 0
         trigger: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
     ID: 20
   - Name: Daggers Throw
     manaCost: 5
-    delay: 3
+    delay: 2
     actionCost: 1
     effects:
     - statusFactories:
@@ -232,9 +232,17 @@ MonoBehaviour:
         duration: 1
         permanent: 0
         trigger: 0
-      amount: 6
+      amount: 8
       type: 0
-      animation: 8
+      animation: 21
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 7
+      type: 0
+      animation: 0
       variable: 0
       alternative: 0
       condition: 0
@@ -247,33 +255,7 @@ MonoBehaviour:
         trigger: 0
       amount: 6
       type: 0
-      animation: 8
-      variable: 0
-      alternative: 0
-      condition: 0
-      OnPlay: 0
-    - statusFactories:
-      - status: 1
-        value: 14
-        duration: 1
-        permanent: 0
-        trigger: 0
-      amount: 6
-      type: 0
-      animation: 8
-      variable: 0
-      alternative: 0
-      condition: 0
-      OnPlay: 0
-    - statusFactories:
-      - status: 1
-        value: 14
-        duration: 1
-        permanent: 0
-        trigger: 0
-      amount: 6
-      type: 0
-      animation: 8
+      animation: 0
       variable: 0
       alternative: 0
       condition: 0
@@ -307,7 +289,7 @@ MonoBehaviour:
         trigger: 2
       amount: 6
       type: 2
-      animation: 4
+      animation: 27
       variable: 0
       alternative: 0
       condition: 0
@@ -336,7 +318,7 @@ MonoBehaviour:
         trigger: 1
       amount: 1
       type: 2
-      animation: 4
+      animation: 36
       variable: 0
       alternative: 0
       condition: 0
@@ -368,7 +350,20 @@ MonoBehaviour:
     - statusFactories: []
       amount: 18
       type: 1
-      animation: 4
+      animation: 15
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 0
+        value: 3
+        duration: 0
+        permanent: 1
+        trigger: 0
+      amount: 18
+      type: 2
+      animation: 0
       variable: 0
       alternative: 0
       condition: 0
@@ -390,17 +385,17 @@ MonoBehaviour:
     actionCost: 1
     effects:
     - statusFactories: []
-      amount: 14
+      amount: 16
       type: 0
-      animation: 3
+      animation: 31
       variable: 0
       alternative: 0
       condition: 0
       OnPlay: 0
     - statusFactories: []
-      amount: 14
+      amount: 16
       type: 0
-      animation: 3
+      animation: 0
       variable: 0
       alternative: 0
       condition: 0
@@ -437,7 +432,7 @@ MonoBehaviour:
     - statusFactories: []
       amount: 1
       type: 3
-      animation: 4
+      animation: 0
       variable: 0
       alternative: 0
       condition: 0
@@ -448,6 +443,35 @@ MonoBehaviour:
     potential_target: 3
     hidden: 0
     sprite: {fileID: 21300000, guid: 3e2958b2712e7eb48ae29f248dd06c69, type: 3}
+    Description: Gain 4 strength for 1 turn. Draw a card. Cost no action.
+    rarity: 2
+    databasePath: WARRIOR_COM/Warrior/COMPAGNION/All
+    cardClass: 5
+    ID: 26
+  - Name: Whirlwind
+    manaCost: 0
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 7
+        value: 4
+        duration: 1
+        permanent: 0
+        trigger: 0
+      amount: 6
+      type: 0
+      animation: 41
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 5
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 2f076f70f608696438650fedf57536da, type: 3}
     Description: Gain 4 strength for 1 turn. Draw a card. Cost no action.
     rarity: 2
     databasePath: WARRIOR_COM/Warrior/COMPAGNION/All

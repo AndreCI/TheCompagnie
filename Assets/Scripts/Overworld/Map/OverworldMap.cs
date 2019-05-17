@@ -19,9 +19,11 @@ public class OverworldMap: MonoBehaviour
     public Sprite visited;
     public Sprite current;
     public Sprite eventIcon;
+    public Sprite boss;
 
     public GameObject eventWindow;
     public GameObject townWindow;
+    public GameObject bossWindow;
 
     public bool noTavern = true;
     void Start()
@@ -71,5 +73,11 @@ public class OverworldMap: MonoBehaviour
     public void StartTown()
     {
         townWindow.SetActive(true);
+    }
+
+    public void StartBoss()
+    {
+        PlayerInfos.Instance.readyForBoss = true;
+        bossWindow.SetActive(true);
     }
 }

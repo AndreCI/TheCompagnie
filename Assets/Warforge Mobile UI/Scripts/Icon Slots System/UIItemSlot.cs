@@ -4,23 +4,28 @@ using UnityEngine.Events;
 using System;
 using System.Collections.Generic;
 using Object = UnityEngine.Object;
+using System.Collections;
 
 namespace DuloGames.UI
 {
 	[AddComponentMenu("UI/Icon Slots/Item Slot", 12)]
-	public class UIItemSlot : UISlotBase {
+	public class UIItemSlot : UISlotBase, ITooltipActivator {
 		
 		[Serializable] public class OnAssignEvent : UnityEvent<UIItemSlot> { }
 		[Serializable] public class OnUnassignEvent : UnityEvent<UIItemSlot> { }
 		
 		[SerializeField] private UIItemSlot_Group m_SlotGroup = UIItemSlot_Group.None;
 		[SerializeField] private int m_ID = 0;
-		
-		/// <summary>
-		/// Gets or sets the slot group.
-		/// </summary>
-		/// <value>The slot group.</value>
-		public UIItemSlot_Group slotGroup
+
+
+        private bool tooltip = false;
+        public bool ToolTipShow { get => tooltip; set => tooltip = value; }
+
+        /// <summary>
+        /// Gets or sets the slot group.
+        /// </summary>
+        /// <value>The slot group.</value>
+        public UIItemSlot_Group slotGroup
 		{
 			get { return this.m_SlotGroup; }
 			set { this.m_SlotGroup = value; }
@@ -205,50 +210,46 @@ namespace DuloGames.UI
 			return (assign1 && assign2);
 		}
 		
+
 		/// <summary>
 		/// Prepares the tooltip with the specified item info.
 		/// </summary>
 		/// <param name="itemInfo">Item info.</param>
 		public static void PrepareTooltip(Card itemInfo)
 		{
-			if (itemInfo == null)
-				return;
-
-            // Set the title and description
-            //UITooltip.AddTitle(itemInfo.Name);
-            //CardUI cardUI = UITooltip.gameobject.GetComponent<CardUI>();
-            //cardUI.Setup(itemInfo);
-			
-			/*// Item types
-			UITooltip.AddLineColumn(itemInfo.Type);
-			UITooltip.AddLineColumn(itemInfo.Subtype);
-			
-			if (itemInfo.ItemType == 1)
-			{
-				UITooltip.AddLineColumn(itemInfo.Damage.ToString() + " Damage");
-				UITooltip.AddLineColumn(itemInfo.AttackSpeed.ToString("0.0") + " Attack speed");
-				
-				UITooltip.AddLine("(" + ((float)itemInfo.Damage / itemInfo.AttackSpeed).ToString("0.0") + " damage per second)");
-			}
-			else
-			{
-				UITooltip.AddLineColumn(itemInfo.Block.ToString() + " Block");
-				UITooltip.AddLineColumn(itemInfo.Armor.ToString() + " Armor");
-			}
 		
-			UITooltip.AddLine("+" + itemInfo.Stamina.ToString() + " Stamina", new RectOffset(0, 0, 6, 0));
-			UITooltip.AddLine("+" + itemInfo.Strength.ToString() + " Strength");*/
-			
-			// Set the item description if not empty
-			//if (!string.IsNullOrEmpty(itemInfo.Description))
-			//	UITooltip.AddDescription(itemInfo.Description);
 		}
-		
-		/// <summary>
-		/// Raises the tooltip event.
-		/// </summary>
-		/// <param name="show">If set to <c>true</c> show.</param>
-		public override void OnTooltip(bool show)
+
+
+        public void OnToolTip(bool show)
+        {
+            string description = this.m_ItemInfo.GetKeywordDescription();
+            if (description != "")
+            {
+                ToggleTipWindow.Instance.gameObject.SetActive(show);
+                ToggleTipWindow.Instance.GetComponent<RectTransform>().pivot = new Vector2(0F, 1f);
+                ToggleTipWindow.Instance.ToggleText.text = description;
+                ToggleTipWindow.Instance.transform.position = Input.mousePosition;
+                ToolTipShow = show;
+            }
+            else
+            {
+                ToggleTipWindow.Instance.gameObject.SetActive(false);
+                ToolTipShow = false;
+
+            }
+        }
+        IEnumerator InternalShowToolTip()
+        {
+            yield return new WaitForSeconds(tooltipDelay);
+            OnToolTip(true);
+        }
+
+        /// <summary>
+        /// Raises the tooltip event.
+        /// </summary>
+        /// <param name="show">If set to <c>true</c> show.</param>
+        public override void OnTooltip(bool show)
 		{
 			// Make sure we have spell info, otherwise game might crash
 			if (this.m_ItemInfo == null)
@@ -257,21 +258,14 @@ namespace DuloGames.UI
 			// If we are showing the tooltip
 			if (show)
 			{
-                // Prepare the tooltip
-                //UIItemSlot.PrepareTooltip(this.m_ItemInfo);
-
-                // Anchor to this slot
-                //UITooltip.AnchorToRect(this.transform as RectTransform);
-
-                // Show the tooltip
-
-                //UITooltip.Show();
+                this.OnToolTip(true);
                 PlayerInfos.Instance.unitsWindow.ShowCardHolder(this.m_ItemInfo);
 			}
 			else
 			{
                 // Hide the tooltip
                 PlayerInfos.Instance.unitsWindow.HideCardHolder();
+                this.OnToolTip(false);
                 //UITooltip.Hide();
             }
         }
