@@ -90,17 +90,18 @@ public class WinWindow : MonoBehaviour
 
     public void Setup(int xpGain)
     {
-        remainingRestPoints = Mathf.Max(8 - TurnManager.Instance.turnNumber, 0);
+        remainingRestPoints = Mathf.Max(Mathf.Max(7 - Mathf.FloorToInt(TurnManager.Instance.turnNumber/2f), 
+                                                13 - TurnManager.Instance.turnNumber * 2), 
+                                      3);
         xpRotation = xpGain;
 
-        System.Random rand = new System.Random(); //reuse this if you are generating many
-        double u1 = 1.0 - rand.NextDouble(); //uniform(0,1] random doubles
-        double u2 = 1.0 - rand.NextDouble();
+        double u1 = 1.0 - Utils.rdx.NextDouble(); //uniform(0,1] random doubles
+        double u2 = 1.0 - Utils.rdx.NextDouble();
         double randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) *
                      Math.Sin(2.0 * Math.PI * u2); //random normal(0,1)
         double randNormal =
                      xpGain * 3 + xpGain * randStdNormal; //random normal(mean,stdDev^2)
-        int goldGain = (int)(randNormal);
+        int goldGain = Mathf.Max((int)(randNormal), 3);
         SetupHolder(xpTextHolder, xpGain);
         SetupHolder(goldHolder, goldGain);
         WinWindow_NotifyUpdate();
@@ -114,7 +115,6 @@ public class WinWindow : MonoBehaviour
                 portraits[i].transform.parent.parent.gameObject.SetActive(true);
                 portraits[i].Setup(units[i]);
                 units[i].NotifyUpdate += WinWindow_NotifyUpdate;
-                Debug.Log("sb!");
             }
             else
             {
@@ -139,7 +139,7 @@ public class WinWindow : MonoBehaviour
             {
                 portraits.Find(x => x.linkedUnit == u).glowingIndicatorOn(1, true);
             }
-            portraits.Find(x => x.linkedUnit == u).Setup(u);
+            portraits.Find(x => x.linkedUnit == u).Setup(u, false);
         }
 
         PlayerInfos.Instance.CurrentShards += goldGain;
@@ -151,6 +151,7 @@ public class WinWindow : MonoBehaviour
 
     private void WinWindow_NotifyUpdate()
     {
+        if(this == null || gameObject == null) { return; }
         SetupHolder(restHolder, remainingRestPoints);
         if(remainingRestPoints <= 0)
         {
@@ -169,11 +170,21 @@ public class WinWindow : MonoBehaviour
 
  
     }
+    private void OnDisable()
+    {
+        if (units != null && units.Count > 0)
+        {
+            foreach (Unit unit in units)
+            {
+                unit.NotifyUpdate -= WinWindow_NotifyUpdate;
+
+            }
+        }
+    }
     private void OnDestroy()
     {
         foreach (Unit unit in units)
         {
-            Debug.Log("unsub");
             unit.NotifyUpdate -= WinWindow_NotifyUpdate;
 
         }

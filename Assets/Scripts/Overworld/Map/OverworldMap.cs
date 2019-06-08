@@ -18,12 +18,8 @@ public class OverworldMap: MonoBehaviour
     public Sprite unknown;
     public Sprite visited;
     public Sprite current;
-    public Sprite eventIcon;
-    public Sprite boss;
 
-    public GameObject eventWindow;
-    public GameObject townWindow;
-    public GameObject bossWindow;
+    public EventWindow eventWindow;
 
     public bool noTavern = true;
     void Start()
@@ -49,6 +45,7 @@ public class OverworldMap: MonoBehaviour
         }
         UpdateNodes();
         TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.OVERWORLD);
+
     }
 
     public void UpdateNodes()
@@ -66,18 +63,13 @@ public class OverworldMap: MonoBehaviour
 
     public void StartEvent()
     {
-        eventWindow.SetActive(true);
-        UpdateNodes();
+        eventWindow.gameObject.SetActive(true);
+        eventWindow.Setup(OverworldEventManager.Instance.GetARandomEvent());
     }
 
-    public void StartTown()
+    public void StartEvent(OverworldEvent fixedEvent)
     {
-        townWindow.SetActive(true);
-    }
-
-    public void StartBoss()
-    {
-        PlayerInfos.Instance.readyForBoss = true;
-        bossWindow.SetActive(true);
+        eventWindow.gameObject.SetActive(true);
+        eventWindow.Setup(fixedEvent);
     }
 }

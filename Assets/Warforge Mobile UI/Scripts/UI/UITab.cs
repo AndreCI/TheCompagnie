@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.UI.Tweens;
 using System;
+using System.Collections.Generic;
 
 namespace DuloGames.UI
 {
@@ -87,8 +88,12 @@ namespace DuloGames.UI
 		{
             if (this.realTarget != null)
             {
-                UnitSelector.Instance.ToggleSelection(this.realTarget, UnitSelector.SELECTION_MODE.SELECT, this.isOn, !this.isOn);
-                PlayerInfos.Instance.unitsWindow.SetInfos(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT));
+              //  UnitSelector.Instance.ToggleSelection(this.realTarget, UnitSelector.SELECTION_MODE.SELECT, this.isOn, !this.isOn);
+                if((this.realTarget as Compagnion).talentTree.talentPoint > 1)
+                {
+                    TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.TALENTPOINT);
+                }
+                PlayerInfos.Instance.unitsWindow.SetInfos(new List<Unit> { this.realTarget });
             }
             //m_TargetContent.SetActive(this.isOn);
         }

@@ -1,0 +1,405 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: common
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 11
+  subClass: 0
+  rarityLevel: 2
+  branchLevel: 3
+  childrenDatabase: []
+  items:
+  - Name: Frost Bolt
+    manaCost: 6
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 17
+      type: 0
+      animation: 20
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 10
+        value: 1
+        duration: 3
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 0406e2dbaf3fca1438db30f8bd69dace, type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 3
+    ID: 76
+  - Name: Frost Nova
+    manaCost: 9
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 10
+        value: 0
+        duration: 3
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 20
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 2
+      type: 5
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 6100887901855472692, guid: a3d800b3936db4942b5c4232b83d2194,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 3
+    ID: 77
+  - Name: Ice Block
+    manaCost: 4
+    delay: 8
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 10
+        value: 0
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 2
+        value: 5
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 37
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    - statusFactories: []
+      amount: 20
+      type: 4
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: -3107417207271281728, guid: 1c8aa414a841be641a99ad8eacd85184,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 3
+    ID: 78
+  - Name: Ice Tempest
+    manaCost: 6
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 3
+      type: 0
+      animation: 20
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 3
+      type: 0
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 3
+      type: 0
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 10
+        value: 1
+        duration: 4
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 3
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 4
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -6743663941973446035, guid: dc4d225fd38e8db4d81b880505acc76e,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 3
+    ID: 79
+  - Name: Wall of Ice
+    manaCost: 10
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 10
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 1
+        value: 10
+        duration: 0
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 1
+      type: 3
+      animation: 0
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 3567258872674009389, guid: 1e13f6161a02d684eb05481ce6925c0d,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 3
+    ID: 80
+  - Name: Frost Shock
+    manaCost: 5
+    delay: 0
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 5
+      type: 0
+      animation: 20
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    - statusFactories: []
+      amount: 5
+      type: 5
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 2578961596087587036, guid: eff07ec5e35db944ab69b33b69b30367,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 3
+    ID: 81
+  - Name: Ice Bubble
+    manaCost: 3
+    delay: 2
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 2
+        value: 2
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 10
+        value: 1
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 4219382599873857060, guid: cd45ea227f6980c46b581da4a84bcb43,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 3
+    ID: 82
+  - Name: Ice Lance
+    manaCost: 4
+    delay: 5
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 0
+      type: 0
+      animation: 20
+      variable: 5
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 0
+      type: 0
+      animation: 0
+      variable: 5
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 0
+      type: 0
+      animation: 0
+      variable: 5
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 4219382599873857060, guid: cd45ea227f6980c46b581da4a84bcb43,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 3
+    ID: 82

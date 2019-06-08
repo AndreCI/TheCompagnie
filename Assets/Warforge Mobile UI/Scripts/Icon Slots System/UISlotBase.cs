@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using Object = UnityEngine.Object;
+using System;
+using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -95,17 +97,94 @@ namespace DuloGames.UI
 		
 		private bool isPointerDown = false;
 		private bool isPointerInside = false;
-		private bool m_DragHasBegan = false;
+		protected bool m_DragHasBegan = false;
 		private bool m_DropPreformed = false;
 		private bool m_IsTooltipShown = false;
 
         public bool DragEnded;
-		
-		/// <summary>
-		/// Gets or sets a value indicating whether this <see cref="UISlotBase"/> drag and drop is enabled.
-		/// </summary>
-		/// <value><c>true</c> if drag and drop enabled; otherwise, <c>false</c>.</value>
-		public bool dragAndDropEnabled
+
+        public Image glowingImage;
+        private float currentTime = 0f;
+        private float animationTime = 2f;
+        public float minScale = 1.2f;
+        public float maxScale = 1.22f;
+        protected bool activeAndAnimated = false;
+        protected bool lastTick = false;
+        public bool ActiveAndAnimated
+        {
+            get
+            {
+                return activeAndAnimated;
+            }
+            set
+            {
+                if (!value)
+                {
+                //    glowingImage.CrossFadeAlpha(0f, 1f, true);
+                }
+                else
+                {
+                    glowingImage.CrossFadeAlpha(1f, 1f, true);
+                    if(activeAndAnimated != value)
+                        currentTime = 0f;
+                }
+                /* if(glowingImage == null)
+                 {
+                     glowingImage = Array.Find(GetComponentsInChildren<Image>(true), (x => x.name == "Glow"));
+                 }*/
+              //  glowingImage.CrossFadeAlpha(value? 1f: 0f, 3f, true);
+
+                // glowingImage.gameObject.SetActive(value);
+                activeAndAnimated = value;
+            }
+        }
+
+        private void Update()
+        {
+            if (ActiveAndAnimated || lastTick)
+            {
+     //           if (!lastTick)
+       //         {
+         //           glowingImage.CrossFadeAlpha(1f, 0.2f, true);
+           //     }
+                float progression = 0f;
+                currentTime += Time.deltaTime;
+                //lastTick = true;
+                if (currentTime > animationTime * 2)
+                {
+                    if (lastTick)
+                    {
+                        glowingImage.color = new Color(0f, 0f, 0f, 0f);
+                        lastTick = false;
+                        ActiveAndAnimated = false;
+                    }
+                    currentTime -= animationTime * 2;
+                   // lastTick = false;
+                }
+                else if (currentTime > animationTime)
+                {
+                    progression = 2 - (currentTime / animationTime);
+                }
+                else
+                {
+                    progression = currentTime / animationTime;
+                }
+                glowingImage.gameObject.transform.localScale = new Vector3(maxScale * progression + minScale * (1 - progression),
+                    maxScale * progression + minScale * (1 - progression),
+                    1f);
+                float alpha = lastTick? progression :(1 - progression / 10f);
+                if (!ActiveAndAnimated) { alpha = 0f; }
+                if(lastTick)
+                    glowingImage.color = new Color(glowingImage.color.r, glowingImage.color.g, glowingImage.color.b, alpha);
+
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="UISlotBase"/> drag and drop is enabled.
+        /// </summary>
+        /// <value><c>true</c> if drag and drop enabled; otherwise, <c>false</c>.</value>
+        public bool dragAndDropEnabled
 		{
 			get
 			{
@@ -253,24 +332,94 @@ namespace DuloGames.UI
 		
 		protected override void Start()
 		{
+            //  glowingImage = Array.Find(GetComponentsInChildren<Image>(true), (x => x.name == "Glow")); 
+            //lastTick = true;
+            PlayerInfos.Instance.unitsWindow.PartyMenuNotify += UISlotBase_PartyMenuNotify;
+
+
+             minScale = 1.19f;
+             maxScale = 1.22f;
+            animationTime = 0.3f;
 			// Check if the slot is not assigned but the icon graphic is active
 			if (!this.IsAssigned() && this.iconGraphic != null && this.iconGraphic.gameObject.activeSelf)
 			{
 				// Disable the icon graphic object
 				this.iconGraphic.gameObject.SetActive(false);
-			}
+            }
+            else
+            {
+                //UISlotBase_PartyMenuNotify();
+            }
 		}
-		
-		protected override void OnEnable()
+
+
+        public virtual void UISlotBase_PartyMenuNotify(PartyMenu.SLOT_TRIGGER trigger)
+        {
+         /*   switch (trigger)
+            {
+                case PartyMenu.SLOT_TRIGGER.SETUP:
+                    ActiveAndAnimated = false;
+                    glowingImage.color = new Color(1f, 1f, 1f, 0f);
+                    break;
+                case PartyMenu.SLOT_TRIGGER.SKILL:
+                    if (!this.IsAssigned() && this.dropEnabled)
+                    {
+                        ActiveAndAnimated = true;
+                        glowingImage.color = new Color(0f, 0.5f, 0f);
+                    }
+                    else if (this.dragEnabled)
+                    {
+                        ActiveAndAnimated = true;
+                        if (PlayerInfos.Instance.persistentPartyDeck.GetCardSlots(new List<Unit> { PlayerInfos.Instance.unitsWindow.unit }) > 0)
+                        {
+                            
+                            glowingImage.color = new Color(0.5f, 0f, 0.6f);
+                        }
+                        else
+                        {
+                            glowingImage.color = new Color(0.5f, 0f, 0f);
+                        }
+
+                    }
+                    else
+                    {
+                        if (ActiveAndAnimated) {
+                            Debug.Log("LAST TICK ACTIVATED");
+                            lastTick = true; }
+                    }
+                    break;
+                case PartyMenu.SLOT_TRIGGER.ON_DRAG:
+                    if (!this.IsAssigned() && this.dropEnabled)
+                    {
+                        ActiveAndAnimated = true;
+                        glowingImage.color = new Color(0f, 0.8f, 0f);
+                    }
+                    else if (!this.m_DragHasBegan)
+                    {
+                        if (ActiveAndAnimated) { lastTick = true; }
+                    }
+                    break;
+            }
+            
+            */
+
+        }
+
+        protected override void OnEnable()
 		{
 			base.OnEnable();
-
+        //    if (PlayerInfos.Instance != null)
+         //       UISlotBase_PartyMenuNotify();
 			// Instant transition
 			this.EvaluateAndTransitionHoveredState(true);
 			this.EvaluateAndTransitionPressedState(true);
 		}
-		
-		protected override void OnDisable()
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            PlayerInfos.Instance.unitsWindow.PartyMenuNotify -= UISlotBase_PartyMenuNotify;
+        }
+        protected override void OnDisable()
 		{
 			base.OnDisable();
 			
@@ -321,6 +470,11 @@ namespace DuloGames.UI
 			// Check if tooltip is enabled
 			if (this.enabled && this.IsActive() && this.m_TooltipEnabled)
 			{
+                if (!PlayerInfos.Instance.unitsWindow.levelUpDisplay.isActiveAndEnabled)
+                {
+                    glowingImage.color = new Color(0f, 0.1f, 0.4f);
+                    ActiveAndAnimated = true;
+                }
 				// Start the tooltip delayed show coroutine
 				// If delay is set at all
 				if (this.m_TooltipDelay > 0f)
@@ -339,8 +493,13 @@ namespace DuloGames.UI
 		/// </summary>
 		/// <param name="eventData">Event data.</param>
 		public virtual void OnPointerExit(PointerEventData eventData)
-		{
-			this.isPointerInside = false;
+        {
+            if (!PlayerInfos.Instance.unitsWindow.levelUpDisplay.isActiveAndEnabled && ActiveAndAnimated)
+            {
+                
+                lastTick = true;
+            }
+            this.isPointerInside = false;
 			this.EvaluateAndTransitionHoveredState(false);
 			this.InternalHideTooltip();
 		}
@@ -752,9 +911,10 @@ namespace DuloGames.UI
 			
 			// Start the drag
 			this.m_DragHasBegan = true;
+            StartCoroutine(PlayerInfos.Instance.unitsWindow.NotifyAllSlotsDelayed(PartyMenu.SLOT_TRIGGER.ON_DRAG, 0f));
 
-			// Create the temporary icon for dragging
-			this.CreateTemporaryIcon(eventData);
+            // Create the temporary icon for dragging
+            this.CreateTemporaryIcon(eventData);
 				
 			// Prevent event propagation
 			eventData.Use();
@@ -803,9 +963,10 @@ namespace DuloGames.UI
 		{
 			// Get the source slot
 			UISlotBase source = (eventData.pointerPress != null) ? eventData.pointerPress.GetComponent<UISlotBase>() : null;
-			
-			// Make sure we have the source slot
-			if (source == null || !source.IsAssigned() || !source.m_DragEnabled)
+            StartCoroutine(PlayerInfos.Instance.unitsWindow.NotifyAllSlotsDelayed(PartyMenu.SLOT_TRIGGER.SKILL, 0f));
+
+            // Make sure we have the source slot
+            if (source == null || !source.IsAssigned() || !source.m_DragEnabled)
 				return;
 			
 			// Notify the source that a drop was performed so it does not unassign
@@ -870,9 +1031,10 @@ namespace DuloGames.UI
 			// Check if a drag was initialized at all
 			if (!this.m_DragHasBegan)
 				return;
-			
-			// Reset the drag begin bool
-			this.m_DragHasBegan = false;
+            StartCoroutine(PlayerInfos.Instance.unitsWindow.NotifyAllSlotsDelayed(PartyMenu.SLOT_TRIGGER.SKILL, 0f));
+
+            // Reset the drag begin bool
+            this.m_DragHasBegan = false;
 
 			// Destroy the dragged icon object
 			if (this.m_CurrentDraggedObject != null)

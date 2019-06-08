@@ -1,0 +1,2959 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45b13c35ed31c54a8ff7d14460d5c53, type: 3}
+  m_Name: talentTreeDatabase
+  m_EditorClassIdentifier: 
+  children: []
+  factories:
+  - branch1: []
+    branch2: []
+    classType: 0
+    ID: 0
+  - branch1:
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Anger
+      effects:
+      - statusFactories:
+        - status: 7
+          value: 5
+          duration: 2
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 01000000
+      amounts: fbffffff
+      icon: {fileID: 21300000, guid: d21f2158a7a1b43459f927f235de6ca5, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Brutal Start
+      effects:
+      - statusFactories:
+        - status: 7
+          value: 4
+          duration: 5
+          permanent: 0
+          trigger: 1
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 00000000
+      amounts: fbffffff
+      icon: {fileID: 534043704846918100, guid: 372c4ae0cd58e974493d76d25055e5fd, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Burning Strength
+      effects:
+      - statusFactories:
+        - status: 7
+          value: 3
+          duration: -1
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        - status: 3
+          value: 3
+          duration: -1
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 
+      amounts: 
+      icon: {fileID: 21300000, guid: 9b83ce6bd738f644a91922caa22095ca, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Adrenaline
+      effects:
+      - statusFactories:
+        - status: 7
+          value: 5
+          duration: 3
+          permanent: 0
+          trigger: 1
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 00000000
+      amounts: fbffffff
+      icon: {fileID: 21300000, guid: 750528985b4f8e04294e4e1720bdb908, type: 3}
+      trigger: 0
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Growing Anger
+      effects:
+      - statusFactories:
+        - status: 7
+          value: 1
+          duration: 2
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        - status: 3
+          value: 1
+          duration: 2
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 01000000
+      amounts: 05000000
+      icon: {fileID: 21300000, guid: 48e8834217915ab45adbfb7ec058b75a, type: 3}
+      trigger: 0
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Risk Focus
+      effects: []
+      onUnlockEffect: 0200000000000000
+      amounts: 01000000ecffffff
+      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
+        type: 3}
+      trigger: 2
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Burning  Focus
+      effects:
+      - statusFactories:
+        - status: 3
+          value: 5
+          duration: 0
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 02000000
+      amounts: 01000000
+      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
+        type: 3}
+      trigger: 4
+      state: 2
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    branch2:
+    - value: 0
+      noValue: 1
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Growing Force
+      effects:
+      - statusFactories:
+        - status: 0
+          value: 1
+          duration: 0
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 00000000
+      amounts: 05000000
+      icon: {fileID: 7230978523498615230, guid: ff2d5dbb47e3e3d4fba157cf94a063c4,
+        type: 3}
+      trigger: 0
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Adapting Strategy
+      effects:
+      - statusFactories:
+        - status: 1
+          value: 5
+          duration: 0
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 
+      amounts: 
+      icon: {fileID: 2737237876587728928, guid: 33c88480c28f5064883809104602dbed,
+        type: 3}
+      trigger: 0
+      state: 2
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Quick Reflexes
+      effects:
+      - statusFactories:
+        - status: 2
+          value: 1
+          duration: 2
+          permanent: 0
+          trigger: 1
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 00000000
+      amounts: 0a000000
+      icon: {fileID: 7408320401282307804, guid: 82d2838af43bcb24bae3602764bcc37e,
+        type: 3}
+      trigger: 0
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Blessed Blood
+      effects:
+      - statusFactories:
+        - status: 0
+          value: 8
+          duration: 0
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 01000000
+      amounts: f6ffffff
+      icon: {fileID: -8982734259901193672, guid: fc6b1799b6595ab488bf1cf95dccc9d0,
+        type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Always Ready
+      effects:
+      - statusFactories:
+        - status: 1
+          value: 15
+          duration: 2
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 
+      amounts: 
+      icon: {fileID: 21300000, guid: 14272a7ae25140547aa0440f8d30d0ee, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Calm Focus
+      effects: []
+      onUnlockEffect: 0200000001000000
+      amounts: 01000000fbffffff
+      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
+        type: 3}
+      trigger: 2
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Weak Focus
+      effects:
+      - statusFactories:
+        - status: 6
+          value: 5
+          duration: 0
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 02000000
+      amounts: 01000000
+      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
+        type: 3}
+      trigger: 2
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 5
+        unitName: Jack The Warrior
+        maxHealth: 90
+        maxMana: 27
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 12
+          nextLevelThreshold: 15
+          currentLevel: 5
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    classType: 5
+    ID: 0
+  - branch1:
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Anger
+      effects:
+      - statusFactories:
+        - status: 7
+          value: 5
+          duration: 2
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 01000000
+      amounts: fbffffff
+      icon: {fileID: 21300000, guid: d21f2158a7a1b43459f927f235de6ca5, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Brutal Start
+      effects:
+      - statusFactories:
+        - status: 7
+          value: 4
+          duration: 5
+          permanent: 0
+          trigger: 1
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 00000000
+      amounts: fbffffff
+      icon: {fileID: 534043704846918100, guid: 372c4ae0cd58e974493d76d25055e5fd, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Burning Strength
+      effects:
+      - statusFactories:
+        - status: 7
+          value: 3
+          duration: -1
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        - status: 3
+          value: 3
+          duration: -1
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 
+      amounts: 
+      icon: {fileID: 21300000, guid: 9b83ce6bd738f644a91922caa22095ca, type: 3}
+      trigger: 4
+      state: 2
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Adrenaline
+      effects:
+      - statusFactories:
+        - status: 7
+          value: 5
+          duration: 3
+          permanent: 0
+          trigger: 1
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 00000000
+      amounts: fbffffff
+      icon: {fileID: 21300000, guid: 750528985b4f8e04294e4e1720bdb908, type: 3}
+      trigger: 0
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Growing Anger
+      effects:
+      - statusFactories:
+        - status: 7
+          value: 1
+          duration: 2
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        - status: 3
+          value: 1
+          duration: 2
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 01000000
+      amounts: 05000000
+      icon: {fileID: 21300000, guid: 48e8834217915ab45adbfb7ec058b75a, type: 3}
+      trigger: 0
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Risk Focus
+      effects: []
+      onUnlockEffect: 0200000000000000
+      amounts: 01000000ecffffff
+      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
+        type: 3}
+      trigger: 2
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Burning  Focus
+      effects:
+      - statusFactories:
+        - status: 3
+          value: 5
+          duration: 0
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 02000000
+      amounts: 01000000
+      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
+        type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    branch2:
+    - value: 0
+      noValue: 1
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Growing Force
+      effects:
+      - statusFactories:
+        - status: 0
+          value: 1
+          duration: 0
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 00000000
+      amounts: 05000000
+      icon: {fileID: 7230978523498615230, guid: ff2d5dbb47e3e3d4fba157cf94a063c4,
+        type: 3}
+      trigger: 0
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Adapting Strategy
+      effects:
+      - statusFactories:
+        - status: 1
+          value: 5
+          duration: 0
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 
+      amounts: 
+      icon: {fileID: 2737237876587728928, guid: 33c88480c28f5064883809104602dbed,
+        type: 3}
+      trigger: 0
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Quick Reflexes
+      effects:
+      - statusFactories:
+        - status: 2
+          value: 1
+          duration: 2
+          permanent: 0
+          trigger: 1
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 00000000
+      amounts: 0a000000
+      icon: {fileID: 7408320401282307804, guid: 82d2838af43bcb24bae3602764bcc37e,
+        type: 3}
+      trigger: 0
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Blessed Blood
+      effects:
+      - statusFactories:
+        - status: 0
+          value: 8
+          duration: 0
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 01000000
+      amounts: f6ffffff
+      icon: {fileID: -8982734259901193672, guid: fc6b1799b6595ab488bf1cf95dccc9d0,
+        type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Always Ready
+      effects:
+      - statusFactories:
+        - status: 1
+          value: 15
+          duration: 2
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 
+      amounts: 
+      icon: {fileID: 21300000, guid: 14272a7ae25140547aa0440f8d30d0ee, type: 3}
+      trigger: 4
+      state: 2
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Calm Focus
+      effects: []
+      onUnlockEffect: 0200000001000000
+      amounts: 01000000fbffffff
+      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
+        type: 3}
+      trigger: 2
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    - value: 0
+      noValue: 1
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Weak Focus
+      effects:
+      - statusFactories:
+        - status: 6
+          value: 5
+          duration: 0
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 02000000
+      amounts: 01000000
+      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
+        type: 3}
+      trigger: 2
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Elana The Mage
+        maxHealth: 40
+        maxMana: 20
+        maxAction: 1
+        baseManaRegen: 0
+        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0, b: 0, a: 0}
+        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+    classType: 1
+    ID: 0
+  - branch1:
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Imbrasement
+      effects:
+      - statusFactories:
+        - status: 12
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 1
+          factory:
+          - status: 3
+            value: 1
+            duration: 3
+            permanent: 0
+            trigger: 0
+            unitTrigger: 0
+            alternative: 0
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 0
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0000000001000000
+      amounts: 0500000005000000
+      icon: {fileID: 21300000, guid: 4d41c5b268c454045bd30ab92be6bbf0, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Inside Flame
+      effects:
+      - statusFactories:
+        - status: 12
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory:
+          - status: 3
+            value: 1
+            duration: 2
+            permanent: 0
+            trigger: 0
+            unitTrigger: 0
+            alternative: 0
+          effectFactory:
+          - amount: 1
+            type: 3
+            variable: 0
+            alternative: 1
+            condition: 0
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 0
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 00000000
+      amounts: fbffffff
+      icon: {fileID: 21300000, guid: 74b9f1bc633190c43b3db694f50dc1d8, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Fire Speed
+      effects:
+      - statusFactories:
+        - status: 3
+          value: 3
+          duration: 4
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        - status: 13
+          value: 1
+          duration: 2
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 0
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0000000001000000
+      amounts: 0500000005000000
+      icon: {fileID: 21300000, guid: f6cc47c593667864b9154b1d1035c219, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Intensity
+      effects:
+      - statusFactories:
+        - status: 7
+          value: 4
+          duration: 0
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 0
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0000000001000000
+      amounts: 0a0000000a000000
+      icon: {fileID: 21300000, guid: 71a35e5918c413c46a3e6240aff3da09, type: 3}
+      trigger: 4
+      state: 2
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Burning Core
+      effects:
+      - statusFactories:
+        - status: 3
+          value: 2
+          duration: 0
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        - status: 12
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 4
+          factory:
+          - status: 3
+            value: 2
+            duration: 1
+            permanent: 1
+            trigger: 0
+            unitTrigger: 0
+            alternative: 0
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 0
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0000000001000000
+      amounts: 05000000fdffffff
+      icon: {fileID: 21300000, guid: c5d2fe37d5c7dcf45be57cd2a38c0895, type: 3}
+      trigger: 4
+      state: 3
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Intense Focus
+      effects: []
+      onUnlockEffect: 0200000000000000
+      amounts: 01000000f2ffffff
+      icon: {fileID: 21300000, guid: cb8b15fd5ebdbf4429fbca6393cce716, type: 3}
+      trigger: 2
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Burning Focus
+      effects:
+      - statusFactories:
+        - status: 3
+          value: 2
+          duration: 0
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 0
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0200000001000000
+      amounts: 0100000005000000
+      icon: {fileID: 21300000, guid: cb8b15fd5ebdbf4429fbca6393cce716, type: 3}
+      trigger: 4
+      state: 3
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Burning Pulse
+      effects:
+      - statusFactories:
+        - status: 12
+          value: 2
+          duration: 1
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory:
+          - status: 3
+            value: 1
+            duration: 1
+            permanent: 1
+            trigger: 0
+            unitTrigger: 0
+            alternative: 5
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0000000001000000
+      amounts: fbffffff05000000
+      icon: {fileID: 21300000, guid: 296c424cdd038fc42baa2cecb90332d4, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    branch2:
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Frost Armor
+      effects:
+      - statusFactories:
+        - status: 10
+          value: 1
+          duration: 3
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        - status: 1
+          value: 35
+          duration: 3
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0000000001000000
+      amounts: 0800000002000000
+      icon: {fileID: 21300000, guid: bf905c5d519507a44a9e5d0dea016406, type: 3}
+      trigger: 4
+      state: 2
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Frost Mastery
+      effects:
+      - statusFactories:
+        - status: 12
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 1
+          factory:
+          - status: 14
+            value: 1
+            duration: 2
+            permanent: 0
+            trigger: 0
+            unitTrigger: 0
+            alternative: 0
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0000000001000000
+      amounts: 0500000005000000
+      icon: {fileID: 21300000, guid: 6750b95a58be04b42afe247e17bc7d75, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Cold Heart
+      effects:
+      - statusFactories:
+        - status: 0
+          value: 15
+          duration: 2
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0000000001000000
+      amounts: e5ffffff0a000000
+      icon: {fileID: 21300000, guid: 42c8180271ecd184ea3daa3049b9b750, type: 3}
+      trigger: 4
+      state: 3
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Locked Start
+      effects:
+      - statusFactories:
+        - status: 14
+          value: 10
+          duration: 2
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 00000000
+      amounts: 07000000
+      icon: {fileID: 21300000, guid: f7e21ad9c6a931c458ad68d9d43e92d4, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Frozen strength
+      effects:
+      - statusFactories:
+        - status: 10
+          value: 15
+          duration: 2
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        - status: 7
+          value: 20
+          duration: 2
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 01000000
+      amounts: 08000000
+      icon: {fileID: 21300000, guid: e1646bb0b6b45dc46b99d58f002ed06a, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Calm Focus
+      effects: []
+      onUnlockEffect: 0200000001000000
+      amounts: 01000000f1ffffff
+      icon: {fileID: 21300000, guid: 960901c2dd350414e96e6f7d4b8d8897, type: 3}
+      trigger: 2
+      state: 3
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Ice Focus
+      effects:
+      - statusFactories:
+        - status: 10
+          value: 5
+          duration: 3
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0200000001000000
+      amounts: 0100000004000000
+      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
+        type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 11
+        unitName: Dawn The Wizard
+        maxHealth: 35
+        maxMana: 25
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 1
+        level:
+          currentXP: 8
+          nextLevelThreshold: 12
+          currentLevel: 2
+        id: 2
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+        branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+    classType: 11
+    ID: 0
+  - branch1:
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Silence Focus
+      effects: []
+      onUnlockEffect: 0200000001000000
+      amounts: 01000000f6ffffff
+      icon: {fileID: 21300000, guid: 7139925b499f9d347be39ea55147832a, type: 3}
+      trigger: 2
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Slow Focus
+      effects:
+      - statusFactories:
+        - status: 14
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 02000000
+      amounts: 01000000
+      icon: {fileID: 21300000, guid: 7139925b499f9d347be39ea55147832a, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Inspiring Strength
+      effects:
+      - statusFactories:
+        - status: 12
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 2
+          factory:
+          - status: 7
+            value: 2
+            duration: 2
+            permanent: 0
+            trigger: 0
+            unitTrigger: 0
+            alternative: 1
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 4
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 01000000
+      amounts: 05000000
+      icon: {fileID: 21300000, guid: dd233e53135a1aa47a7e87415be3ec35, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Light Mastery
+      effects:
+      - statusFactories:
+        - status: 11
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0100000000000000
+      amounts: 05000000fbffffff
+      icon: {fileID: 21300000, guid: e12478861ba30c04a97e9a8095595963, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Light's touch
+      effects:
+      - statusFactories:
+        - status: 0
+          value: 5
+          duration: 0
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0100000000000000
+      amounts: 0500000005000000
+      icon: {fileID: 21300000, guid: f586fc42b1577944bb674695781f3146, type: 3}
+      trigger: 4
+      state: 2
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    - value: 1
+      noValue: 1
+      duration: 1
+      permanent: 1
+      showUi: 1
+      name: Shield of Light
+      effects:
+      - statusFactories:
+        - status: 1
+          value: 3
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 01000000
+      amounts: 05000000
+      icon: {fileID: 21300000, guid: 30d465727d3415d489aff3a77d20e81e, type: 3}
+      trigger: 0
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Speed of the Light
+      effects:
+      - statusFactories:
+        - status: 13
+          value: 1
+          duration: 2
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        - status: 13
+          value: 1
+          duration: 3
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 01000000
+      amounts: 05000000
+      icon: {fileID: 21300000, guid: 39f58315693e13e41b3911d6367f1cab, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    branch2:
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Ambitious Focus
+      effects: []
+      onUnlockEffect: 000000000100000002000000
+      amounts: f4fffffffdffffff01000000
+      icon: {fileID: 21300000, guid: 1f4e2a057feb6204fb5a3fa05eadd548, type: 3}
+      trigger: 2
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Anger Focus
+      effects:
+      - statusFactories:
+        - status: 11
+          value: -1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 000000000100000002000000
+      amounts: 06000000fdffffff01000000
+      icon: {fileID: 21300000, guid: 1f4e2a057feb6204fb5a3fa05eadd548, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Blood Shield
+      effects:
+      - statusFactories:
+        - status: 12
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 2
+          factory:
+          - status: 1
+            value: 8
+            duration: 0
+            permanent: 1
+            trigger: 0
+            unitTrigger: 0
+            alternative: 1
+          effectFactory:
+          - amount: 4
+            type: 0
+            variable: 0
+            alternative: 1
+            condition: 0
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0000000001000000
+      amounts: 03000000fdffffff
+      icon: {fileID: 21300000, guid: ff244706e413946488b2b28a94aad6ac, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Northman Blood
+      effects: []
+      onUnlockEffect: 0000000001000000
+      amounts: 0c00000005000000
+      icon: {fileID: 21300000, guid: 014d610cf66188b45bd27317cc237968, type: 3}
+      trigger: 2
+      state: 2
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Attentive Strikes
+      effects:
+      - statusFactories:
+        - status: 12
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 1
+          factory:
+          - status: 7
+            value: 4
+            duration: 2
+            permanent: 0
+            trigger: 0
+            unitTrigger: 0
+            alternative: 1
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0000000001000000
+      amounts: 03000000feffffff
+      icon: {fileID: 21300000, guid: b18fe2e976f564a4aa9468ab1dcea612, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Blood Nova
+      effects:
+      - statusFactories:
+        - status: 12
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 4
+          factory: []
+          effectFactory:
+          - amount: 3
+            type: 0
+            variable: 0
+            alternative: 3
+            condition: 0
+        amount: 1
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0000000001000000
+      amounts: 05000000fcffffff
+      icon: {fileID: 21300000, guid: fe9c79b22e913694a8d24090dc70574a, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Power Through
+      effects:
+      - statusFactories:
+        - status: 7
+          value: 5
+          duration: 0
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0000000001000000
+      amounts: 06000000faffffff
+      icon: {fileID: 21300000, guid: ed73d41a7db92cc4aaf012d0733d012d, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 12
+        unitName: Ember The Paladin
+        maxHealth: 40
+        maxMana: 10
+        maxAction: 1
+        baseManaRegen: 2
+        combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 0
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 0
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+        branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}
+    classType: 12
+    ID: 0

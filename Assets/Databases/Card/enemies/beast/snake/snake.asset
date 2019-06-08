@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: snake
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 0
+  subClass: 2
+  rarityLevel: 0
+  branchLevel: 0
+  childrenDatabase:
+  - {fileID: 11400000, guid: f7fdd7b8f0317294f9d4c687c69ab981, type: 2}
+  - {fileID: 11400000, guid: 5d85d02a35e39f246abb4d21c89679ba, type: 2}
+  - {fileID: 11400000, guid: ff07f4b846f9a554791b35f330b3ad26, type: 2}
+  items: []

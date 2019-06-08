@@ -16,6 +16,8 @@ public class TurnManager : MonoBehaviour
     public float timeMin;
     [HideInInspector]
     public float timePerEvent;
+    [HideInInspector]
+    public float currentEventTimeDuration;
 
     public Intent intent;
     public Button endTurnButton;
@@ -25,6 +27,7 @@ public class TurnManager : MonoBehaviour
     public List<StretchyGridLayoutGroup> enemiesIntents;
     public List<StretchyGridLayoutGroup> compIntents;
     public float currentDuration = 0f;
+    [HideInInspector] public CombatEvent currentEvent;
     private List<List<CombatEvent>> registeredEvents;
     private List<CombatEvent> futurEvents;
     private List<CombatEvent> phantomEvents;
@@ -36,7 +39,7 @@ public class TurnManager : MonoBehaviour
     public delegate void Notify(GeneralUtils.SUBJECT_TRIGGER trigger);
     public static event Notify NotifyAll;
 
-    void Start()
+    void Awake()
     {
         turnNumber = 0;
         currentIndex = 0;
@@ -54,7 +57,7 @@ public class TurnManager : MonoBehaviour
             registeredEvents.Add(new List<CombatEvent>());
         }
         triggers = new List<GeneralUtils.SUBJECT_TRIGGER>();
-      //  observers = new List<List<Observer>>();
+
         instance = this;
         enemiesIntents = new List<StretchyGridLayoutGroup>();
         compIntents = new List<StretchyGridLayoutGroup>();
@@ -67,6 +70,14 @@ public class TurnManager : MonoBehaviour
 
     }
 
+    public void StartFirstTurn()
+    {
+        NotifyAll?.Invoke(GeneralUtils.SUBJECT_TRIGGER.START_OF_COMBAT);
+        List<Card> drawnCards = CombatManager.Instance.compagnionDeck.DrawCards(new List<int>{ 2, 2});
+        List<Card> returned = Hand.Instance.AddToHand(drawnCards);
+        CombatManager.Instance.compagnionDeck.AddCards(returned);
+        StartTurn();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -161,31 +172,37 @@ public class TurnManager : MonoBehaviour
     }
     public void AddPhantomCombatEvent(Card c)
     {
+        int delay = Mathf.Max(0,c.delay + c.owner.currentSpeed);
+        bool future = delay >= timeSteps.Count;
+        int timeindex =delay % timeSteps.Count;
+        
         if (!c.channel)
         {
-            CombatEvent phantom = new CombatEvent(c.owner, new List<Unit>(), c.delay, new List<CombatEffect>(), c, false);
-            AddPhantom(phantom);
+            CombatEvent phantom = new CombatEvent(c.owner, new List<Unit>(), timeindex, new List<CombatEffect>(), c, c.set, false);
+            AddPhantom(phantom, future);
         }
         else
         {
-            for (int i = 0; i < c.channelLenght; i++)
+            int channelValue = c.channel ? Mathf.Max(0, c.channelLenght + (c.owner == null ? 0 : c.owner.CurrentChannelValue)) : 0;
+            for (int i = 0; i < channelValue; i++)
             {
                 if((i+1) * c.manaCost <= c.owner.CurrentMana)
                 {
-                    CombatEvent phantom = new CombatEvent(c.owner, new List<Unit>(), c.delay + i, new List<CombatEffect>(), c, true);
-                    AddPhantom(phantom);
+                    if(timeindex + i >= timeSteps.Count) { future = true;  timeindex -= timeSteps.Count; }
+                    CombatEvent phantom = new CombatEvent(c.owner, new List<Unit>(), timeindex + i, new List<CombatEffect>(), c, c.set, true);
+                    AddPhantom(phantom, future);
                 }
             }
         }
     }
 
-    private void AddPhantom(CombatEvent phantom)
+    private void AddPhantom(CombatEvent phantom, bool futurePhantom = false)
     {
         phantomEvents.Add(phantom);
         Intent phantomIntent = Instantiate(intent);
         List<StretchyGridLayoutGroup> intentsLayout = (phantom.source.GetType() == typeof(Compagnion)) ? compIntents : enemiesIntents;
         phantomIntent.transform.SetParent(intentsLayout[phantom.timeIndex].transform);
-        phantomIntent.Setup(phantom.cardSource, cardPlaceHolder, phantom, !(phantom.source.GetType() == typeof(Compagnion)), _phantom: true);
+        phantomIntent.Setup(phantom.cardSource, cardPlaceHolder, phantom, !(phantom.source.GetType() == typeof(Compagnion)), _phantom: true, futurePhantom);
         phantom.intent = phantomIntent;
     }
 
@@ -219,7 +236,34 @@ public class TurnManager : MonoBehaviour
             revents.RemoveAll(x => x.source == removed);
         }
     }
-    
+
+    private void BeforeTurnStart()
+    {
+
+        foreach (UnitUI u in CombatManager.Instance.enemiesUI.FindAll(x => x!= null && x.unit!=null && x.unit.CurrentHealth <= 0))
+        {
+            (u.unit as Enemy).CheckDeath();
+            u.gameObject.SetActive(false);
+        }
+
+        currentIndex = 0;
+        if (CombatManager.Instance.compagnions.All(x => x.CurrentHealth <= 0)) { PlayerInfos.Instance.Quit(); }
+        if (CombatManager.Instance.enemies.Count == 0) { CombatManager.Instance.Win(); return; }
+        timeMin = fixedTimeMin * PlayerInfos.Instance.settings.timeSpeed;
+        timePerEvent = fixedTimePerEvent * PlayerInfos.Instance.settings.eventSpeed;
+
+        foreach (CombatEvent e in futurEvents)
+        {
+            e.timeIndex -= timeSteps.Count;
+        }
+        foreach (CombatEvent e in futurEvents.FindAll(x => x.timeIndex <= timeSteps.Count))
+        {
+            AddCombatEvent(e);
+        }
+        futurEvents.RemoveAll(x => x.timeIndex <= timeSteps.Count);
+
+
+    }
     /*Turn slicing:
      * 1) Effect Phase
      * 2) Draw Phase
@@ -227,48 +271,27 @@ public class TurnManager : MonoBehaviour
      * 4) blabla TODO
      */
     public void StartTurn()
-    {
+    {  
         turnNumber += 1;
-        currentIndex = 0;
-        if (CombatManager.Instance.compagnions.All(x=>x.currentHealth <= 0)) { PlayerInfos.Instance.Quit(); }
-        if(CombatManager.Instance.enemies.Count == 0) { CombatManager.Instance.Win(); return; }
-        timeMin = fixedTimeMin * PlayerInfos.Instance.settings.timeSpeed;
-        timePerEvent = fixedTimePerEvent * PlayerInfos.Instance.settings.eventSpeed;
-        foreach (UnitUI ui in CombatManager.Instance.enemiesUI)
-        {
-            ui.statusAnimator.ResetAll();
-        }
-        foreach (UnitUI ui in CombatManager.Instance.playersUI)
-        {
-            ui.statusAnimator.ResetAll();
-        }
         NotifyAll?.Invoke(GeneralUtils.SUBJECT_TRIGGER.START_OF_TURN);
-        foreach(TimeStep timeStep in timeSteps)
+
+        if (CombatManager.Instance.enemies.Count == 0) { CombatManager.Instance.Win(); return; }
+
+        foreach (TimeStep timeStep in timeSteps)
         {
             timeStep.Activate(timeMin/((float)timeSteps.Count * 2), backwards:true);
         }
 
-        if (CombatManager.Instance.compagnions.All(x => x.currentHealth <= 0)) { PlayerInfos.Instance.Quit(); }
-        if (CombatManager.Instance.enemies.Count == 0) { CombatManager.Instance.Win(); return; }
-
-        foreach(CombatEvent e in futurEvents)
-        {
-            e.timeIndex -= timeSteps.Count;
-        }
-        foreach(CombatEvent e in futurEvents.FindAll(x=>x.timeIndex <= timeSteps.Count))
-        {
-            AddCombatEvent(e);
-        }
-        futurEvents.RemoveAll(x => x.timeIndex <= timeSteps.Count);
         List<Card> drawnCards = CombatManager.Instance.compagnionDeck.DrawCards();
         List<Card> returned = Hand.Instance.AddToHand(drawnCards);
         CombatManager.Instance.compagnionDeck.AddCards(returned);
         foreach(Compagnion u in CombatManager.Instance.compagnions)
         {
-            u.GainMana(2);
+            u.GainMana(u.CurrentManaRegen);
             u.GainAction(1);
             Hand.Instance.SetLock(false);
         }
+        CombatManager.Instance.AddEnemiesIntents();
 
         timeIsRunning = false;
         endTurnButton.interactable = true;
@@ -294,11 +317,11 @@ public class TurnManager : MonoBehaviour
             currentIndex = i;
             yield return StartCoroutine(PerformTimeStep(i));
         }
-        yield return new WaitForSeconds(0.5f);
-        CombatManager.Instance.AddEnemiesIntents();
-        yield return new WaitForSeconds(0.5f);
+        BeforeTurnStart();
         StartTurn();
     }
+
+ 
 
     private IEnumerator PerformTimeStep(int i)
     {
@@ -320,21 +343,7 @@ public class TurnManager : MonoBehaviour
         timeSteps[i].Activate(currentDuration);
         yield return StartCoroutine(PerformEvents(registeredEvents[i].FindAll(x => x.source.GetType() == typeof(Enemy)), i));
         yield return StartCoroutine(PerformEvents(registeredEvents[i].FindAll(x => !x.channel), i));
-        yield return StartCoroutine(PerformEvents(registeredEvents[i], i));/*
-        while (registeredEvents[i].Count(x => x.source.GetType() == typeof(Enemy)) > 0)
-        {
-            CombatEvent currentEnemyEvent = registeredEvents[i].Find(x => x.source.GetType() == typeof(Enemy));
-            registeredEvents[i].Remove(currentEnemyEvent);
-            currentEnemyEvent.PerformEffect(timePerEvent);
-            yield return new WaitForSeconds(currentEnemyEvent.GetTime(timePerEvent));
-        }
-        while (registeredEvents[i].Count > 0)
-        {
-            CombatEvent currentEvent = registeredEvents[i][registeredEvents[i].Count - 1];
-            registeredEvents[i].RemoveAt(registeredEvents[i].Count - 1);
-            currentEvent.PerformEffect(timePerEvent);
-            yield return new WaitForSeconds(currentEvent.GetTime(timePerEvent));
-        }*/
+        yield return StartCoroutine(PerformEvents(registeredEvents[i], i));
         yield return new WaitForSeconds(timeMin/(float)timeSteps.Count);
     }
 
@@ -346,6 +355,8 @@ public class TurnManager : MonoBehaviour
             CombatEvent currentEvent = events[events.Count - 1];
             registeredEvents[i].Remove(currentEvent);
             events.Remove(currentEvent);
+            this.currentEvent = currentEvent;
+            currentEventTimeDuration = currentEvent.GetTime(timePerEvent);
             currentEvent.PerformEffect(timePerEvent);
             yield return new WaitForSeconds(currentEvent.GetTime(timePerEvent));
         }

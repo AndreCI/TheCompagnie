@@ -37,10 +37,11 @@ MonoBehaviour:
     hidden: 0
     sprite: {fileID: 21300000, guid: 3cc3931b87897d24c84c08572d499ea8, type: 3}
     Description: Channel 3. Deal 8 damages.
+    set: 0
     rarity: 1
     databasePath: Mage_start/Mage/COMPAGNION/All
     cardClass: 1
-    ID: 31
+    ID: 32
   - Name: Barrier
     manaCost: 0
     delay: 2
@@ -52,6 +53,7 @@ MonoBehaviour:
         duration: 1
         permanent: 0
         trigger: 0
+        unitTrigger: 0
       amount: 0
       type: 2
       animation: 1
@@ -66,10 +68,11 @@ MonoBehaviour:
     hidden: 0
     sprite: {fileID: 21300000, guid: 59bc0bcf22dfb694080106e2062dfe02, type: 3}
     Description: Gain 14 blocks.
+    set: 0
     rarity: 1
     databasePath: Mage_start/Mage/COMPAGNION/All
     cardClass: 1
-    ID: 32
+    ID: 33
   - Name: Time Shift
     manaCost: 0
     delay: 2
@@ -106,10 +109,11 @@ MonoBehaviour:
     hidden: 0
     sprite: {fileID: 21300000, guid: 4b1dbc4cd4feaa54d9ab567fb73eb4d4, type: 3}
     Description: Retard an enemys intent by 2. Gain 6 mana. Draw 2 cards.
+    set: 0
     rarity: 1
     databasePath: Mage_start/Mage/COMPAGNION/All
     cardClass: 1
-    ID: 33
+    ID: 34
   - Name: Mana Burn
     manaCost: 2
     delay: 1
@@ -138,7 +142,8 @@ MonoBehaviour:
     hidden: 0
     sprite: {fileID: 21300000, guid: 45a4c0f2735cba04fbe0dd7060a5ac96, type: 3}
     Description: Channel 7. Deal 4 damages. Gain 4 mana.
+    set: 0
     rarity: 1
     databasePath: Mage_start/Mage/COMPAGNION/All
     cardClass: 1
-    ID: 34
+    ID: 35

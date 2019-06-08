@@ -5,9 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 [Serializable]
-public abstract class NodeEvent
+public class NodeEvent
 {
     public enum TYPE {COMBAT };
 
-    public abstract void Perform();
+    public TYPE type;
+    public void Setup()
+    {
+
+    }
+    public int ID;
+   // public abstract void Perform();
 }

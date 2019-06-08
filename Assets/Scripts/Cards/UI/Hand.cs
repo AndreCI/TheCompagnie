@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,12 +17,15 @@ public class Hand : UICardDropZone
     private static Hand instance;
     public static Hand Instance { get => instance; }
 
+    private Queue<Card> cardsToAddQueue;
+    private bool readyToAdd;
+
     public List<Card> inactiveCards;
     public List<Card> activeCards;
     public List<Unit> activatedUnits;
 
-    public Text additionalCards;
-
+    public AnimatedOrb remainingCards;
+    public AnimatedOrb cardNumber;
     void Awake()
     {
         instance = this;
@@ -31,6 +35,8 @@ public class Hand : UICardDropZone
         activatedUnits = new List<Unit>();
         currentTurn = false;
         UnitSelector.Notify += UnitSelector_Notify;
+        cardsToAddQueue = new Queue<Card>();
+            readyToAdd = true;
     }
     private void OnDestroy()
     {
@@ -102,7 +108,7 @@ public class Hand : UICardDropZone
         {
             if (inactiveCards.Count + cards.Count < 10)
             {
-                AddToHand(c);
+                cardsToAddQueue.Enqueue(c);
             }
         /*
                 if (activatedUnits.Contains(c.owner) ||
@@ -120,9 +126,38 @@ public class Hand : UICardDropZone
                 returnValue.Add(c);
             }
         }
+        //SetCardUIs();
         return returnValue;
     }
 
+    private void Update()
+    {
+        if(readyToAdd && cardsToAddQueue.Count() > 0)
+        {
+            StartCoroutine(DelayedAddToHand(1f));
+        }
+    }
+
+    private IEnumerator DelayedAddToHand(float delay)
+    {
+        readyToAdd = false;
+            Card card = cardsToAddQueue.Dequeue();
+            CardUI UI = Instantiate(cardUI);
+            UI.Setup(card);
+            UI.transform.SetParent(transform);
+            UI.parentToReturnTo = transform;
+            UI.placeholderParent = transform;
+            UI.transform.localScale = new Vector3(1f, 1f, 1f);
+            cards.Add(UI);
+            activeCards.Add(card);
+            UI.Playable = !currentTurn;
+            UI.gameObject.SetActive(activatedUnits.Contains(card.owner));
+            SetCardUIs();
+            AudioManager.Instance?.PlayFromSet(AudioSound.AUDIO_SET.CARD_DRAW, false);
+            yield return new WaitForSeconds(delay);
+        readyToAdd = true;
+
+    }
     public void AddToHand(Card card)
     {
         CardUI UI = Instantiate(cardUI);
@@ -136,7 +171,7 @@ public class Hand : UICardDropZone
         UI.Playable = !currentTurn;
         UI.gameObject.SetActive(activatedUnits.Contains(card.owner));
         SetCardUIs();
-        AudioManager.Instance?.PlayFromSet(AudioSound.AUDIO_SET.CARD_DRAW);
+        AudioManager.Instance?.PlayFromSet(AudioSound.AUDIO_SET.CARD_DRAW, false);
     }
 
     public void SetLock(bool locked_)
@@ -151,8 +186,8 @@ public class Hand : UICardDropZone
     public void SetCardUIs()
     {
         List<CardUI> cardsToSet = new List<CardUI>(cards.FindAll(c => c.isActiveAndEnabled));
-        additionalCards.text = "+" + (cards.Count - cardsToSet.Count).ToString() + "\n\n" +
-            (cards.Count).ToString() + "/10";
+        remainingCards.SetText((cards.Count - cardsToSet.Count).ToString());
+        cardNumber.SetText(cards.Count.ToString() + "/10");
         CombatManager.Instance.deckButton.GetComponentInChildren<Text>().text = "Deck (" + CombatManager.Instance.compagnionDeck.Count(activatedUnits).ToString() + ")";
         CombatManager.Instance.discardButton.GetComponentInChildren<Text>().text = "Discard (" + CombatManager.Instance.compagnionDiscard.Count(activatedUnits).ToString() + ")";
         if (cardsToSet.Count == 0) { return; }

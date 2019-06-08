@@ -1,0 +1,251 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: rare
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 12
+  subClass: 0
+  rarityLevel: 3
+  branchLevel: 2
+  childrenDatabase: []
+  items:
+  - Name: Lightning Strike
+    manaCost: 7
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 21
+      type: 0
+      animation: 13
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 10
+      type: 5
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 7112045319276282272, guid: 6c66b1a3950cf6f45aa7a1b9aa96467c,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 2
+    ID: 103
+  - Name: Divinie Presence
+    manaCost: 3
+    delay: 4
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 0
+        value: 5
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 1
+        factory:
+        - status: 2
+          value: 1
+          duration: 1
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          alternative: 0
+        effectFactory: []
+      amount: 0
+      type: 2
+      animation: 36
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -8967770250680681042, guid: d1076d729bb01ac4c9db0ce16d702240,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 2
+    ID: 104
+  - Name: Heros Prayer
+    manaCost: 0
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 7
+        value: 3
+        duration: 3
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      - status: 0
+        value: 6
+        duration: 3
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      amount: 2
+      type: 2
+      animation: 36
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 2
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -1391518443871089950, guid: 975ccde5e969c4a41aa28a91cc740c04,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 2
+    ID: 105
+  - Name: Humble Prayer
+    manaCost: 0
+    delay: 7
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 6
+        value: 1
+        duration: 3
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      amount: 2
+      type: 2
+      animation: 36
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 6
+      type: 4
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 2
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 5977629920040582095, guid: 14b0acbb42ab4184ba21de8734b50286,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 2
+    ID: 105
+  - Name: Incapacitate
+    manaCost: 12
+    delay: 1
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 18
+      type: 0
+      animation: 25
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 14
+        value: 5
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      - status: 6
+        value: 10
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 4
+      OnPlay: 0
+    channel: 0
+    channelLenght: 1
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 1791415425938781302, guid: 6a5f8fd5dda6b2245909391cbf1792d1,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 2
+    ID: 105

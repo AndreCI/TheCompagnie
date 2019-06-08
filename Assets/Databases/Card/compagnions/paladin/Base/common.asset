@@ -1,0 +1,285 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: common
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 12
+  subClass: 0
+  rarityLevel: 2
+  branchLevel: 1
+  childrenDatabase: []
+  items:
+  - Name: Gather Thoughts
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 10
+      type: 4
+      animation: 18
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 2
+      type: 3
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 2165114834730681892, guid: ec5e1742e7310d94f90d01defe296737,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 1
+    ID: 84
+  - Name: Magical Hit
+    manaCost: 1
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 22
+      type: 0
+      animation: 23
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 3
+        value: 3
+        duration: 0
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      amount: 0
+      type: 2
+      animation: 23
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 3245906347459089311, guid: a970a5c3c12fe06499b74b0cba71a0fa,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 1
+    ID: 85
+  - Name: Light Spirit
+    manaCost: 2
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 0
+        value: 5
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      - status: 7
+        value: 3
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 1c542adad145337498184101faecd5cf, type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 1
+    ID: 86
+  - Name: New Ideas
+    manaCost: 0
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 3
+      type: 3
+      animation: 17
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 6881790659311589802, guid: ad082e4d645cfc341a002cce3cb6b3f6,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 1
+    ID: 87
+  - Name: Infused Weapon
+    manaCost: 1
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 36
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 1
+        factory: []
+        effectFactory:
+        - amount: 2
+          type: 5
+          variable: 0
+          alternative: 0
+          condition: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 191952504867085126, guid: 7a86907a54ee7fa42acb20d095260847, type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 1
+    ID: 88
+  - Name: Safe Strike
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 12
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 1
+    - statusFactories: []
+      amount: 24
+      type: 0
+      animation: 3
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 8971111389684451325, guid: c0b712eb76731fd48a7338d4cdc5992c,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 1
+    ID: 89
+  - Name: Whirlwind
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 6
+      type: 0
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 4
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 1614948199520304773, guid: fcfb77c9b5e2db743bded7b0fa249ed7,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 1
+    ID: 90

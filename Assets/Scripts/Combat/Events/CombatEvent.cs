@@ -19,7 +19,9 @@ public class CombatEvent
     private bool cancelChannel = false;
     public CombatEvent nextChannelEvent;
 
-    public CombatEvent(Unit source_, List<Unit> targets_, int timeIndex_, List<CombatEffect> effects_, Card cardSource_, bool channel_, CombatEvent nextChannelEvent_ = null)
+    private AudioSound.AUDIO_SET audioSet;
+    private string audioSound;
+    public CombatEvent(Unit source_, List<Unit> targets_, int timeIndex_, List<CombatEffect> effects_, Card cardSource_, AudioSound.AUDIO_SET audioSet_, bool channel_, CombatEvent nextChannelEvent_ = null)
     {
         timeIndex = timeIndex_;
         cardSource = cardSource_;
@@ -27,10 +29,12 @@ public class CombatEvent
         targets = targets_;
         effects = effects_;
         channel = channel_;
+        audioSet = audioSet_;
         if (channel)
         {
             nextChannelEvent = nextChannelEvent_;
             source_.SpecificUpdate += SourceUnit_Update;
+            
         }
         foreach(CombatEffect e in effects)
         {
@@ -44,37 +48,37 @@ public class CombatEvent
 
     private void PerformEffect(CombatEffect effect, float timePerEvent)
     {
-        foreach (Unit target in targets)
-        {
+        if(audioSound != null && audioSound != "") { AudioManager.Instance?.Play(audioSound); }
+        else if(audioSet != AudioSound.AUDIO_SET.NONE) { AudioManager.Instance?.PlayFromSet(audioSet); }
 
-            effect.Perform(target, source, forcedTime: GetTime(timePerEvent));
+            effect.Perform(targets, source, cardSource, forcedTime: GetTime(timePerEvent));
             if (channel)
             {
                 source.SpecificUpdate -= SourceUnit_Update;
             }
-        }
+        
     }
 
     public void PerformEffect(float timePerEvent)
     {
+        if (audioSound != null && audioSound != "") { AudioManager.Instance?.Play(audioSound); }
+        else if (audioSet != AudioSound.AUDIO_SET.NONE) { AudioManager.Instance?.PlayFromSet(audioSet); }
         intent.Trigger(GetTime(timePerEvent));
-        foreach (Unit target in targets)
-        {
             for (int i = 0; i < effects.Count; i++)
             {
                 if (!effects[i].OnPlay)
                 {
-                    effects[i].Perform(target, source, forcedTime: GetTime(timePerEvent));
+                    effects[i].Perform(targets, source, cardSource, forcedTime: GetTime(timePerEvent));
                     if (channel)
                     {
                         source.SpecificUpdate -= SourceUnit_Update;
                     }
                 }
             }
-        }
+        
     }
 
-    private void SourceUnit_Update(Unit.UNIT_SPECIFIC_TRIGGER trigger)
+    private void SourceUnit_Update(Unit.UNIT_SPECIFIC_TRIGGER trigger, Unit source)
     {
         if (channel)
         {
@@ -88,6 +92,7 @@ public class CombatEvent
             }
             else if (trigger == Unit.UNIT_SPECIFIC_TRIGGER.DAMAGE_DEALT && cancelChannel)
             {
+                TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.CANCEL_CHANNEL);
                 Remove();
             }
         }

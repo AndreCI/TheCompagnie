@@ -9,7 +9,8 @@ using UnityEngine.EventSystems;
 
 public class MapNode : MonoBehaviour
 {
-    public enum NODETYPE { UNKNOWN, EVENT, COMBAT, BOSS};
+    public enum NODETYPE { RANDOM_EVENT, FIXED_EVENT, COMBAT};
+    public string fixedEventName;
     public List<MapNode> nextNodes;
     public NODETYPE type;
     public Image icon;
@@ -21,10 +22,12 @@ public class MapNode : MonoBehaviour
     public Color nextPositionVisitedColor;
     public bool discovered = false;
 
+    [HideInInspector]
+    public OverworldEvent fixedEvent;
     private float currentTime = 0f;
     private float animationTime = 1f;
     private float minScale = 1f;
-    private float maxScale = 1.7f;
+    private float maxScale = 1.3f;
     private bool isCurrentPositionOrNext = false;
     public bool IsCurrentPositionOrNext { get => isCurrentPositionOrNext; set {
             glowingIndicator.gameObject.SetActive(value);
@@ -74,32 +77,31 @@ public class MapNode : MonoBehaviour
 
         nextNodes = Shuffle(nextNodes);
 
-        if (type != NODETYPE.EVENT && !visited && !discovered && type != NODETYPE.BOSS) 
+        //Variable nodes must be RANDOM_EVENT. Combat nodes will still remains in combat type (tutorial & start of game)
+        if(type == NODETYPE.FIXED_EVENT)
         {
-            if (new System.Random().Next(100) > 66) 
+            if (fixedEvent == null || fixedEvent.eventName == "") { fixedEvent = OverworldEventManager.Instance.GetFixedEvent(fixedEventName); }
+        }else if (type != NODETYPE.FIXED_EVENT && type != NODETYPE.COMBAT && !visited && !discovered )//&& type != NODETYPE.BOSS) 
+        {
+            if (Utils.rdx.Next(100) > 80) 
             {
-                type = NODETYPE.UNKNOWN;
+                type = NODETYPE.RANDOM_EVENT;
             }
             else
             {
                 type = NODETYPE.COMBAT;
             }
         }
-        
-
-        
-
     }
 
 
     public static List<MapNode> Shuffle(List<MapNode> iterable)
     {
-        System.Random rng = new System.Random();
         int n = iterable.Count;
         while (n > 1)
         {
             n--;
-            int k = rng.Next(n + 1);
+            int k = Utils.rdx.Next(n + 1);
             MapNode value = iterable[k];
             iterable[k] = iterable[n];
             iterable[n] = value;
@@ -114,15 +116,13 @@ public class MapNode : MonoBehaviour
             if(type == NODETYPE.COMBAT)
             {
                 icon.sprite = OverworldMap.Instance.combat;
-            }else if(type == NODETYPE.EVENT)
-            {
-                icon.sprite = OverworldMap.Instance.eventIcon;
-            }else if(type == NODETYPE.UNKNOWN)
+            }else if(type == NODETYPE.FIXED_EVENT)
             {
                 icon.sprite = OverworldMap.Instance.unknown;
-            }else if(type == NODETYPE.BOSS)
+                if(fixedEvent == null || fixedEvent.eventName == "") { fixedEvent = OverworldEventManager.Instance.GetFixedEvent(fixedEventName); }
+            }else if(type == NODETYPE.RANDOM_EVENT)
             {
-                icon.sprite = OverworldMap.Instance.boss;
+                icon.sprite = OverworldMap.Instance.unknown;
             }
 
             glowingIndicator.CrossFadeColor(nextPositionColor, 1f, true, true);
@@ -163,36 +163,20 @@ public class MapNode : MonoBehaviour
         {
             if (visited)
             {
-                PlayerInfos.Instance.currentPosition = this;
                 OverworldMap.Instance.UpdateNodes();
-
+                PlayerInfos.Instance.currentPosition = this;
                 return;
             }
             visited = true;
             if (type == NODETYPE.COMBAT)
             {
                 OverworldMap.Instance.StartCombat();
-                OverworldMap.Instance.noTavern = false;
-            }else if(type == NODETYPE.BOSS) {
-                OverworldMap.Instance.StartBoss();
-                visited = false;
-                return;
-            }else if(type == NODETYPE.EVENT)
+            } else if(type == NODETYPE.FIXED_EVENT)
+            {
+                OverworldMap.Instance.StartEvent(fixedEvent);
+            }else if(type == NODETYPE.RANDOM_EVENT)
             {
                 OverworldMap.Instance.StartEvent();
-                OverworldMap.Instance.noTavern = true;
-            }else if(type == NODETYPE.UNKNOWN)
-            {
-                if(new System.Random().Next(100) > 50 || OverworldMap.Instance.noTavern)
-                {
-                    OverworldMap.Instance.StartCombat();
-                    OverworldMap.Instance.noTavern = false;
-                }
-                else
-                {
-                    OverworldMap.Instance.StartTown();
-                    OverworldMap.Instance.noTavern = true;
-                }
             }
 
             PlayerInfos.Instance.currentPosition = this;

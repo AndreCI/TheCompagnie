@@ -5,6 +5,18 @@ TextureImporter:
   - first:
       213: 3938420086010364335
     second: PC Computer - RPG Maker VX - Enemies & Bosses_0
+  - first:
+      213: -4963799286328914832
+    second: PC Computer - RPG Maker VX - Enemies & Bosses_1
+  - first:
+      213: 8856395200106977248
+    second: PC Computer - RPG Maker VX - Enemies & Bosses_2
+  - first:
+      213: -2126261320801554312
+    second: PC Computer - RPG Maker VX - Enemies & Bosses_3
+  - first:
+      213: 8637037066963695932
+    second: PC Computer - RPG Maker VX - Enemies & Bosses_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -95,7 +107,7 @@ TextureImporter:
         width: 134
         height: 180
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -103,6 +115,90 @@ TextureImporter:
       bones: []
       spriteID: 26601d219c3049e429bf81713f09a375
       internalID: 3938420086010364335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - RPG Maker VX - Enemies & Bosses_1
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 400
+        width: 171
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2af7db84d82bfd4fb534009842e0f63
+      internalID: -4963799286328914832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - RPG Maker VX - Enemies & Bosses_2
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 192
+        width: 111
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c54d9690a3bf1d45aacdbf482ad1231
+      internalID: 8856395200106977248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - RPG Maker VX - Enemies & Bosses_3
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 194
+        width: 99
+        height: 188
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c656c8e700dbb17448e47f6a4205832d
+      internalID: -2126261320801554312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - RPG Maker VX - Enemies & Bosses_4
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 3
+        width: 80
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc2a45e72748f849aab8f12d05ba1d2
+      internalID: 8637037066963695932
       vertices: []
       indices: 
       edges: []

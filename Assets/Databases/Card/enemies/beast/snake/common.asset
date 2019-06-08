@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: common
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 0
+  subClass: 0
+  rarityLevel: 2
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Constriction
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 5
+      type: 0
+      animation: 23
+      variable: 0
+      alternative: 0
+      condition: 4
+      OnPlay: 0
+    channel: 1
+    channelLenght: 5
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 3435337354846524532, guid: be9535d00fe6369409b2c2bff25613c5,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: Sneak Bite
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 15
+      type: 0
+      animation: 2
+      variable: 0
+      alternative: 0
+      condition: 4
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 1
+    sprite: {fileID: 6828895427639608449, guid: 7e22e1ff3e2739243bdd5432872d1778,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: Poisonous Bite
+    manaCost: 0
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 7
+      type: 0
+      animation: 8
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 5
+        value: 1
+        duration: 8
+        permanent: 0
+        trigger: 1
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 6
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 2027994665441964381, guid: aa07ff2a2614eb34aa641f0d08b25d7d,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: Intimidation
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 6
+        value: 10
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 43
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 3893365647550460204, guid: 14b37bf3427c3d04db0699e1d051e94e,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0

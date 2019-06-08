@@ -11,14 +11,43 @@ public class TutorialManager : MonoBehaviour
 {
     private static TutorialManager instance;
     public static TutorialManager Instance { get => instance; }
-    public enum TUTOTRIGGER { OVERWORLD, COMBAT, PARTYMENU, COMBATENDTURN, COMBATPLAY, COMBATATTACKED,COMBATWIN, COMBATMANA, WELCOME, ACTIONPOINT, PATCHNOTE};
+    public enum TUTOTRIGGER { OVERWORLD, COMBAT, PARTYMENU, COMBATENDTURN, COMBATPLAY, COMBATATTACKED,COMBATWIN, COMBATMANA, WELCOME, ACTIONPOINT, PATCHNOTE,
+    CHANNEL, LEARN, FORGET, CANCEL_CHANNEL, TALENTPOINT};
     public GameObject windows;
     public Text currentText;
     public Dictionary<TUTOTRIGGER, string> texts;
     public Dictionary<TUTOTRIGGER, bool> status;
 
-    public static string versionNumber = "0.1.4.5";
-    public static string patchNote = "Remade Win window. Added shards! Continue to upgrade UI. Did some cleaning, added fading glowing color to intent activated. Also simple animations and tooltips";
+    public delegate void DelegateTrigger(TUTOTRIGGER trigger);
+    public event DelegateTrigger StartTrigger;
+    public event DelegateTrigger EndTrigger;
+
+    public static string versionNumber = "0.1.5.6";
+    public static string patchNote = "Continuing big update. Tutorial arrows + updated enemies (beast only, undead temp removed"+
+        "\nPrevious:\n"+
+        "Continue big update. Meet Ember! Solved some bugs, notably infinite loop with status triggering themselves." +
+        "Added a bit more logic to cards/effect in order to suit paladin/berserk theme of Ember."+
+        
+        "Big content update. There is certainly some bugs right now (next step is removing them ^^)" +
+        "and the tutorial is not really up to date. " +
+        "Now, cards/talent can apply status which can apply status or effect. Ex: inflame: target gains until end of combat: 'whenever this attacks, its target" +
+        "gain 5 burns for 2 turns.'" +
+        "\n also added a new player, 32 cards which use the new mechanics (frost!), rarity on cards (right now: common/rare/epics) and cards now depends on your" +
+        "talents."+"Reworked status UI system!"+
+        
+        "Added talent system and basic talents!" +
+        "Modify event structure and implementation, added void points. Added first events." +
+        
+        "Finished UI rework. Fixed some bug, improve intents"+
+        
+        "Reworked cards. Added color to cards in order to indentify owner."+
+        
+        
+        "Starting to add more sounds! also some ui still. Doing basic attacks now :)" +
+
+        "Added glowing effects on shard and other things. Still adding toolitps and other small improvements."+
+
+        "Remade Win window. Added shards! Continue to upgrade UI. Did some cleaning, added fading glowing color to intent activated. Also simple animations and tooltips";
 
     public TUTOTRIGGER current;
 
@@ -26,8 +55,8 @@ public class TutorialManager : MonoBehaviour
     public float timePerWord = 0.05f;
     public float timePerLetter = 0.0f;
     public float currentTime;
-    public Queue<String> tokenizedText;
-    private string currentWord;
+    public Queue<char> tokenizedText;
+    private char chrrentChar;
     public bool deactivateTutorialScroll = false;
     public void Start()
     {
@@ -49,15 +78,15 @@ public class TutorialManager : MonoBehaviour
         if (activated && tokenizedText.Count>0)
         {
             currentTime += (Time.deltaTime);// + rdn.Next(-1, 1));
-            if ((currentTime) > timePerWord + currentWord.Count() * timePerLetter)
+            if ((currentTime) > timePerLetter)
             {
-                currentTime -= timePerWord + currentWord.Count() * timePerLetter;
-                currentText.text += " " + currentWord;
-                currentWord = tokenizedText.Dequeue();
+                currentTime -= timePerLetter;
+                currentText.text += chrrentChar;
+                chrrentChar = tokenizedText.Dequeue();
             }
         }else if (activated)
         {
-            currentText.text += " " + currentWord;
+            currentText.text += chrrentChar;
             activated = false;
         }
     }
@@ -67,12 +96,13 @@ public class TutorialManager : MonoBehaviour
         if (!status[trigger] && !PlayerSettings.Instance.disableTutorial){
             windows.gameObject.SetActive(true);
             current = trigger;
+            StartTrigger?.Invoke(trigger);
             if (!deactivateTutorialScroll && !forceNonScrolling)
             {
                 activated = true;
-                tokenizedText = new Queue<string>(texts[trigger].Split(' '));
-                currentText.text = tokenizedText.Dequeue();
-                currentWord = tokenizedText.Dequeue();
+                tokenizedText = new Queue<char>(texts[trigger].ToCharArray());
+                currentText.text = "";// tokenizedText.Dequeue();
+                chrrentChar = tokenizedText.Dequeue();
             }
             else
             {
@@ -89,6 +119,7 @@ public class TutorialManager : MonoBehaviour
     public void Validate()
     {
         status[current] = true;
+        EndTrigger?.Invoke(current);
     }
     public void DeactivateTutorialScroll(bool v)
     {
@@ -119,7 +150,7 @@ public class TutorialManager : MonoBehaviour
         switch (trigger)
         {
             case TUTOTRIGGER.PATCHNOTE:
-            return "PATCH NOTE 13/05 v" + versionNumber +".\n" +
+            return "PATCH NOTE v" + versionNumber +".\n" +
                     patchNote;
             case TUTOTRIGGER.WELCOME:
                 return "Welcome to The Compagnie. This is currently an alpha version, build v"+versionNumber+". \n" +
@@ -132,11 +163,11 @@ public class TutorialManager : MonoBehaviour
                     
             case TUTOTRIGGER.PARTYMENU:
                 return "Here, you can see your compagnions, their health, mana and current experience points. Their cards are also displayed. \n" +
-                    "If you hover over them, you can see what they do.\n Finally, you can also discover new cards when you level up. Be sure to have " +
-                    "enough room!";
+                    "If you hover over them, you can see what they do.\n Finally, you can also improve your units by adding and removing cards to their decks "+
+                    "and gaining talents";
             case TUTOTRIGGER.COMBAT:
                 return "You are under attack! You can defend yourself and defeat the enemies by playing cards each turn. The ennemies will also " +
-                    "attack you!";
+                    "attack you! Each turn takes 10 ticks (red rectangle in the middle of the screen) and each cards has a delay, which determine when it will happens.";
             case TUTOTRIGGER.COMBATENDTURN:
                 return "You are out of action! Each turn, you can play a limited number of cards. You gain 1 action point per turn!\n" +
                     "It's time to end the turn. Press end turn and see the action that you and the ennemies planned happend! Pay attention to the order in which the intents will go! \n" +
@@ -148,9 +179,8 @@ public class TutorialManager : MonoBehaviour
                     
             case TUTOTRIGGER.COMBATWIN:
                 return "Congratulation! You just won a fight! \n" +
-                    "Now you can spend your experience points. If you have enough, will you gain a level. \n" +
-                    "Each time you gain a level, you can acquire more cards and sometimes over bonuses. Go to Party (top right) and click discover skill. You can drag the card(s) " +
-                    "that you like into your deck.";
+                    "After each fight, you receive experience, shards and the remaining time to spent on your units. "+ 
+                    "After training, go to Party (top right) and click 'learn' to spend your skill points";
             case TUTOTRIGGER.COMBATATTACKED:
                 return "You just got attacked!!" + "\n"
                     + "You can defend yourself by playing block cards before the enemy attacks you, or take the hit. If you health go down to 0, well you die.";
@@ -159,8 +189,22 @@ public class TutorialManager : MonoBehaviour
                     "Mana is used to perform powerful attack. It is displayed as the top number on a card. Each turn, you gain 2 mana. Your current mana is represented as a blue bar.\n" +
                     "If you don't have enough mana, you won't be able to play the card.";
             case TUTOTRIGGER.ACTIONPOINT:
-                return "You gained another action point placeholder! During combat, they are represented as blue square on the top left.\n Now you can bank " +
+                return "You gained another action point placeholder! During combat, they are represented as blue circle on the top left.\n Now you can bank " +
                     "action point as you still gain 1 per turn if you decide to pass your turn.";
+            case TUTOTRIGGER.FORGET :
+                return "You can forget any abilities by dragging them into these boxes. This will remove the corresponding card from the deck.";
+            case TUTOTRIGGER.LEARN :
+                return "You can learn new abilities by dragging any of the discovered cards into your deck. This will add the card permanently to your combat deck.";
+            case TUTOTRIGGER.CANCEL_CHANNEL :
+                return "A channel card has been cancel! Channel cancel happens when the source of the card takes damage from an attack. Any subsequent events from the card are removed.";
+            case TUTOTRIGGER.CHANNEL :
+                return "Channeling means that a card takes more than one tick to happen : it will takes the number of timestep corresponding to the value of the channel. \n" +
+                    "Moreover, its effect and manacost will be duplicated. Dealing damage from an attack will cancel all instances of the card, so pay attention to who cast what "+
+                    "and when (poison and attacks which does no damage to the health do not cancel channel).";
+            case TUTOTRIGGER.TALENTPOINT:
+                return "You have a talent point! Each time a unit gain a level, they gain an action point will can be spent on the talent tree. \n " +
+                    "You can access the talent tree by clicking on the talent button.";
+                break;
         }
         return "Tutorial text not found :( ";
     }

@@ -1,0 +1,402 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: base
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 11
+  rarityLevel: 0
+  branchLevel: 1
+  childrenDatabase:
+  - {fileID: 11400000, guid: 302c875e82ac6144fb7d9322b9861cb0, type: 2}
+  - {fileID: 11400000, guid: 7fd627cd4c00445469f6089c7875ba17, type: 2}
+  items:
+  - Name: Gather Thoughts
+    manaCost: 0
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 3
+      type: 3
+      animation: 9
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 12
+      type: 4
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 21300000, guid: e38cb3bc6a9979445973c8d09c650c4b, type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 51
+  - Name: Mana Burn
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 0
+      type: 0
+      animation: 0
+      variable: 4
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    - statusFactories: []
+      amount: 0
+      type: 4
+      animation: 0
+      variable: 4
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 565569495a58f0447a2eec667bc2f0cc, type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 52
+  - Name: Mana Shield
+    manaCost: 6
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 16
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory:
+          status: 0
+          value: 0
+          duration: 0
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          onSelf: 0
+      - status: 2
+        value: 2
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory:
+          status: 0
+          value: 0
+          duration: 0
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          onSelf: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 59bc0bcf22dfb694080106e2062dfe02, type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 53
+  - Name: Magical Missile
+    manaCost: 4
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 12
+      type: 0
+      animation: 17
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 3
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 3cc3931b87897d24c84c08572d499ea8, type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 54
+  - Name: Basic Heal
+    manaCost: 8
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 0
+        value: 5
+        duration: 3
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory:
+          status: 0
+          value: 0
+          duration: 0
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          onSelf: 0
+      amount: 0
+      type: 0
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 0
+        value: 0
+        duration: 0
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory:
+          status: 0
+          value: 0
+          duration: 0
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          onSelf: 0
+      amount: 20
+      type: 1
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 4f906344c0cadd24fa0f2a0a4859dd35, type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 55
+  - Name: Magic Siphoning
+    manaCost: 0
+    delay: 0
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 17
+      type: 4
+      animation: 12
+      variable: 0
+      alternative: 1
+      condition: 2
+      OnPlay: 1
+    - statusFactories: []
+      amount: 7
+      type: 0
+      animation: 12
+      variable: 0
+      alternative: 0
+      condition: 2
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 4b1dbc4cd4feaa54d9ab567fb73eb4d4, type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 56
+  - Name: Double Mastery
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 12
+        value: 0
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 3
+        factory:
+          status: 3
+          value: 5
+          duration: 1
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          onSelf: 0
+      - status: 12
+        value: 0
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 1
+        factory:
+          status: 10
+          value: 0
+          duration: 3
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          onSelf: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 3f6f4bf53355f2d4aa02914bae584cf6, type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 57
+  - Name: Planned Ressource
+    manaCost: 0
+    delay: 22
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 0
+      type: 4
+      animation: 0
+      variable: 4
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 3
+      type: 3
+      animation: 0
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 0d31c864d58e54846a8bac19d179db74, type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 58
+  - Name: Radiant Protection
+    manaCost: 8
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 12
+        value: 0
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 3
+        factory:
+          status: 2
+          value: 1
+          duration: 1
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          onSelf: 1
+      amount: 0
+      type: 2
+      animation: 34
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 28291ba3426c33e46821767f685438d8, type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 59

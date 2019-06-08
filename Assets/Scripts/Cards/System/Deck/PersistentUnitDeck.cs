@@ -42,6 +42,11 @@ public class PersistentUnitDeck : PersistentDeck
        cards.Remove(card);
     }
 
+    public void RemoveCardSlot(Unit owner = null)
+    {
+        cardSlots -= 1;
+    }
+
     public override void AddCardSlot(Unit owner = null)
     {
         cardSlots += 1;

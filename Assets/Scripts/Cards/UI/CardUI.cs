@@ -18,6 +18,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     public Text manaCost;
     public Text delayCost;
     public Text description;
+    public List<Image> colorGlows;
 
     private bool playable = true;
     private bool setuped = false;
@@ -36,6 +37,18 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
 
     public void Setup(Card card_)
     {
+        if(card_.owner != null)
+        {
+            Setup(card_, card_.owner.GetCurrentColor(), card_.manaCost > card_.owner.CurrentMana ? Color.red : Color.white);
+        }
+        else
+        {
+            Setup(card_, new Color(1f, 1f, 1f, 1f), Color.white);
+        }
+    }
+
+    public void Setup(Card card_, Color fixedColor, Color manaColor)
+    {
         if (!setuped && card_.owner != null)
         {
         //    CardSelector.Notify += SelectedCardUpdate;
@@ -50,14 +63,28 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         card = card_;
         image.sprite = card.sprite;
         manaCost.text = card.manaCost.ToString();
-        
+        manaCost.color = manaColor;
         manaCost.transform.parent.transform.parent.gameObject.SetActive(card.manaCost > 0);
-        
-        delayCost.text = card.delay.ToString();
+
+        int delay = Mathf.Max((card.delay + (card.owner == null ? 0 : card.owner.currentSpeed)), 0);
+        delayCost.text = delay.ToString();
+        if (delay - card.delay == 0)
+        {
+            delayCost.color = new Color(1f, 1f, 1f, 1f);
+        }
+        else
+        {
+            delayCost.color =delay - card.delay > 0 ? new Color(1f, 0f, 0f, 1f) : new Color(0f, 1f, 0f, 1f);
+        }
         description.text = card.GetDescription();
         foreach(Text head in header.GetComponentsInChildren<Text>())
         {
             head.text = card.Name;
+        }
+        foreach(Image i in colorGlows)
+        {
+            i.color = fixedColor;// card_.owner != null ? card_.owner.CurrentColor : new Color(1f, 1f, 1f, 0.5f);
+           
         }
     }
 
@@ -71,6 +98,16 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         {
             manaCost.color = Color.white;
         }description.text = card.GetDescription(source: card.owner);
+        int delay = Mathf.Max((card.delay + (card.owner == null ? 0 : card.owner.currentSpeed)),0) ;
+        delayCost.text = delay.ToString();
+        if (delay - card.delay == 0)
+        {
+            delayCost.color = new Color(1f, 1f, 1f, 1f);
+        }
+        else
+        {
+            delayCost.color = delay - card.delay > 0 ? new Color(1f, 0f, 0f, 1f) : new Color(0f, 1f, 0f, 1f);
+        }
     }
 
     public void Play(List<Unit> target)
@@ -146,7 +183,8 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         ResetTransform();
         if(CombatManager.Instance.GetUnitUI(card.owner).portraitInfos != null)
         {
-            CombatManager.Instance.GetUnitUI(card.owner).portraitInfos.phantomManaCost = card.channel ? card.channelLenght * card.manaCost : card.manaCost;
+            int channelValue = card.channel? Mathf.Max(0, card.channelLenght + (card.owner == null ? 0 : card.owner.CurrentChannelValue)) : 0;
+            CombatManager.Instance.GetUnitUI(card.owner).portraitInfos.phantomManaCost = card.channel ? channelValue * card.manaCost : card.manaCost;
         }
         TurnManager.Instance.AddPhantomCombatEvent(card);
 
@@ -218,10 +256,14 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
                 target.AddRange(CombatManager.Instance.GetFriendsUnitUI(target[0].unit));
                 
             }
-            TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATENDTURN);
+            if (card.actionCost > 0) { TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATENDTURN); }
             if (card.manaCost > 0)
             {
                 TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATMANA);
+            }
+            if (card.channel)
+            {
+                TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.CHANNEL);
             }
             AudioManager.Instance?.PlayFromSet(AudioSound.AUDIO_SET.CARD_PLAY);
             Play(target.Select(x=>x.unit).ToList());

@@ -13,41 +13,528 @@ MonoBehaviour:
   m_Name: effectDatabase
   m_EditorClassIdentifier: 
   combatStatusDatas:
-  - status: 0
+  - Name: Regeneration
+    status: 0
     icon: {fileID: 2089316530606557333, guid: 0f01698d67d322048833746f43c903ad, type: 3}
     highlightedSprite: {fileID: 2089316530606557333, guid: 0f01698d67d322048833746f43c903ad,
       type: 3}
-  - status: 1
+    mainAnimation:
+      type: 44
+      animationSpriteList: {fileID: 21300000, guid: a3ae03699806d63448f2f25e7bc76010,
+        type: 3}
+      width: 5
+      height: 6
+      scale: 2
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 5
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Block
+    status: 1
     icon: {fileID: 851372423496182684, guid: 0f01698d67d322048833746f43c903ad, type: 3}
     highlightedSprite: {fileID: -4684697020561092922, guid: 0f01698d67d322048833746f43c903ad,
       type: 3}
-  - status: 2
+    mainAnimation:
+      type: 44
+      animationSpriteList: {fileID: 21300000, guid: 67fc3c43c16cdb8459e35a54e410330f,
+        type: 3}
+      width: 5
+      height: 5
+      scale: 2.6
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 3
+      maxHeight: 2
+      repeat: 0
+      modifyColor: {r: 0.7254902, g: 0.7254902, b: 0.7254902, a: 1}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 44
+      animationSpriteList: {fileID: 21300000, guid: 0d129921093589e449564f2c6ffa7c97,
+        type: 3}
+      width: 5
+      height: 6
+      scale: 2.4
+      reverseTime: 0
+      minWidth: 1
+      minHeight: 2
+      maxWidth: 1
+      maxHeight: 4
+      repeat: 0
+      modifyColor: {r: 0.25882354, g: 0.4509804, b: 0.25882354, a: 0.5764706}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Parry
+    status: 2
     icon: {fileID: 1069709688772938668, guid: 0f01698d67d322048833746f43c903ad, type: 3}
     highlightedSprite: {fileID: 2632801368705440561, guid: 0f01698d67d322048833746f43c903ad,
       type: 3}
-  - status: 3
+    mainAnimation:
+      type: 44
+      animationSpriteList: {fileID: 21300000, guid: 6a1edcb5d556b144ab4157c368f92248,
+        type: 3}
+      width: 5
+      height: 3
+      scale: 2
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 2
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Burn
+    status: 3
     icon: {fileID: 94592334007545441, guid: 0f01698d67d322048833746f43c903ad, type: 3}
     highlightedSprite: {fileID: -2912744744730483065, guid: 0f01698d67d322048833746f43c903ad,
       type: 3}
-  - status: 5
+    mainAnimation:
+      type: 44
+      animationSpriteList: {fileID: 21300000, guid: 8c6a18a6b1597f146a3a568d9bd41043,
+        type: 3}
+      width: 5
+      height: 2
+      scale: 2
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 1
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 2
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Poisonned
+    status: 5
     icon: {fileID: 258179898762336802, guid: 0f01698d67d322048833746f43c903ad, type: 3}
     highlightedSprite: {fileID: 8966057872377901990, guid: 0f01698d67d322048833746f43c903ad,
       type: 3}
-  - status: 6
+    mainAnimation:
+      type: 44
+      animationSpriteList: {fileID: 21300000, guid: ca525ec86022aa643a98fee15af86b24,
+        type: 3}
+      width: 5
+      height: 3
+      scale: 2
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Strength
+    status: 6
     icon: {fileID: -7564531039104685784, guid: 0f01698d67d322048833746f43c903ad, type: 3}
     highlightedSprite: {fileID: -2387106143319436092, guid: 0f01698d67d322048833746f43c903ad,
       type: 3}
-  - status: 7
+    mainAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 21300000, guid: 3d100fe65dc2a1b42831b3881f3cc14d,
+        type: 3}
+      width: 5
+      height: 6
+      scale: 2
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Strength
+    status: 7
     icon: {fileID: 6604391179462050616, guid: 0f01698d67d322048833746f43c903ad, type: 3}
     highlightedSprite: {fileID: -7724225455362694082, guid: 0f01698d67d322048833746f43c903ad,
       type: 3}
-  - status: 8
+    mainAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 21300000, guid: 6a353232476879a468cc28f962e509be,
+        type: 3}
+      width: 5
+      height: 3
+      scale: 2
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Gain Action (BUG)
+    status: 8
     icon: {fileID: -3092383872609349401, guid: 0f01698d67d322048833746f43c903ad, type: 3}
     highlightedSprite: {fileID: 910873792039224631, guid: 0f01698d67d322048833746f43c903ad,
       type: 3}
-  - status: 9
+    mainAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Draw Card (BUG)
+    status: 9
     icon: {fileID: 0}
     highlightedSprite: {fileID: 0}
-  - status: 0
-    icon: {fileID: 0}
-    highlightedSprite: {fileID: 0}
+    mainAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Frozen
+    status: 10
+    icon: {fileID: -7432174180730721400, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: -6883083514369799916, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+    mainAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Concentration
+    status: 11
+    icon: {fileID: -3092383872609349401, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: 910873792039224631, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+    mainAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: APPLY_STATUS (BUG)
+    status: 12
+    icon: {fileID: 21300000, guid: 1c8aa414a841be641a99ad8eacd85184, type: 3}
+    highlightedSprite: {fileID: 21300000, guid: 1c8aa414a841be641a99ad8eacd85184,
+      type: 3}
+    mainAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Speed
+    status: 13
+    icon: {fileID: -8886300463585075602, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: 9204824911347335970, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+    mainAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Speed
+    status: 14
+    icon: {fileID: -5703463613599751058, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: -4317230996837416669, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+    mainAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0

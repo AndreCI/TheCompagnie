@@ -11,8 +11,4 @@ public class CombatNodeEvent : NodeEvent
 {
     public List<Enemy> enemies;
 
-    public override void Perform()
-    {
-        SceneManager.LoadScene(2);
-    }
 }

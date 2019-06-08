@@ -8,6 +8,15 @@ public class EnemiesDatabase : ScriptableObject
 
     public List<Enemy> enemies;
 
+    public List<Enemy> GetRandomFromClass(CardDatabase.CARDCLASS current, CardDatabase.SUBCARDCLASS subclass, int count)
+    {
+        return enemies.FindAll(x => x.availableCards == current && x.subclass == subclass).OrderBy(y => Utils.rdx.Next()).Take(count).ToList();
+    }
+    public List<Enemy> GetRandomFromClass(CardDatabase.CARDCLASS current, int count)
+    {
+        return enemies.FindAll(x => x.availableCards == current).OrderBy(y => Utils.rdx.Next()).Take(count).ToList();
+    }
+
     public List<Enemy> GetRandomFromType(Enemy.ENEMY_TYPE type, int count)
     {
         List<Enemy> typedEnemies = Shuffle(new List<Enemy>(enemies.FindAll(x => x.type == type))).Take(count).ToList(); ;
@@ -32,17 +41,16 @@ public class EnemiesDatabase : ScriptableObject
 
     public Enemy GetRandom()
     {
-        return enemies[(int)(new System.Random()).Next(enemies.Count)];
+        return enemies[(int)Utils.rdx.Next(enemies.Count)];
     }
 
     public static List<Enemy> Shuffle(List<Enemy> units)
     {
-        System.Random rng = new System.Random();
         int n = units.Count;
         while (n > 1)
         {
             n--;
-            int k = rng.Next(n + 1);
+            int k = Utils.rdx.Next(n + 1);
             Enemy value = units[k];
             units[k] = units[n];
             units[n] = value;

@@ -13,8 +13,16 @@ public class PlayerInfos : MonoBehaviour
     public CardDatabase cardDatabase;
     public CompagnionsDatabase compagnionsDatabase;
     public AnimationClipDatabase animationDatabase;
+    public TalentTreeDatabase talentTreeDatabase;
 
-    public MapNode currentPosition;
+    private MapNode currentPos;
+    public MapNode currentPosition {
+        get { return currentPos; }
+        set { if (currentPos != null) { previousPosition = currentPos; }
+            currentPos = value;
+        }
+    }
+    public MapNode previousPosition;
     private int currentShards;
     public int CurrentShards { get => currentShards; set
         {
@@ -52,7 +60,7 @@ public class PlayerInfos : MonoBehaviour
 
         persistentPartyDeck = new PersistentPartyDeck();
 
-        AddCompagnion(compagnionsDatabase.Get(0));
+        AddCompagnion(compagnionsDatabase.Get(3));
 
       //  AddCompagnion(compagnionsDatabase.Get(1));
         unitsWindow?.gameObject.SetActive(false);

@@ -28,6 +28,10 @@ public class GettableCardsDisplay : CardDIsplayWindow
 
 
 
+    public void Setup(List<Card> cards)
+    {
+        base.Setup(cards, 0);
+    }
 
     protected override void CardAssigned(DuloGames.UI.UIItemSlot slot)
     {

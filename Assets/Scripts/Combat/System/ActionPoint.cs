@@ -73,6 +73,7 @@ public class ActionPoint : MonoBehaviour
         }
         u.NotifyUpdate += UpdateInfos;
         unit = u;
+        lastTick = 1 <= index;
         return this;
     }
 

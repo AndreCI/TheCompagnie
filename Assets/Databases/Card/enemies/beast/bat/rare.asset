@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: rare
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 13
+  subClass: 4
+  rarityLevel: 3
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Blood Thirst
+    manaCost: 0
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 6
+        factory:
+        - status: 7
+          value: 3
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          alternative: 1
+          variable: 0
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 4
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 555455192227229620, guid: cd40646f7479d814d83fa60c6f3a3964, type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 192
+  - Name: Demon Form
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 1
+        factory:
+        - status: 5
+          value: 3
+          duration: 2
+          permanent: 0
+          trigger: 1
+          unitTrigger: 0
+          alternative: 0
+          variable: 0
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 29
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -3529098033660718908, guid: 2ac6f55aeb5aa374eb037cda7433e4c0,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 193

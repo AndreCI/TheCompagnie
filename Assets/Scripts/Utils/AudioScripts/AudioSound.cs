@@ -10,7 +10,8 @@ using UnityEngine.UI;
 [Serializable]
 public class AudioSound
 {
-    public enum AUDIO_SET { NONE, OVERWORLD_THEME, COMBAT_THEME, CARD_DRAW, CARD_PLAY, CARD_SHUFFLE};
+    public enum AUDIO_SET { NONE, OVERWORLD_THEME, COMBAT_THEME, CARD_DRAW, CARD_PLAY, CARD_SHUFFLE,
+    SLASH, MAGIC_ATTACK, ON_BLOCK, ON_PARRY, ON_HIT};
     [Header("General Info")]
     public string Name;
     public bool loop;

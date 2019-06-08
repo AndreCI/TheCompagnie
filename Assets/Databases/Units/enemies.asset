@@ -13,34 +13,48 @@ MonoBehaviour:
   m_Name: enemies
   m_EditorClassIdentifier: 
   enemies:
-  - availableCards: 2
+  - availableCards: 13
+    unitName: Forest Wolf
     maxHealth: 40
     maxMana: 0
     maxAction: 20
-    currentHealth: 0
+    baseManaRegen: 2
     combatSprite: {fileID: -3240935945041059116, guid: a95639a5f54aac54ba01b4a14670b34c,
       type: 3}
-    portraitSprite: {fileID: 21300000, guid: 55b72913e41b34741a33f94e50255f5c, type: 3}
-    unitName: Corrupted Beast
+    portraitSprite: {fileID: 5251112635998323775, guid: 55b72913e41b34741a33f94e50255f5c,
+      type: 3}
+    switchSprite: 0
     level:
       currentXP: 0
       nextLevelThreshold: 0
-      talentPoints: 0
       currentLevel: 1
     id: 0
     baseSpeed: 0
-    currentSpeed: 0
-    type: 1
+    type: 0
     xpValue: 4
-    cardsWeights: 070000000300000004000000
+    cardsWeights: 06000000060000000300000002000000
+    enemyColor: {r: 0.5921569, g: 0.45882353, b: 0.29411766, a: 1}
     applyOnStart: []
     applyOnLevel:
     - statusFactories:
       - status: 7
         value: 1
-        duration: 0
+        duration: 1
         permanent: 1
         trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 0
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 0
@@ -48,47 +62,51 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
+    subclass: 3
   - availableCards: 3
+    unitName: Abomination
     maxHealth: 100
     maxMana: 30
     maxAction: 20
-    currentHealth: 0
-    combatSprite: {fileID: 21300000, guid: 827b83eea587624408590a438d29e966, type: 3}
-    portraitSprite: {fileID: 21300000, guid: 32fe0fbb9f586d74786a1e5e852a8369, type: 3}
-    unitName: Abomination
+    baseManaRegen: 0
+    combatSprite: {fileID: 4867567275592886407, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    portraitSprite: {fileID: -3496946997547061918, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    switchSprite: 0
     level:
       currentXP: 0
       nextLevelThreshold: 0
-      talentPoints: 0
       currentLevel: 3
     id: 0
     baseSpeed: 0
-    currentSpeed: 0
     type: 2
     xpValue: 8
     cardsWeights: 0400000003000000030000000100000003000000
+    enemyColor: {r: 0.7254902, g: 0.2509804, b: 0.2509804, a: 1}
     applyOnStart: []
     applyOnLevel: []
-  - availableCards: 6
+    subclass: 0
+  - availableCards: 13
+    unitName: Snake
     maxHealth: 50
     maxMana: 0
     maxAction: 20
-    currentHealth: 0
+    baseManaRegen: 0
     combatSprite: {fileID: -8175145840460673030, guid: a95639a5f54aac54ba01b4a14670b34c,
       type: 3}
     portraitSprite: {fileID: 21300000, guid: 6a1f93e945dcee4459ae05166ecc3b47, type: 3}
-    unitName: Snake
+    switchSprite: 0
     level:
       currentXP: 0
       nextLevelThreshold: 0
-      talentPoints: 0
       currentLevel: 1
     id: 0
     baseSpeed: 0
-    currentSpeed: 0
     type: 1
     xpValue: 5
-    cardsWeights: 05000000040000000300000003000000
+    cardsWeights: 03000000030000000200000001000000
+    enemyColor: {r: 0, g: 1, b: 0.54509807, a: 1}
     applyOnStart: []
     applyOnLevel:
     - statusFactories:
@@ -97,6 +115,10 @@ MonoBehaviour:
         duration: 0
         permanent: 1
         trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 0
@@ -104,50 +126,52 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
+    subclass: 2
   - availableCards: 7
+    unitName: Disturbed Ghost
     maxHealth: 60
     maxMana: 40
     maxAction: 20
-    currentHealth: 0
+    baseManaRegen: 0
     combatSprite: {fileID: -8889448464429604872, guid: a95639a5f54aac54ba01b4a14670b34c,
       type: 3}
     portraitSprite: {fileID: -9179451270980259953, guid: ad03845c1d656e54e83a85baef5114df,
       type: 3}
-    unitName: Disturbed Ghost
+    switchSprite: 0
     level:
       currentXP: 0
       nextLevelThreshold: 0
-      talentPoints: 0
       currentLevel: 3
     id: 0
     baseSpeed: 0
-    currentSpeed: 0
     type: 2
     xpValue: 6
     cardsWeights: 04000000030000000400000004000000
+    enemyColor: {r: 0.6666667, g: 0, b: 0.6117647, a: 1}
     applyOnStart: []
     applyOnLevel: []
+    subclass: 0
   - availableCards: 8
+    unitName: Dark Mage
     maxHealth: 70
     maxMana: 60
     maxAction: 20
-    currentHealth: 0
+    baseManaRegen: 0
     combatSprite: {fileID: 6080263995737009490, guid: a95639a5f54aac54ba01b4a14670b34c,
       type: 3}
     portraitSprite: {fileID: 2896294957591835249, guid: ad03845c1d656e54e83a85baef5114df,
       type: 3}
-    unitName: Dark Mage
+    switchSprite: 0
     level:
       currentXP: 0
       nextLevelThreshold: 0
-      talentPoints: 0
       currentLevel: 3
     id: 0
     baseSpeed: 0
-    currentSpeed: 0
     type: 2
     xpValue: 6
     cardsWeights: 0400000004000000040000000200000004000000
+    enemyColor: {r: 0.8392157, g: 0.38431373, b: 1, a: 1}
     applyOnStart:
     - statusFactories:
       - status: 1
@@ -155,6 +179,10 @@ MonoBehaviour:
         duration: 10
         permanent: 0
         trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 0
@@ -163,50 +191,52 @@ MonoBehaviour:
       condition: 0
       OnPlay: 0
     applyOnLevel: []
+    subclass: 0
   - availableCards: 10
+    unitName: Vampire
     maxHealth: 80
     maxMana: 0
     maxAction: 20
-    currentHealth: 0
-    combatSprite: {fileID: 3938420086010364335, guid: c863d384149cea34da26c621f09e3d56,
+    baseManaRegen: 0
+    combatSprite: {fileID: 5225218277069427936, guid: a95639a5f54aac54ba01b4a14670b34c,
       type: 3}
-    portraitSprite: {fileID: 2239216891938564055, guid: ad03845c1d656e54e83a85baef5114df,
+    portraitSprite: {fileID: -2652483620820254295, guid: ad03845c1d656e54e83a85baef5114df,
       type: 3}
-    unitName: Skeleton
+    switchSprite: 0
     level:
       currentXP: 0
       nextLevelThreshold: 0
-      talentPoints: 0
       currentLevel: 2
     id: 0
     baseSpeed: 0
-    currentSpeed: 0
     type: 2
     xpValue: 6
     cardsWeights: 010000000100000001000000010000000100000001000000
+    enemyColor: {r: 0.61960787, g: 0.101960786, b: 0.101960786, a: 1}
     applyOnStart: []
     applyOnLevel: []
+    subclass: 0
   - availableCards: 9
+    unitName: Dark Knight
     maxHealth: 120
     maxMana: 0
     maxAction: 40
-    currentHealth: 0
+    baseManaRegen: 0
     combatSprite: {fileID: -3785760131957737021, guid: a95639a5f54aac54ba01b4a14670b34c,
       type: 3}
     portraitSprite: {fileID: -4266777927115785223, guid: ad03845c1d656e54e83a85baef5114df,
       type: 3}
-    unitName: Dark Knight
+    switchSprite: 1
     level:
       currentXP: 0
       nextLevelThreshold: 0
-      talentPoints: 0
       currentLevel: 7
     id: 0
     baseSpeed: 0
-    currentSpeed: 0
     type: 0
     xpValue: 12
     cardsWeights: 04000000020000000300000002000000020000000300000001000000
+    enemyColor: {r: 0.22352941, g: 0.22352941, b: 0.22352941, a: 1}
     applyOnStart:
     - statusFactories:
       - status: 1
@@ -214,6 +244,10 @@ MonoBehaviour:
         duration: 0
         permanent: 1
         trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 0
@@ -222,27 +256,28 @@ MonoBehaviour:
       condition: 0
       OnPlay: 0
     applyOnLevel: []
-  - availableCards: 2
+    subclass: 0
+  - availableCards: 13
+    unitName: Vicious Bat
     maxHealth: 30
     maxMana: 0
     maxAction: 20
-    currentHealth: 0
+    baseManaRegen: 2
     combatSprite: {fileID: 4553243053996602268, guid: a95639a5f54aac54ba01b4a14670b34c,
       type: 3}
     portraitSprite: {fileID: 4347586481121844632, guid: ad03845c1d656e54e83a85baef5114df,
       type: 3}
-    unitName: Vicious Bat
+    switchSprite: 0
     level:
       currentXP: 0
       nextLevelThreshold: 0
-      talentPoints: 0
       currentLevel: 0
     id: 0
     baseSpeed: 0
-    currentSpeed: 0
-    type: 1
+    type: 0
     xpValue: 3
-    cardsWeights: 020000000000000002000000
+    cardsWeights: 05000000040000000400000001000000
+    enemyColor: {r: 0, g: 0.45882353, b: 0.47843137, a: 1}
     applyOnStart:
     - statusFactories:
       - status: 6
@@ -250,6 +285,10 @@ MonoBehaviour:
         duration: 0
         permanent: 1
         trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 0
@@ -259,11 +298,24 @@ MonoBehaviour:
       OnPlay: 0
     applyOnLevel:
     - statusFactories:
-      - status: 0
+      - status: 2
         value: 1
         duration: 0
         permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 1
+        value: 4
+        duration: 0
+        permanent: 1
         trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 0
@@ -271,3 +323,4 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
+    subclass: 4

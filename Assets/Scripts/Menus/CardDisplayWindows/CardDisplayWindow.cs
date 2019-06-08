@@ -32,7 +32,7 @@ public abstract class CardDIsplayWindow : MonoBehaviour
     }
 
 
-    public virtual void Setup(List<Card> cards, int slotNumber = 0)
+    protected virtual void Setup(List<Card> cards, int slotNumber = 0)
     {
         Clear();
         for (int i = 0; i < slots.Count; i++)
@@ -41,11 +41,13 @@ public abstract class CardDIsplayWindow : MonoBehaviour
             if (i < cards.Count)
             {
                 slots[i].Assign(cards[i]);
+                slots[i].UISlotBase_PartyMenuNotify(PartyMenu.SLOT_TRIGGER.SETUP);
             }
             else if (i < slotNumber && slotNumber > 0)
             {
                 slots[i].Unassign();
                 slots[i].dropEnabled = true;
+                slots[i].UISlotBase_PartyMenuNotify(PartyMenu.SLOT_TRIGGER.SETUP);
             }
             else
             {
@@ -58,7 +60,7 @@ public abstract class CardDIsplayWindow : MonoBehaviour
         if (slots == null || slots.Count == 0)
         {
             slots = new List<DuloGames.UI.UIItemSlot>(tab.transform.GetComponentsInChildren<DuloGames.UI.UIItemSlot>(true));
-
+                
         }
 
         foreach (DuloGames.UI.UIItemSlot slot in slots)

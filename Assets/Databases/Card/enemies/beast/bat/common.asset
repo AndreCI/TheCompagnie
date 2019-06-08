@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: common
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 0
+  subClass: 0
+  rarityLevel: 2
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Take Off
+    manaCost: 0
+    delay: 1
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 2
+        value: 2
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -127195961005357127, guid: c9d72762bdd35c349aaf7f4a7ca264f2,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: Aerial Hit
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 2
+        value: 2
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 10
+      type: 0
+      animation: 23
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 1769458959249822150, guid: 92f78ff11f3c42a43abd7786bd3ad4d4,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: Vampirism
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 10
+      type: 0
+      animation: 2
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 10
+      type: 1
+      animation: 15
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 5688011650080285696, guid: 4355e7ec7f98be04a83579ab0a8e6924,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: Blood Hits
+    manaCost: 0
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 6
+      type: 0
+      animation: 2
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 6
+      type: 0
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 7
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 6
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 4033203294276444401, guid: ae641531810c7a146a49b2e29a3084e6,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0

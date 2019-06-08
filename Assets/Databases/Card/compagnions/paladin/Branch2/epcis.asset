@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: epcis
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 12
+  subClass: 0
+  rarityLevel: 4
+  branchLevel: 3
+  childrenDatabase: []
+  items:
+  - Name: Massacre
+    manaCost: 0
+    delay: 9
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 15
+      type: 0
+      animation: 0
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 1
+    - statusFactories: []
+      amount: 0
+      type: 0
+      animation: 31
+      variable: 1
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 35
+      type: 1
+      animation: 0
+      variable: 0
+      alternative: 1
+      condition: 4
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -6841175741604962782, guid: 43b62b5c009065c4fa3e1d6fef22f6e4,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 4
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 3
+    ID: 119
+  - Name: Patience
+    manaCost: 0
+    delay: 32
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory:
+        - status: 7
+          value: 10
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          alternative: 1
+          variable: 0
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 36
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 8351522350526737364, guid: d11018825d67dfc4e88f16ec528c24a7,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 4
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 3
+    ID: 120
+  - Name: Throat Ripper
+    manaCost: 0
+    delay: 12
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 7
+        value: 12
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory:
+        - status: 7
+          value: 10
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          alternative: 0
+          variable: 0
+        effectFactory: []
+        variable: 0
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 3
+        factory: []
+        effectFactory:
+        - amount: 8
+          type: 0
+          variable: 0
+          alternative: 1
+          condition: 0
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 36
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -3578699616294666212, guid: 80a8f2c3df87ef64db86a032bc5c15ad,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 4
+    databasePath: ///COMPAGNION/All
+    cardClass: 12
+    branch: 3
+    ID: 121

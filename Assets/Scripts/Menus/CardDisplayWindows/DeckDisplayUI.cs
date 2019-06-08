@@ -34,8 +34,12 @@ public class DeckDisplayUI : CardDIsplayWindow
         Setup(deck.GetCards(), (deck is PersistentDeck)? (deck as PersistentDeck).GetCardSlots() : 0);
     }
 
+    public void Setup(List<Card> cards)
+    {
+        Setup(cards, 0);
+    }
 
-    public override void Setup(List<Card> cards, int slotNumber=0)
+    protected override void Setup(List<Card> cards, int slotNumber=0)
     {
         updateDeck = false;
         base.Setup(cards, slotNumber);

@@ -24,6 +24,7 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private float duration;
     private bool activated;
     public bool phantom = false;
+    public bool phantomFuture = false;
 
     public bool setToDestroy = true;
     private void Update()
@@ -49,7 +50,7 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             }
         }
     }
-    public void Setup(Card card_, CardUI ui_, CombatEvent linkedEvent_, bool inverseSprite, bool _phantom = false)
+    public void Setup(Card card_, CardUI ui_, CombatEvent linkedEvent_, bool inverseSprite, bool _phantom = false, bool _futurePhamtom = false)
     {
         transform.localScale = new Vector3(1f, inverseSprite ? -1f : 1f, 1f);
         card = card_;
@@ -57,6 +58,14 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         linkedEvent = linkedEvent_;
         icon.sprite = card.hidden ? CombatManager.Instance.HiddenCard.sprite : card.sprite;
         iconMask.sprite = icon.sprite;
+        if (linkedEvent.source.GetType() != typeof(Compagnion))
+        {
+            focusColor = card.hidden ? Color.black : linkedEvent.source.GetCurrentColor();
+        }
+        else if (linkedEvent.targets.Count ==1)
+        {
+            focusColor = linkedEvent.targets[0].GetCurrentColor();
+        }
         if (linkedEvent.channel)
         {
             iconMask.fillMethod = Image.FillMethod.Horizontal;
@@ -67,23 +76,47 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             TurnManager.NotifyAll += TurnManager_NotifyAll;
         }
         phantom = _phantom;
+        phantomFuture = _futurePhamtom;
         SetGlowingColor();
     }
     private void SetGlowingColor()
     {
         if (phantom)
         {
+            if (phantomFuture)
+            {
+                icon.CrossFadeAlpha(0.4f, 0.2f, true);
+                iconMask.CrossFadeAlpha(0.4f, 0.2f, true);
+            }
             glowingMask.CrossFadeColor(phantomColor, 0.2f, false, true);
         }else if (activated)
         {
             glowingMask.CrossFadeColor(new Color(activatedColor.r, activatedColor.g, activatedColor.b, 0f), duration, false, true);
         }
-        else if (card.channel)
+       /* else if (card.channel)
         {
             glowingMask.CrossFadeColor(channelColor, 0.2f, false, true);
-        }
+        }*/
         else
-            glowingMask.CrossFadeColor(new Color(0f, 0f, 0f, 0f), 0.2f, false, true);
+        {
+            
+            if (linkedEvent.source.GetType() == typeof(Compagnion))
+            {
+                glowingMask.CrossFadeColor(linkedEvent.source.GetCurrentColor(), 0.2f, false, true);
+            }else if (card.hidden)
+            {
+                glowingMask.CrossFadeColor(Color.black, 0.2f, false, true);
+            }
+            else if (linkedEvent.targets.Count > 1 || linkedEvent.targets.Count == 0)
+            {
+                glowingMask.CrossFadeColor(new Color(0f, 0f, 0f, 0f), 0.2f, false, true);
+
+            }
+            else
+            {
+                glowingMask.CrossFadeColor(linkedEvent.targets[0].GetCurrentColor(), 0.2f, false, true);
+            }
+        }
     }
 
     private void OnDestroy()
@@ -100,6 +133,15 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 icon.sprite = card.sprite;
                 iconMask.sprite = icon.sprite;
                 card.hidden = false;
+                if (linkedEvent.source.GetType() != typeof(Compagnion))
+                {
+                    focusColor = linkedEvent.source.GetCurrentColor();
+                }
+                else if (linkedEvent.targets.Count == 1)
+                {
+                    focusColor = linkedEvent.targets[0].GetCurrentColor();
+                }
+                SetGlowingColor();
             }
         }
     }
@@ -135,9 +177,10 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 UI.Setup(card);
                 UI.description.text = card.GetDescription(linkedEvent.source, linkedEvent.targets);
-                UnitSelector.Instance.ForceSelection(new List<Unit> { linkedEvent.source }, UnitSelector.SELECTION_MODE.SHOWSOURCE);
                 UnitSelector.Instance.ForceSelection(linkedEvent.targets, UnitSelector.SELECTION_MODE.TCURRENT);
             }
+            UnitSelector.Instance.ForceSelection(new List<Unit> { linkedEvent.source }, UnitSelector.SELECTION_MODE.SHOWSOURCE);
+
             UI.Playable = false;
         }
     }
@@ -152,10 +195,10 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 CursorManager.Instance.type = CursorManager.CURSOR_TYPE.DEFAULT;
             if (!card.hidden || Hand.Instance.locked)
             {
-                UnitSelector.Instance.EndForceSelection(UnitSelector.SELECTION_MODE.SHOWSOURCE);
                 UnitSelector.Instance.EndForceSelection(UnitSelector.SELECTION_MODE.TCURRENT);
 
             }
+            UnitSelector.Instance.EndForceSelection(UnitSelector.SELECTION_MODE.SHOWSOURCE);
         }
     }
 }

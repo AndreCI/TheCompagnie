@@ -12,4 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32d418cb43a6a44aab0f97574fb8dae, type: 3}
   m_Name: custom
   m_EditorClassIdentifier: 
-  enemies: []
+  enemies:
+  - availableCards: 0
+    maxHealth: 0
+    maxMana: 0
+    maxAction: 0
+    currentHealth: 0
+    combatSprite: {fileID: 0}
+    portraitSprite: {fileID: 0}
+    unitName: 
+    level:
+      currentXP: 0
+      nextLevelThreshold: 0
+      currentLevel: 0
+    id: 0
+    baseSpeed: 0
+    currentSpeed: 0
+    type: 0
+    xpValue: 0
+    cardsWeights: 
+    applyOnStart: []
+    applyOnLevel: []

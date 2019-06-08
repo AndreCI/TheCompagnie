@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b6c0d8c85a88443afe2f7fcf6d3724, type: 3}
+  m_Name: blockSounds
+  m_EditorClassIdentifier: 
+  type: 4
+  childrenDatabase: []
+  sounds:
+  - Name: block
+    loop: 0
+    set: 8
+    file: {fileID: 8300000, guid: 43d05736c297bd54893629367b4748b5, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 0
+    audioType: 0
+  - Name: block
+    loop: 0
+    set: 8
+    file: {fileID: 8300000, guid: 4ad8a344df90f4b449bf4a12d8ec6a0b, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 0
+    audioType: 0
+  - Name: block
+    loop: 0
+    set: 8
+    file: {fileID: 8300000, guid: 8fb180d6788ffc14e9c0b3a79084f912, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 0
+    audioType: 0

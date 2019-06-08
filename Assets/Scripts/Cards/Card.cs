@@ -28,11 +28,13 @@ public class Card
     [Header("UI & Animations")]
     public Sprite sprite;
     public string Description;
+    public AudioSound.AUDIO_SET set;
 
     [Header("Database infos")]
     public CardDatabase.RARITY rarity;
     public string databasePath;
     public CardDatabase.CARDCLASS cardClass;
+    public CardDatabase.BRANCH branch;
     public int ID;
 
 
@@ -65,6 +67,8 @@ public class Card
         rarity = baseCard.rarity;
         databasePath = baseCard.databasePath;
         cardClass = baseCard.cardClass;
+        set = baseCard.set;
+        branch = baseCard.branch;
         owner = owner_;
 
 }
@@ -74,14 +78,15 @@ public class Card
     {
         owner.CurrentAction -= actionCost;
         if (!channel) { 
-            AddEvent(owner.currentSpeed + delay, targets);
+            AddEvent(Mathf.Max(0,owner.currentSpeed + delay), targets);
         }
         else
         {
             CombatEvent link = null;
-            for(int i = 0; i < channelLenght; i++)
+            int channelValue = Mathf.Max(0, channelLenght + owner.CurrentChannelValue);
+            for(int i = 0; i < channelValue; i++)
             {
-                link = AddEvent(owner.currentSpeed + delay + i, targets, link);
+                link = AddEvent(Mathf.Max(0, owner.currentSpeed + delay) + i, targets, link);
             }
         }
         
@@ -94,12 +99,22 @@ public class Card
         {
             owner.CurrentMana -= manaCost;
             // if (timeIndex > 9) { timeIndex = 9; }
-            CombatEvent cardEvent = new CombatEvent(owner, targets, timeIndex, effects, this, channel);
+            CombatEvent cardEvent = new CombatEvent(owner, targets, timeIndex, effects, this, set, channel);
             if (previous != null) { previous.nextChannelEvent = cardEvent; }
             TurnManager.Instance.AddCombatEvent(cardEvent);
             return cardEvent;
         }
         return null;
+    }
+    public override string ToString()
+    {
+        string d = "Card: " + Name + "; Class: "+cardClass.ToString() +" (MC " + manaCost.ToString() + "; D " + delay.ToString() + "; AC " + actionCost.ToString() + ")\n";
+         d += GetDescription();
+         d += "\n";
+        d += GetKeywordDescription();
+        d += "\n";
+        d += rarity.ToString() + " " + branch.ToString() + " " + ID.ToString();
+        return d;
     }
     public string GetKeywordDescription()
     {
@@ -108,8 +123,11 @@ public class Card
         if (channel)
         {
             description += "<b>Channel X</b>: This card takes longer than one tick, its effects are duplicate X times with an increasing delay. \n" +
-                "Each copy cost mana, and if you don't have enough for all copies, later one will not be duplicated. \nLoosing HP from any attack cancel all " +
-                "remaining copies, refunding mana. \n<i>For instance, casting this card completly will cost "+ (channelLenght * manaCost).ToString()+" mana.</i>\n";
+                "However, if the unit channeling the card is hit by an attack, all remaining effects will be cancelled.\n"+
+                (manaCost > 0? 
+                "Each copy cost the same mana cost displayed on the card. If you don't have enough for all copies, later one will not be duplicated, but any cancelled effect will refound the mana.\n" +
+                "<i>For instance, casting this card completly will cost "+ (channelLenght * manaCost).ToString()+" mana.</i>\n"
+                : "");
         }
         if (multipleTarget)
         {
@@ -121,14 +139,29 @@ public class Card
             }
         }
         List<CombatStatusFactory> statusEffects = effects.FindAll(x => x.type == CombatEffect.TYPE.APPLY_STATUS).SelectMany(e=>e.statusFactories).ToList();
+        statusEffects.AddRange(statusEffects.FindAll(x => x.status == CombatStatus.STATUS.STATUS_APPLY).SelectMany(e => e.factory.Select(f=>f.Generate())));
         if(statusEffects.Find(x=>x.status == CombatStatus.STATUS.BLOCK) !=null)
         {
-            description += "<b>Block</b>: Prevents damage.\n";
+            description += "<b>Block</b>: Prevents damage from attacks.\n";
         }if (statusEffects.Find(x => x.status == CombatStatus.STATUS.BUFF_STR) != null || (statusEffects.Find(x => x.status == CombatStatus.STATUS.REDUCE_STR) != null))
         {
             description += "<b>Strength</b>: Increase or decrease damages from attacks.\n";
         }
-        if (statusEffects.Find(x => x.status == CombatStatus.STATUS.BURN) != null)
+        if (statusEffects.Find(x => x.status == CombatStatus.STATUS.BUFF_SPEED) != null || (statusEffects.Find(x => x.status == CombatStatus.STATUS.RECUDE_SPEED) != null))
+        {
+            description += "<b>Speed</b>: Increase or decrease the number of ticks needed to play a card.\n";
+        }
+        if (statusEffects.Find(x => x.status == CombatStatus.STATUS.FROST) != null)
+        {
+            description += "<b>Frost</b>: All attacks from the target deal half damage (rounded down, applied after strength).\n";
+        }
+        if (statusEffects.Find(x => x.status == CombatStatus.STATUS.CHANNEL) != null)
+        {
+            description += "<b>Concentration</b>: Increase or decrease the number of intent created by all cards with <b>channel</b>.\n";
+        }
+
+
+            if (statusEffects.Find(x => x.status == CombatStatus.STATUS.BURN) != null)
         {
             description += "<b>Burn</b>: Deals periodic damages to the target.\n";
         }
@@ -160,11 +193,16 @@ public class Card
         string desc = "";
         if (channel)
         {
-            desc += "Channel " + channelLenght.ToString() + ": ";
+            int channelbuff = source == null ? 0 : source.CurrentChannelValue;
+            desc += "Channel " + channelLenght.ToString();
+            if(channelbuff > 0) { desc += " (+" + channelbuff.ToString() + ")"; }
+            if(channelbuff < 0) { desc += " (" + channelbuff.ToString() + ")"; }
+            desc += ": ";
         }
         
-        foreach (CombatEffect ce in effects)
+        for(int i = 0; i < effects.Count; i ++)// (CombatEffect ce in effects)
         {
+            CombatEffect ce = effects[i];
             if (multipleTarget && !alreadyMultp && ce.alternative!=CombatEffect.ALTERNATIVE_TARGET.SELF)
             {
                 alreadyMultp = true;
@@ -181,9 +219,10 @@ public class Card
                     desc += "All: ";
                 }
             }
-            desc += ce.GetDescription(source, targets != null? targets[0] : null, channel? channelLenght : 0) + "\n";
+            string current =  ce.GetDescription(source, targets != null? targets[0] : null, channel? channelLenght : 0);
+          //  if(i!= 0) { current = current.ToLower(); }
+            desc += current + (i== effects.Count - 1 ? "" : "\n");
         }
-        desc = desc.Substring(0, desc.Length - 1);
         if(actionCost == 0)
         {
             desc += "Cost no action.";
@@ -193,8 +232,12 @@ public class Card
 
     public int GetPrevisionDamage()
     {
-        int total = effects.FindAll(x => x.type == CombatEffect.TYPE.DAMAGE && x.variable == CardEffectVariable.VARIABLE.STATIC).Select(x => x.amount).Sum();
-        if (channel) { total *= channelLenght; }
+        List<int> damages = effects.FindAll(x => x.type == CombatEffect.TYPE.DAMAGE && x.variable == CardEffectVariable.VARIABLE.STATIC).Select(x => x.amount).ToList();
+        int total = damages.Sum() + (owner == null ? 0 : owner.CurrentStrength) * damages.Count();
+        
+        if (channel) { int channelValue = Mathf.Max(0, channelLenght + (owner == null ? 0 : owner.CurrentChannelValue));
+            total *= channelValue; }
+        total = Mathf.FloorToInt((float)total/(owner == null || owner.CurrentStatus.Find(x=>x.status == CombatStatus.STATUS.FROST) ==  null ? 1f : 2f));
         return total;
     }
 

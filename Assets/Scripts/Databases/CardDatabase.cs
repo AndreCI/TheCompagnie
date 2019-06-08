@@ -5,14 +5,16 @@ using System;
 
 public class CardDatabase : ScriptableObject
 {
-   public enum RARITY {NONE, STARTER, COMMON };
+   public enum RARITY {NONE, STARTER, COMMON, RARE, EPIC};
 
-    public enum CARDCLASS { CRUSADER, MAGE, WOLF, ABOMINATION, GLOBAL, WARRIOR, SNAKE, GHOST, DARK_MAGE, DARK_KNIGHT, SKELETON1};
-
-
+    public enum CARDCLASS { NONE, MAGE, WOLF, ABOMINATION, GLOBAL, WARRIOR, SNAKE, GHOST, DARK_MAGE, DARK_KNIGHT, SKELETON1, ELEM, PALADIN, BEAST};
+    public enum SUBCARDCLASS { NONE, GLOBAL, TYPE1, TYPE2, TYPE3}
+    public enum BRANCH { NONE, BASIC, B1, B2};
     public string Name;
     public CARDCLASS cardClass;
+    public SUBCARDCLASS subClass;
     public RARITY rarityLevel;
+    public BRANCH branchLevel;
     public List<CardDatabase> childrenDatabase;
         public Card[] items;
 
@@ -25,6 +27,10 @@ public class CardDatabase : ScriptableObject
             int idOffset = 0;
             foreach (CardDatabase database in childrenDatabase)
             {
+                if(database.cardClass == CARDCLASS.NONE && cardClass != CARDCLASS.NONE) { database.cardClass = cardClass; }
+                if(database.branchLevel == BRANCH.NONE && branchLevel != BRANCH.NONE) { database.branchLevel = branchLevel; }
+                if(database.subClass == SUBCARDCLASS.NONE && subClass != SUBCARDCLASS.NONE) { database.subClass = subClass; }
+              
                 database.Setup();
                 foreach (Card card in database.GetAllCards())
                 {
@@ -44,15 +50,20 @@ public class CardDatabase : ScriptableObject
                 card.databasePath = Name;
                 card.cardClass = cardClass;
                 card.rarity = rarityLevel;
+                card.branch = branchLevel;
                 card.ID = id;
                 id++;
             }
         }
     }
 
-    public IEnumerable<Card> GetCardsFromClass(CARDCLASS cClass, RARITY rarity = RARITY.NONE)
+    public IEnumerable<Card> GetCardsFromClass(CARDCLASS cClass, RARITY rarity = RARITY.NONE, BRANCH branch=BRANCH.NONE, SUBCARDCLASS subclass = SUBCARDCLASS.NONE)
     {
-        if(childrenDatabase.Count == 0 && cardClass == cClass && (rarity == rarityLevel || rarity == RARITY.NONE))
+        if(childrenDatabase.Count == 0 && 
+            cardClass == cClass && 
+            (rarity == rarityLevel || rarity == RARITY.NONE) &&
+            (branch == branchLevel || branch == BRANCH.NONE) && 
+            (subClass == subclass || subclass == SUBCARDCLASS.NONE))
         {
             return items;
         }
@@ -64,7 +75,7 @@ public class CardDatabase : ScriptableObject
             List<Card> cards = new List<Card>();
             foreach(CardDatabase database in childrenDatabase)
             {
-                cards.AddRange(database.GetCardsFromClass(cClass, rarity));
+                cards.AddRange(database.GetCardsFromClass(cClass, rarity, branch, subclass));
             }
             return cards; 
         }
@@ -114,11 +125,15 @@ public class CardDatabase : ScriptableObject
         return null;
     }
 
+    public List<Card> GetBranchCards(BRANCH b)
+    {
+        return items.ToList().FindAll(x => x.branch == b);
+    }
+
     public List<Card> GetRandomCards(int number, IEnumerable<Card> forcedOptions = null)
     {
         List<Card> cards = new List<Card>(forcedOptions ?? items);
-        System.Random rnd = new System.Random();
-        return new List<Card>(cards.OrderBy(x => rnd.Next()).Take(number));
+        return new List<Card>(cards.OrderBy(x => Utils.rdx.Next()).Take(number));
     }
 
 }

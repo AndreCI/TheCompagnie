@@ -73,7 +73,7 @@ public class CombatPartyDeck : CombatDeck
         {
             number = Enumerable.Repeat(1, owners_.Count).ToList();
         }
-                if (owners == null || (new List<Unit>(owners)).Count == 0)
+        if (owners == null || (new List<Unit>(owners)).Count == 0)
         {
             owners = owners_;
         }

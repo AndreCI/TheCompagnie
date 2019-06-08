@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32d418cb43a6a44aab0f97574fb8dae, type: 3}
+  m_Name: beastEnemies
+  m_EditorClassIdentifier: 
+  enemies:
+  - availableCards: 13
+    unitName: Snake
+    maxHealth: 30
+    maxMana: 0
+    maxAction: 20
+    baseManaRegen: 0
+    combatSprite: {fileID: -8175145840460673030, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    portraitSprite: {fileID: 21300000, guid: 14a427eef79904d42b2e63a66df9beab, type: 3}
+    switchSprite: 0
+    level:
+      currentXP: 0
+      nextLevelThreshold: 0
+      currentLevel: 0
+    id: 0
+    baseSpeed: 0
+    type: 0
+    xpValue: 4
+    cardsWeights: 04000000030000000200000001000000
+    enemyColor: {r: 0, g: 1, b: 0.10980392, a: 1}
+    applyOnStart: []
+    applyOnLevel: []
+    subclass: 2

@@ -15,9 +15,7 @@ public class UnitUI : UICardDropZone, IPointerClickHandler, IPointerEnterHandler
     public ParticleSystem targetAnimation;
     public UnitPortrait portraitInfos;
 
-    public StatusAnimator statusAnimator;
-    public SpriteRenderer effectSpriteRenderer;
-    public EffectAnimation currentAnimation;
+    public EffectAnimationHandler animationHandler;
 
     public override void OnPointerExit(PointerEventData eventData)
     {
@@ -109,11 +107,10 @@ public class UnitUI : UICardDropZone, IPointerClickHandler, IPointerEnterHandler
     }
     void Start()
     {
-       // currentAnimation = new List<EffectAnimation>();
         targeting = false;
         selectorNotified = true;
         CardSelector.Notify += SelectedCardUpdate;
-   
+//        animationHandler.Setup();
 
     }
 
@@ -164,7 +161,7 @@ public class UnitUI : UICardDropZone, IPointerClickHandler, IPointerEnterHandler
                         UnitSelector.SELECTION_MODE.TPOTENTIAL);
                     break;
                 case UnitSelector.SELECTION_MODE.SHOWSOURCE:
-                    selectionAnimation.startColor = Color.cyan;
+                    selectionAnimation.startColor = unit.GetCurrentColor();
                     this.SelectedUnitsUpdate(new List<Unit>(UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT)),
                         UnitSelector.SELECTION_MODE.SELECT);
                     break;
@@ -201,6 +198,7 @@ public class UnitUI : UICardDropZone, IPointerClickHandler, IPointerEnterHandler
         portraitInfos.gameObject.SetActive(true);
         unit = unit_;
         Image.sprite = unit_.combatSprite;
+        Image.transform.localRotation = Quaternion.Euler(0, unit.switchSprite ? 180 : 0, 0);
         //Image.preserveAspect = true;
         unit.NotifyUpdate += UpdateInfo;
         UnitSelector.Notify += SelectedUnitsUpdate;
@@ -231,7 +229,6 @@ public class UnitUI : UICardDropZone, IPointerClickHandler, IPointerEnterHandler
     }
     private void FixedUpdate()
     {
-        currentAnimation?.FixedUpdate(Time.fixedDeltaTime);
     }
 
     private bool IsAcceptableTarget(Card card)

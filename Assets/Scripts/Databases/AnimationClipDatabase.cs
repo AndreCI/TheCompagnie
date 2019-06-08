@@ -50,7 +50,8 @@ public class AnimationClipDatabase : ScriptableObject
         CURSE_TENTACULES,
         SLASH_DOUBLE_VIOLET,
         SLASH_DOUBLE_CYAN,
-        POWER_DOWN
+        POWER_DOWN,
+        STATUS
     }
 
     public List<EffectAnimation> animations;

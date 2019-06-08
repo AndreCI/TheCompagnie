@@ -14,40 +14,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   compagnions:
   - availableCards: 5
+    unitName: Jack The Warrior
     maxHealth: 60
     maxMana: 0
     maxAction: 1
-    currentHealth: 60
     combatSprite: {fileID: -7226599052271297704, guid: a95639a5f54aac54ba01b4a14670b34c,
       type: 3}
     portraitSprite: {fileID: -1240477794996741704, guid: ad03845c1d656e54e83a85baef5114df,
       type: 3}
-    unitName: Jack The Warrior
+    switchSprite: 0
+    cardColor: {r: 1, g: 0.007843138, b: 0.007843138, a: 1}
     level:
       currentXP: 0
       nextLevelThreshold: 5
-      talentPoints: 0
       currentLevel: 0
     id: 0
     baseSpeed: 0
-    currentSpeed: 0
     startingWeights: 04000000030000000200000001000000
+    branch1Color: {r: 0, g: 0, b: 0, a: 0}
+    branch2Color: {r: 0, g: 0, b: 0, a: 0}
   - availableCards: 1
+    unitName: Elana The Mage
     maxHealth: 40
     maxMana: 20
     maxAction: 1
-    currentHealth: 40
     combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
       type: 3}
     portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
       type: 3}
-    unitName: Elana The Mage
+    switchSprite: 0
+    cardColor: {r: 0, g: 0.57254905, b: 1, a: 1}
     level:
       currentXP: 0
       nextLevelThreshold: 5
-      talentPoints: 0
       currentLevel: 0
     id: 1
     baseSpeed: 0
-    currentSpeed: 0
     startingWeights: 04000000030000000200000001000000
+    branch1Color: {r: 0, g: 0, b: 0, a: 0}
+    branch2Color: {r: 0, g: 0, b: 0, a: 0}
+  - availableCards: 11
+    unitName: Dawn The Wizard
+    maxHealth: 35
+    maxMana: 25
+    maxAction: 1
+    combatSprite: {fileID: 4789616514980737865, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    portraitSprite: {fileID: 1729000809949870956, guid: ad03845c1d656e54e83a85baef5114df,
+      type: 3}
+    switchSprite: 1
+    cardColor: {r: 0.02745098, g: 0.02745098, b: 0.02745098, a: 0.81960785}
+    level:
+      currentXP: 0
+      nextLevelThreshold: 5
+      currentLevel: 0
+    id: 1
+    baseSpeed: 0
+    startingWeights: 04000000030000000200000001000000
+    branch1Color: {r: 1, g: 0, b: 0.047058824, a: 0.8}
+    branch2Color: {r: 0, g: 0.007843138, b: 1, a: 0.78431374}
+  - availableCards: 12
+    unitName: Ember The Paladin
+    maxHealth: 40
+    maxMana: 10
+    maxAction: 1
+    combatSprite: {fileID: 4067836417151260872, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    portraitSprite: {fileID: -106593275318082889, guid: ad03845c1d656e54e83a85baef5114df,
+      type: 3}
+    switchSprite: 0
+    cardColor: {r: 0.015686275, g: 0.015686275, b: 0.015686275, a: 0.75686276}
+    level:
+      currentXP: 0
+      nextLevelThreshold: 5
+      currentLevel: 0
+    id: 1
+    baseSpeed: 0
+    startingWeights: 04000000030000000200000001000000
+    branch1Color: {r: 1, g: 0.93333334, b: 0.21568628, a: 0.6862745}
+    branch2Color: {r: 1, g: 0.27450982, b: 0.14117648, a: 0.68235296}

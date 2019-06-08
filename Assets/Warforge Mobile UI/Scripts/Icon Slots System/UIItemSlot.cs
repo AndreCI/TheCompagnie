@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using Object = UnityEngine.Object;
 using System.Collections;
+using System.Linq;
+using UnityEngine.EventSystems;
 
 namespace DuloGames.UI
 {
@@ -20,6 +22,9 @@ namespace DuloGames.UI
 
         private bool tooltip = false;
         public bool ToolTipShow { get => tooltip; set => tooltip = value; }
+
+      
+
 
         /// <summary>
         /// Gets or sets the slot group.
@@ -245,6 +250,63 @@ namespace DuloGames.UI
             OnToolTip(true);
         }
 
+        public override void UISlotBase_PartyMenuNotify(PartyMenu.SLOT_TRIGGER trigger)
+        {
+            switch (trigger)
+            {
+                case PartyMenu.SLOT_TRIGGER.SETUP:
+                    ActiveAndAnimated = false;
+                    glowingImage.color = new Color(1f, 1f, 1f, 0f);
+                    break;
+                case PartyMenu.SLOT_TRIGGER.SKILL:
+                    if (!this.IsAssigned() && this.dropEnabled)
+                    {
+                        ActiveAndAnimated = true;
+                        glowingImage.color = new Color(0f, 0.5f, 0f);
+                    }
+                    else if (this.dragEnabled)
+                    {
+                        ActiveAndAnimated = true;
+                        if (PlayerInfos.Instance.persistentPartyDeck.GetCardSlots(new List<Unit> { PlayerInfos.Instance.unitsWindow.unit }) > 0 &&
+                            m_ItemInfo != null)
+                        {
+
+                            Color fixedColor = PlayerInfos.Instance.unitsWindow.GetGlowingCardColor(m_ItemInfo);
+                            glowingImage.color = fixedColor;
+                        }
+
+                        else
+                        {
+                            glowingImage.color = new Color(0.5f, 0f, 0f);
+                        }
+
+                    }
+                    else
+                    {
+                        if (ActiveAndAnimated)
+                        {
+                            Debug.Log("LAST TICK ACTIVATED");
+                            lastTick = true;
+                        }
+                    }
+                    break;
+                case PartyMenu.SLOT_TRIGGER.ON_DRAG:
+                    if (!this.IsAssigned() && this.dropEnabled)
+                    {
+                        ActiveAndAnimated = true;
+                        glowingImage.color = new Color(0f, 0.8f, 0f);
+                    }
+                    else if (!this.m_DragHasBegan)
+                    {
+                        if (ActiveAndAnimated) { lastTick = true; }
+                    }
+                    break;
+            }
+
+
+
+        }
+
         /// <summary>
         /// Raises the tooltip event.
         /// </summary>
@@ -256,10 +318,10 @@ namespace DuloGames.UI
 				return;
 			
 			// If we are showing the tooltip
-			if (show)
-			{
+			if (show) 
+            {
                 this.OnToolTip(true);
-                PlayerInfos.Instance.unitsWindow.ShowCardHolder(this.m_ItemInfo);
+                PlayerInfos.Instance.unitsWindow.ShowCardHolder(this.m_ItemInfo, dragEnabled);
 			}
 			else
 			{
@@ -269,13 +331,24 @@ namespace DuloGames.UI
                 //UITooltip.Hide();
             }
         }
-		
-		#region Static Methods
-		/// <summary>
-		/// Gets all the item slots.
-		/// </summary>
-		/// <returns>The slots.</returns>
-		public static List<UIItemSlot> GetSlots()
+
+        public override void OnPointerEnter(PointerEventData eventData)
+        {
+            base.OnPointerEnter(eventData);
+
+            if (ActiveAndAnimated && m_ItemInfo != null)
+            {
+                glowingImage.color = PlayerInfos.Instance.unitsWindow.GetGlowingCardColor(m_ItemInfo);
+
+            }
+        }
+
+        #region Static Methods
+        /// <summary>
+        /// Gets all the item slots.
+        /// </summary>
+        /// <returns>The slots.</returns>
+        public static List<UIItemSlot> GetSlots()
 		{
 			List<UIItemSlot> slots = new List<UIItemSlot>();
 			UIItemSlot[] sl = Resources.FindObjectsOfTypeAll<UIItemSlot>();

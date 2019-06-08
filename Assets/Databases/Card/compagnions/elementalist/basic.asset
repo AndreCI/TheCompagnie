@@ -1,0 +1,184 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: basic
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 11
+  subClass: 0
+  rarityLevel: 1
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Fireball
+    manaCost: 8
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 10
+      type: 0
+      animation: 11
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 3
+        value: 4
+        duration: 3
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 3
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 21300000, guid: 6686e0379f38a8c4a9cd11274399d75f, type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 47
+  - Name: Frost Shield
+    manaCost: 2
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 4
+      type: 5
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: -9177653333901626323, guid: f5cebeab8004f7243b8806191da531e9,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 48
+  - Name: Concentrate
+    manaCost: 0
+    delay: 8
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 23
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 8
+      type: 4
+      animation: 23
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 1
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 6867848280981260782, guid: 60d1e054a6d9a5b4cba34171bc6a9717,
+      type: 3}
+    Description: 
+    set: 7
+    rarity: 1
+    databasePath: //COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 49
+  - Name: Dual Hit
+    manaCost: 12
+    delay: 1
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 3
+        value: 7
+        duration: 3
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      - status: 10
+        value: 1
+        duration: 3
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -6839440310049417430, guid: 06bed70bacb8fb0469b252083afabe84,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION/All
+    cardClass: 11
+    branch: 0
+    ID: 50

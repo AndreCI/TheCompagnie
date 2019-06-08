@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a83c123f6c0f4a744b486ac0d4a43292, type: 3}
+  m_Name: UniqueRandomEvents
+  m_EditorClassIdentifier: 
+  databaseType: 1
+  children: []
+  events:
+  - eventName: The Tavern
+    description:
+    - 'You can sleep here. '
+    - 
+    - <i>Sleeping here will restore all of your health and mana.</i>
+    background: {fileID: 21300000, guid: 35b88ac9fd0a74b4aaf6ace40087e25d, type: 3}
+    frontground: {fileID: 21300000, guid: ea4ea42b03a480648b4e8b0b2f418f51, type: 3}
+    buttonsTexts:
+    - Sleep
+    - Leave
+    effects:
+    - leafChild:
+      - type: 0
+        amount: 1000
+      - type: 1
+        amount: 1000
+      - type: 3
+        amount: 0
+    - leafChild:
+      - type: 3
+        amount: 0
+    dtype: 0
+    ID: 0
+  - eventName: Madness Road
+    description:
+    - Taking the madness road will help you forget what you want, but it will hurt.
+    - '... You can always leave.'
+    background: {fileID: 21300000, guid: aa35693940d4b534da1e6cd395f6f646, type: 3}
+    frontground: {fileID: 21300000, guid: 7fddd53cc4c3e494a8bd28f3811ab9ca, type: 3}
+    buttonsTexts:
+    - Walk
+    - Leave
+    effects:
+    - leafChild:
+      - type: 0
+        amount: -60
+      - type: 10
+        amount: 5
+      - type: 2
+        amount: 30
+      - type: 3
+        amount: 0
+    - leafChild:
+      - type: 3
+        amount: 0
+    dtype: 0
+    ID: 0

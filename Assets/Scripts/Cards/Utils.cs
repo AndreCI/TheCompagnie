@@ -6,6 +6,18 @@ using System.Threading.Tasks;
 
 public static class Utils
 {
+    private static Random rdx_;
+    public static System.Random rdx
+    {
+        get
+        {
+            if (rdx_ == null)
+            {
+                rdx_ = new Random();
+            }
+            return rdx_;
+        }
+    }
    
 }
 
@@ -16,8 +28,7 @@ public class CardCollection
 
     public List<Card> GetRandomCards(int number)
     {
-        Random rnd = new Random();
-        return new List<Card>(cards.OrderBy(x => rnd.Next()).Take(number));
+        return new List<Card>(cards.OrderBy(x => Utils.rdx.Next()).Take(number));
     }
 
     public List<Card> GetCardByName(List<string> names)

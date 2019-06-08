@@ -17,6 +17,8 @@ public class AudioManager : MonoBehaviour
     private Dictionary<SoundDatabase.SOUND_TYPE, float> volume_;
     private Dictionary<SoundDatabase.SOUND_TYPE, AudioSource> sources;
 
+    private Dictionary<SoundDatabase.SOUND_TYPE, Queue<AudioSound>> waitingSounds;
+
     public float GetVolume(SoundDatabase.SOUND_TYPE type)
     {
         return volume_[type];
@@ -39,28 +41,76 @@ public class AudioManager : MonoBehaviour
         database.Setup();
         sources = new Dictionary<SoundDatabase.SOUND_TYPE, AudioSource>();
         volume_ = new Dictionary<SoundDatabase.SOUND_TYPE, float>();
+        waitingSounds = new Dictionary<SoundDatabase.SOUND_TYPE, Queue<AudioSound>>();
         foreach(SoundDatabase.SOUND_TYPE ctype in Enum.GetValues(typeof(SoundDatabase.SOUND_TYPE)))
         {
             if (ctype != SoundDatabase.SOUND_TYPE.GLOBAL)
             {
                 sources.Add(ctype, gameObject.AddComponent<AudioSource>());
                 volume_.Add(ctype, 1);
+                waitingSounds.Add(ctype, new Queue<AudioSound>());
                 
             }
 
         }
         SetVolume(PlayerSettings.Instance.themeVolume);
         Play("TitleTheme");
+      //  SetVolume(0.2f, SoundDatabase.SOUND_TYPE.THEME);
     }
 
-    public void Play(string Name)
+    private void Update()
     {
-        Play(database.Get(Name));
+        foreach (SoundDatabase.SOUND_TYPE key in sources.Keys)
+        {
+            if(!sources[key].isPlaying && waitingSounds[key].Count > 0)
+            {
+                Play(waitingSounds[key].Dequeue());
+            }
+        }
     }
 
-    public void PlayFromSet(AudioSound.AUDIO_SET set)
+    public void AddToQueue(AudioSound audio)
     {
-        Play(database.GetRandom(set));
+        waitingSounds[audio.audioType].Enqueue(audio);
+    }
+
+    public void Play(string Name, bool forcePlay=true)
+    {
+        AudioSound audio = database.Get(Name);
+        if (audio != null) {
+            if (forcePlay)
+            {
+                Play(audio);
+            }
+            else
+            {
+                AddToQueue(audio);
+            }
+        }
+        else
+        {
+            Debug.Log("Issue with sound database: sound " + Name + " was not found.");
+        }
+    }
+
+    public void PlayFromSet(AudioSound.AUDIO_SET set, bool forcePlay=true)
+    {
+        AudioSound audio = database.GetRandom(set);
+        if (audio != null)
+        {
+            if (forcePlay)
+            {
+                Play(audio);
+            }
+            else
+            {
+                AddToQueue(audio);
+            }
+        }
+        else
+        {
+            Debug.Log("Issue with sound database: sound from set " + set.ToString() + " was not found.");
+        }
     }
 
     private void Play(AudioSound audio)

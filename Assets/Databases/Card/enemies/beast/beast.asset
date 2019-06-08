@@ -1,0 +1,670 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: beast
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 13
+  subClass: 0
+  rarityLevel: 0
+  branchLevel: 0
+  childrenDatabase:
+  - {fileID: 11400000, guid: 2caff91ba2e096140b231abedcc5dd71, type: 2}
+  - {fileID: 11400000, guid: 1715f6a84a9b124439fd9a9bbc0cd209, type: 2}
+  - {fileID: 11400000, guid: db85d4f7e32d8784e8194d639a7382d0, type: 2}
+  - {fileID: 11400000, guid: 8b2e267e05b3b93448020fde2527effb, type: 2}
+  items:
+  - Name: Quick Jump
+    manaCost: 0
+    delay: 1
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 13
+        value: 1
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 18
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -4308542691851673422, guid: 17a86255d56a58a4a82a49c7418ee4e1,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 170
+  - Name: Ambush
+    manaCost: 0
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 8
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 7
+        value: 6
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -8966257840395225404, guid: 254d334b4153ec645bfbc6e9e7d1922c,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 171
+  - Name: Primal Hit
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 12
+      type: 0
+      animation: 2
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 7335029055496181270, guid: 0fbd29d51be78a045a0769393e3fb644,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 172
+  - Name: Thick Skin
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 20
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 10
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -1930290752835818480, guid: 42f3e5f19e574f94897fbe8188e3fc4d,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 173
+  - Name: Rage
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 7
+        value: 8
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 13
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 2
+      type: 2
+      animation: 4
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 4733255756132465344, guid: 1f9585b22f016c149970062d8062abe9,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 174
+  - Name: Quick Hit
+    manaCost: 0
+    delay: 1
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 8
+      type: 0
+      animation: 2
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 2659461022099429189, guid: 37f5a388cc11f3a4a9b6f23198e4d9e8,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 175
+  - Name: Constriction
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 5
+      type: 0
+      animation: 23
+      variable: 0
+      alternative: 0
+      condition: 4
+      OnPlay: 0
+    channel: 1
+    channelLenght: 5
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 3435337354846524532, guid: be9535d00fe6369409b2c2bff25613c5,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 176
+  - Name: Sneak Bite
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 15
+      type: 0
+      animation: 2
+      variable: 0
+      alternative: 0
+      condition: 4
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 1
+    sprite: {fileID: 6828895427639608449, guid: 7e22e1ff3e2739243bdd5432872d1778,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 177
+  - Name: Poisonous Bite
+    manaCost: 0
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 7
+      type: 0
+      animation: 8
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 5
+        value: 1
+        duration: 8
+        permanent: 0
+        trigger: 1
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 6
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 2027994665441964381, guid: aa07ff2a2614eb34aa641f0d08b25d7d,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 178
+  - Name: Intimidation
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 6
+        value: 10
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 43
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 3893365647550460204, guid: 14b37bf3427c3d04db0699e1d051e94e,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 179
+  - Name: Deadly Bite
+    manaCost: 0
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 7
+      type: 0
+      animation: 8
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 5
+        value: 2
+        duration: 5
+        permanent: 0
+        trigger: 1
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 7
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 3985031922390584545, guid: 01d169befaec32845a7b22948b19478f,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 180
+  - Name: Shadow Strike
+    manaCost: 0
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 22
+      type: 0
+      animation: 2
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 1
+    sprite: {fileID: 7365488714390206837, guid: e2b3c545b1bb4734881688d31a1e2254,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 181
+  - Name: Howl
+    manaCost: 0
+    delay: 2
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 6
+        value: 5
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 43
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 8915095000578986395, guid: 6861a94abf6aa3c429227d89fa3d34ae,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 182
+  - Name: Vicious Bite
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 14
+      type: 0
+      animation: 2
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -3964170307113569116, guid: 022fe955f1d9af649901eb39f4d135ff,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 183
+  - Name: Double Hit
+    manaCost: 0
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 10
+      type: 0
+      animation: 21
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 10
+      type: 0
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 6542128833638684968, guid: 6a23b723e9248904aa8746cc2c3e4c7b,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 184
+  - Name: Learning
+    manaCost: 0
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 10
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 7
+        value: 3
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -6872642706084440239, guid: 207153c0c9259de4c9c5d6f367ffbac8,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 185
+  - Name: Regeneration
+    manaCost: 0
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 0
+        value: 10
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 15
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -3159645764545842727, guid: b3fa7b88719c5a64a9713ce9a3b15817,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 186
+  - Name: Forest Skin
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 15
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 0
+        value: 5
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 4687293386815021628, guid: 3ff97031fd3bd8947b01a11b513a0aef,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 187

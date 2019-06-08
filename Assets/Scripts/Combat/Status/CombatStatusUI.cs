@@ -17,7 +17,7 @@ public class CombatStatusUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public Text text1;
     public Text text2;
 
-    public CombatStatus combatStatus;
+    public UnitStatus unitStatus;
 
     private float duration;
     private bool activated;
@@ -39,6 +39,7 @@ public class CombatStatusUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                 iconMask.fillAmount = 0f;
                 if (setDestroy)
                 {
+                    unitStatus.showUi = false;
                     if (ToolTipShow) { OnToolTip(false); }
                     Destroy(gameObject);
                 }
@@ -49,36 +50,62 @@ public class CombatStatusUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             }
         }
     }
-
-    public void Setup(CombatStatus s)
+    public void Setup(Talent t)
     {
-        combatStatus = s;
-        data = PlayerInfos.Instance.effectDatabase.Get(s.status);
+        unitStatus = t;
+        data = new CombatStatusData(t.name, CombatStatus.STATUS.BLEED, t.icon, t.icon);
+        Setup();
+    }
+
+    private void Setup()
+    {
         iconMask.sprite = data.icon;
         icon.sprite = data.icon;
-        if (s.permanent)
+
+        if (unitStatus.noValue)
+        {
+            text1.transform.parent.parent.gameObject.SetActive(false);
+        }
+        if (unitStatus.permanent)
         {
             text2.transform.parent.parent.gameObject.SetActive(false);
         }
         UpdateData();
     }
+    public void Setup(CombatStatus s)
+    {
+        unitStatus = s;
+        data = s.miscData;
+        data.mainAnimation?.Setup();
+        data.finalAnimation?.Setup();
+        Setup();
+    }
 
     public void UpdateData()
     {
-        text1.text = combatStatus.value.ToString();
-        if (!combatStatus.permanent)
+        if(this == null) { return; }
+        if (!unitStatus.noValue)
         {
-            text2.text = combatStatus.duration.ToString();
+            text1.text = unitStatus.value.ToString();
+        }
+        if (!unitStatus.permanent)
+        {
+            text2.text = unitStatus.duration.ToString();
         }
     }
 
-    public void Trigger(float duration_ = 0.3f)
+    public void Trigger(float duration_ = 0.3f, bool forceAnimation=true)
     {
-        if (!activated)
+        if (!activated && unitStatus != null)
         {
             UpdateData();
             duration = duration_;
             activated = true;
+            AudioManager.Instance.Play(unitStatus.GetAnimationName(), false);
+            if (setDestroy && data.finalAnimation != null) {
+                CombatManager.Instance.GetUnitUI(unitStatus.target).animationHandler.Play(data.finalAnimation, forcedTime:duration,forcePlay:forceAnimation);}
+            else if(data.mainAnimation!=null) { CombatManager.Instance.GetUnitUI(unitStatus.target).animationHandler.Play(data.mainAnimation, forcedTime: duration, forcePlay: forceAnimation); }
+            
         }
     }
 
@@ -86,7 +113,7 @@ public class CombatStatusUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         icon.sprite = data.highlightedSprite;
         OnToolTip(true);
-     }
+    }
 
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -98,8 +125,8 @@ public class CombatStatusUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnToolTip(bool show)
     {
         ToggleTipWindow.Instance.gameObject.SetActive(show);
-        ToggleTipWindow.Instance.GetComponent<RectTransform>().pivot = new Vector2(typeof(Compagnion) == combatStatus.target.GetType() ? 0f : 1f, 1f);
-        ToggleTipWindow.Instance.ToggleText.text = combatStatus.GetDescription();
+        ToggleTipWindow.Instance.GetComponent<RectTransform>().pivot = new Vector2(typeof(Compagnion) == unitStatus.target.GetType() ? 0f : 1f, 1f);
+        ToggleTipWindow.Instance.ToggleText.text = unitStatus.GetDescription();
         ToggleTipWindow.Instance.transform.position = Input.mousePosition;
         ToolTipShow = show;
     }

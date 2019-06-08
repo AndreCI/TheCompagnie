@@ -11,6 +11,7 @@ namespace DuloGamesEditor.UI
 	public class UISlotBaseEditor : Editor {
 		
 		private SerializedProperty m_IconGraphicProperty;
+        private SerializedProperty m_IconGlowingProperty;
         private SerializedProperty m_CloneTargetProperty;
         private SerializedProperty m_DragEnabledProperty;
         private SerializedProperty m_DropEnabledProperty;
@@ -42,6 +43,7 @@ namespace DuloGamesEditor.UI
 		protected virtual void OnEnable()
 		{
 			this.m_IconGraphicProperty = this.serializedObject.FindProperty("iconGraphic");
+            this.m_IconGlowingProperty = this.serializedObject.FindProperty("glowingImage");
             this.m_CloneTargetProperty = this.serializedObject.FindProperty("m_CloneTarget");
             this.m_DragEnabledProperty = this.serializedObject.FindProperty("m_DragEnabled");
             this.m_DropEnabledProperty = this.serializedObject.FindProperty("m_DropEnabled");
@@ -92,6 +94,7 @@ namespace DuloGamesEditor.UI
 			EditorGUI.indentLevel = (EditorGUI.indentLevel + 1);
 			
 			EditorGUILayout.PropertyField(this.m_IconGraphicProperty, new GUIContent("Icon Graphic"));
+            EditorGUILayout.PropertyField(this.m_IconGlowingProperty, new GUIContent("Glowing Graphic"));
             EditorGUILayout.PropertyField(this.m_CloneTargetProperty, new GUIContent("Clone Target"));
 
             EditorGUI.indentLevel = (EditorGUI.indentLevel - 1);

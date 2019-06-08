@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: rare
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 13
+  subClass: 2
+  rarityLevel: 3
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Deadly Bite
+    manaCost: 0
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 7
+      type: 0
+      animation: 8
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 5
+        value: 2
+        duration: 5
+        permanent: 0
+        trigger: 1
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 7
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 3985031922390584545, guid: 01d169befaec32845a7b22948b19478f,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 180
+  - Name: Shadow Strike
+    manaCost: 0
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 22
+      type: 0
+      animation: 2
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 1
+    sprite: {fileID: 7365488714390206837, guid: e2b3c545b1bb4734881688d31a1e2254,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///All
+    cardClass: 13
+    branch: 0
+    ID: 181

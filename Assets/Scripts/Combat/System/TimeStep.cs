@@ -11,9 +11,9 @@ using UnityEngine.UI;
 public class TimeStep : MonoBehaviour
 {
     public int index;
-    public Slider mask;
     public Image alternateMask;
     public Image image;
+    public Image glow;
     public StretchyGridLayoutGroup enemiesIntents;
     public StretchyGridLayoutGroup compIntents;
     public float duration;
@@ -38,6 +38,7 @@ public class TimeStep : MonoBehaviour
             else
             {
                 alternateMask.fillAmount += Time.deltaTime / duration;
+                glow.color = new Color(glow.color.r, glow.color.g, glow.color.b, glow.color.a - Time.deltaTime / duration);
             }
         }
         else if (activeBackwards)
@@ -62,6 +63,7 @@ public class TimeStep : MonoBehaviour
         }
         else
         {
+            glow.color = new Color(glow.color.r, glow.color.g, glow.color.b, 1f);// (1f, 0f, true);
             active = true;
         }
     }

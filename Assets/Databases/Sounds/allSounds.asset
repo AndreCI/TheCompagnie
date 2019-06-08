@@ -16,6 +16,9 @@ MonoBehaviour:
   childrenDatabase:
   - {fileID: 11400000, guid: 8beafd4628d422b4e8a9854f99f9385c, type: 2}
   - {fileID: 11400000, guid: 414548ff89c1cfa49820bb0f2952df0b, type: 2}
+  - {fileID: 11400000, guid: e3073a98505405a499bed637e98d043b, type: 2}
+  - {fileID: 11400000, guid: 2bda5a8068a232c4484d41b0f27639fd, type: 2}
+  - {fileID: 11400000, guid: 53d1b8321b7d5db43af18662104dc80d, type: 2}
   sounds:
   - Name: TitleTheme
     loop: 1
@@ -41,13 +44,21 @@ MonoBehaviour:
     pitch: 1
     ID: 2
     audioType: 1
+  - Name: CombatTheme2
+    loop: 1
+    set: 2
+    file: {fileID: 8300000, guid: 5f5fbda03be3a374f9e305a9a4a46218, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 3
+    audioType: 1
   - Name: draw1
     loop: 0
     set: 3
     file: {fileID: 8300000, guid: 85994fa01cdec5c43ada09075352b62f, type: 3}
     volume: 1
     pitch: 1
-    ID: 3
+    ID: 4
     audioType: 3
   - Name: draw2
     loop: 0
@@ -55,7 +66,7 @@ MonoBehaviour:
     file: {fileID: 8300000, guid: 3fc36120500bc5f4bbf7f90a791fab1f, type: 3}
     volume: 1
     pitch: 1
-    ID: 4
+    ID: 5
     audioType: 3
   - Name: draw3
     loop: 0
@@ -63,7 +74,7 @@ MonoBehaviour:
     file: {fileID: 8300000, guid: ea8742150c43a8348ab120b845c10763, type: 3}
     volume: 1
     pitch: 1
-    ID: 5
+    ID: 6
     audioType: 3
   - Name: draw4
     loop: 0
@@ -71,5 +82,109 @@ MonoBehaviour:
     file: {fileID: 8300000, guid: ab0211a1427ca8948b8d2dddc74d98e9, type: 3}
     volume: 1
     pitch: 1
-    ID: 6
+    ID: 7
     audioType: 3
+  - Name: play
+    loop: 0
+    set: 4
+    file: {fileID: 8300000, guid: fe20a6e0530a4e943820b48549c20c1c, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 8
+    audioType: 3
+  - Name: play
+    loop: 0
+    set: 4
+    file: {fileID: 8300000, guid: 986e35e88748b1e46a97b560787b43ee, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 9
+    audioType: 3
+  - Name: play
+    loop: 0
+    set: 4
+    file: {fileID: 8300000, guid: 5e72d39def8a93c40a98d922500e2ed7, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 10
+    audioType: 3
+  - Name: play
+    loop: 0
+    set: 4
+    file: {fileID: 8300000, guid: 1b6524e29b29c3c4baa953b87468fc99, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 11
+    audioType: 3
+  - Name: Shuffle
+    loop: 0
+    set: 5
+    file: {fileID: 8300000, guid: 4d63ffe615cb35e40a8bdc1fc8035c36, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 12
+    audioType: 3
+  - Name: Slash1
+    loop: 0
+    set: 6
+    file: {fileID: 8300000, guid: f5719cf4237a20a4bb966f20e50c9d5a, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 13
+    audioType: 2
+  - Name: Slash2
+    loop: 0
+    set: 6
+    file: {fileID: 8300000, guid: ef855ef0a043a16438aefa9c80400a8b, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 14
+    audioType: 2
+  - Name: Slash3
+    loop: 0
+    set: 6
+    file: {fileID: 8300000, guid: e046d1be6d109d1479333370f94a821c, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 15
+    audioType: 2
+  - Name: Slash4
+    loop: 0
+    set: 6
+    file: {fileID: 8300000, guid: 86e0d14783c4cbc429b49bed42e1dc93, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 16
+    audioType: 2
+  - Name: Slash5
+    loop: 0
+    set: 6
+    file: {fileID: 8300000, guid: cbb10e2d8a47bb24083a7a20b99c36ba, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 17
+    audioType: 2
+  - Name: Slash6
+    loop: 0
+    set: 6
+    file: {fileID: 8300000, guid: 7336948f1b0ce4145a974f24f30d1803, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 18
+    audioType: 2
+  - Name: Slash7
+    loop: 0
+    set: 6
+    file: {fileID: 8300000, guid: 60e53c8a46407d84690393c7f1691614, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 19
+    audioType: 2
+  - Name: Slash8
+    loop: 0
+    set: 6
+    file: {fileID: 8300000, guid: a1b6c9cb1cef027438bfbf148c9f126b, type: 3}
+    volume: 1
+    pitch: 1
+    ID: 20
+    audioType: 2

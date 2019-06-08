@@ -9,6 +9,59 @@ using UnityEngine.UI;
 
 public class EventWindow : MonoBehaviour
 {
+    private static EventWindow instance;
+    public static EventWindow Instance { get => instance; }
+    public GameObject titleHeader;
+    public List<Button> options;
+    public Text description;
+    public Image background;
+    public Image frontground;
+
+    private OverworldEvent oEvent;
+
+    void Start()
+    {
+        if(instance != null) { Destroy(gameObject); return; }
+        instance = this;
+        options[0].onClick.AddListener(() => Activate(0));
+        options[1].onClick.AddListener(() => Activate(1));
+        options[2].onClick.AddListener(() => Activate(2));
+        options[3].onClick.AddListener(() => Activate(3));
+
+        gameObject.SetActive(false);
+    }
+    public void Setup(OverworldEvent oEvent_){
+        oEvent = oEvent_;
+        foreach(Text t in titleHeader.GetComponentsInChildren<Text>())
+        {
+            t.text = oEvent.eventName;
+        }
+        description.text = oEvent.GetDescription();
+        background.sprite = oEvent.background;
+        frontground.sprite = oEvent.frontground;
+        for(int i = 0; i < options.Count; i++)
+        {
+            if (i < oEvent.effects.Count)
+            {
+                options[i].gameObject.SetActive(true);
+                options[i].interactable = true;
+                options[i].GetComponentInChildren<Text>().text = oEvent.buttonsTexts[i];
+            }
+            else
+            {
+                options[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void Activate(int i)
+    {
+        if(oEvent != null)
+        {
+            oEvent.ButtonClick(i);
+        }
+    }
+    /*
     public Slider slider;
     public Button wait;
     public Button leave;
@@ -69,4 +122,5 @@ public class EventWindow : MonoBehaviour
             c.CurrentMana = c.maxMana;
         }
     }
+}*/
 }

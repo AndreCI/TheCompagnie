@@ -20,7 +20,8 @@ namespace DuloGames.UI
 		public Text m_Text;
 		public TextVariant m_TextVariant = TextVariant.Percent;
 		public int m_TextValue = 100;
-
+        public string additionalText = "";
+        public string forcedText = "";
 		// Tween controls
 		[NonSerialized] private readonly TweenRunner<FloatTween> m_FloatTweenRunner;
 		
@@ -63,7 +64,12 @@ namespace DuloGames.UI
 				{
 					this.m_Text.text =  Mathf.RoundToInt((float)this.m_TextValue * amount).ToString() + "/" + this.m_TextValue;
 				}
+                this.m_Text.text += this.additionalText;
 			}
+            if(forcedText != "")
+            {
+                this.m_Text.text = forcedText;
+            }
 		}
 		
 		public void OnTweenFinished()
@@ -74,11 +80,12 @@ namespace DuloGames.UI
 		//	this.StartTween((this.bar.fillAmount == 0f ? 1f : 0f), this.Duration);
 		}
 		
-		public void StartTween(float targetFloat, float duration = 0.3f, float maxTargetFloat=1f)
+		public void StartTween(float targetFloat, float duration = 0.3f, float maxTargetFloat=1f, string additionalText="")
 		{
 			if (this.bar == null)
 				return;
 
+            this.additionalText = additionalText;
             if(maxTargetFloat !=1f)
             {
                 targetFloat = targetFloat / maxTargetFloat;
