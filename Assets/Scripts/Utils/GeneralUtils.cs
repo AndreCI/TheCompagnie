@@ -10,9 +10,33 @@ using ArrayExtensions;
 
 public static class GeneralUtils
     {
+    public static T[] FromJson<T>(string json)
+    {
+        Wrapper<T> wrapper = UnityEngine.JsonUtility.FromJson<Wrapper<T>>(json);
+        return wrapper.Items;
+    }
 
+    public static string ToJson<T>(T[] array)
+    {
+        Wrapper<T> wrapper = new Wrapper<T>();
+        wrapper.Items = array;
+        return UnityEngine.JsonUtility.ToJson(wrapper);
+    }
 
-    private static readonly MethodInfo CloneMethod = typeof(Object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
+    public static string ToJson<T>(T[] array, bool prettyPrint)
+    {
+        Wrapper<T> wrapper = new Wrapper<T>();
+        wrapper.Items = array;
+        return UnityEngine.JsonUtility.ToJson(wrapper, prettyPrint);
+    }
+
+    [Serializable]
+    private class Wrapper<T>
+    {
+        public T[] Items;
+    }
+
+private static readonly MethodInfo CloneMethod = typeof(Object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
     public enum SUBJECT_TRIGGER { START_OF_TURN, TIMESTEP_TICK, NONE, START_OF_TIME, START_OF_COMBAT };
 
         public static bool IsPrimitive(this Type type)

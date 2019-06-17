@@ -1,0 +1,242 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: rare
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 1
+  subClass: 0
+  rarityLevel: 3
+  branchLevel: 3
+  childrenDatabase: []
+  items:
+  - Name: Backup Plan
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 11
+        factory: []
+        effectFactory:
+        - amount: 1
+          type: 3
+          variable: 0
+          alternative: 1
+          condition: 0
+        - amount: 1
+          type: 6
+          variable: 0
+          alternative: 1
+          condition: 0
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 24
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -4343259053427641442, guid: 3ed0bb6e86d042d4bba42fbee77da09c,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 3
+    ID: 73
+  - Name: Antimagic Arrow
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 8
+      type: 0
+      animation: 16
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 8
+      type: 7
+      animation: 18
+      variable: 0
+      alternative: 0
+      condition: 2
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 1
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 4261813374580636657, guid: 5743b15ac22cb5540ae0490ddec2e4f9,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 3
+    ID: 74
+  - Name: Double Shot
+    manaCost: 8
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 10
+      type: 0
+      animation: 16
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    - statusFactories: []
+      amount: 16
+      type: 0
+      animation: 22
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 17
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 1
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 2762882971565724076, guid: e43eecc46bdae8e46a84b5fd572d90b4,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 3
+    ID: 75
+  - Name: Crossbow
+    manaCost: 0
+    delay: 12
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 7
+        value: 5
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 4
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: -3
+      type: 5
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -9166216308194237310, guid: eeb75e3296feaab48a15593306e32433,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 3
+    ID: 75
+  - Name: Healing
+    manaCost: 6
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 20
+      type: 1
+      animation: 15
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 2
+      type: 3
+      animation: 17
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 1
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 6038893933152053698, guid: a5c63e14898f82948871c59a720161c1,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 3
+    ID: 75

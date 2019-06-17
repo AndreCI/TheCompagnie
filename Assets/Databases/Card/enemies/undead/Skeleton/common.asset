@@ -1,0 +1,227 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: common
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 14
+  subClass: 3
+  rarityLevel: 2
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Heavy Strike
+    manaCost: 0
+    delay: 9
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 31
+      type: 0
+      animation: 3
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -522498085984005737, guid: 442b1e1aeaa0ac64aa6ecaec13e4baf4,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 14
+    branch: 0
+    ID: 189
+  - Name: Ambush
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 12
+      type: 0
+      animation: 3
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 1
+    sprite: {fileID: -7509962413310899795, guid: 57bd6bff72f9d8a4ca5929e0f64d5720,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 14
+    branch: 0
+    ID: 190
+  - Name: Reconstruction
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 25
+      type: 1
+      animation: 27
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 6406740151177666841, guid: 2fcdd59e5b88fe8428693f779851c248,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 14
+    branch: 0
+    ID: 191
+  - Name: Heavy Armor
+    manaCost: 0
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 20
+        duration: 3
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 8606005091515877337, guid: d9c9ecbf133facf43926fd1c7a5fd7f0,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 14
+    branch: 0
+    ID: 192
+  - Name: Immaterial
+    manaCost: 0
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 2
+        value: 3
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 13
+        value: 2
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 24
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -669636349888610814, guid: d910481bc12b7e74e81300ba573a6d08,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 14
+    branch: 0
+    ID: 193
+  - Name: Duelist Slash
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 19
+      type: 0
+      animation: 3
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 2
+        value: 1
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -6838945464485537608, guid: 1a6667cf91334eb4d9042d39c74b8806,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 14
+    branch: 0
+    ID: 194

@@ -12,12 +12,15 @@ public class CombatEffect
     HEAL,
     APPLY_STATUS,
     DRAW,
-    MANA_GAIN,
-    MOVE_INTENT};
+    MANA_MODIFY,
+    MOVE_INTENT,
+    ACTION_GAIN,
+    CANCEL_INTENT,
+    MANA_REGEN_MODIFY};
 
     
-    public enum ALTERNATIVE_TARGET { NONE, SELF, FRIEND, ALL_ENEMY, ALL_FRIEND, ALL, RANDOM_ENEMY};
-    public enum CONDITION { NONE, STATUS_BURN, TARGET_CHANNEL, STATUS_FROST, STATUS_BLOCK_NO};
+    public enum ALTERNATIVE_TARGET { NONE, SELF, FRIEND, ALL_ENEMY, ALL_FRIEND, ALL, RANDOM_ENEMY, NEXT_INTENT_OWNER};
+    public enum CONDITION { NONE, STATUS_BURN, TARGET_CHANNEL, STATUS_FROST, STATUS_BLOCK_NO, STATUS_POISON, HEALTH_IS_MAX_HEALTH};
 
     [Header("Status (only if APPLY_STATUS)")]
     public List<CombatStatusFactory> statusFactories;
@@ -52,10 +55,14 @@ public class CombatEffect
                 return target.CurrentStatus.Any(x => x.status == CombatStatus.STATUS.BURN);
             case CONDITION.STATUS_FROST:
                 return target.CurrentStatus.Any(x => x.status == CombatStatus.STATUS.FROST);
+            case CONDITION.STATUS_POISON:
+                return target.CurrentStatus.Any(x => x.status == CombatStatus.STATUS.POISON);
             case CONDITION.TARGET_CHANNEL:
                 return TurnManager.Instance.GetCurrentEvents(true).Find(x => x.channel && x.source == target) != null;
             case CONDITION.STATUS_BLOCK_NO:
                 return !target.CurrentStatus.Any(x => x.status == CombatStatus.STATUS.BLOCK);
+            case CONDITION.HEALTH_IS_MAX_HEALTH:
+                return target.CurrentHealth == target.maxHealth;
 
         }
         return true;
@@ -86,6 +93,10 @@ public class CombatEffect
                 {
                     targets = new List<Unit>(CombatManager.Instance.enemies);
                 }
+                break;
+            case ALTERNATIVE_TARGET.NEXT_INTENT_OWNER:
+                targets = new List<Unit> { TurnManager.Instance.GetNextCombatEvent().source };
+        
                 break;
 
         }return targets;
@@ -130,6 +141,10 @@ public class CombatEffect
                     if (type == Unit.DAMAGE_SOURCE_TYPE.ATTACK)
                     {
                         source?.TriggerSpecificUpdate(Unit.UNIT_SPECIFIC_TRIGGER.ATTACKS, target);
+                        if(cardSource != null && cardSource.cancellable)
+                        {
+                            source?.TriggerSpecificUpdate(Unit.UNIT_SPECIFIC_TRIGGER.ATTACKS_CANCELLABLE, target);
+                        }
                         target?.TriggerSpecificUpdate(Unit.UNIT_SPECIFIC_TRIGGER.ATTACKED, source);
                         float divide = (source != null && source.CurrentStatus.Any(x => x.status == CombatStatus.STATUS.FROST) ? 2f : 1f);
                         damage = Mathf.FloorToInt((float)(amount + source.CurrentStrength) / divide);
@@ -152,8 +167,8 @@ public class CombatEffect
                     List<Card> returned = Hand.Instance.AddToHand(drawnCards);
                     CombatManager.Instance.compagnionDeck.AddCards(returned);
                     break;
-                case TYPE.MANA_GAIN:
-                    target.GainMana(amount);
+                case TYPE.MANA_MODIFY:
+                    target.ManaModify(amount);
                     break;
                 case TYPE.MOVE_INTENT:
                     CombatEvent moved = TurnManager.Instance.GetNextCombatEvent(target);
@@ -167,31 +182,47 @@ public class CombatEffect
                         TurnManager.Instance.MoveCombatEvent(moved, amount);
                     }
                     break;
+                case TYPE.CANCEL_INTENT:
+                    CombatEvent nextE = TurnManager.Instance.GetNextCombatEvent(target);
+                    if(nextE != null) { nextE.Remove(); }
+                    break;
+                case TYPE.ACTION_GAIN:
+                    target.CurrentAction += amount;
+                    break;
+                case TYPE.MANA_REGEN_MODIFY:
+                    target.CurrentManaRegen += amount;
+                    break;
             }
         }
     }
-    public string GetDescription(Unit source = null, Unit target = null, int channelLength=0)
+    public string GetDescription(Unit source = null, Unit target = null, int channelLength=0, Card.CARD_TYPE cardType=Card.CARD_TYPE.NONE)
     {
         string de = "";
-        if (OnPlay)
+        if (OnPlay && cardType != Card.CARD_TYPE.ABILITY)
         {
-            de += "0n Play: ";
+            de += "<b>0n Play</b>: ";
         }
         switch (condition)
         {
             case CONDITION.NONE:
                 break;
             case CONDITION.TARGET_CHANNEL:
-                de += "If target is channeling: ";
+                de += "If target is <b>channeling</b>: ";
                 break;
             case CONDITION.STATUS_FROST:
-                de += "If target is frozen: ";
+                de += "If target is <b>frozen</b>: ";
                 break;
             case CONDITION.STATUS_BURN:
-                de += "If target is burned: ";
+                de += "If target is <b>burned</b>: ";
                 break;
             case CONDITION.STATUS_BLOCK_NO:
-                de += "If target has no block: ";
+                de += "If target has no <b>block</b>: ";
+                break;
+            case CONDITION.STATUS_POISON:
+                de += "If target is <b>poisonned</b>: ";
+                break;
+            case CONDITION.HEALTH_IS_MAX_HEALTH:
+                de += "If target has all its health: ";
                 break;
         }
         string amountStr = "";
@@ -245,6 +276,9 @@ public class CombatEffect
             case ALTERNATIVE_TARGET.ALL:
                 de += "All : ";
                 break;
+            case ALTERNATIVE_TARGET.NEXT_INTENT_OWNER:
+                de += "Next reacting unit : ";
+                break;
         }
 
         switch (type)
@@ -254,21 +288,39 @@ public class CombatEffect
                 de += amountStr + " damages";
                 break;
             case TYPE.HEAL:
-                de += (alternative != ALTERNATIVE_TARGET.NONE ? "Heal " : "Target heals ") + amountStr + " health points";
+                de += (alternative != ALTERNATIVE_TARGET.NONE ? "Heal " : "Target <b>heals</b> ") + amountStr + " health points";
                 break;
-            case TYPE.MANA_GAIN:
-                de += (alternative != ALTERNATIVE_TARGET.NONE ? "Gain " : "Target gains ") + amountStr + " mana points";
+            case TYPE.MANA_MODIFY:
+                if(amount < 0) { amountStr = amountStr.Substring(1, amountStr.Count() - 1); }
+                de += (alternative != ALTERNATIVE_TARGET.NONE ?
+                    (amount >= 0 ? "Gain " : "Loose ") :
+                    (amount >= 0 ? "Target gains " : "Target looses ")) + amountStr + " mana points";
                 break;
             case TYPE.DRAW:
-                de += (alternative != ALTERNATIVE_TARGET.NONE ? "Draw " : "Target draws ") + amountStr + " card" + (currentAmount > 1 ? "s" : "");
+                de += (alternative != ALTERNATIVE_TARGET.NONE ? "<b>Draw</b> " : "Target <b>draws</b> ") + amountStr + " card" + (currentAmount > 1 ? "s" : "");
                 break;
             case TYPE.APPLY_STATUS:
                 de += GetStatusDescriptions(target);
                 break;
             case TYPE.MOVE_INTENT:
-                de += "Move " + (alternative != ALTERNATIVE_TARGET.NONE ? "" : "targets ") +"intent by " + amountStr + " tick" + (currentAmount > 1 ? "s" : "");
+                de += "Move " + (alternative != ALTERNATIVE_TARGET.NONE ? "next " : "targets ") +"action by " + amountStr + " tick" + (currentAmount > 1 ? "s" : "");
+                break;
+            case TYPE.CANCEL_INTENT:
+                de += "Cancel " + (alternative != ALTERNATIVE_TARGET.NONE ? "next " : "targets ") + "action (refound its mana)";
                 break;
 
+            case TYPE.ACTION_GAIN:
+                if (amount < 0) { amountStr = amountStr.Substring(1, amountStr.Count() - 1); }
+                de += (alternative != ALTERNATIVE_TARGET.NONE ?
+                    (amount >= 0 ? "Gain " : "Loose ") :
+                    (amount >= 0 ? "Target gains " : "Target looses ")) + amountStr + " action point"+ (currentAmount > 1 ? "s" : "");
+                break;
+            case TYPE.MANA_REGEN_MODIFY:
+                if (amount < 0) { amountStr = amountStr.Substring(1, amountStr.Count() - 1); }
+                de += (alternative != ALTERNATIVE_TARGET.NONE ? 
+                    (amount >= 0 ? "Gain " : "Loose "): 
+                    (amount>= 0 ? "Target gains " : "Target looses ")) + amountStr + " mana regeneration per turn";
+                break;
         }
         return de + ". ";
     }
@@ -304,7 +356,7 @@ public class CombatEffect
             string currentPrefix = prefix[i];
             string currentTime = time[i];
             nextTime = i < length - 1 ? time[i + 1] : "";
-            if(currentPrefix != oldPrefix)
+            if(!oldPrefix.Contains(currentPrefix)) //!= oldPrefix)
             {
                 currentDescription += (i > 0 ? currentPrefix.ToLower() : currentPrefix);
             }

@@ -1781,8 +1781,9 @@ MonoBehaviour:
     delay: 0
     actionCost: 0
     effects: []
-    channel: 0
     channelLenght: 0
+    channel: 0
+    cancellable: 0
     multipleTarget: 0
     potential_target: 0
     hidden: 0
@@ -1792,6 +1793,7 @@ MonoBehaviour:
     rarity: 0
     databasePath: 
     cardClass: 0
+    subClass: 0
     branch: 0
     ID: 0
   header: {fileID: 7952283238434387423}
@@ -1799,6 +1801,9 @@ MonoBehaviour:
   manaCost: {fileID: 2897050973408003916}
   delayCost: {fileID: 8755360605317191067}
   description: {fileID: 2996249959156507140}
+  cardType: {fileID: 0}
+  cardTarget: {fileID: 0}
+  cardRarity: {fileID: 0}
   colorGlows:
   - {fileID: 7303107736799710535}
   - {fileID: 6841085538872188021}
@@ -2203,7 +2208,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3b03e0075c21cc640866f788f6283d3b, type: 3}
+    m_Font: {fileID: 12800000, guid: 5d944e25cf4a2d24b8aabe5e90e3a791, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 1
@@ -2214,7 +2219,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 0.5
+    m_LineSpacing: 0.65
   m_Text: This is quite a long description
 --- !u!1 &6307054137609274083
 GameObject:

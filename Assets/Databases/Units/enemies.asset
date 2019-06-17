@@ -19,9 +19,8 @@ MonoBehaviour:
     maxMana: 0
     maxAction: 20
     baseManaRegen: 2
-    combatSprite: {fileID: -3240935945041059116, guid: a95639a5f54aac54ba01b4a14670b34c,
-      type: 3}
-    portraitSprite: {fileID: 5251112635998323775, guid: 55b72913e41b34741a33f94e50255f5c,
+    combatSprite: {fileID: 21300000, guid: 9a48b54838cf0fd4582b61ddf26d95da, type: 3}
+    portraitSprite: {fileID: -1880120661550918566, guid: 31e84eb8aa01bad4e9e1c0acf56e3970,
       type: 3}
     switchSprite: 0
     level:
@@ -95,7 +94,7 @@ MonoBehaviour:
     baseManaRegen: 0
     combatSprite: {fileID: -8175145840460673030, guid: a95639a5f54aac54ba01b4a14670b34c,
       type: 3}
-    portraitSprite: {fileID: 21300000, guid: 6a1f93e945dcee4459ae05166ecc3b47, type: 3}
+    portraitSprite: {fileID: 21300000, guid: 14a427eef79904d42b2e63a66df9beab, type: 3}
     switchSprite: 0
     level:
       currentXP: 0
@@ -127,10 +126,10 @@ MonoBehaviour:
       condition: 0
       OnPlay: 0
     subclass: 2
-  - availableCards: 7
+  - availableCards: 14
     unitName: Disturbed Ghost
-    maxHealth: 60
-    maxMana: 40
+    maxHealth: 80
+    maxMana: 0
     maxAction: 20
     baseManaRegen: 0
     combatSprite: {fileID: -8889448464429604872, guid: a95639a5f54aac54ba01b4a14670b34c,
@@ -144,13 +143,13 @@ MonoBehaviour:
       currentLevel: 3
     id: 0
     baseSpeed: 0
-    type: 2
+    type: 0
     xpValue: 6
-    cardsWeights: 04000000030000000400000004000000
+    cardsWeights: 020000000200000002000000020000000200000002000000
     enemyColor: {r: 0.6666667, g: 0, b: 0.6117647, a: 1}
     applyOnStart: []
     applyOnLevel: []
-    subclass: 0
+    subclass: 2
   - availableCards: 8
     unitName: Dark Mage
     maxHealth: 70
@@ -192,8 +191,8 @@ MonoBehaviour:
       OnPlay: 0
     applyOnLevel: []
     subclass: 0
-  - availableCards: 10
-    unitName: Vampire
+  - availableCards: 14
+    unitName: Revenant
     maxHealth: 80
     maxMana: 0
     maxAction: 20
@@ -209,13 +208,13 @@ MonoBehaviour:
       currentLevel: 2
     id: 0
     baseSpeed: 0
-    type: 2
+    type: 0
     xpValue: 6
-    cardsWeights: 010000000100000001000000010000000100000001000000
+    cardsWeights: 0500000004000000040000000100000001000000
     enemyColor: {r: 0.61960787, g: 0.101960786, b: 0.101960786, a: 1}
     applyOnStart: []
     applyOnLevel: []
-    subclass: 0
+    subclass: 3
   - availableCards: 9
     unitName: Dark Knight
     maxHealth: 120
@@ -324,3 +323,99 @@ MonoBehaviour:
       condition: 0
       OnPlay: 0
     subclass: 4
+  - availableCards: 15
+    unitName: Fire Spirit
+    maxHealth: 40
+    maxMana: 10
+    maxAction: 20
+    baseManaRegen: 2
+    combatSprite: {fileID: -4406080432889876254, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    portraitSprite: {fileID: -6063593522253077139, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    switchSprite: 1
+    level:
+      currentXP: 0
+      nextLevelThreshold: 0
+      currentLevel: 0
+    id: 0
+    baseSpeed: 0
+    type: 0
+    xpValue: 5
+    cardsWeights: 060000000500000005000000050000000100000001000000
+    enemyColor: {r: 1, g: 0.007843138, b: 0, a: 1}
+    applyOnStart: []
+    applyOnLevel: []
+    subclass: 2
+  - availableCards: 15
+    unitName: Nature Spirit
+    maxHealth: 40
+    maxMana: 10
+    maxAction: 20
+    baseManaRegen: 2
+    combatSprite: {fileID: -178298134025109291, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    portraitSprite: {fileID: 6780273959082748256, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    switchSprite: 0
+    level:
+      currentXP: 0
+      nextLevelThreshold: 0
+      currentLevel: 0
+    id: 0
+    baseSpeed: 0
+    type: 0
+    xpValue: 5
+    cardsWeights: 060000000500000005000000050000000100000001000000
+    enemyColor: {r: 0.10980392, g: 0.8, b: 0.02745098, a: 1}
+    applyOnStart: []
+    applyOnLevel: []
+    subclass: 3
+  - availableCards: 15
+    unitName: Earth Spirit
+    maxHealth: 40
+    maxMana: 10
+    maxAction: 20
+    baseManaRegen: 2
+    combatSprite: {fileID: 6190913088013463152, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    portraitSprite: {fileID: -4558848615966194264, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    switchSprite: 1
+    level:
+      currentXP: 0
+      nextLevelThreshold: 0
+      currentLevel: 0
+    id: 0
+    baseSpeed: 0
+    type: 0
+    xpValue: 5
+    cardsWeights: 060000000500000005000000050000000100000001000000
+    enemyColor: {r: 0.6784314, g: 0.45490196, b: 0.06666667, a: 1}
+    applyOnStart: []
+    applyOnLevel: []
+    subclass: 4
+  - availableCards: 15
+    unitName: Water Spirit
+    maxHealth: 40
+    maxMana: 10
+    maxAction: 20
+    baseManaRegen: 2
+    combatSprite: {fileID: -5973319770318960849, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    portraitSprite: {fileID: 2658610650458513137, guid: a95639a5f54aac54ba01b4a14670b34c,
+      type: 3}
+    switchSprite: 0
+    level:
+      currentXP: 0
+      nextLevelThreshold: 0
+      currentLevel: 0
+    id: 0
+    baseSpeed: 0
+    type: 0
+    xpValue: 5
+    cardsWeights: 060000000500000005000000050000000100000001000000
+    enemyColor: {r: 0, g: 0.44705883, b: 1, a: 1}
+    applyOnStart: []
+    applyOnLevel: []
+    subclass: 5

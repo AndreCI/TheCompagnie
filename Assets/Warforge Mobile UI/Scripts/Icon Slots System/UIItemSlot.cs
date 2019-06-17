@@ -228,20 +228,23 @@ namespace DuloGames.UI
 
         public void OnToolTip(bool show)
         {
-            string description = this.m_ItemInfo.GetKeywordDescription();
-            if (description != "")
+            if (ToggleTipWindow.Instance != null)
             {
-                ToggleTipWindow.Instance.gameObject.SetActive(show);
-                ToggleTipWindow.Instance.GetComponent<RectTransform>().pivot = new Vector2(0F, 1f);
-                ToggleTipWindow.Instance.ToggleText.text = description;
-                ToggleTipWindow.Instance.transform.position = Input.mousePosition;
-                ToolTipShow = show;
-            }
-            else
-            {
-                ToggleTipWindow.Instance.gameObject.SetActive(false);
-                ToolTipShow = false;
+                string description = this.m_ItemInfo.GetKeywordDescription();
+                if (description != "")
+                {
+                    ToggleTipWindow.Instance.gameObject.SetActive(show);
+                    ToggleTipWindow.Instance.GetComponent<RectTransform>().pivot = new Vector2(0F, 1f);
+                    ToggleTipWindow.Instance.ToggleText.text = description;
+                    ToggleTipWindow.Instance.transform.position = Input.mousePosition;
+                    ToolTipShow = show;
+                }
+                else
+                {
+                    ToggleTipWindow.Instance.gameObject.SetActive(false);
+                    ToolTipShow = false;
 
+                }
             }
         }
         IEnumerator InternalShowToolTip()
@@ -321,12 +324,26 @@ namespace DuloGames.UI
 			if (show) 
             {
                 this.OnToolTip(true);
-                PlayerInfos.Instance.unitsWindow.ShowCardHolder(this.m_ItemInfo, dragEnabled);
+                if (PlayerInfos.Instance == null)
+                {
+                    StarterDeckDisplay.Instance.ShowCardHolder(this.m_ItemInfo);
+                }
+                else
+                {
+                    PlayerInfos.Instance.unitsWindow.ShowCardHolder(this.m_ItemInfo, dragEnabled);
+                }
 			}
 			else
 			{
                 // Hide the tooltip
-                PlayerInfos.Instance.unitsWindow.HideCardHolder();
+                if (PlayerInfos.Instance == null)
+                {
+                    StarterDeckDisplay.Instance.HideCardHolder();
+                }
+                else
+                {
+                    PlayerInfos.Instance.unitsWindow.HideCardHolder();
+                }
                 this.OnToolTip(false);
                 //UITooltip.Hide();
             }
@@ -336,7 +353,7 @@ namespace DuloGames.UI
         {
             base.OnPointerEnter(eventData);
 
-            if (ActiveAndAnimated && m_ItemInfo != null)
+            if (ActiveAndAnimated && m_ItemInfo != null && PlayerInfos.Instance != null)
             {
                 glowingImage.color = PlayerInfos.Instance.unitsWindow.GetGlowingCardColor(m_ItemInfo);
 

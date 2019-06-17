@@ -40,8 +40,9 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
-    channel: 0
     channelLenght: 0
+    channel: 0
+    cancellable: 0
     multipleTarget: 0
     potential_target: 0
     hidden: 0
@@ -51,8 +52,9 @@ MonoBehaviour:
     rarity: 2
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 95
+    ID: 143
   - Name: Devoted Prayer
     manaCost: 0
     delay: 7
@@ -67,6 +69,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       - status: 1
         value: 6
         duration: 2
@@ -75,6 +78,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 1
@@ -82,8 +86,9 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
-    channel: 1
     channelLenght: 2
+    channel: 1
+    cancellable: 0
     multipleTarget: 0
     potential_target: 3
     hidden: 0
@@ -93,8 +98,9 @@ MonoBehaviour:
     rarity: 2
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 96
+    ID: 144
   - Name: Light Chain
     manaCost: 5
     delay: 2
@@ -116,8 +122,9 @@ MonoBehaviour:
       alternative: 4
       condition: 0
       OnPlay: 1
-    channel: 0
     channelLenght: 0
+    channel: 0
+    cancellable: 0
     multipleTarget: 1
     potential_target: 0
     hidden: 0
@@ -128,8 +135,9 @@ MonoBehaviour:
     rarity: 2
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 97
+    ID: 145
   - Name: Retribution
     manaCost: 3
     delay: 3
@@ -149,6 +157,7 @@ MonoBehaviour:
           variable: 0
           alternative: 0
           condition: 0
+        variable: 0
       amount: 0
       type: 2
       animation: 34
@@ -156,8 +165,9 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
-    channel: 0
     channelLenght: 0
+    channel: 0
+    cancellable: 0
     multipleTarget: 0
     potential_target: 1
     hidden: 0
@@ -167,8 +177,9 @@ MonoBehaviour:
     rarity: 2
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 98
+    ID: 146
   - Name: Divine Intervention
     manaCost: 8
     delay: 0
@@ -183,6 +194,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 34
@@ -190,8 +202,9 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 1
-    channel: 0
     channelLenght: 0
+    channel: 0
+    cancellable: 0
     multipleTarget: 0
     potential_target: 4
     hidden: 0
@@ -202,8 +215,9 @@ MonoBehaviour:
     rarity: 2
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 99
+    ID: 147
   - Name: Holy Barriere
     manaCost: 7
     delay: 5
@@ -218,6 +232,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       - status: 2
         value: 1
         duration: 0
@@ -226,6 +241,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 34
@@ -233,8 +249,9 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
-    channel: 0
     channelLenght: 0
+    channel: 0
+    cancellable: 0
     multipleTarget: 1
     potential_target: 1
     hidden: 0
@@ -245,8 +262,9 @@ MonoBehaviour:
     rarity: 2
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 100
+    ID: 148
   - Name: Flashing Light
     manaCost: 3
     delay: 1
@@ -269,6 +287,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 0
@@ -276,8 +295,9 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
-    channel: 0
     channelLenght: 0
+    channel: 0
+    cancellable: 0
     multipleTarget: 0
     potential_target: 0
     hidden: 0
@@ -288,22 +308,24 @@ MonoBehaviour:
     rarity: 2
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 101
+    ID: 149
   - Name: Quick Barriere
-    manaCost: 5
+    manaCost: 7
     delay: 2
     actionCost: 1
     effects:
     - statusFactories:
-      - status: 1
-        value: 16
-        duration: 1
+      - status: 2
+        value: 2
+        duration: 3
         permanent: 0
         trigger: 0
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       - status: 0
         value: 3
         duration: 3
@@ -312,15 +334,17 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 34
       variable: 0
       alternative: 0
       condition: 0
-      OnPlay: 0
-    channel: 0
+      OnPlay: 1
     channelLenght: 0
+    channel: 0
+    cancellable: 0
     multipleTarget: 0
     potential_target: 1
     hidden: 0
@@ -331,5 +355,6 @@ MonoBehaviour:
     rarity: 2
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 101
+    ID: 150

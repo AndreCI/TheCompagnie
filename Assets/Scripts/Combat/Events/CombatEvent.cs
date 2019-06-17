@@ -13,6 +13,7 @@ public class CombatEvent
     public List<Unit> targets;
     public List<CombatEffect> effects;
     public bool channel;
+    public bool cancellable;
 
     public Intent intent;
 
@@ -21,7 +22,7 @@ public class CombatEvent
 
     private AudioSound.AUDIO_SET audioSet;
     private string audioSound;
-    public CombatEvent(Unit source_, List<Unit> targets_, int timeIndex_, List<CombatEffect> effects_, Card cardSource_, AudioSound.AUDIO_SET audioSet_, bool channel_, CombatEvent nextChannelEvent_ = null)
+    public CombatEvent(Unit source_, List<Unit> targets_, int timeIndex_, List<CombatEffect> effects_, Card cardSource_, AudioSound.AUDIO_SET audioSet_, bool channel_, bool cancellable_, CombatEvent nextChannelEvent_ = null)
     {
         timeIndex = timeIndex_;
         cardSource = cardSource_;
@@ -30,11 +31,15 @@ public class CombatEvent
         effects = effects_;
         channel = channel_;
         audioSet = audioSet_;
+        cancellable = cancellable_;
         if (channel)
         {
             nextChannelEvent = nextChannelEvent_;
-            source_.SpecificUpdate += SourceUnit_Update;
             
+        }
+        if (cancellable)
+        {
+            source_.SpecificUpdate += SourceUnit_Update;
         }
         foreach(CombatEffect e in effects)
         {
@@ -52,7 +57,7 @@ public class CombatEvent
         else if(audioSet != AudioSound.AUDIO_SET.NONE) { AudioManager.Instance?.PlayFromSet(audioSet); }
 
             effect.Perform(targets, source, cardSource, forcedTime: GetTime(timePerEvent));
-            if (channel)
+            if (cancellable)
             {
                 source.SpecificUpdate -= SourceUnit_Update;
             }
@@ -64,23 +69,24 @@ public class CombatEvent
         if (audioSound != null && audioSound != "") { AudioManager.Instance?.Play(audioSound); }
         else if (audioSet != AudioSound.AUDIO_SET.NONE) { AudioManager.Instance?.PlayFromSet(audioSet); }
         intent.Trigger(GetTime(timePerEvent));
-            for (int i = 0; i < effects.Count; i++)
+        for (int i = 0; i < effects.Count; i++)
+        {
+            if (!effects[i].OnPlay)
             {
-                if (!effects[i].OnPlay)
+                effects[i].Perform(targets, source, cardSource, forcedTime: GetTime(timePerEvent));
+                if (channel)
                 {
-                    effects[i].Perform(targets, source, cardSource, forcedTime: GetTime(timePerEvent));
-                    if (channel)
-                    {
-                        source.SpecificUpdate -= SourceUnit_Update;
-                    }
+                    source.SpecificUpdate -= SourceUnit_Update;
                 }
             }
-        
+        }
+        source.TriggerSpecificUpdate(Unit.UNIT_SPECIFIC_TRIGGER.ACT, source);
+
     }
 
     private void SourceUnit_Update(Unit.UNIT_SPECIFIC_TRIGGER trigger, Unit source)
     {
-        if (channel)
+        if (cancellable)
         {
             if (trigger == Unit.UNIT_SPECIFIC_TRIGGER.ATTACKED)
             {
@@ -92,26 +98,27 @@ public class CombatEvent
             }
             else if (trigger == Unit.UNIT_SPECIFIC_TRIGGER.DAMAGE_DEALT && cancelChannel)
             {
+                if (!TurnManager.Instance.paused && !TutorialManager.Instance.status[TutorialManager.TUTOTRIGGER.CANCEL_CHANNEL] && !PlayerSettings.Instance.disableTutorial) { TurnManager.Instance.TogglePosed(); }
                 TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.CANCEL_CHANNEL);
                 Remove();
             }
         }
         
     }
-    private void Remove()
+    public void Remove()
     {
         if (intent == null)
         {
             source.SpecificUpdate -= SourceUnit_Update;
             return;
         }
-        if (channel)
+        if (cancellable)
         {
             source.SpecificUpdate -= SourceUnit_Update;
             source.CurrentMana += cardSource.manaCost;
 
-            TurnManager.Instance.RemoveCombatEvent(this);
         }
+        TurnManager.Instance.RemoveCombatEvent(this);
     }
 
 

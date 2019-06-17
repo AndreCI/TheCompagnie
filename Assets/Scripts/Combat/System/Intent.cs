@@ -142,6 +142,7 @@ public class Intent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     focusColor = linkedEvent.targets[0].GetCurrentColor();
                 }
                 SetGlowingColor();
+               // if(card.channel && linkedEvent)
             }
         }
     }

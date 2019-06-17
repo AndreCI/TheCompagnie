@@ -16,7 +16,7 @@ public class TalentTree
     {
         branch1 = new List<Talent>(branch1_);
         branch2 = new List<Talent>(branch2_);
-        talentPoint = 0;
+        talentPoint = 10;
         branch1Value = 0;
         branch2Value = 0;
     }

@@ -33,9 +33,23 @@ MonoBehaviour:
         amount: 1000
       - type: 3
         amount: 0
+      condition:
+        variable: 0
+        type: 2
+        v1: 0
+        v1Type: 1
+        v2: 50
+        v2Type: 0
     - leafChild:
       - type: 3
         amount: 0
+      condition:
+        variable: 0
+        type: 0
+        v1: 0
+        v1Type: 0
+        v2: 0
+        v2Type: 0
     dtype: 0
     ID: 0
   - eventName: Madness Road
@@ -50,15 +64,29 @@ MonoBehaviour:
     effects:
     - leafChild:
       - type: 0
-        amount: -60
+        amount: -35
       - type: 10
         amount: 5
       - type: 2
         amount: 30
       - type: 3
         amount: 0
+      condition:
+        variable: 0
+        type: 0
+        v1: 0
+        v1Type: 0
+        v2: 0
+        v2Type: 0
     - leafChild:
       - type: 3
         amount: 0
+      condition:
+        variable: 0
+        type: 0
+        v1: 0
+        v1Type: 0
+        v2: 0
+        v2Type: 0
     dtype: 0
     ID: 0

@@ -44,8 +44,17 @@ public class EventWindow : MonoBehaviour
             if (i < oEvent.effects.Count)
             {
                 options[i].gameObject.SetActive(true);
-                options[i].interactable = true;
+                options[i].interactable = oEvent.effects[i].ValidateCondition();
                 options[i].GetComponentInChildren<Text>().text = oEvent.buttonsTexts[i];
+                if (options[i].interactable)
+                {
+                    options[i].GetComponent<BasicToolTipActivator>().enabled = false;
+                }
+                else
+                {
+                    options[i].GetComponent<BasicToolTipActivator>().enabled = true;
+                    options[i].GetComponent<BasicToolTipActivator>().description = oEvent.effects[i].condition.GetDescripton();
+                }
             }
             else
             {

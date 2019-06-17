@@ -334,7 +334,10 @@ namespace DuloGames.UI
 		{
             //  glowingImage = Array.Find(GetComponentsInChildren<Image>(true), (x => x.name == "Glow")); 
             //lastTick = true;
-            PlayerInfos.Instance.unitsWindow.PartyMenuNotify += UISlotBase_PartyMenuNotify;
+            if (PlayerInfos.Instance != null)
+            {
+                PlayerInfos.Instance.unitsWindow.PartyMenuNotify += UISlotBase_PartyMenuNotify;
+            }
 
 
              minScale = 1.19f;
@@ -417,7 +420,10 @@ namespace DuloGames.UI
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            PlayerInfos.Instance.unitsWindow.PartyMenuNotify -= UISlotBase_PartyMenuNotify;
+            if (PlayerInfos.Instance != null)
+            {
+                PlayerInfos.Instance.unitsWindow.PartyMenuNotify -= UISlotBase_PartyMenuNotify;
+            }
         }
         protected override void OnDisable()
 		{
@@ -470,7 +476,7 @@ namespace DuloGames.UI
 			// Check if tooltip is enabled
 			if (this.enabled && this.IsActive() && this.m_TooltipEnabled)
 			{
-                if (!PlayerInfos.Instance.unitsWindow.levelUpDisplay.isActiveAndEnabled)
+                if (PlayerInfos.Instance == null || !PlayerInfos.Instance.unitsWindow.levelUpDisplay.isActiveAndEnabled)
                 {
                     glowingImage.color = new Color(0f, 0.1f, 0.4f);
                     ActiveAndAnimated = true;
@@ -494,7 +500,7 @@ namespace DuloGames.UI
 		/// <param name="eventData">Event data.</param>
 		public virtual void OnPointerExit(PointerEventData eventData)
         {
-            if (!PlayerInfos.Instance.unitsWindow.levelUpDisplay.isActiveAndEnabled && ActiveAndAnimated)
+            if (PlayerInfos.Instance == null || !PlayerInfos.Instance.unitsWindow.levelUpDisplay.isActiveAndEnabled && ActiveAndAnimated)
             {
                 
                 lastTick = true;
@@ -963,7 +969,10 @@ namespace DuloGames.UI
 		{
 			// Get the source slot
 			UISlotBase source = (eventData.pointerPress != null) ? eventData.pointerPress.GetComponent<UISlotBase>() : null;
-            StartCoroutine(PlayerInfos.Instance.unitsWindow.NotifyAllSlotsDelayed(PartyMenu.SLOT_TRIGGER.SKILL, 0f));
+            if (PlayerInfos.Instance != null)
+            {
+                StartCoroutine(PlayerInfos.Instance.unitsWindow.NotifyAllSlotsDelayed(PartyMenu.SLOT_TRIGGER.SKILL, 0f));
+            }
 
             // Make sure we have the source slot
             if (source == null || !source.IsAssigned() || !source.m_DragEnabled)

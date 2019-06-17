@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: vampire
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 0
+  subClass: 4
+  rarityLevel: 0
+  branchLevel: 0
+  childrenDatabase:
+  - {fileID: 11400000, guid: e86ea8407402c544aa0920960567a7d6, type: 2}
+  - {fileID: 11400000, guid: 43be331c2585a8a428d39c58c396af79, type: 2}
+  items: []

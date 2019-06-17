@@ -33,6 +33,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 43
@@ -49,6 +50,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 4
@@ -56,8 +58,9 @@ MonoBehaviour:
       alternative: 4
       condition: 0
       OnPlay: 0
-    channel: 0
     channelLenght: 0
+    channel: 0
+    cancellable: 0
     multipleTarget: 1
     potential_target: 0
     hidden: 0
@@ -67,8 +70,9 @@ MonoBehaviour:
     rarity: 3
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 1
-    ID: 91
+    ID: 140
   - Name: Charge
     manaCost: 0
     delay: 6
@@ -83,6 +87,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 4
@@ -98,20 +103,22 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
-    channel: 0
     channelLenght: 0
+    channel: 0
+    cancellable: 0
     multipleTarget: 0
     potential_target: 3
     hidden: 0
-    sprite: {fileID: 5500810069322633725, guid: 6f552b1545a67ae41b69e239655f1cde,
+    sprite: {fileID: -2803680613360101947, guid: 94db7843e7bfda242976e2ec86880282,
       type: 3}
     Description: 
     set: 0
     rarity: 3
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 1
-    ID: 92
+    ID: 141
   - Name: Burning Prayer
     manaCost: 0
     delay: 7
@@ -134,6 +141,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       - status: 7
         value: 6
         duration: 1
@@ -142,6 +150,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 0
@@ -149,8 +158,9 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
-    channel: 1
     channelLenght: 2
+    channel: 1
+    cancellable: 0
     multipleTarget: 0
     potential_target: 3
     hidden: 0
@@ -161,5 +171,6 @@ MonoBehaviour:
     rarity: 3
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 1
-    ID: 93
+    ID: 142

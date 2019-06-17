@@ -10,7 +10,8 @@ using UnityEngine.UI;
 public abstract class Unit
 {
     public enum DAMAGE_SOURCE_TYPE { NONE, ATTACK, SELF_ATTACK, STATUS};
-    public enum UNIT_SPECIFIC_TRIGGER { NONE, ATTACKS, DAMAGE_BLOCKED, ATTACKED, DAMAGE_DEALT, DAMAGE_INSTANCE_END, HEAL };
+    public enum UNIT_SPECIFIC_TRIGGER { NONE, ATTACKS, DAMAGE_BLOCKED, ATTACKED, DAMAGE_DEALT, DAMAGE_INSTANCE_END, HEAL, GAIN_BLOCK, PLAY_CARD, PLAY_CANCEL_CARD, ACT,
+    CARD_CANCELLED, ATTACKS_CANCELLABLE};
     public CardDatabase.CARDCLASS availableCards;
     public string unitName;
     public int maxHealth;
@@ -43,10 +44,6 @@ public abstract class Unit
 
     public void TriggerSpecificUpdate(UNIT_SPECIFIC_TRIGGER trigger, Unit source=null)
     {
-        Debug.Log("-------------------------");
-        Debug.Log(trigger);
-        Debug.Log(ToString());
-        Debug.Log(source !=null ? source.ToString() : "");
         SpecificUpdate?.Invoke(trigger, source);
     }
 
@@ -177,9 +174,13 @@ public abstract class Unit
             int baseVal = 0;
             foreach (CombatStatus cs in CurrentStatus)
             {
-                if (cs.status == CombatStatus.STATUS.CHANNEL)
+                if (cs.status == CombatStatus.STATUS.BUFF_CHANNEL)
                 {
                     baseVal += cs.value;
+                }
+                else if(cs.status == CombatStatus.STATUS.REDUCE_CHANNEL)
+                {
+                    baseVal -= cs.value;
                 }
             }
             return baseVal;
@@ -211,6 +212,10 @@ public abstract class Unit
         }
         currentStatus.Add(status);
         NotifyUpdate?.Invoke();
+        if(status.status == CombatStatus.STATUS.BLOCK)
+        {
+            TriggerSpecificUpdate(UNIT_SPECIFIC_TRIGGER.GAIN_BLOCK, this);
+        }
     }
 
     public void RemoveStatus(CombatStatus status)
@@ -235,8 +240,15 @@ public abstract class Unit
     {
         if(source_type == DAMAGE_SOURCE_TYPE.NONE) { Debug.Log("Issue with siurce tyoe"); Debug.Log(ToString()); Debug.Log(source.ToString());
         }
-        foreach(CombatStatus cs in CurrentStatus.FindAll(x => x.status == CombatStatus.STATUS.PARRY ||
-        x.status == CombatStatus.STATUS.BLOCK))
+        List<CombatStatus> blockAndParry = CurrentStatus.FindAll(x=>x.status == CombatStatus.STATUS.BLOCK).
+            OrderBy(y=>y.duration).
+            OrderBy(w=>w.trigger != GeneralUtils.SUBJECT_TRIGGER.TIMESTEP_TICK).
+            OrderBy(z=>z.permanent).ToList();
+        blockAndParry.AddRange(CurrentStatus.FindAll(x => x.status == CombatStatus.STATUS.PARRY).
+            OrderBy(y => y.duration).
+            OrderBy(w => w.trigger != GeneralUtils.SUBJECT_TRIGGER.TIMESTEP_TICK).
+            OrderBy(z => z.permanent));
+        foreach (CombatStatus cs in blockAndParry)
         {
             if(cs.status == CombatStatus.STATUS.BLOCK && 
                 amount > 0 &&
@@ -328,7 +340,7 @@ public abstract class Unit
         }
     }
 
-    public void GainMana(int amount)
+    public void ManaModify(int amount)
     {
         CurrentMana += amount;
     }

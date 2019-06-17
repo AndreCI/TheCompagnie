@@ -8,7 +8,8 @@ using UnityEngine;
 [Serializable]
 public class LeafOverworldEffect : OverworldEffect
 {
-    public enum TYPE {
+    public enum TYPE
+    {
         HEALTH_MODIFY,
         MANA_MODIFY,
         SHARD_MODIFY,
@@ -18,7 +19,12 @@ public class LeafOverworldEffect : OverworldEffect
         FIGHT, BOSS_FIGHT,
         TOGGLE,
         SET_THIS_AS_FIXED_EVENT,
-    VOID_MODIFY}
+        VOID_MODIFY,
+        PLACEHOLDER_MODIFY,
+        MAX_HEALTH_MODIFY,
+        MAX_MANA_MODIFY
+    }
+
 
     public TYPE type;
     public int amount;
@@ -58,6 +64,44 @@ public class LeafOverworldEffect : OverworldEffect
             case TYPE.SHARD_MODIFY:
                 PlayerInfos.Instance.CurrentShards += amount;
                 return;
+            case TYPE.MAX_HEALTH_MODIFY:
+                foreach (Compagnion c in PlayerInfos.Instance.compagnions)
+                {
+                    if (c.maxHealth + amount <= 0) { amount = 1 - c.maxHealth; }
+                    c.maxHealth += amount;
+                }
+                return;
+            case TYPE.MAX_MANA_MODIFY:
+                foreach (Compagnion c in PlayerInfos.Instance.compagnions)
+                {
+                    if (c.maxMana + amount <= 0) { amount = -c.maxMana; }
+                    c.maxMana += amount;
+                }
+                return;
+            case TYPE.PLACEHOLDER_MODIFY:
+                if (amount > 0)
+                {
+                    for (int i = 0; i < amount; i++)
+                    {
+                        foreach (Compagnion c in PlayerInfos.Instance.compagnions)
+                        {
+                            PlayerInfos.Instance.persistentPartyDeck.AddCardSlot(c);
+                        }
+                    }
+                }
+                else {
+                    for (int i = 0; i < -amount; i++)
+                    {
+                        foreach (Compagnion c in PlayerInfos.Instance.compagnions)
+                        {
+                            if (c.persistentDeck.GetCardSlots() > 0)
+                            {
+                                c.persistentDeck.RemoveCardSlot();
+                            }
+                        }
+                    }
+                }
+                return;
             case TYPE.LEAVE:
                 EventWindow.Instance.gameObject.SetActive(false);
                 return;
@@ -70,6 +114,7 @@ public class LeafOverworldEffect : OverworldEffect
 
             case TYPE.ADD_COMPAGNION:
                 PlayerInfos.Instance.AddCompagnion(PlayerInfos.Instance.compagnionsDatabase.Get(amount));
+                PlayerSettings.Instance.Unlock(PlayerInfos.Instance.compagnions.Last().availableCards);
                 return;
             case TYPE.FIGHT:
                 OverworldMap.Instance.StartCombat();

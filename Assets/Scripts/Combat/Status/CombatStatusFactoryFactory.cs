@@ -40,40 +40,43 @@ public class CombatStatusFactoryFactory
         switch (status)
         {
             case CombatStatus.STATUS.BLOCK:
-                body = amountStr + " blocks";
+                body = amountStr + " <b>blocks</b>";
                 break;
             case CombatStatus.STATUS.BUFF_STR:
-                body = amountStr + " strength";
+                body = amountStr + " <b>strength</b>";
                 break;
             case CombatStatus.STATUS.REDUCE_STR:
                 prefix = plural ? "lose " : "looses ";
-                body = amountStr + " strength";
+                body = amountStr + " <b>strength</b>";
                 break;
             case CombatStatus.STATUS.BUFF_SPEED:
-                body = amountStr + " speed";
+                body = amountStr + " <b>speed</b>";
                 break;
             case CombatStatus.STATUS.RECUDE_SPEED:
                 prefix = plural ? "lose " : "looses ";
-                body = amountStr + " speed";
+                body = amountStr + " <b>speed</b>";
                 break;
             case CombatStatus.STATUS.BURN:
-                body = amountStr + " burn";
+                body = amountStr + " <b>burn</b>";
                 break;
             case CombatStatus.STATUS.PARRY:
-                body = amountStr + " parry";
+                body = amountStr + " <b>parry</b>";
                 break;
             case CombatStatus.STATUS.POISON:
-                body = amountStr + " poison";
+                body = amountStr + " <b>poison</b>";
                 break;
             case CombatStatus.STATUS.REGEN:
-                body = amountStr + " regeneration";
+                body = amountStr + " <b>regeneration</b>";
                 break;
             case CombatStatus.STATUS.FROST:
-                body = "frost";
+                body = "<b>frost</b>";
                 break;
-            case CombatStatus.STATUS.CHANNEL:
-                prefix = (value > 0 ? prefix : "looses ");
-                body = "concentration by " + amountStr;
+            case CombatStatus.STATUS.BUFF_CHANNEL:
+                body = amountStr + " <b>concentration</b>";
+                break;
+            case CombatStatus.STATUS.REDUCE_CHANNEL:
+                prefix = plural ? "lose " : "looses ";
+                body = amountStr + " <b>concentration</b>";
                 break;
             case CombatStatus.STATUS.STATUS_APPLY:
                 throw new InvalidOperationException();

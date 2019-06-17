@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: basicb1
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 1
+  subClass: 3
+  rarityLevel: 1
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Poison Arrow
+    manaCost: 4
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 14
+      type: 0
+      animation: 16
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 5
+        value: 3
+        duration: 2
+        permanent: 0
+        trigger: 1
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 5
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 1
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -8053080719069457164, guid: ddc04e8d5b35b0b4dbec8804e7155ff6,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION/All
+    cardClass: 1
+    subClass: 3
+    branch: 0
+    ID: 36
+  - Name: Shadow Hide
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 2
+        value: 1
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 17
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -6434090423311557427, guid: 857ed4e626597db4e87dda3eac8a37cc,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION/All
+    cardClass: 1
+    subClass: 3
+    branch: 0
+    ID: 37
+  - Name: Envenom
+    manaCost: 5
+    delay: 0
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 12
+        value: 1
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 1
+        factory:
+        - status: 5
+          value: 1
+          duration: 5
+          permanent: 0
+          trigger: 1
+          unitTrigger: 0
+          alternative: 0
+          variable: 0
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 28
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -8794573382442013755, guid: 2e7c7aeb505aa1549afe476d29b37514,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION/All
+    cardClass: 1
+    subClass: 3
+    branch: 0
+    ID: 38
+  - Name: Precision Shot
+    manaCost: 6
+    delay: 16
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 35
+      type: 0
+      animation: 16
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 1
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 609307110586412289, guid: 93d4d9d0d8cc1a14d84c2133cb8c7d1e, type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION/All
+    cardClass: 1
+    subClass: 3
+    branch: 0
+    ID: 39

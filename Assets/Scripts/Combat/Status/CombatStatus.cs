@@ -20,12 +20,21 @@ public class CombatStatus : UnitStatus
         ACTION_GAIN,
         CARD_DRAW,
         FROST,
-        CHANNEL,
+        BUFF_CHANNEL,
         STATUS_APPLY,
         BUFF_SPEED,
-        RECUDE_SPEED
+        RECUDE_SPEED,
+    REDUCE_CHANNEL};
 
-};
+    public static bool IsStatusGood(STATUS s)
+    {
+        return (s == STATUS.REGEN ||
+            s == STATUS.BLOCK ||
+            s == STATUS.PARRY ||
+            s == STATUS.BUFF_SPEED ||
+            s == STATUS.BUFF_STR || 
+            s == STATUS.BUFF_CHANNEL);
+    }
 
     public STATUS status;
     public GeneralUtils.SUBJECT_TRIGGER trigger;
@@ -228,17 +237,65 @@ public class CombatStatus : UnitStatus
                     }
                 }
                 break;
-            case STATUS.CHANNEL:
+            case STATUS.BUFF_CHANNEL:
                 foreach (CombatStatus s in target.CurrentStatus)
                 {
-                    if (s.status == status && (
-                        (s.duration == duration) ||
-                        (s.permanent && permanent)
-                        ))
+                    if (s.status == status && ((s.duration == duration && !permenent) || (s.permanent && permenent)))
                     {
                         s.value += value;
                         s.ui?.UpdateData();
                         return false;
+                    }
+                    else if (s.status == STATUS.REDUCE_CHANNEL && (s.duration == duration && !permenent || (s.permanent && permenent)))
+                    {
+                        if (s.value >= value)
+                        {
+                            s.value -= value;
+                            s.ui?.UpdateData();
+                            return false;
+                        }
+                        else
+                        {
+                            value -= s.value;
+                            s.value = 0;
+                            if (s.ui != null)
+                            {
+                                s.ui.UpdateData();
+                                s.ui.setDestroy = true;
+                                s.ui.Trigger(TurnManager.Instance.currentDuration);
+                            }
+                        }
+                    }
+                }
+                break;
+            case STATUS.REDUCE_CHANNEL:
+                foreach (CombatStatus s in target.CurrentStatus)
+                {
+                    if (s.status == status && (s.duration == duration && !permenent || (s.permanent && permenent)))
+                    {
+                        s.value += value;
+                        s.ui?.UpdateData();
+                        return false;
+                    }
+                    else if (s.status == STATUS.BUFF_CHANNEL && (s.duration == duration && !permenent || (s.permanent && permenent)))
+                    {
+                        if (s.value >= value)
+                        {
+                            s.value -= value;
+                            s.ui?.UpdateData();
+                            return false;
+                        }
+                        else
+                        {
+                            value -= s.value;
+                            s.value = 0;
+                            if (s.ui != null)
+                            {
+                                s.ui.UpdateData();
+                                s.ui.setDestroy = true;
+                                s.ui.Trigger(TurnManager.Instance.currentDuration);
+                            }
+                        }
                     }
                 }
                 break;
@@ -334,8 +391,11 @@ public class CombatStatus : UnitStatus
                 value -= 1;
                 break;
             case STATUS.STATUS_APPLY:
-                foreach(CombatStatusFactory f in factory) {                                                                                      
-                    f.GenerateApply(f.alternative == CombatEffect.ALTERNATIVE_TARGET.SELF ? target : source, data:miscData);//  source != null ? source : target, originalCard);
+                foreach(CombatStatusFactory f in factory) {
+                    Unit currentT = (f.alternative == CombatEffect.ALTERNATIVE_TARGET.SELF || 
+                        unitTrigger == Unit.UNIT_SPECIFIC_TRIGGER.NONE)? 
+                        target : source;
+                    f.GenerateApply(currentT, data:miscData);//  source != null ? source : target, originalCard);
                 }
                 foreach(CombatEffectFactory effect in effectFactory)
                 {
@@ -385,46 +445,49 @@ public class CombatStatus : UnitStatus
         switch (status)
         {
             case STATUS.BLOCK:
-                description = "Block: Prevent the next " + amountStr + " damages";
+                description = "<b>Block</b>: Prevent the next " + amountStr + " damages";
                 break;
             case STATUS.BURN:
-                description = "Burn: Take " + amountStr + " damages each" + timeMoment;
+                description = "<b>Burn</b>: Take " + amountStr + " damages each" + timeMoment;
                 setFinalDamage = true;
                 break;
             case STATUS.POISON:
                 description = "<i> Mixing poisons can bring death quickly... </i>\n";
-                description += "Poison: Take " + amountStr + " damages each" + timeMoment;
+                description += "<b>Poison</b>: Take " + amountStr + " damages each" + timeMoment;
                 description += "\n(Does not cancel channel)";
                 setFinalDamage = true;
                 break;
             case STATUS.REGEN:
-                description = "Regeneration: Gain " + amountStr + " health points each" + timeMoment;
+                description = "<b>Regeneration</b>: Gain " + amountStr + " health points each" + timeMoment;
                 setFinalDamage = true;
                 break;
             case STATUS.BUFF_STR:
-                description = "Strength: Each instance of damage dealt by an attacks deals " + amountStr + " additional damages";
+                description = "<b>Strength</b>: Each instance of damage dealt by an attacks deals " + amountStr + " additional damages";
                 break;
             case STATUS.REDUCE_STR:
-                description = "Strength: Each instance of damage dealt by an attacks deals " + amountStr + " less damages";
+                description = "<b>Strength</b>: Each instance of damage dealt by an attacks deals " + amountStr + " less damages";
                 break;
             case STATUS.PARRY:
-                description = "Parry: The next " + (value > 1 ? amountStr + " " : "") + "instance" + (value > 1 ? "s" : "") + "of damage from any attack going through block is prevented";
+                description = "<b>Parry</b>: The next " + (value > 1 ? amountStr + " " : "") + "instance" + (value > 1 ? "s" : "") + "of damage from any attack going through block is prevented";
                 break;
             case STATUS.FROST:
-                description = "Frost: Reduce damage done by attacks by 2 (applied after strength, rounded down)";
+                description = "<b>Frost</b>: Reduce damage done by attacks by 2 (applied after strength, rounded down)";
                 break;
-            case STATUS.CHANNEL:
-                description = "Concentration: All cards with channel will trigger " + amountStr + (value > 0 ? " more" :" less")+ " time" + (value > 1 ? "s" : "");
+            case STATUS.BUFF_CHANNEL:
+                description = "<b>Concentration</b>:  All cards with channel will trigger " + amountStr + " more time" + (value > 1 ? "s" : "");
+                break;
+            case STATUS.REDUCE_CHANNEL:
+                description = "<b>Concentration</b>:  All cards with channel will trigger " + amountStr + " less time" + (value > 1 ? "s" : "");
                 break;
             case STATUS.BUFF_SPEED:
-                description = "Speed: Each card played takes " + amountStr + " less ticks (never less than 0)";
+                description = "<b>Speed</b>: Each card played takes " + amountStr + " less ticks (never less than 0)";
                 break;
             case STATUS.RECUDE_SPEED:
-                description = "Speed: Each card played takes " + amountStr + " additional ticks";
+                description = "<b>Speed</b>: Each card played takes " + amountStr + " additional ticks";
                 break;
 
             case STATUS.STATUS_APPLY:
-                return "<i>" + miscData.Name + "</i>\n" + GetApplyDescription(trigger, unitTrigger, permanent,
+                return "<b>" + miscData.Name + "</b>\n" + GetApplyDescription(trigger, unitTrigger, permanent,
                     duration, value, status, effectFactory, factory, null);// CombatEffect.LinkPrefixAndTime(GetFactoryAppliedDescription(factory, effectFactory, unitTrigger));
         }
         if (permanent)
@@ -444,7 +507,7 @@ public class CombatStatus : UnitStatus
     }
 
 
-    private static List<List<string>> GetFactoryAppliedDescription(List<CombatStatusFactory> factory, List<CombatEffectFactory> effectFactory, Unit.UNIT_SPECIFIC_TRIGGER unitTrigger)
+    private static List<List<string>> GetFactoryAppliedDescription(List<CombatStatusFactory> factory, List<CombatEffectFactory> effectFactory,GeneralUtils.SUBJECT_TRIGGER trigger, Unit.UNIT_SPECIFIC_TRIGGER unitTrigger)
     {
         List<string> prefix = new List<string>();
         List<string> bodies = new List<string>();
@@ -457,7 +520,7 @@ public class CombatStatus : UnitStatus
             {
                 {
                     CombatStatusFactory f = factory[i];
-                    currentSubject = GetCurrentSubject(unitTrigger, f.alternative, oldSubject);
+                    currentSubject = GetCurrentSubject(trigger, unitTrigger, f.alternative);
                     List<string> c = CombatStatusFactoryFactory.GetDescription(f.status, f.value, f.duration, f.permanent, f.trigger, f.variable);
                     prefix.Add(currentSubject + c[0]);
                     bodies.Add(c[1]);
@@ -469,10 +532,11 @@ public class CombatStatus : UnitStatus
         return new List<List<string>> { prefix, bodies, time };
     }
 
-    public static string GetCurrentSubject(Unit.UNIT_SPECIFIC_TRIGGER unitTrigger, CombatEffect.ALTERNATIVE_TARGET alternative, string oldSubject)
+    public static string GetCurrentSubject(GeneralUtils.SUBJECT_TRIGGER trigger, Unit.UNIT_SPECIFIC_TRIGGER unitTrigger, CombatEffect.ALTERNATIVE_TARGET alternative)
     {
         string currentSubject = "";
-        if (unitTrigger != Unit.UNIT_SPECIFIC_TRIGGER.ATTACKS) { currentSubject = "the attacker "; }
+        if(unitTrigger == Unit.UNIT_SPECIFIC_TRIGGER.NONE && trigger != GeneralUtils.SUBJECT_TRIGGER.NONE) { return "this unit "; }
+        else if (unitTrigger != Unit.UNIT_SPECIFIC_TRIGGER.ATTACKS && unitTrigger != Unit.UNIT_SPECIFIC_TRIGGER.ATTACKS_CANCELLABLE) { currentSubject = "the attacker "; }
         else { currentSubject = "its target "; }
         
         switch (alternative)
@@ -499,9 +563,9 @@ public class CombatStatus : UnitStatus
         List<CombatStatusFactory> factory, List<CombatStatusFactoryFactory> factoryOfFactory)
     {
         string de = "";
-        if (trigger != GeneralUtils.SUBJECT_TRIGGER.NONE && unitTrigger != Unit.UNIT_SPECIFIC_TRIGGER.NONE && !permanent)
+        if (!permanent)//trigger != GeneralUtils.SUBJECT_TRIGGER.NONE && unitTrigger != Unit.UNIT_SPECIFIC_TRIGGER.NONE && )
         {
-            de += "For " + duration.ToString();
+            de += (duration ==1 ? "This" :"For " + duration.ToString());
             switch (trigger)
             {
                 case GeneralUtils.SUBJECT_TRIGGER.START_OF_TURN:
@@ -540,19 +604,37 @@ public class CombatStatus : UnitStatus
                     de += " this takes damages from an attack, ";
                     break;
                 case Unit.UNIT_SPECIFIC_TRIGGER.DAMAGE_BLOCKED:
-                    de += " this blocks damages, ";
+                    de += " this <b>blocks</b> damages, ";
                     break;
                 case Unit.UNIT_SPECIFIC_TRIGGER.ATTACKS:
-                    de += " this attacks, ";
+                    de += " this <b>attacks</b>, ";
+                    break;
+                case Unit.UNIT_SPECIFIC_TRIGGER.ATTACKS_CANCELLABLE:
+                    de += " this <b>attacks</b> with a <b>cancellable</b> card, ";
                     break;
                 case Unit.UNIT_SPECIFIC_TRIGGER.HEAL:
-                    de += " this is healed, ";
+                    de += " this is <b>healed</b>, ";
+                    break;
+                case Unit.UNIT_SPECIFIC_TRIGGER.GAIN_BLOCK:
+                    de += " this gains <b>block</b>, ";
+                    break;
+                case Unit.UNIT_SPECIFIC_TRIGGER.PLAY_CARD:
+                    de += " this play a card, ";
+                    break;
+                case Unit.UNIT_SPECIFIC_TRIGGER.PLAY_CANCEL_CARD:
+                    de += " this play a <b>cancellable</b> card, ";
+                    break;
+                case Unit.UNIT_SPECIFIC_TRIGGER.ACT:
+                    de += " this is doing an action, ";
+                    break;
+                case Unit.UNIT_SPECIFIC_TRIGGER.CARD_CANCELLED:
+                    de += " one of its action is <b>cancelled</b>, ";
                     break;
             }
         }
 
-        List<List<string>> statusDescription = factory != null ? GetFactoryAppliedDescription(factory, effectFactory, unitTrigger):
-            CombatStatusFactory.GetFactoryFactoryAppliedDescriptions(factoryOfFactory, effectFactory, unitTrigger);
+        List<List<string>> statusDescription = factory != null ? GetFactoryAppliedDescription(factory, effectFactory,trigger, unitTrigger):
+            CombatStatusFactory.GetFactoryFactoryAppliedDescriptions(factoryOfFactory, effectFactory, trigger, unitTrigger);
         if (effectFactory != null && effectFactory.Count > 0)
         {
                 string oldSubject = "";
@@ -560,8 +642,7 @@ public class CombatStatus : UnitStatus
             for (int i = 0; i < effectFactory.Count; i++)
             {
                 CombatEffectFactory effect = effectFactory[i];
-                currentSubject = GetCurrentSubject(unitTrigger, effect.alternative,//CombatEffect.ALTERNATIVE_TARGET.NONE,
-                    oldSubject);
+                currentSubject = GetCurrentSubject(trigger, unitTrigger, effect.alternative);
                 List<string> current = effect.GetDescription();
                 statusDescription[0].Add(currentSubject + current[0]);
                 statusDescription[1].Add(current[1]);

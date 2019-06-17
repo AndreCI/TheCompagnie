@@ -36,6 +36,18 @@ public class CombatStatusFactory
 
     }
 
+    public bool IsBeneficial()
+    {
+        if(status == CombatStatus.STATUS.STATUS_APPLY)
+        {
+            return factory.Select(x => CombatStatus.IsStatusGood(x.status)).All(x=>x);
+        }
+        else
+        {
+            return CombatStatus.IsStatusGood(status);
+        }
+    }
+
     public void GenerateApply(Unit target,Card source=null, CombatStatusData data=null)
     {
         if(data == null || status != CombatStatus.STATUS.STATUS_APPLY)
@@ -72,42 +84,46 @@ public class CombatStatusFactory
         switch (status)
         {
             case CombatStatus.STATUS.BLOCK:
-                body = amountStr + " blocks";
+                body = amountStr + " <b>blocks</b>";
                 break;
             case CombatStatus.STATUS.BUFF_STR:
                 prefix = "Augment ";
-                body = "strength by " + amountStr;
+                body = "<b>strength</b> by " + amountStr;
                 break;
             case CombatStatus.STATUS.REDUCE_STR:
                 prefix = "Reduce ";
-                body = "strength by " + amountStr;
+                body = "<b>strength</b> by " + amountStr;
                 break;
             case CombatStatus.STATUS.BUFF_SPEED:
                 prefix = "Augment ";
-                body = "speed by " + amountStr;
+                body = "<b>speed</b> by " + amountStr;
                 break;
             case CombatStatus.STATUS.RECUDE_SPEED:
                 prefix = "Reduce ";
-                body = "speed by " + amountStr;
+                body = "<b>speed</b> by " + amountStr;
                 break;
             case CombatStatus.STATUS.BURN:
-                body = amountStr + " burn";
+                body = amountStr + " <b>burn</b>";
                 break;
             case CombatStatus.STATUS.PARRY:
-                body = amountStr + " parry";
+                body = amountStr + " <b>parry</b>";
                 break;
             case CombatStatus.STATUS.POISON:
-                body = amountStr + " poison";
+                body = amountStr + " <b>poison</b>";
                 break;
             case CombatStatus.STATUS.REGEN:
-                body = amountStr + " regeneration";
+                body = amountStr + " <b>regeneration</b>";
                 break;
             case CombatStatus.STATUS.FROST:
-                body = " frost";
+                body = " <b>frost</b>";
                 break;
-            case CombatStatus.STATUS.CHANNEL:
-                prefix = (value > 0 ? "Augment " : "Reduce ");
-                body = "concentration by " + amountStr;
+            case CombatStatus.STATUS.BUFF_CHANNEL:
+                prefix = "Augment ";
+                body = "<b>conentration</b> by " + amountStr;
+                break;
+            case CombatStatus.STATUS.REDUCE_CHANNEL:
+                prefix = "Reduce ";
+                body = "<b>concentration</b> by " + amountStr;
                 break;
             case CombatStatus.STATUS.STATUS_APPLY:
                 return GetApplyDescr();
@@ -141,7 +157,7 @@ public class CombatStatusFactory
         ""};
     }
 
-    public static List<List<string>> GetFactoryFactoryAppliedDescriptions(List<CombatStatusFactoryFactory> factory, List<CombatEffectFactory> effectFactory, Unit.UNIT_SPECIFIC_TRIGGER unitTrigger)
+    public static List<List<string>> GetFactoryFactoryAppliedDescriptions(List<CombatStatusFactoryFactory> factory, List<CombatEffectFactory> effectFactory, GeneralUtils.SUBJECT_TRIGGER trigger, Unit.UNIT_SPECIFIC_TRIGGER unitTrigger)
     {
         List<string> prefix = new List<string>();
         List<string> bodies = new List<string>();
@@ -154,7 +170,7 @@ public class CombatStatusFactory
             {
                 {
                     CombatStatusFactoryFactory f = factory[i];
-                    currentSubject = CombatStatus.GetCurrentSubject(unitTrigger, f.alternative, oldSubject);
+                    currentSubject = CombatStatus.GetCurrentSubject(trigger, unitTrigger, f.alternative);
                     oldSubject = currentSubject;
                     List<string> c = CombatStatusFactoryFactory.GetDescription(f.status, f.value, f.duration, f.permanent, f.trigger, f.variable);
                     prefix.Add(currentSubject + c[0]);
@@ -164,6 +180,7 @@ public class CombatStatusFactory
                 }
             }
         }
+        
         return new List<List<string>> { prefix, bodies, time };
     }
 

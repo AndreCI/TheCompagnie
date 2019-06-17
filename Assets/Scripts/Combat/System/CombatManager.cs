@@ -33,16 +33,20 @@ public class CombatManager : MonoBehaviour
 
     [HideInInspector] public Card HiddenCard;
     private int winXpValue;
+    private bool won;
 
     void Start()
     {
+        if(instance != null) { Destroy(gameObject); return; }
         instance = this;
+        won = false;
         for (int i = 0; i < playersUI.Count; i++)
         {
             playersUI[i].gameObject.SetActive(true);
             if (i < PlayerInfos.Instance.compagnions.Count)
             {
                 playersUI[i].SetInfos(PlayerInfos.Instance.compagnions[i]);
+                PlayerInfos.Instance.compagnions[i].CurrentManaRegen = 0;
             }
             else
             {
@@ -109,9 +113,8 @@ public class CombatManager : MonoBehaviour
     {
         if(card == null || card.manaCost > card.owner.CurrentMana || current.IsCurrentCardStatus(card))
         {
-            return true;
+            return false;
         }
-        bool returnValue = true;
 
         if (enemies.Contains((Enemy)card.owner))
         {
@@ -120,11 +123,12 @@ public class CombatManager : MonoBehaviour
                 if (card.multipleTarget)
                 {
                     card.Play(new List<Unit>(compagnions));
-
+                    enemiesDiscard.AddCard(card, card.owner);
                 }
                 else
                 {
                     card.Play(new List<Unit> { compagnions[Utils.rdx.Next(compagnions.Count)] });
+                    enemiesDiscard.AddCard(card, card.owner);
                 }
             }
             else if (card.potential_target == Card.POTENTIAL_TARGET.PARTY || card.potential_target == Card.POTENTIAL_TARGET.SELF)
@@ -132,16 +136,36 @@ public class CombatManager : MonoBehaviour
                 if (card.multipleTarget)
                 {
                     card.Play(new List<Unit>(enemies));
+                    enemiesDiscard.AddCard(card, card.owner);
 
                 }
                 else
                 {
+                    if(card.effects.Find(x=>x.type == CombatEffect.TYPE.HEAL)!= null && card.owner.CurrentHealth == card.owner.maxHealth)
+                    {
+                        return false;
+                    }
+                    if (card.effects.Find(x => x.type == CombatEffect.TYPE.MANA_MODIFY) != null && card.owner.CurrentMana == card.owner.maxMana)
+                    {
+                        return false;
+                    }
                     card.Play(new List<Unit> { card.owner });
+                    enemiesDiscard.AddCard(card, card.owner);
                 }
+            }else if(card.potential_target == Card.POTENTIAL_TARGET.FRIEND)
+            {
+                Unit currentFriend = enemies.Find(x => x != current);
+                if (currentFriend == null ||
+                    (card.effects.Find(x => x.type == CombatEffect.TYPE.HEAL) != null && currentFriend.CurrentHealth == currentFriend.maxHealth) ||
+                     (card.effects.Find(x => x.type == CombatEffect.TYPE.MANA_MODIFY) != null && currentFriend.CurrentMana == currentFriend.maxMana))
+                {
+                    return false;
+                }
+                card.Play(new List<Unit>{ currentFriend });
+                enemiesDiscard.AddCard(card, card.owner);
             }
         }
-        if(card.actionCost == 0) {  Debug.Log("what"); return false;}
-        return returnValue;
+        return card.actionCost > 0;
     }
 
     public void AddEnemiesIntents()
@@ -159,7 +183,13 @@ public class CombatManager : MonoBehaviour
                 card = enemiesDeck.Draw(e as Unit);
                 b = IACardPlay(card, e);
             }
-            if(card == null)
+            if(noPermanentLoopVerification > 5)
+            {
+                Debug.Log(e.ToString());
+                Debug.Log("Looped more than five times to play a card (" + noPermanentLoopVerification.ToString() + " times).");
+                Debug.Log(enemiesDeck.GetCards().Count() + " cards in deck remaining.");
+            }
+            if(noPermanentLoopVerification > 90)
             {
                 enemiesDeck.RenewDeck(e as Unit, e.persistentDeck.GenerateCombatDeck());
             }
@@ -174,24 +204,29 @@ public class CombatManager : MonoBehaviour
 
     public void Win()
     {
-        if (PlayerInfos.Instance.readyForBoss)
+        if (!won)
         {
-            PlayerInfos.Instance.gameOver.SetActive(true);
-            PlayerInfos.Instance.gameOverText.text = "Congratulation! You won! \n" +
-                "`You recolted "+ PlayerInfos.Instance.CurrentShards.ToString()+ " shards!";
-        }
-        foreach(Compagnion c in compagnions)
-        {
-            foreach(CombatStatus cs in new List<UnitStatus>(c.CurrentStatus))
+            won = true;
+            if (PlayerInfos.Instance.readyForBoss)
             {
-                cs.CheckUpdate(forceRemove: true);
+                PlayerInfos.Instance.gameOver.SetActive(true);
+                PlayerInfos.Instance.gameOverText.text = "Congratulation! You won! \n" +
+                    "`You recolted " + PlayerInfos.Instance.CurrentShards.ToString() + " shards!";
             }
-            c.CurrentStatus = new List<CombatStatus>();
-            c.talentTree.EndCombat();
-        }
+            foreach (Compagnion c in compagnions)
+            {
+                foreach (CombatStatus cs in new List<UnitStatus>(c.CurrentStatus))
+                {
+                    cs.CheckUpdate(forceRemove: true);
+                }
+                c.CurrentStatus = new List<CombatStatus>();
+                c.talentTree.EndCombat();
+                c.CurrentManaRegen = 0;
+            }
 
-        winWindow.gameObject.SetActive(true);
-        winWindow.Setup(winXpValue);
+            winWindow.gameObject.SetActive(true);
+            winWindow.Setup(winXpValue);
+        }
     }
 
     public void DisplayDeck()

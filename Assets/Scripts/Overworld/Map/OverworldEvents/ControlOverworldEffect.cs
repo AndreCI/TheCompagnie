@@ -9,7 +9,7 @@ public class ControlOverworldEffect : OverworldEffect
 {
    // public List<ControlOverworldEffect> controlChild;
     public List<LeafOverworldEffect> leafChild;
-
+    public OverworldEffectCondition condition;
     public override void Perform()
     {
   //      if(controlChild.Count > 0 && leafChild.Count > 0) { return; }
@@ -26,6 +26,11 @@ public class ControlOverworldEffect : OverworldEffect
                 e.Perform();
             }
         }
+    }
+
+    public bool ValidateCondition()
+    {
+        return condition.Test();
     }
 
     public override void Setup(OverworldEvent parentEvent, int child)

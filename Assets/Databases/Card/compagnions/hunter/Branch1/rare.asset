@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: rare
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 1
+  subClass: 0
+  rarityLevel: 3
+  branchLevel: 2
+  childrenDatabase: []
+  items:
+  - Name: Star Toss
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 24
+      type: 0
+      animation: 3
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 1
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 8869640840987090445, guid: ac26accbec5435d4ea28727be688185a,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 2
+    ID: 60
+  - Name: Lethal Shot
+    manaCost: 0
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 33
+      type: 0
+      animation: 22
+      variable: 0
+      alternative: 0
+      condition: 5
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 1
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 6387094350404503514, guid: de59000a823239946b0ece3a459946ad,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 2
+    ID: 61
+  - Name: Poison Cloud
+    manaCost: 8
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 5
+        value: 1
+        duration: 14
+        permanent: 0
+        trigger: 1
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 5
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -1915601493175064485, guid: 07be5982847ffb34aa4abd87d9b604fb,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 2
+    ID: 62

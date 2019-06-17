@@ -35,6 +35,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -86,6 +87,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -137,6 +139,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         - status: 3
           value: 3
           duration: -1
@@ -145,6 +148,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -196,6 +200,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -247,6 +252,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         - status: 3
           value: 1
           duration: 2
@@ -255,6 +261,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -342,6 +349,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -395,6 +403,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -447,6 +456,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -499,6 +509,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -551,6 +562,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -603,6 +615,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -690,6 +703,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -734,17 +748,26 @@ MonoBehaviour:
       duration: 1
       permanent: 0
       showUi: 0
-      name: Anger
+      name: Envenom
       effects:
       - statusFactories:
-        - status: 7
-          value: 5
+        - status: 12
+          value: 1
           duration: 2
           permanent: 0
           trigger: 0
-          unitTrigger: 0
-          factory: []
+          unitTrigger: 1
+          factory:
+          - status: 5
+            value: 4
+            duration: 1
+            permanent: 0
+            trigger: 1
+            unitTrigger: 0
+            alternative: 0
+            variable: 0
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -753,49 +776,58 @@ MonoBehaviour:
         condition: 0
         OnPlay: 0
       onUnlockEffect: 01000000
-      amounts: fbffffff
-      icon: {fileID: 21300000, guid: d21f2158a7a1b43459f927f235de6ca5, type: 3}
+      amounts: 03000000
+      icon: {fileID: 21300000, guid: 8a1edfec0c2c9724f8e8f2fe5b20c146, type: 3}
       trigger: 4
-      state: 1
+      state: 3
       inFightActivated: 0
       ui: {fileID: 0}
       unit:
         availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
           type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
           type: 3}
         switchSprite: 0
         level:
-          currentXP: 0
+          currentXP: 4
           nextLevelThreshold: 5
           currentLevel: 0
-        id: 2
+        id: 1
         baseSpeed: 0
         startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
     - value: 0
       noValue: 1
       duration: 1
       permanent: 0
       showUi: 0
-      name: Brutal Start
+      name: Poisonous Blades
       effects:
       - statusFactories:
-        - status: 7
-          value: 4
-          duration: 5
-          permanent: 0
-          trigger: 1
-          unitTrigger: 0
-          factory: []
+        - status: 12
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 1
+          factory:
+          - status: 5
+            value: 1
+            duration: 6
+            permanent: 0
+            trigger: 1
+            unitTrigger: 0
+            alternative: 0
+            variable: 0
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -803,308 +835,51 @@ MonoBehaviour:
         alternative: 1
         condition: 0
         OnPlay: 0
-      onUnlockEffect: 00000000
-      amounts: fbffffff
-      icon: {fileID: 534043704846918100, guid: 372c4ae0cd58e974493d76d25055e5fd, type: 3}
-      trigger: 4
-      state: 1
-      inFightActivated: 0
-      ui: {fileID: 0}
-      unit:
-        availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
-          type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
-          type: 3}
-        switchSprite: 0
-        level:
-          currentXP: 0
-          nextLevelThreshold: 5
-          currentLevel: 0
-        id: 2
-        baseSpeed: 0
-        startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
-    - value: 0
-      noValue: 1
-      duration: 1
-      permanent: 0
-      showUi: 0
-      name: Burning Strength
-      effects:
-      - statusFactories:
-        - status: 7
-          value: 3
-          duration: -1
-          permanent: 1
-          trigger: 0
-          unitTrigger: 0
-          factory: []
-          effectFactory: []
-        - status: 3
-          value: 3
-          duration: -1
-          permanent: 1
-          trigger: 0
-          unitTrigger: 0
-          factory: []
-          effectFactory: []
-        amount: 0
-        type: 2
-        animation: 0
-        variable: 0
-        alternative: 1
-        condition: 0
-        OnPlay: 0
-      onUnlockEffect: 
-      amounts: 
-      icon: {fileID: 21300000, guid: 9b83ce6bd738f644a91922caa22095ca, type: 3}
+      onUnlockEffect: 01000000
+      amounts: 03000000
+      icon: {fileID: 21300000, guid: 41f8b8525aef52444a8f8f9af078d33e, type: 3}
       trigger: 4
       state: 2
       inFightActivated: 0
       ui: {fileID: 0}
       unit:
         availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
           type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
-          type: 3}
-        switchSprite: 0
-        level:
-          currentXP: 0
-          nextLevelThreshold: 5
-          currentLevel: 0
-        id: 2
-        baseSpeed: 0
-        startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
-    - value: 0
-      noValue: 1
-      duration: 0
-      permanent: 1
-      showUi: 1
-      name: Adrenaline
-      effects:
-      - statusFactories:
-        - status: 7
-          value: 5
-          duration: 3
-          permanent: 0
-          trigger: 1
-          unitTrigger: 0
-          factory: []
-          effectFactory: []
-        amount: 0
-        type: 2
-        animation: 0
-        variable: 0
-        alternative: 1
-        condition: 0
-        OnPlay: 0
-      onUnlockEffect: 00000000
-      amounts: fbffffff
-      icon: {fileID: 21300000, guid: 750528985b4f8e04294e4e1720bdb908, type: 3}
-      trigger: 0
-      state: 1
-      inFightActivated: 0
-      ui: {fileID: 0}
-      unit:
-        availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
-          type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
           type: 3}
         switchSprite: 0
         level:
-          currentXP: 0
+          currentXP: 4
           nextLevelThreshold: 5
           currentLevel: 0
-        id: 2
+        id: 1
         baseSpeed: 0
         startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
     - value: 0
       noValue: 1
-      duration: 0
-      permanent: 1
-      showUi: 1
-      name: Growing Anger
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Armored
       effects:
       - statusFactories:
-        - status: 7
+        - status: 2
           value: 1
-          duration: 2
+          duration: 1
           permanent: 1
           trigger: 2
           unitTrigger: 0
           factory: []
           effectFactory: []
-        - status: 3
-          value: 1
-          duration: 2
-          permanent: 1
-          trigger: 0
-          unitTrigger: 0
-          factory: []
-          effectFactory: []
-        amount: 0
-        type: 2
-        animation: 0
-        variable: 0
-        alternative: 1
-        condition: 0
-        OnPlay: 0
-      onUnlockEffect: 01000000
-      amounts: 05000000
-      icon: {fileID: 21300000, guid: 48e8834217915ab45adbfb7ec058b75a, type: 3}
-      trigger: 0
-      state: 1
-      inFightActivated: 0
-      ui: {fileID: 0}
-      unit:
-        availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
-          type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
-          type: 3}
-        switchSprite: 0
-        level:
-          currentXP: 0
-          nextLevelThreshold: 5
-          currentLevel: 0
-        id: 2
-        baseSpeed: 0
-        startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
-    - value: 0
-      noValue: 1
-      duration: 1
-      permanent: 0
-      showUi: 0
-      name: Risk Focus
-      effects: []
-      onUnlockEffect: 0200000000000000
-      amounts: 01000000ecffffff
-      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
-        type: 3}
-      trigger: 2
-      state: 1
-      inFightActivated: 0
-      ui: {fileID: 0}
-      unit:
-        availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
-          type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
-          type: 3}
-        switchSprite: 0
-        level:
-          currentXP: 0
-          nextLevelThreshold: 5
-          currentLevel: 0
-        id: 2
-        baseSpeed: 0
-        startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
-    - value: 0
-      noValue: 1
-      duration: 1
-      permanent: 0
-      showUi: 0
-      name: Burning  Focus
-      effects:
-      - statusFactories:
-        - status: 3
-          value: 5
-          duration: 0
-          permanent: 1
-          trigger: 0
-          unitTrigger: 0
-          factory: []
-          effectFactory: []
-        amount: 0
-        type: 2
-        animation: 0
-        variable: 0
-        alternative: 1
-        condition: 0
-        OnPlay: 0
-      onUnlockEffect: 02000000
-      amounts: 01000000
-      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
-        type: 3}
-      trigger: 4
-      state: 1
-      inFightActivated: 0
-      ui: {fileID: 0}
-      unit:
-        availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
-          type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
-          type: 3}
-        switchSprite: 0
-        level:
-          currentXP: 0
-          nextLevelThreshold: 5
-          currentLevel: 0
-        id: 2
-        baseSpeed: 0
-        startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
-    branch2:
-    - value: 0
-      noValue: 1
-      duration: 0
-      permanent: 1
-      showUi: 1
-      name: Growing Force
-      effects:
-      - statusFactories:
-        - status: 0
-          value: 1
-          duration: 0
-          permanent: 1
-          trigger: 0
-          unitTrigger: 0
-          factory: []
-          effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -1113,102 +888,50 @@ MonoBehaviour:
         condition: 0
         OnPlay: 0
       onUnlockEffect: 00000000
-      amounts: 05000000
-      icon: {fileID: 7230978523498615230, guid: ff2d5dbb47e3e3d4fba157cf94a063c4,
-        type: 3}
-      trigger: 0
+      amounts: 03000000
+      icon: {fileID: 21300000, guid: 2be12b73bcbc06b4d88a4d39822705e9, type: 3}
+      trigger: 4
       state: 1
       inFightActivated: 0
       ui: {fileID: 0}
       unit:
         availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
           type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
           type: 3}
         switchSprite: 0
         level:
-          currentXP: 0
+          currentXP: 4
           nextLevelThreshold: 5
           currentLevel: 0
-        id: 2
+        id: 1
         baseSpeed: 0
         startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
     - value: 0
       noValue: 1
       duration: 0
       permanent: 1
       showUi: 1
-      name: Adapting Strategy
+      name: Plant Brewer
       effects:
       - statusFactories:
-        - status: 1
+        - status: 0
           value: 5
-          duration: 0
+          duration: 1
           permanent: 1
           trigger: 0
           unitTrigger: 0
           factory: []
           effectFactory: []
-        amount: 0
-        type: 2
-        animation: 0
-        variable: 0
-        alternative: 1
-        condition: 0
-        OnPlay: 0
-      onUnlockEffect: 
-      amounts: 
-      icon: {fileID: 2737237876587728928, guid: 33c88480c28f5064883809104602dbed,
-        type: 3}
-      trigger: 0
-      state: 1
-      inFightActivated: 0
-      ui: {fileID: 0}
-      unit:
-        availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
-          type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
-          type: 3}
-        switchSprite: 0
-        level:
-          currentXP: 0
-          nextLevelThreshold: 5
-          currentLevel: 0
-        id: 2
-        baseSpeed: 0
-        startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
-    - value: 0
-      noValue: 1
-      duration: 0
-      permanent: 1
-      showUi: 1
-      name: Quick Reflexes
-      effects:
-      - statusFactories:
-        - status: 2
-          value: 1
-          duration: 2
-          permanent: 0
-          trigger: 1
-          unitTrigger: 0
-          factory: []
-          effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -1217,50 +940,58 @@ MonoBehaviour:
         condition: 0
         OnPlay: 0
       onUnlockEffect: 00000000
-      amounts: 0a000000
-      icon: {fileID: 7408320401282307804, guid: 82d2838af43bcb24bae3602764bcc37e,
-        type: 3}
+      amounts: 03000000
+      icon: {fileID: 21300000, guid: 75e65380e4abed546aee6decb9ae4464, type: 3}
       trigger: 0
       state: 1
       inFightActivated: 0
       ui: {fileID: 0}
       unit:
         availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
           type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
           type: 3}
         switchSprite: 0
         level:
-          currentXP: 0
+          currentXP: 4
           nextLevelThreshold: 5
           currentLevel: 0
-        id: 2
+        id: 1
         baseSpeed: 0
         startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
     - value: 0
       noValue: 1
-      duration: 1
-      permanent: 0
-      showUi: 0
-      name: Blessed Blood
+      duration: 0
+      permanent: 1
+      showUi: 1
+      name: Venom Blood
       effects:
       - statusFactories:
-        - status: 0
-          value: 8
-          duration: 0
+        - status: 12
+          value: 1
+          duration: 2
           permanent: 1
-          trigger: 0
-          unitTrigger: 0
-          factory: []
+          trigger: 2
+          unitTrigger: 4
+          factory:
+          - status: 5
+            value: 2
+            duration: 2
+            permanent: 0
+            trigger: 1
+            unitTrigger: 0
+            alternative: 3
+            variable: 0
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -1269,137 +1000,456 @@ MonoBehaviour:
         condition: 0
         OnPlay: 0
       onUnlockEffect: 01000000
-      amounts: f6ffffff
-      icon: {fileID: -8982734259901193672, guid: fc6b1799b6595ab488bf1cf95dccc9d0,
-        type: 3}
-      trigger: 4
-      state: 1
-      inFightActivated: 0
-      ui: {fileID: 0}
-      unit:
-        availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
-          type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
-          type: 3}
-        switchSprite: 0
-        level:
-          currentXP: 0
-          nextLevelThreshold: 5
-          currentLevel: 0
-        id: 2
-        baseSpeed: 0
-        startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
-    - value: 0
-      noValue: 1
-      duration: 1
-      permanent: 0
-      showUi: 0
-      name: Always Ready
-      effects:
-      - statusFactories:
-        - status: 1
-          value: 15
-          duration: 2
-          permanent: 0
-          trigger: 0
-          unitTrigger: 0
-          factory: []
-          effectFactory: []
-        amount: 0
-        type: 2
-        animation: 0
-        variable: 0
-        alternative: 1
-        condition: 0
-        OnPlay: 0
-      onUnlockEffect: 
-      amounts: 
-      icon: {fileID: 21300000, guid: 14272a7ae25140547aa0440f8d30d0ee, type: 3}
-      trigger: 4
+      amounts: 03000000
+      icon: {fileID: 21300000, guid: 84b6dd7ff4b80c24d87cf8a244b7b2bf, type: 3}
+      trigger: 0
       state: 2
       inFightActivated: 0
       ui: {fileID: 0}
       unit:
         availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
           type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
           type: 3}
         switchSprite: 0
         level:
-          currentXP: 0
+          currentXP: 4
           nextLevelThreshold: 5
           currentLevel: 0
-        id: 2
+        id: 1
         baseSpeed: 0
         startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Burst Focus
+      effects: []
+      onUnlockEffect: 0200000003000000
+      amounts: 01000000fdffffff
+      icon: {fileID: 21300000, guid: d62cdfe3a2195b94b977f61e81e985e9, type: 3}
+      trigger: 2
+      state: 0
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 4
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 1
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Danger Focus
+      effects: []
+      onUnlockEffect: 0200000000000000
+      amounts: 01000000f3ffffff
+      icon: {fileID: 21300000, guid: 11e74ca556769bf4c84030baba41c451, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 4
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 1
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
+    branch2:
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Burning Munition
+      effects:
+      - statusFactories:
+        - status: 12
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 12
+          factory:
+          - status: 3
+            value: 1
+            duration: 1
+            permanent: 1
+            trigger: 0
+            unitTrigger: 0
+            alternative: 0
+            variable: 0
+          effectFactory: []
+          variable: 0
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 03000000
+      amounts: 01000000
+      icon: {fileID: 21300000, guid: c7024970de5cd1a46bd6af3e8f5869b6, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 4
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 1
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Freezing Munition
+      effects:
+      - statusFactories:
+        - status: 12
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 12
+          factory:
+          - status: 10
+            value: 1
+            duration: 1
+            permanent: 0
+            trigger: 0
+            unitTrigger: 0
+            alternative: 0
+            variable: 0
+          effectFactory: []
+          variable: 0
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 03000000
+      amounts: 01000000
+      icon: {fileID: 21300000, guid: 28c71205bcd2dff4c9cf8e09ae20a6b5, type: 3}
+      trigger: 4
+      state: 0
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 4
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 1
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Poisonous Munition
+      effects:
+      - statusFactories:
+        - status: 12
+          value: 1
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 12
+          factory:
+          - status: 5
+            value: 1
+            duration: 6
+            permanent: 0
+            trigger: 1
+            unitTrigger: 0
+            alternative: 0
+            variable: 0
+          effectFactory: []
+          variable: 0
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 03000000
+      amounts: 01000000
+      icon: {fileID: 21300000, guid: c899bbb365e6d8043a72aba83387df27, type: 3}
+      trigger: 4
+      state: 0
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 4
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 1
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Head Start
+      effects:
+      - statusFactories: []
+        amount: 2
+        type: 3
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 00000000
+      amounts: 03000000
+      icon: {fileID: 21300000, guid: 9f43cd951ff559e4ebc3272ac03b10c2, type: 3}
+      trigger: 4
+      state: 0
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 4
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 1
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
+    - value: 0
+      noValue: 1
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Tenacious
+      effects:
+      - statusFactories:
+        - status: 2
+          value: 1
+          duration: 1
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+          variable: 0
+        amount: 0
+        type: 2
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 6
+        OnPlay: 0
+      - statusFactories:
+        - status: 2
+          value: 1
+          duration: 1
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          factory: []
+          effectFactory: []
+          variable: 0
+        amount: 10
+        type: 1
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 00000000
+      amounts: 03000000
+      icon: {fileID: 21300000, guid: 1a0ecceca63ccbc4a9600e5095cfbae4, type: 3}
+      trigger: 4
+      state: 1
+      inFightActivated: 0
+      ui: {fileID: 0}
+      unit:
+        availableCards: 1
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
+          type: 3}
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
+          type: 3}
+        switchSprite: 0
+        level:
+          currentXP: 4
+          nextLevelThreshold: 5
+          currentLevel: 0
+        id: 1
+        baseSpeed: 0
+        startingWeights: 04000000030000000200000001000000
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
     - value: 0
       noValue: 1
       duration: 1
       permanent: 0
       showUi: 0
       name: Calm Focus
-      effects: []
-      onUnlockEffect: 0200000001000000
-      amounts: 01000000fbffffff
-      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
-        type: 3}
-      trigger: 2
-      state: 1
+      effects:
+      - statusFactories: []
+        amount: -30
+        type: 4
+        animation: 0
+        variable: 0
+        alternative: 1
+        condition: 0
+        OnPlay: 0
+      onUnlockEffect: 0200000003000000
+      amounts: 0100000003000000
+      icon: {fileID: 21300000, guid: a7d66658938de224db36b7121a84c1c3, type: 3}
+      trigger: 4
+      state: 0
       inFightActivated: 0
       ui: {fileID: 0}
       unit:
         availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
           type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
           type: 3}
         switchSprite: 0
         level:
-          currentXP: 0
+          currentXP: 4
           nextLevelThreshold: 5
           currentLevel: 0
-        id: 2
+        id: 1
         baseSpeed: 0
         startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
     - value: 0
       noValue: 1
-      duration: 0
-      permanent: 1
-      showUi: 1
-      name: Weak Focus
+      duration: 1
+      permanent: 0
+      showUi: 0
+      name: Slow Focus
       effects:
       - statusFactories:
-        - status: 6
-          value: 5
-          duration: 0
+        - status: 14
+          value: 1
+          duration: 2
           permanent: 1
           trigger: 2
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -1409,33 +1459,32 @@ MonoBehaviour:
         OnPlay: 0
       onUnlockEffect: 02000000
       amounts: 01000000
-      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
-        type: 3}
-      trigger: 2
+      icon: {fileID: 21300000, guid: 11e74ca556769bf4c84030baba41c451, type: 3}
+      trigger: 4
       state: 1
       inFightActivated: 0
       ui: {fileID: 0}
       unit:
         availableCards: 1
-        unitName: Elana The Mage
-        maxHealth: 40
-        maxMana: 20
-        maxAction: 1
-        baseManaRegen: 0
-        combatSprite: {fileID: 6363169731357551551, guid: a95639a5f54aac54ba01b4a14670b34c,
+        unitName: Azora The Hunter
+        maxHealth: 30
+        maxMana: 15
+        maxAction: 3
+        baseManaRegen: 5
+        combatSprite: {fileID: 797758475752039725, guid: a95639a5f54aac54ba01b4a14670b34c,
           type: 3}
-        portraitSprite: {fileID: 2243201240339979588, guid: ad03845c1d656e54e83a85baef5114df,
+        portraitSprite: {fileID: -5013178757284638192, guid: ad03845c1d656e54e83a85baef5114df,
           type: 3}
         switchSprite: 0
         level:
-          currentXP: 0
+          currentXP: 4
           nextLevelThreshold: 5
           currentLevel: 0
-        id: 2
+        id: 1
         baseSpeed: 0
         startingWeights: 04000000030000000200000001000000
-        branch1Color: {r: 0, g: 0, b: 0, a: 0}
-        branch2Color: {r: 0, g: 0, b: 0, a: 0}
+        branch1Color: {r: 0, g: 0.3254902, b: 0.7058824, a: 0.7411765}
+        branch2Color: {r: 0, g: 0.81960785, b: 0.17254902, a: 0.7411765}
     classType: 1
     ID: 0
   - branch1:
@@ -1461,7 +1510,9 @@ MonoBehaviour:
             trigger: 0
             unitTrigger: 0
             alternative: 0
+            variable: 0
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -1519,12 +1570,14 @@ MonoBehaviour:
             trigger: 0
             unitTrigger: 0
             alternative: 0
+            variable: 0
           effectFactory:
           - amount: 1
             type: 3
             variable: 0
             alternative: 1
             condition: 0
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -1576,6 +1629,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         - status: 13
           value: 1
           duration: 2
@@ -1584,6 +1638,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -1635,6 +1690,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -1686,6 +1742,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         - status: 12
           value: 1
           duration: 1
@@ -1700,7 +1757,9 @@ MonoBehaviour:
             trigger: 0
             unitTrigger: 0
             alternative: 0
+            variable: 0
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -1745,7 +1804,7 @@ MonoBehaviour:
       effects: []
       onUnlockEffect: 0200000000000000
       amounts: 01000000f2ffffff
-      icon: {fileID: 21300000, guid: cb8b15fd5ebdbf4429fbca6393cce716, type: 3}
+      icon: {fileID: 21300000, guid: c280f73573e4dbf409d37bb3f3f9986b, type: 3}
       trigger: 2
       state: 1
       inFightActivated: 0
@@ -1787,6 +1846,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -1796,7 +1856,7 @@ MonoBehaviour:
         OnPlay: 0
       onUnlockEffect: 0200000001000000
       amounts: 0100000005000000
-      icon: {fileID: 21300000, guid: cb8b15fd5ebdbf4429fbca6393cce716, type: 3}
+      icon: {fileID: 21300000, guid: e3024fa67cb9048499849c170ff67d02, type: 3}
       trigger: 4
       state: 3
       inFightActivated: 0
@@ -1844,7 +1904,9 @@ MonoBehaviour:
             trigger: 0
             unitTrigger: 0
             alternative: 5
+            variable: 0
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -1897,6 +1959,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         - status: 1
           value: 35
           duration: 3
@@ -1905,6 +1968,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -1962,7 +2026,9 @@ MonoBehaviour:
             trigger: 0
             unitTrigger: 0
             alternative: 0
+            variable: 0
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2014,6 +2080,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2065,6 +2132,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2116,6 +2184,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         - status: 7
           value: 20
           duration: 2
@@ -2124,6 +2193,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2168,7 +2238,7 @@ MonoBehaviour:
       effects: []
       onUnlockEffect: 0200000001000000
       amounts: 01000000f1ffffff
-      icon: {fileID: 21300000, guid: 960901c2dd350414e96e6f7d4b8d8897, type: 3}
+      icon: {fileID: 21300000, guid: 47c989b4baff8e84f9d249e4cf6bb2a0, type: 3}
       trigger: 2
       state: 3
       inFightActivated: 0
@@ -2210,6 +2280,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2219,8 +2290,7 @@ MonoBehaviour:
         OnPlay: 0
       onUnlockEffect: 0200000001000000
       amounts: 0100000004000000
-      icon: {fileID: -3368647375808159059, guid: 82d2838af43bcb24bae3602764bcc37e,
-        type: 3}
+      icon: {fileID: 21300000, guid: 254ebad1f9b8bd34fb0fe4d9f569786e, type: 3}
       trigger: 4
       state: 1
       inFightActivated: 0
@@ -2258,7 +2328,7 @@ MonoBehaviour:
       effects: []
       onUnlockEffect: 0200000001000000
       amounts: 01000000f6ffffff
-      icon: {fileID: 21300000, guid: 7139925b499f9d347be39ea55147832a, type: 3}
+      icon: {fileID: 21300000, guid: 799dc73b5adf34e44a9ce8eb3831d5c5, type: 3}
       trigger: 2
       state: 1
       inFightActivated: 0
@@ -2300,6 +2370,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2309,7 +2380,7 @@ MonoBehaviour:
         OnPlay: 0
       onUnlockEffect: 02000000
       amounts: 01000000
-      icon: {fileID: 21300000, guid: 7139925b499f9d347be39ea55147832a, type: 3}
+      icon: {fileID: 21300000, guid: 6c6e5921077a97b4eaca5779ad7d47df, type: 3}
       trigger: 4
       state: 1
       inFightActivated: 0
@@ -2357,7 +2428,9 @@ MonoBehaviour:
             trigger: 0
             unitTrigger: 0
             alternative: 1
+            variable: 0
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2409,6 +2482,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2460,6 +2534,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2511,6 +2586,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2562,6 +2638,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         - status: 13
           value: 1
           duration: 3
@@ -2570,6 +2647,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2615,7 +2693,7 @@ MonoBehaviour:
       effects: []
       onUnlockEffect: 000000000100000002000000
       amounts: f4fffffffdffffff01000000
-      icon: {fileID: 21300000, guid: 1f4e2a057feb6204fb5a3fa05eadd548, type: 3}
+      icon: {fileID: 21300000, guid: 2c5d4a053c3a86b439d2863189a07723, type: 3}
       trigger: 2
       state: 1
       inFightActivated: 0
@@ -2649,14 +2727,15 @@ MonoBehaviour:
       name: Anger Focus
       effects:
       - statusFactories:
-        - status: 11
-          value: -1
+        - status: 14
+          value: 1
           duration: 1
           permanent: 1
           trigger: 2
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2666,7 +2745,7 @@ MonoBehaviour:
         OnPlay: 0
       onUnlockEffect: 000000000100000002000000
       amounts: 06000000fdffffff01000000
-      icon: {fileID: 21300000, guid: 1f4e2a057feb6204fb5a3fa05eadd548, type: 3}
+      icon: {fileID: 21300000, guid: 23fd913f3e3c6d049b5ef5b63c052db2, type: 3}
       trigger: 4
       state: 1
       inFightActivated: 0
@@ -2714,12 +2793,14 @@ MonoBehaviour:
             trigger: 0
             unitTrigger: 0
             alternative: 1
+            variable: 0
           effectFactory:
           - amount: 4
             type: 0
             variable: 0
             alternative: 1
             condition: 0
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2812,7 +2893,9 @@ MonoBehaviour:
             trigger: 0
             unitTrigger: 0
             alternative: 1
+            variable: 0
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0
@@ -2869,6 +2952,7 @@ MonoBehaviour:
             variable: 0
             alternative: 3
             condition: 0
+          variable: 0
         amount: 1
         type: 2
         animation: 0
@@ -2920,6 +3004,7 @@ MonoBehaviour:
           unitTrigger: 0
           factory: []
           effectFactory: []
+          variable: 0
         amount: 0
         type: 2
         animation: 0

@@ -1,0 +1,247 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: earth
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 15
+  subClass: 4
+  rarityLevel: 0
+  branchLevel: 0
+  childrenDatabase:
+  - {fileID: 11400000, guid: eb48cbf77f45b5c45b20537eae5aefc3, type: 2}
+  - {fileID: 11400000, guid: 2677c91c5b662004db3c2cb1246485e1, type: 2}
+  - {fileID: 11400000, guid: c3506b6a2d50d8d4ab7379c012894468, type: 2}
+  items:
+  - Name: Rock Fall
+    manaCost: 5
+    delay: 9
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 16
+      type: 0
+      animation: 16
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 2348264158320094266, guid: 3c08302b3a648f040b1625cb160fd3d7,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 15
+    branch: 0
+    ID: 217
+  - Name: Earth Barriere
+    manaCost: 4
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 20
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: -4160022799569604185, guid: 30e4f3fc0682c8c4eb74121f518637bb,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 15
+    branch: 0
+    ID: 218
+  - Name: Stoneskin
+    manaCost: 2
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 2
+        value: 1
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: -8136144470489512329, guid: 3c08302b3a648f040b1625cb160fd3d7,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 15
+    branch: 0
+    ID: 219
+  - Name: Hard Punch
+    manaCost: 5
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 9
+      type: 0
+      animation: 16
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 1
+        value: 5
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -5846584655281936747, guid: 2d39095b8a867714389b16ad85ee6f04,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 15
+    branch: 0
+    ID: 220
+  - Name: Rock Armor
+    manaCost: 6
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 18
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 4
+    hidden: 0
+    sprite: {fileID: 1970379069458803968, guid: 6c3822191094c0c40b686091944493c9,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///ENEMIES/All
+    cardClass: 15
+    branch: 0
+    ID: 221
+  - Name: Earth Attack
+    manaCost: 5
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 20
+      type: 0
+      animation: 22
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 1
+        value: 5
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 1
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 4
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 3762776468161436177, guid: 7a91062babfd48748ab2f5c58c7a29fa,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///ENEMIES/All
+    cardClass: 15
+    branch: 0
+    ID: 222

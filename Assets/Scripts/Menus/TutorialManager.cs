@@ -22,9 +22,12 @@ public class TutorialManager : MonoBehaviour
     public event DelegateTrigger StartTrigger;
     public event DelegateTrigger EndTrigger;
 
-    public static string versionNumber = "0.1.5.6";
-    public static string patchNote = "Continuing big update. Tutorial arrows + updated enemies (beast only, undead temp removed"+
+    public static string versionNumber = "0.1.5.8";
+    public static string patchNote = "Added spirit enemies. Improved enemies behavior, events, and fix some bugs."+
         "\nPrevious:\n"+
+        "Added meta progression (variable starter)."+
+        "Continuing big update. Tutorial arrows + updated enemies (beast only, undead temp removed"+
+        
         "Continue big update. Meet Ember! Solved some bugs, notably infinite loop with status triggering themselves." +
         "Added a bit more logic to cards/effect in order to suit paladin/berserk theme of Ember."+
         
@@ -166,8 +169,7 @@ public class TutorialManager : MonoBehaviour
                     "If you hover over them, you can see what they do.\n Finally, you can also improve your units by adding and removing cards to their decks "+
                     "and gaining talents";
             case TUTOTRIGGER.COMBAT:
-                return "You are under attack! You can defend yourself and defeat the enemies by playing cards each turn. The ennemies will also " +
-                    "attack you! Each turn takes 10 ticks (red rectangle in the middle of the screen) and each cards has a delay, which determine when it will happens.";
+                return "You are under attack! You can defend yourself and defeat the enemies by playing cards each turn. Each turn takes 10 ticks (green rectangle in the middle of the screen) and each cards has a delay, which determine when it will happens (bottom number on the card).";
             case TUTOTRIGGER.COMBATENDTURN:
                 return "You are out of action! Each turn, you can play a limited number of cards. You gain 1 action point per turn!\n" +
                     "It's time to end the turn. Press end turn and see the action that you and the ennemies planned happend! Pay attention to the order in which the intents will go! \n" +
@@ -200,11 +202,10 @@ public class TutorialManager : MonoBehaviour
             case TUTOTRIGGER.CHANNEL :
                 return "Channeling means that a card takes more than one tick to happen : it will takes the number of timestep corresponding to the value of the channel. \n" +
                     "Moreover, its effect and manacost will be duplicated. Dealing damage from an attack will cancel all instances of the card, so pay attention to who cast what "+
-                    "and when (poison and attacks which does no damage to the health do not cancel channel).";
+                    "and when!";
             case TUTOTRIGGER.TALENTPOINT:
                 return "You have a talent point! Each time a unit gain a level, they gain an action point will can be spent on the talent tree. \n " +
                     "You can access the talent tree by clicking on the talent button.";
-                break;
         }
         return "Tutorial text not found :( ";
     }

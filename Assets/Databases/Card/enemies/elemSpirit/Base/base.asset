@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: base
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 15
+  subClass: 1
+  rarityLevel: 0
+  branchLevel: 0
+  childrenDatabase:
+  - {fileID: 11400000, guid: a557f36d2868dbc4b9f34be54c643dfa, type: 2}
+  - {fileID: 11400000, guid: a3566a634e47069479f66ac715ceafc3, type: 2}
+  items:
+  - Name: Mana Spark
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 3
+      type: 4
+      animation: 9
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -5232307955271045362, guid: 2555089841c234948805ed2ad0ccd4b2,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 15
+    branch: 0
+    ID: 197
+  - Name: Gather Mana
+    manaCost: 0
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 6
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 10
+      type: 4
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 4662258661504618730, guid: 54210b61a5b29e24790b5d7e7d813fd2,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 15
+    branch: 0
+    ID: 198

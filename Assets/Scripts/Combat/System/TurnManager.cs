@@ -35,12 +35,14 @@ public class TurnManager : MonoBehaviour
     private List<GeneralUtils.SUBJECT_TRIGGER> triggers;
     public int currentIndex;
     public static TurnManager Instance { get => instance; }
+    public bool paused;
 
     public delegate void Notify(GeneralUtils.SUBJECT_TRIGGER trigger);
     public static event Notify NotifyAll;
 
     void Awake()
     {
+        paused = false;
         turnNumber = 0;
         currentIndex = 0;
         endTurnButton.interactable = true;
@@ -119,13 +121,16 @@ public class TurnManager : MonoBehaviour
                 }
             }
         }
-        return futurEvents.Find(x => x.timeIndex <= futurEvents.Min(y => y.timeIndex));
+        return futurEvents.Find(x => x.timeIndex <= futurEvents.Min(y => y.timeIndex) && (u==null || x.source == u));
     }
 
     public void RemoveCombatEvent(CombatEvent e)
     {
-        registeredEvents[e.timeIndex].Remove(e);
-        Destroy(e.intent.gameObject);
+        if (e != null && registeredEvents[e.timeIndex].Contains(e))
+        {
+            registeredEvents[e.timeIndex].Remove(e);
+            Destroy(e.intent.gameObject);
+        }
     }
 
     public void MoveCombatEvent(CombatEvent e, int amount)
@@ -172,25 +177,28 @@ public class TurnManager : MonoBehaviour
     }
     public void AddPhantomCombatEvent(Card c)
     {
-        int delay = Mathf.Max(0,c.delay + c.owner.currentSpeed);
-        bool future = delay >= timeSteps.Count;
-        int timeindex =delay % timeSteps.Count;
-        
-        if (!c.channel)
+        if (c.effects.Count(x => !x.OnPlay) > 0)
         {
-            CombatEvent phantom = new CombatEvent(c.owner, new List<Unit>(), timeindex, new List<CombatEffect>(), c, c.set, false);
-            AddPhantom(phantom, future);
-        }
-        else
-        {
-            int channelValue = c.channel ? Mathf.Max(0, c.channelLenght + (c.owner == null ? 0 : c.owner.CurrentChannelValue)) : 0;
-            for (int i = 0; i < channelValue; i++)
+            int delay = Mathf.Max(0, c.delay + c.owner.currentSpeed);
+            bool future = delay >= timeSteps.Count;
+            int timeindex = delay % timeSteps.Count;
+
+            if (!c.channel)
             {
-                if((i+1) * c.manaCost <= c.owner.CurrentMana)
+                CombatEvent phantom = new CombatEvent(c.owner, new List<Unit>(), timeindex, new List<CombatEffect>(), c, c.set, false, false);
+                AddPhantom(phantom, future);
+            }
+            else
+            {
+                int channelValue = c.channel ? Mathf.Max(0, c.channelLenght + (c.owner == null ? 0 : c.owner.CurrentChannelValue)) : 0;
+                for (int i = 0; i < channelValue; i++)
                 {
-                    if(timeindex + i >= timeSteps.Count) { future = true;  timeindex -= timeSteps.Count; }
-                    CombatEvent phantom = new CombatEvent(c.owner, new List<Unit>(), timeindex + i, new List<CombatEffect>(), c, c.set, true);
-                    AddPhantom(phantom, future);
+                    if ((i + 1) * c.manaCost <= c.owner.CurrentMana)
+                    {
+                        if (timeindex + i >= timeSteps.Count) { future = true; timeindex -= timeSteps.Count; }
+                        CombatEvent phantom = new CombatEvent(c.owner, new List<Unit>(), timeindex + i, new List<CombatEffect>(), c, c.set, true, false);
+                        AddPhantom(phantom, future);
+                    }
                 }
             }
         }
@@ -228,18 +236,25 @@ public class TurnManager : MonoBehaviour
         {
             foreach(CombatEvent e in revents)
             {
-                if(e != null && e.intent != null && (e.source == removed || e.targets.Contains(removed)))
+                if(e != null && e.intent != null)
                 {
-                    Destroy(e.intent.gameObject);
+                    if (e.source == removed || (e.targets.Count == 1 && e.targets[0] == removed))
+                    {
+                        Destroy(e.intent.gameObject);
+                        e.source.CurrentMana += e.cardSource.manaCost;
+                    }
+                    else if (e.targets.Contains(removed))
+                    {
+                        e.targets.Remove(removed);
+                    }
                 }
             }
-            revents.RemoveAll(x => x.source == removed);
+            revents.RemoveAll(x => x.source == removed || (x.targets.Count == 1 && x.targets[0] == removed));
         }
     }
 
     private void BeforeTurnStart()
     {
-
         foreach (UnitUI u in CombatManager.Instance.enemiesUI.FindAll(x => x!= null && x.unit!=null && x.unit.CurrentHealth <= 0))
         {
             (u.unit as Enemy).CheckDeath();
@@ -287,38 +302,73 @@ public class TurnManager : MonoBehaviour
         CombatManager.Instance.compagnionDeck.AddCards(returned);
         foreach(Compagnion u in CombatManager.Instance.compagnions)
         {
-            u.GainMana(u.CurrentManaRegen);
+            u.ManaModify(u.CurrentManaRegen);
             u.GainAction(1);
             Hand.Instance.SetLock(false);
         }
         CombatManager.Instance.AddEnemiesIntents();
 
+        if (paused) { TogglePosed(); }
         timeIsRunning = false;
+        SetEndTurnText("End Turn");
         endTurnButton.interactable = true;
+    }
+
+    public void TogglePosed()
+    {
+        if (timeIsRunning)
+        {
+            paused = !paused;
+            if (!paused)
+            {
+                StartCoroutine(PerformTime(currentIndex + 1));
+            }
+            SetEndTurnText(paused ? "Unpause" : "Pause");
+        }
+    }
+
+    private void SetEndTurnText(string text)
+    {
+     foreach(Text t in endTurnButton.GetComponentsInChildren<Text>())
+            {
+                t.text = text;
+            }
     }
 
     public void EndTurn()
     {
         if (!timeIsRunning)
         {
-            endTurnButton.interactable = false;
+            //   endTurnButton.interactable = false;
+            SetEndTurnText("Pause");
             timeIsRunning = true;
             Hand.Instance.SetLock(true);
             NotifyAll?.Invoke(GeneralUtils.SUBJECT_TRIGGER.START_OF_TIME);
             StartCoroutine(PerformTime());
         }
+        else
+        {
+            TogglePosed();
+        }
     }
 
-    private IEnumerator PerformTime()
+    private IEnumerator PerformTime(int startIndex = 0)
     {
        
-        for(int i = 0; i < timeSteps.Count; i++)
+        for(int i = startIndex; i < timeSteps.Count; i++)
         {
-            currentIndex = i;
-            yield return StartCoroutine(PerformTimeStep(i));
+            if (!paused)
+            {
+                currentIndex = i;
+                yield return StartCoroutine(PerformTimeStep(i));
+
+            }
         }
-        BeforeTurnStart();
-        StartTurn();
+        if (!paused)
+        {
+            BeforeTurnStart();
+            StartTurn();
+        }
     }
 
  

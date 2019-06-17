@@ -55,7 +55,7 @@ public abstract class CardDIsplayWindow : MonoBehaviour
             }
         }
     }
-    private void Clear()
+    protected void Clear()
     {
         if (slots == null || slots.Count == 0)
         {

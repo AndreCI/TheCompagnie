@@ -10,13 +10,22 @@ public class Compagnion : Unit
     [HideInInspector] public TalentTree talentTree;
     public Color branch1Color;
     public Color branch2Color;
+    [HideInInspector] CardDatabase.SUBCARDCLASS starterType;
+
+    public Unit Setup(CardDatabase.SUBCARDCLASS type)
+    {
+        starterType = type;
+        return Setup();
+    }
+
     public override Unit Setup()
     {
+        if(starterType == CardDatabase.SUBCARDCLASS.GLOBAL) { starterType = CardDatabase.SUBCARDCLASS.NONE; }
         level = new Leveling(this);
         Unit copy = base.Setup();
         List<Card> cards = new List<Card>();
         int index = 0;
-        foreach (Card card in PlayerInfos.Instance.cardDatabase.GetCardsFromClass(availableCards, CardDatabase.RARITY.STARTER))
+        foreach (Card card in PlayerInfos.Instance.cardDatabase.GetCardsFromClass(availableCards, CardDatabase.RARITY.STARTER,subclass:starterType))
         {
             int i = startingWeights[index];
             index += 1;
@@ -29,10 +38,50 @@ public class Compagnion : Unit
         copy.persistentDeck.AddCardSlot();
         copy.persistentDeck.AddCardSlot();
         copy.persistentDeck.AddCardSlot();
-        copy.id = Unit.currentId++;
+        copy.id = id;// Unit.currentId++;
         copy.CurrentVoidPoints = 0;
         (copy as Compagnion).talentTree = PlayerInfos.Instance.talentTreeDatabase.Get(availableCards).Generate(copy as Compagnion);
         return copy;
+    }
+
+    public static Color GetBranch1Color(CardDatabase.CARDCLASS compClass)
+    {
+        switch (compClass)
+        {
+            case CardDatabase.CARDCLASS.PALADIN:
+                
+                return new Color(1f, 1f, 0f, 1f);
+            case CardDatabase.CARDCLASS.ELEM:
+                return new Color(1f, 0f, 0.1f, 1f);
+            case CardDatabase.CARDCLASS.HUNTER:
+                return new Color(0f, 1f, 0.1f, 1f);
+        }
+        return Color.white;
+    }
+    public static Color GetBranch2Color(CardDatabase.CARDCLASS compClass)
+    {
+        switch (compClass)
+        {
+            case CardDatabase.CARDCLASS.PALADIN:
+
+                return new Color(1f, 0.1f, 0f, 1f);
+            case CardDatabase.CARDCLASS.ELEM:
+                return new Color(0.1f, 0f, 1f, 1f);
+            case CardDatabase.CARDCLASS.HUNTER:
+                return new Color(0f, 0.1f, 0.8f, 1f);
+        }
+        return Color.white;
+    }
+
+
+    public static Color GetCurrentColor(int v1, int v2, Color c1, Color c2)
+    {
+        float b1 = Mathf.Exp(v1);
+        float b2 = Mathf.Exp(v2);
+        float div = b1 + b2;
+        b1 /= div;
+        b2 /= div;
+        return MixColor(c1, c2, b1, b2);
     }
 
     public override Color GetCurrentColor()
@@ -44,7 +93,7 @@ public class Compagnion : Unit
         b2 /= div;
         return MixColor(branch1Color, branch2Color, b1, b2);
     }
-    public static Color MixColor(Color a, Color b, float weightA, float weightB)
+    public static Color MixColor(Color a, Color b, float weightA = 0.5f, float weightB = 0.5f)
     {
         Vector3 value = GetColorVector(a) * weightA + GetColorVector(b) * weightB; //GetColorVector(baseColor) * b0 +
         Color current = Color.HSVToRGB(value.x, value.y, value.z); // new Color(value.x, value.y, value.z);
@@ -72,8 +121,9 @@ public class Compagnion : Unit
             {
                 cards.Add(currents.First());
             }
-            else
+            else if(cardNumber < 100)
             {
+
                 cardNumber += 1;
             }
         }
@@ -82,7 +132,8 @@ public class Compagnion : Unit
 
     public List<Card> DiscoverCard(int cardNumber = 3)
     {
-        if(availableCards == CardDatabase.CARDCLASS.ELEM || availableCards == CardDatabase.CARDCLASS.PALADIN) { return DiscoverCard2(cardNumber); }
+        if(availableCards == CardDatabase.CARDCLASS.ELEM || availableCards == CardDatabase.CARDCLASS.PALADIN || availableCards == CardDatabase.CARDCLASS.HUNTER)
+        { return DiscoverCard2(cardNumber); }
         List<Card> cards = new List<Card>(PlayerInfos.Instance.cardDatabase.GetCardsFromClass(availableCards, CardDatabase.RARITY.NONE));
         cards = (PlayerInfos.Instance.cardDatabase.GetRandomCards(cardNumber,
             cards));
@@ -131,11 +182,18 @@ public class Compagnion : Unit
 
     public override void TakeDamage(int amount, Unit.DAMAGE_SOURCE_TYPE type, Unit source=null)
     {
-        TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATATTACKED);
+        if (type == DAMAGE_SOURCE_TYPE.ATTACK)
+        {
+            if (!TurnManager.Instance.paused && !TutorialManager.Instance.status[TutorialManager.TUTOTRIGGER.COMBATATTACKED]&&
+               !PlayerSettings.Instance.disableTutorial ) { TurnManager.Instance.TogglePosed(); }
+            TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATATTACKED);
+        }
 
         base.TakeDamage(amount, type, source);
         if(CurrentHealth <= 0)
         {
+            PlayerSettings.Instance.Unlock(
+                CardDatabase.CARDCLASS.PALADIN, Utils.rdx.Next() > 0.5f ? CardDatabase.SUBCARDCLASS.TYPE2 : CardDatabase.SUBCARDCLASS.TYPE3);
             PlayerInfos.Instance.gameOver.SetActive(true);
         }
     }

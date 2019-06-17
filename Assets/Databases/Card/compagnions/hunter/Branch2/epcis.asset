@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: epcis
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 1
+  subClass: 0
+  rarityLevel: 4
+  branchLevel: 3
+  childrenDatabase: []
+  items:
+  - Name: Arrow Trap
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 3
+        factory: []
+        effectFactory:
+        - amount: 25
+          type: 0
+          variable: 0
+          alternative: 1
+          condition: 0
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 5
+      condition: 0
+      OnPlay: 1
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 6387094350404503514, guid: 1ab92d61c1513ba478e48489cfdc8305,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 4
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 3
+    ID: 72
+  - Name: Fast Kicks
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 0
+      type: 7
+      animation: 30
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    - statusFactories: []
+      amount: 0
+      type: 7
+      animation: 30
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 4296696646852601981, guid: cb640df673d8410408a69afa6e09523f,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 4
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 3
+    ID: 72
+  - Name: Camouflage
+    manaCost: 0
+    delay: 0
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 7
+        factory:
+        - status: 7
+          value: 5
+          duration: 1
+          permanent: 1
+          trigger: 2
+          unitTrigger: 0
+          alternative: 0
+          variable: 0
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 37
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -2928506942843266524, guid: cd958bd1bf224814590e074598b8619a,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 4
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 3
+    ID: 72

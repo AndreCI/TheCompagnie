@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   cardClass: 12
-  subClass: 0
+  subClass: 2
   rarityLevel: 1
   branchLevel: 0
   childrenDatabase: []
   items:
   - Name: Strike
     manaCost: 0
-    delay: 4
+    delay: 5
     actionCost: 1
     effects:
     - statusFactories: []
@@ -37,23 +37,24 @@ MonoBehaviour:
     multipleTarget: 0
     potential_target: 0
     hidden: 0
-    sprite: {fileID: -5245238604098075614, guid: 7d3b819dfcec5f24bb5c09f1172362b0,
+    sprite: {fileID: -7121741269674470117, guid: 6f3bf6807f12ecc4d84bb4f3e5e21f62,
       type: 3}
     Description: 
     set: 6
     rarity: 1
-    databasePath: //COMPAGNION/All
+    databasePath: //COMPAGNION
     cardClass: 12
+    subClass: 2
     branch: 0
-    ID: 87
-  - Name: Holy Shield
-    manaCost: 2
+    ID: 96
+  - Name: Block
+    manaCost: 0
     delay: 3
     actionCost: 1
     effects:
     - statusFactories:
       - status: 1
-        value: 18
+        value: 17
         duration: 1
         permanent: 0
         trigger: 0
@@ -68,85 +69,105 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
-    - statusFactories: []
-      amount: 1
-      type: 3
-      animation: 18
-      variable: 0
-      alternative: 1
-      condition: 0
-      OnPlay: 0
     channel: 0
     channelLenght: 0
     multipleTarget: 0
     potential_target: 1
     hidden: 0
-    sprite: {fileID: 21300000, guid: 987e6225c5d5ffc47b82a46ac6916d27, type: 3}
+    sprite: {fileID: 4125847202319851288, guid: 51b6adec15e79714b92f88d1400802d7,
+      type: 3}
     Description: 
     set: 0
     rarity: 1
-    databasePath: //COMPAGNION/All
+    databasePath: //COMPAGNION
     cardClass: 12
+    subClass: 2
     branch: 0
-    ID: 88
-  - Name: Violent Smash
+    ID: 97
+  - Name: Rush
     manaCost: 0
-    delay: 3
+    delay: 9
     actionCost: 0
     effects:
-    - statusFactories: []
-      amount: 14
-      type: 0
-      animation: 25
+    - statusFactories:
+      - status: 13
+        value: 2
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 4
       variable: 0
       alternative: 0
       condition: 0
-      OnPlay: 0
+      OnPlay: 1
     - statusFactories: []
-      amount: 7
-      type: 0
-      animation: 3
+      amount: 1
+      type: 3
+      animation: 17
       variable: 0
-      alternative: 1
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -7556924001990087783, guid: 82dfdfb5cb4fc614187163dca805109e,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION
+    cardClass: 12
+    subClass: 2
+    branch: 0
+    ID: 98
+  - Name: Heroic Insight
+    manaCost: 8
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 7
+        factory: []
+        effectFactory:
+        - amount: 6
+          type: 1
+          variable: 0
+          alternative: 1
+          condition: 0
+        variable: 0
+      amount: 1
+      type: 2
+      animation: 36
+      variable: 0
+      alternative: 0
       condition: 0
       OnPlay: 0
     channel: 0
     channelLenght: 0
     multipleTarget: 0
-    potential_target: 0
-    hidden: 0
-    sprite: {fileID: 479544575680506940, guid: f7e9ebb53dfa50c4d92c454bc91eb7d9, type: 3}
-    Description: 
-    set: 0
-    rarity: 1
-    databasePath: //COMPAGNION/All
-    cardClass: 12
-    branch: 0
-    ID: 89
-  - Name: Healing Prayer
-    manaCost: 0
-    delay: 7
-    actionCost: 1
-    effects:
-    - statusFactories: []
-      amount: 12
-      type: 1
-      animation: 15
-      variable: 0
-      alternative: 0
-      condition: 0
-      OnPlay: 0
-    channel: 1
-    channelLenght: 2
-    multipleTarget: 0
     potential_target: 3
     hidden: 0
-    sprite: {fileID: -261133326221802749, guid: a6d745681672e74468b584e12189699e,
+    sprite: {fileID: -7850902682410284959, guid: af0d48cd44ceea349badc4f0d9be4033,
       type: 3}
     Description: 
     set: 0
     rarity: 1
-    databasePath: //COMPAGNION/All
+    databasePath: //COMPAGNION
     cardClass: 12
+    subClass: 2
     branch: 0
-    ID: 90
+    ID: 99

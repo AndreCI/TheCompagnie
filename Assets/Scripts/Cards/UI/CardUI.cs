@@ -18,6 +18,9 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
     public Text manaCost;
     public Text delayCost;
     public Text description;
+    public Text cardType;
+    public Text cardTarget;
+    public Image cardRarity;
     public List<Image> colorGlows;
 
     private bool playable = true;
@@ -65,6 +68,7 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
         manaCost.text = card.manaCost.ToString();
         manaCost.color = manaColor;
         manaCost.transform.parent.transform.parent.gameObject.SetActive(card.manaCost > 0);
+        delayCost.transform.parent.transform.parent.gameObject.SetActive(card.effects.Count(x=>!x.OnPlay) > 0);
 
         int delay = Mathf.Max((card.delay + (card.owner == null ? 0 : card.owner.currentSpeed)), 0);
         delayCost.text = delay.ToString();
@@ -77,6 +81,31 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
             delayCost.color =delay - card.delay > 0 ? new Color(1f, 0f, 0f, 1f) : new Color(0f, 1f, 0f, 1f);
         }
         description.text = card.GetDescription();
+        if(cardType != null) { cardType.text = card.GetCardClassName() + " "+ card.GetCardType().ToString().ToLower(); }
+        if(cardTarget != null) { cardTarget.text = card.GetTargetTypeDescription(); }
+        if(cardRarity != null)
+        {
+            switch (card.rarity)
+            {
+                case CardDatabase.RARITY.COMMON:
+                    cardRarity.color = new Color(0.8f, 0.8f, 0.8f, 0.75f);
+                    break;
+                case CardDatabase.RARITY.RARE:
+                    cardRarity.color = new Color(0f, 0.8f, 1f, 0.65f);
+                    break;
+                case CardDatabase.RARITY.EPIC:
+                    cardRarity.color = new Color(0.8f, 0f, 1f, 0.65f);
+                    break;
+                case CardDatabase.RARITY.STARTER:
+                    cardRarity.color = new Color(1f, 0.8f, 0.0f, 0.65f);
+                    break;
+                case CardDatabase.RARITY.NONE:
+                    cardRarity.color = new Color(0, 0, 0, 0);
+                    break;
+            }
+        }
+
+
         foreach(Text head in header.GetComponentsInChildren<Text>())
         {
             head.text = card.Name;
@@ -186,7 +215,6 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
             int channelValue = card.channel? Mathf.Max(0, card.channelLenght + (card.owner == null ? 0 : card.owner.CurrentChannelValue)) : 0;
             CombatManager.Instance.GetUnitUI(card.owner).portraitInfos.phantomManaCost = card.channel ? channelValue * card.manaCost : card.manaCost;
         }
-        TurnManager.Instance.AddPhantomCombatEvent(card);
 
     }
 
@@ -259,7 +287,10 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
             if (card.actionCost > 0) { TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATENDTURN); }
             if (card.manaCost > 0)
             {
-                TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATMANA);
+                if (TutorialManager.Instance.status[TutorialManager.TUTOTRIGGER.COMBATENDTURN])
+                {
+                    TutorialManager.Instance?.Activate(TutorialManager.TUTOTRIGGER.COMBATMANA);
+                }
             }
             if (card.channel)
             {
@@ -294,6 +325,8 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
             UI.Setup(card);
             UI.description.text = card.GetDescription(source: card.owner);
             UI.Playable = false;
+            TurnManager.Instance.AddPhantomCombatEvent(card);
+
         }
 
     }
@@ -307,6 +340,10 @@ public class CardUI : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, ID
             transform.localScale = new Vector3(1f, 1f, 1f);
             Hand.Instance.SetCardUIs();
             TurnManager.Instance.cardPlaceHolder.gameObject.SetActive(false);
+            if (GetComponent<CanvasGroup>().blocksRaycasts)
+            {
+                TurnManager.Instance.RemovePhantomEvents();
+            }
         }
     }
 }

@@ -61,8 +61,6 @@ public class Enemy : Unit
         int weightsTotal = cardsWeights.Sum();
         rares = rares.OrderBy(x => Utils.rdx.Next()).ToList();
         commons = commons.OrderBy(x => Utils.rdx.Next()).ToList();
-        Debug.Log(commons.Count());
-        Debug.Log(rares.Count());
         for(int i = 0; i < cardsWeights.Count; i++)
         {
             float prob = Mathf.Max(0.35f - (float)cardsWeights[i] / weightsTotal, 0);

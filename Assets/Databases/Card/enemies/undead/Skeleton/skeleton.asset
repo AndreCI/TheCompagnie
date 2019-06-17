@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: skeleton
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 0
+  subClass: 3
+  rarityLevel: 0
+  branchLevel: 0
+  childrenDatabase:
+  - {fileID: 11400000, guid: 4a3fc22ca45078744aa8c6664388ca81, type: 2}
+  - {fileID: 11400000, guid: 7bdee57aab1fef44da320efef8de5cee, type: 2}
+  items: []

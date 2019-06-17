@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: base1
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 12
+  subClass: 4
+  rarityLevel: 1
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Temerious Hit
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 25
+      type: 0
+      animation: 3
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 5
+      type: 0
+      animation: 3
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -5245238604098075614, guid: 7d3b819dfcec5f24bb5c09f1172362b0,
+      type: 3}
+    Description: 
+    set: 6
+    rarity: 1
+    databasePath: //COMPAGNION
+    cardClass: 12
+    subClass: 4
+    branch: 0
+    ID: 142
+  - Name: Dynamic Block
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 10
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 1
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 7036795391443320509, guid: b0268609613c7084fb8d2491e950bb5a,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION
+    cardClass: 12
+    subClass: 4
+    branch: 0
+    ID: 143
+  - Name: Press Advantage
+    manaCost: 0
+    delay: 6
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 0
+      type: 0
+      animation: 3
+      variable: 6
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 4659921989535782406, guid: afe5ef0068c26d743a2c9850a75190cd,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION
+    cardClass: 12
+    subClass: 4
+    branch: 0
+    ID: 144
+  - Name: Lethal Strike
+    manaCost: 0
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 0
+      type: 0
+      animation: 3
+      variable: 1
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 0
+      type: 0
+      animation: 3
+      variable: 1
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 0
+      type: 0
+      animation: 3
+      variable: 1
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 4605125819828963152, guid: a0ebb29755e90fe41ad9ba69076af82d,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION
+    cardClass: 12
+    subClass: 4
+    branch: 0
+    ID: 145

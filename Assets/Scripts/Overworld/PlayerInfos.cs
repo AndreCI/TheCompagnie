@@ -59,10 +59,23 @@ public class PlayerInfos : MonoBehaviour
         animationDatabase.Setup();
 
         persistentPartyDeck = new PersistentPartyDeck();
+        // int jack = PlayerPrefs.GetInt("Starter");
+        Debug.Log(PlayerPrefs.GetString("Starter"));
+        AddCompagnion(compagnionsDatabase.Get((CardDatabase.CARDCLASS)PlayerPrefs.GetInt("Starter")),(CardDatabase.SUBCARDCLASS) PlayerPrefs.GetInt("StarterDeck"));
+        switch ((CardDatabase.SUBCARDCLASS)PlayerPrefs.GetInt("StarterDeck"))
+        {
+            case CardDatabase.SUBCARDCLASS.TYPE2:
+                compagnions[0].talentTree.branch1Value += 1;
+                break;
+            case CardDatabase.SUBCARDCLASS.TYPE3:
+                compagnions[0].talentTree.branch2Value += 1;
+                break;
+            case CardDatabase.SUBCARDCLASS.TYPE1:
+                compagnions[0].talentTree.branch1Value -= 2;
+                compagnions[0].talentTree.branch2Value -= 2;
+                break;
+        }
 
-        AddCompagnion(compagnionsDatabase.Get(3));
-
-      //  AddCompagnion(compagnionsDatabase.Get(1));
         unitsWindow?.gameObject.SetActive(false);
         versionText.text = "v" + TutorialManager.versionNumber;
     }
@@ -77,9 +90,9 @@ public class PlayerInfos : MonoBehaviour
         }
     }
 
-    public void AddCompagnion(Compagnion newComp)
+    public void AddCompagnion(Compagnion newComp, CardDatabase.SUBCARDCLASS starterType = CardDatabase.SUBCARDCLASS.TYPE1)
     {        
-        Compagnion c = newComp.Setup() as Compagnion;
+        Compagnion c = newComp.Setup(starterType) as Compagnion;
         compagnions.Add(c);
         persistentPartyDeck.AddDeck(c, c.persistentDeck);
     }

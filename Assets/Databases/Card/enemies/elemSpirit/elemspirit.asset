@@ -1,0 +1,1090 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: elemspirit
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 15
+  subClass: 0
+  rarityLevel: 0
+  branchLevel: 0
+  childrenDatabase:
+  - {fileID: 11400000, guid: df3aa80617277d542b55875d16d62157, type: 2}
+  - {fileID: 11400000, guid: ba1321d0aa688af41a99489174c5b888, type: 2}
+  - {fileID: 11400000, guid: 084fff498355bc74a935f792247e6d99, type: 2}
+  - {fileID: 11400000, guid: fd6537bf81f697942b121bc0ad3856b4, type: 2}
+  - {fileID: 11400000, guid: 74070b1609f389f48a560c7e1ef71e4c, type: 2}
+  items:
+  - Name: Mana Spark
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 3
+      type: 4
+      animation: 9
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -5232307955271045362, guid: 2555089841c234948805ed2ad0ccd4b2,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 15
+    branch: 0
+    ID: 197
+  - Name: Gather Mana
+    manaCost: 0
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 6
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 10
+      type: 4
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 4662258661504618730, guid: 54210b61a5b29e24790b5d7e7d813fd2,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 15
+    branch: 0
+    ID: 198
+  - Name: Fire Missile
+    manaCost: 2
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 6
+      type: 0
+      animation: 6
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 3
+        value: 4
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -7198000057733312284, guid: ffa8c6a69b7081645815bf0f69e7252e,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 199
+  - Name: Fire Claw
+    manaCost: 4
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 15
+      type: 0
+      animation: 10
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 3
+        value: 2
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -3651996970815949536, guid: 825e93d59c3958b4e8b5582422df559a,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 200
+  - Name: Imbrasement
+    manaCost: 5
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 3
+        value: 5
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 3
+        value: 5
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 6
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 6013093657998967523, guid: 664cb8ffa8b03ba49b2c25249d8b3bd0,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 201
+  - Name: Burning Path
+    manaCost: 2
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 15
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 4
+        factory:
+        - status: 3
+          value: 3
+          duration: 1
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          alternative: 0
+          variable: 0
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 38
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 6849630259082999364, guid: 5e0b8a7e9b4b0ce4b85579f20c89c972,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 202
+  - Name: Fire Core
+    manaCost: 0
+    delay: 1
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 5
+      type: 4
+      animation: 39
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    - statusFactories:
+      - status: 1
+        value: 12
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 3
+        value: 2
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 3585415865046239778, guid: ff160de1994b4b544877ba837f2d38e3,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 203
+  - Name: Ignite
+    manaCost: 6
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 3
+        value: 12
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 38
+      variable: 0
+      alternative: 0
+      condition: 1
+      OnPlay: 0
+    - statusFactories: []
+      amount: 5
+      type: 4
+      animation: 39
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 3737210516354894871, guid: 99bc5aa5f76039a4ea24252c7eeabe61,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 204
+  - Name: Growth
+    manaCost: 4
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 7
+        value: 4
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 0
+        value: 5
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 4
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 4
+    hidden: 0
+    sprite: {fileID: 3264670845976455972, guid: d2c61f25fd348fb45994ff201958ed3a,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 205
+  - Name: Tree Wrath
+    manaCost: 6
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 7
+        value: 5
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 0
+        value: 4
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 4
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 8912985050343537695, guid: 2faa1ec639f873a47a2bcd3b6d635306,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 206
+  - Name: Camouflage
+    manaCost: 4
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 14
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 0
+        value: 4
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 4678215030491564929, guid: 59b10f36583bca34abc12b1f96a7d1eb,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 207
+  - Name: Tree Punch
+    manaCost: 2
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 12
+      type: 0
+      animation: 16
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 0
+        value: 4
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 12
+      type: 2
+      animation: 23
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 8149289745728114141, guid: 0b2e3cb85f2a77c41b7f258a33cb0264,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 208
+  - Name: Pure Harmony
+    manaCost: 0
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 30
+      type: 1
+      animation: 14
+      variable: 0
+      alternative: 5
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 2358647361408769253, guid: d7f1808ea80cadd45a0496c2a59a4f5e,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 209
+  - Name: Tree Strength
+    manaCost: 6
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 7
+        value: 5
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 4
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 10
+      type: 1
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 3368298550269437331, guid: 74da3cf8272fa99438d8fbef6cb0e14b,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 210
+  - Name: Mind Freeze
+    manaCost: 2
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 8
+      type: 0
+      animation: 20
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 10
+        value: 1
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -6924562158906966759, guid: 30e4f3fc0682c8c4eb74121f518637bb,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 211
+  - Name: Flowing Mana
+    manaCost: 4
+    delay: 1
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 5
+      type: 4
+      animation: 18
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 2
+      type: 5
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: -6509188713555858020, guid: 9fce676df3d688d4e86d7b21cc3ab60f,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 212
+  - Name: Water Lock
+    manaCost: 6
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 10
+        value: 1
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 43
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 10
+      type: 5
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 627993771097257960, guid: 5ae0c26f887c968448041a4a84304b81, type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 213
+  - Name: Mana Bubble
+    manaCost: 3
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 10
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 7
+      type: 4
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 4
+    hidden: 0
+    sprite: {fileID: -8425325586747180961, guid: 09f5f2866db36454fbdcc006c2480d0f,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 214
+  - Name: Lockdown
+    manaCost: 6
+    delay: 0
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 10
+      type: 5
+      animation: 9
+      variable: 0
+      alternative: 5
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 2065639098862653171, guid: 165bb09d686466f408673d883c52046f,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 215
+  - Name: Bursting Mana
+    manaCost: 7
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 10
+      type: 4
+      animation: 18
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 13
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 10
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: -6991220122000103226, guid: 7c98da6ca7aeccb4a90cc778eded1c06,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 216
+  - Name: Rock Fall
+    manaCost: 5
+    delay: 9
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 16
+      type: 0
+      animation: 16
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 2348264158320094266, guid: 3c08302b3a648f040b1625cb160fd3d7,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 217
+  - Name: Earth Barriere
+    manaCost: 4
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 20
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: -4160022799569604185, guid: 30e4f3fc0682c8c4eb74121f518637bb,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 218
+  - Name: Stoneskin
+    manaCost: 2
+    delay: 2
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 2
+        value: 1
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: -8136144470489512329, guid: 3c08302b3a648f040b1625cb160fd3d7,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 219
+  - Name: Hard Punch
+    manaCost: 5
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 9
+      type: 0
+      animation: 16
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 1
+        value: 5
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -5846584655281936747, guid: 2d39095b8a867714389b16ad85ee6f04,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 220
+  - Name: Rock Armor
+    manaCost: 6
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 18
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 4
+    hidden: 0
+    sprite: {fileID: 1970379069458803968, guid: 6c3822191094c0c40b686091944493c9,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 221
+  - Name: Earth Attack
+    manaCost: 5
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 20
+      type: 0
+      animation: 22
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 1
+        value: 5
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 1
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 4
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 3762776468161436177, guid: 7a91062babfd48748ab2f5c58c7a29fa,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 222

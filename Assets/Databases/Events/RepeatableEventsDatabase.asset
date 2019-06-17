@@ -29,6 +29,15 @@ MonoBehaviour:
     - leafChild:
       - type: 3
         amount: 2
+      - type: 6
+        amount: 2
+      condition:
+        variable: 0
+        type: 0
+        v1: 0
+        v1Type: 0
+        v2: 0
+        v2Type: 0
     - leafChild:
       - type: 9
         amount: 0
@@ -36,8 +45,15 @@ MonoBehaviour:
         amount: 0
       - type: 3
         amount: 0
+      condition:
+        variable: 0
+        type: 0
+        v1: 0
+        v1Type: 0
+        v2: 0
+        v2Type: 0
     dtype: 2
-    ID: 12
+    ID: 26
   - eventName: Shard Temple
     description:
     - This place is a moving temple, filled with magic from the shards.
@@ -54,12 +70,26 @@ MonoBehaviour:
       - type: 2
         amount: 20
       - type: 0
-        amount: -20
+        amount: 0
+      condition:
+        variable: 0
+        type: 0
+        v1: 0
+        v1Type: 0
+        v2: 0
+        v2Type: 0
     - leafChild:
       - type: 3
         amount: 0
+      condition:
+        variable: 0
+        type: 0
+        v1: 0
+        v1Type: 0
+        v2: 0
+        v2Type: 0
     dtype: 2
-    ID: 12
+    ID: 26
   - eventName: A Nice Town
     description:
     - A nice and quiet town welcomes you.
@@ -70,28 +100,60 @@ MonoBehaviour:
     buttonsTexts:
     - Rest
     - Medidate
-    - Find Shards
     - Forget
+    - Leave
     effects:
     - leafChild:
       - type: 0
         amount: 300
+      - type: 2
+        amount: -50
       - type: 3
         amount: 20
+      condition:
+        variable: 0
+        type: 2
+        v1: 0
+        v1Type: 1
+        v2: 30
+        v2Type: 0
     - leafChild:
       - type: 1
         amount: 10000
-      - type: 3
-        amount: 0
-    - leafChild:
       - type: 2
-        amount: 25
+        amount: -10
       - type: 3
         amount: 0
+      condition:
+        variable: 0
+        type: 2
+        v1: 0
+        v1Type: 1
+        v2: 10
+        v2Type: 0
     - leafChild:
       - type: 10
         amount: 1
+      - type: 2
+        amount: -30
       - type: 3
         amount: 0
+      condition:
+        variable: 0
+        type: 2
+        v1: 0
+        v1Type: 1
+        v2: 30
+        v2Type: 0
+    - leafChild:
+      - type: 3
+        amount: 0
+      condition:
+        variable: 0
+        type: 0
+        v1: 0
+        v1Type: 1
+        v2: 10
+        v2Type: 0
     dtype: 2
-    ID: 12
+    ID: 26

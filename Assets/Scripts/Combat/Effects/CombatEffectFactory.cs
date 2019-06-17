@@ -30,18 +30,30 @@ public class CombatEffectFactory {
                 body += "takes " +amountStr + " damages";
                 break;
             case CombatEffect.TYPE.HEAL:
-                body += "heals " + amountStr + " health points";
+                body += "<b>heals</b> " + amountStr + " health points";
                 break;
-            case CombatEffect.TYPE.MANA_GAIN:
-                body += "gains " + amountStr + " mana points";
+            case CombatEffect.TYPE.MANA_MODIFY:
+                if (amount < 0) { amountStr = amountStr.Substring(1, amountStr.Count() - 1); }
+                body += (amount >= 0 ? "gains " : "looses ") + amountStr + " mana points";
                 break;
             case CombatEffect.TYPE.DRAW:
-                body += "draws " + amountStr + " cards";
+                body += "<b>draws</b> " + amountStr + " cards";
                 break;
             case CombatEffect.TYPE.APPLY_STATUS:
                 throw new NotImplementedException();
             case CombatEffect.TYPE.MOVE_INTENT:
-                body += "moves its next intent by " + amountStr + " ticks";
+                body += "moves its next action by " + amountStr + " ticks";
+                break;
+            case CombatEffect.TYPE.CANCEL_INTENT:
+                body += "cancel its next action";
+                break;
+            case CombatEffect.TYPE.ACTION_GAIN:
+                if (amount < 0) { amountStr = amountStr.Substring(1, amountStr.Count() - 1); }
+                body += (amount >= 0 ? "gains " : "looses ") + amountStr + " action point" + (amount > 1 ? "s" : "");
+                break;
+            case CombatEffect.TYPE.MANA_REGEN_MODIFY:
+                if (amount < 0) { amountStr = amountStr.Substring(1, amountStr.Count() - 1); }
+                body += (amount >= 0 ? "gains ":"looses ") + amountStr + " mana regeneration";
                 break;
 
         }

@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: rare
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 0
+  subClass: 2
+  rarityLevel: 3
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Fire Core
+    manaCost: 0
+    delay: 1
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 5
+      type: 4
+      animation: 39
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    - statusFactories:
+      - status: 1
+        value: 12
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 3
+        value: 2
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 3585415865046239778, guid: ff160de1994b4b544877ba837f2d38e3,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 203
+  - Name: Ignite
+    manaCost: 6
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 3
+        value: 12
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 38
+      variable: 0
+      alternative: 0
+      condition: 1
+      OnPlay: 0
+    - statusFactories: []
+      amount: 5
+      type: 4
+      animation: 39
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 3737210516354894871, guid: 99bc5aa5f76039a4ea24252c7eeabe61,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 3
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 204

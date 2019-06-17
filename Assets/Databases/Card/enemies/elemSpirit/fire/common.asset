@@ -1,0 +1,207 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: common
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 0
+  subClass: 2
+  rarityLevel: 2
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Fire Missile
+    manaCost: 2
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 6
+      type: 0
+      animation: 6
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 3
+        value: 4
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -7198000057733312284, guid: ffa8c6a69b7081645815bf0f69e7252e,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 199
+  - Name: Fire Claw
+    manaCost: 4
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 15
+      type: 0
+      animation: 10
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 3
+        value: 2
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -3651996970815949536, guid: 825e93d59c3958b4e8b5582422df559a,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 200
+  - Name: Imbrasement
+    manaCost: 5
+    delay: 7
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 3
+        value: 5
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 3
+        value: 5
+        duration: 1
+        permanent: 1
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 6
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 6013093657998967523, guid: 664cb8ffa8b03ba49b2c25249d8b3bd0,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 201
+  - Name: Burning Path
+    manaCost: 2
+    delay: 4
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 15
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 4
+        factory:
+        - status: 3
+          value: 3
+          duration: 1
+          permanent: 1
+          trigger: 0
+          unitTrigger: 0
+          alternative: 0
+          variable: 0
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 38
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: 6849630259082999364, guid: 5e0b8a7e9b4b0ce4b85579f20c89c972,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///ENEMIES/All
+    cardClass: 4
+    branch: 0
+    ID: 202

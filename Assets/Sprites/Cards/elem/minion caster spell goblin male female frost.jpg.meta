@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 6100887901855472692
     second: minion caster spell goblin male female frost_0
+  - first:
+      213: -2844617888776863434
+    second: minion caster spell goblin male female frost_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -90,12 +93,12 @@ TextureImporter:
       name: minion caster spell goblin male female frost_0
       rect:
         serializedVersion: 2
-        x: 136
-        y: 0
-        width: 568
-        height: 554
+        x: 0
+        y: 149
+        width: 344
+        height: 347
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -103,6 +106,27 @@ TextureImporter:
       bones: []
       spriteID: f76c3c14bb748734ab67b6e9c53a9de0
       internalID: 6100887901855472692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minion caster spell goblin male female frost_1
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 0
+        width: 292
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5da241c9d8eae1748a464132de90db1c
+      internalID: -2844617888776863434
       vertices: []
       indices: 
       edges: []

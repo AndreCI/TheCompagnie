@@ -40,8 +40,9 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
-    channel: 0
     channelLenght: 0
+    channel: 0
+    cancellable: 0
     multipleTarget: 1
     potential_target: 0
     hidden: 0
@@ -52,8 +53,9 @@ MonoBehaviour:
     rarity: 3
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 103
+    ID: 154
   - Name: Divinie Presence
     manaCost: 3
     delay: 4
@@ -68,12 +70,13 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       - status: 12
         value: 1
         duration: 1
         permanent: 1
         trigger: 2
-        unitTrigger: 1
+        unitTrigger: 4
         factory:
         - status: 2
           value: 1
@@ -81,8 +84,10 @@ MonoBehaviour:
           permanent: 0
           trigger: 0
           unitTrigger: 0
-          alternative: 0
+          alternative: 1
+          variable: 0
         effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 36
@@ -90,8 +95,9 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
-    channel: 0
     channelLenght: 0
+    channel: 0
+    cancellable: 0
     multipleTarget: 0
     potential_target: 3
     hidden: 0
@@ -102,8 +108,9 @@ MonoBehaviour:
     rarity: 3
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 104
+    ID: 155
   - Name: Heros Prayer
     manaCost: 0
     delay: 7
@@ -118,6 +125,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       - status: 0
         value: 6
         duration: 3
@@ -126,6 +134,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       amount: 2
       type: 2
       animation: 36
@@ -141,8 +150,9 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
-    channel: 1
     channelLenght: 2
+    channel: 1
+    cancellable: 0
     multipleTarget: 0
     potential_target: 3
     hidden: 0
@@ -153,8 +163,9 @@ MonoBehaviour:
     rarity: 3
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 105
+    ID: 156
   - Name: Humble Prayer
     manaCost: 0
     delay: 7
@@ -169,6 +180,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       amount: 2
       type: 2
       animation: 36
@@ -184,8 +196,9 @@ MonoBehaviour:
       alternative: 0
       condition: 0
       OnPlay: 0
-    channel: 1
     channelLenght: 2
+    channel: 1
+    cancellable: 0
     multipleTarget: 0
     potential_target: 3
     hidden: 0
@@ -196,8 +209,9 @@ MonoBehaviour:
     rarity: 3
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 105
+    ID: 157
   - Name: Incapacitate
     manaCost: 12
     delay: 1
@@ -220,6 +234,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       - status: 6
         value: 10
         duration: 2
@@ -228,6 +243,7 @@ MonoBehaviour:
         unitTrigger: 0
         factory: []
         effectFactory: []
+        variable: 0
       amount: 0
       type: 2
       animation: 0
@@ -235,8 +251,9 @@ MonoBehaviour:
       alternative: 0
       condition: 4
       OnPlay: 0
-    channel: 0
     channelLenght: 1
+    channel: 0
+    cancellable: 0
     multipleTarget: 0
     potential_target: 0
     hidden: 0
@@ -247,5 +264,6 @@ MonoBehaviour:
     rarity: 3
     databasePath: ///COMPAGNION/All
     cardClass: 12
+    subClass: 0
     branch: 2
-    ID: 105
+    ID: 158

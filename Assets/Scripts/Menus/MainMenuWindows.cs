@@ -9,9 +9,12 @@ using UnityEngine.UI;
 
 public class MainMenuWindows : MonoBehaviour
 {
+    public StarterDeckDisplay starterInfos;
 
     public void StartGame()
     {
+        PlayerPrefs.SetInt("Starter",(int) starterInfos.currentClass);
+        PlayerPrefs.SetInt("StarterDeck",(int) starterInfos.currentDeck);
         SceneManager.LoadScene(1);
     }
 

@@ -7,8 +7,8 @@ public class CardDatabase : ScriptableObject
 {
    public enum RARITY {NONE, STARTER, COMMON, RARE, EPIC};
 
-    public enum CARDCLASS { NONE, MAGE, WOLF, ABOMINATION, GLOBAL, WARRIOR, SNAKE, GHOST, DARK_MAGE, DARK_KNIGHT, SKELETON1, ELEM, PALADIN, BEAST};
-    public enum SUBCARDCLASS { NONE, GLOBAL, TYPE1, TYPE2, TYPE3}
+    public enum CARDCLASS { NONE, HUNTER, WOLF, ABOMINATION, GLOBAL, WARRIOR, SNAKE, GHOST, DARK_MAGE, DARK_KNIGHT, SKELETON1, ELEM, PALADIN, BEAST, UNDEAD, SPIRIT};
+    public enum SUBCARDCLASS { NONE, GLOBAL, TYPE1, TYPE2, TYPE3, TYPE4}
     public enum BRANCH { NONE, BASIC, B1, B2};
     public string Name;
     public CARDCLASS cardClass;
@@ -51,6 +51,7 @@ public class CardDatabase : ScriptableObject
                 card.cardClass = cardClass;
                 card.rarity = rarityLevel;
                 card.branch = branchLevel;
+                card.subClass = subClass;
                 card.ID = id;
                 id++;
             }

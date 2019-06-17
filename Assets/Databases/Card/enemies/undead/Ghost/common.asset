@@ -1,0 +1,245 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: common
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 0
+  subClass: 0
+  rarityLevel: 2
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Shadow Bolt
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 18
+      type: 0
+      animation: 24
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 6
+        value: 3
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 1
+    sprite: {fileID: 6500630593755071780, guid: a2673eff477d0db4482436368691a9b1,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: Gather Souls
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 13
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 11
+        value: 1
+        duration: 1
+        permanent: 1
+        trigger: 2
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 29
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 1
+    sprite: {fileID: 8464049882064783405, guid: 0f6acd5f117ab25448f6e5adca14028a,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: Fear
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 6
+        value: 5
+        duration: 3
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 10
+        value: 5
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 24
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 4
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 1
+    sprite: {fileID: -6466653522188690319, guid: 5949f56e6392cb742af68e451125da2b,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: Death Strikes
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 22
+      type: 0
+      animation: 19
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 1
+    potential_target: 0
+    hidden: 1
+    sprite: {fileID: -3272601667337591647, guid: 0b4978064247dc3489bb44db87c8e85f,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: Death Touch
+    manaCost: 0
+    delay: 5
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 10
+      type: 0
+      animation: 41
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 1
+    channelLenght: 3
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 1
+    sprite: {fileID: 5920531332436287386, guid: af2a315c6972d91499b99014daaf39eb,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: Hallucination
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 1
+        value: 25
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 1
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -7352364030014583677, guid: e5487a46b38b1fb43ba38d9c8d60b623,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0

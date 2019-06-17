@@ -1,0 +1,326 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: common
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 1
+  subClass: 0
+  rarityLevel: 2
+  branchLevel: 2
+  childrenDatabase: []
+  items:
+  - Name: Poisonous Strike
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 6
+      type: 0
+      animation: 8
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 5
+        value: 1
+        duration: 12
+        permanent: 0
+        trigger: 1
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 5
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -5921735481147260510, guid: e9367e804c5af084fa071c1ffde0dce3,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 2
+    ID: 54
+  - Name: Sprint
+    manaCost: 6
+    delay: 0
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 13
+        value: 2
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 17
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    - statusFactories: []
+      amount: 2
+      type: 3
+      animation: 17
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -4149344942713164001, guid: 3e82c9a0ee82b25458bba9e903fa5d2f,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 2
+    ID: 55
+  - Name: Shiv
+    manaCost: 0
+    delay: 2
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 15
+      type: 0
+      animation: 8
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 17
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 1
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -4821156321792053762, guid: 74c764acf7c51f6479e93c6891bd0613,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 2
+    ID: 56
+  - Name: Poisoned Daggers
+    manaCost: 2
+    delay: 11
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 1
+        factory:
+        - status: 5
+          value: 5
+          duration: 1
+          permanent: 0
+          trigger: 1
+          unitTrigger: 0
+          alternative: 0
+          variable: 0
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 4
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: -2928543626712636160, guid: 8e4d56b13618fac47bdc2db2f5a9fbb9,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 2
+    ID: 57
+  - Name: Dodge
+    manaCost: 0
+    delay: 5
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 2
+        value: 1
+        duration: 10
+        permanent: 0
+        trigger: 1
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 17
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 1
+    multipleTarget: 0
+    potential_target: 3
+    hidden: 0
+    sprite: {fileID: -2463493905393131307, guid: 50122c920a1b89345b07d9050bb77367,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 2
+    ID: 58
+  - Name: Ambush
+    manaCost: 0
+    delay: 0
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 2
+        value: 2
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      - status: 7
+        value: 7
+        duration: 2
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 1
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 3583088570963752582, guid: 33121909d16e68a46ad09b7685bda467,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 2
+    ID: 59
+  - Name: Dagger Toss
+    manaCost: 0
+    delay: 1
+    actionCost: 0
+    effects:
+    - statusFactories: []
+      amount: 8
+      type: 0
+      animation: 8
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 17
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -7785042807949107259, guid: 272e880413c545b429e1153500dfeb98,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 2
+    databasePath: ///COMPAGNION/All
+    cardClass: 1
+    subClass: 0
+    branch: 2
+    ID: 59

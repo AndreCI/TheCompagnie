@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: basicb2
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 1
+  subClass: 4
+  rarityLevel: 1
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Safe Shot
+    manaCost: 0
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 17
+      type: 0
+      animation: 16
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories:
+      - status: 1
+        value: 7
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 1
+      variable: 0
+      alternative: 1
+      condition: 0
+      OnPlay: 1
+    channelLenght: 0
+    channel: 0
+    cancellable: 1
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 1829322715906990330, guid: c29b0227d3edf874aad97652203ad66b,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION/All
+    cardClass: 1
+    subClass: 4
+    branch: 0
+    ID: 40
+  - Name: Recover
+    manaCost: 0
+    delay: 8
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 14
+      type: 1
+      animation: 15
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 1
+      type: 3
+      animation: 17
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 1
+    hidden: 0
+    sprite: {fileID: 1551625474135003799, guid: 1ef995207a408f0419d14cefdb35e322,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION/All
+    cardClass: 1
+    subClass: 4
+    branch: 0
+    ID: 41
+  - Name: Slowing Trap
+    manaCost: 6
+    delay: 0
+    actionCost: 0
+    effects:
+    - statusFactories:
+      - status: 12
+        value: 1
+        duration: 1
+        permanent: 0
+        trigger: 0
+        unitTrigger: 1
+        factory:
+        - status: 14
+          value: 1
+          duration: 2
+          permanent: 0
+          trigger: 0
+          unitTrigger: 0
+          alternative: 1
+          variable: 0
+        effectFactory:
+        - amount: 5
+          type: 0
+          variable: 0
+          alternative: 1
+          condition: 0
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 0
+      variable: 0
+      alternative: 5
+      condition: 0
+      OnPlay: 1
+    channelLenght: 0
+    channel: 0
+    cancellable: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -5755552883343766516, guid: 2454b40733e62f748b0ec98510bba999,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION/All
+    cardClass: 1
+    subClass: 4
+    branch: 0
+    ID: 42
+  - Name: Immobilizing Shot
+    manaCost: 7
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 10
+      type: 0
+      animation: 16
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    - statusFactories: []
+      amount: 1
+      type: 7
+      animation: 9
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channelLenght: 0
+    channel: 0
+    cancellable: 1
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 3702938357473195903, guid: 8c828c7b0adc5294b8e84bc2fb2c8ee1,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 1
+    databasePath: //COMPAGNION/All
+    cardClass: 1
+    subClass: 4
+    branch: 0
+    ID: 43

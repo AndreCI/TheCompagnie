@@ -17,6 +17,15 @@ public class CompagnionsDatabase : ScriptableObject
         return compagnions[index];
     }
 
+    public Compagnion Get(string name)
+    {
+        return compagnions.First(x => x.unitName.Contains(name));
+    }
+
+    public Compagnion Get(CardDatabase.CARDCLASS cards)
+    {
+        return compagnions.First(x => x.availableCards == cards);
+    }
     
 
 }

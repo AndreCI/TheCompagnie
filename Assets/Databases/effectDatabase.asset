@@ -92,8 +92,8 @@ MonoBehaviour:
       activate: 0
   - Name: Parry
     status: 2
-    icon: {fileID: 1069709688772938668, guid: 0f01698d67d322048833746f43c903ad, type: 3}
-    highlightedSprite: {fileID: 2632801368705440561, guid: 0f01698d67d322048833746f43c903ad,
+    icon: {fileID: 5186327475281492939, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: 5186327475281492939, guid: 0f01698d67d322048833746f43c903ad,
       type: 3}
     mainAnimation:
       type: 44
@@ -392,8 +392,8 @@ MonoBehaviour:
       activate: 0
   - Name: Concentration
     status: 11
-    icon: {fileID: -3092383872609349401, guid: 0f01698d67d322048833746f43c903ad, type: 3}
-    highlightedSprite: {fileID: 910873792039224631, guid: 0f01698d67d322048833746f43c903ad,
+    icon: {fileID: 5191215160190300134, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: 8949837943039960548, guid: 0f01698d67d322048833746f43c903ad,
       type: 3}
     mainAnimation:
       type: 0
@@ -505,6 +505,43 @@ MonoBehaviour:
     status: 14
     icon: {fileID: -5703463613599751058, guid: 0f01698d67d322048833746f43c903ad, type: 3}
     highlightedSprite: {fileID: -4317230996837416669, guid: 0f01698d67d322048833746f43c903ad,
+      type: 3}
+    mainAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+    finalAnimation:
+      type: 0
+      animationSpriteList: {fileID: 0}
+      width: 0
+      height: 0
+      scale: 1
+      reverseTime: 0
+      minWidth: 0
+      minHeight: 0
+      maxWidth: 0
+      maxHeight: 0
+      repeat: 0
+      modifyColor: {r: 0, g: 0, b: 0, a: 0}
+      playing: 0
+      ID: 0
+      activate: 0
+  - Name: Concentration
+    status: 15
+    icon: {fileID: 4934704464081804522, guid: 0f01698d67d322048833746f43c903ad, type: 3}
+    highlightedSprite: {fileID: 660871998608135297, guid: 0f01698d67d322048833746f43c903ad,
       type: 3}
     mainAnimation:
       type: 0

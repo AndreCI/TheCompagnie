@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: undead
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 14
+  subClass: 0
+  rarityLevel: 0
+  branchLevel: 0
+  childrenDatabase:
+  - {fileID: 11400000, guid: d4297ec749883774590993d953e46b48, type: 2}
+  - {fileID: 11400000, guid: e99a5098d85d514458195dfc35a5c738, type: 2}
+  - {fileID: 11400000, guid: 4f125a82373a5e24d891415525b1bf5a, type: 2}
+  items: []

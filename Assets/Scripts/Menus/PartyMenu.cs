@@ -54,8 +54,8 @@ public class PartyMenu : MonoBehaviour
     {
         if(units == null || units.Count() == 0 || units.Count(x=>x.GetType() == typeof(Enemy)) >0) {
             units = PlayerInfos.Instance.compagnions;
-            UnitSelector.Instance.Unselect();
-            UnitSelector.Instance.ToggleSelection(units.First(), UnitSelector.SELECTION_MODE.SELECT);
+            UnitSelector.Instance?.Unselect();
+            UnitSelector.Instance?.ToggleSelection(units.First(), UnitSelector.SELECTION_MODE.SELECT);
 
         }
 
@@ -94,7 +94,7 @@ public class PartyMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        IEnumerable<Unit> selected = UnitSelector.Instance.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT);
+        IEnumerable<Unit> selected = UnitSelector.Instance?.GetSelectedUnit(UnitSelector.SELECTION_MODE.SELECT);
         SetInfos(selected);
     }
     public void ShowCardHolder(Card card, bool alternativeColor = false)

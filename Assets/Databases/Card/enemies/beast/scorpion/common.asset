@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed44ea79a2f4e5040870721fb74d30e1, type: 3}
+  m_Name: common
+  m_EditorClassIdentifier: 
+  Name: 
+  cardClass: 0
+  subClass: 0
+  rarityLevel: 2
+  branchLevel: 0
+  childrenDatabase: []
+  items:
+  - Name: Poison Dart
+    manaCost: 0
+    delay: 3
+    actionCost: 1
+    effects:
+    - statusFactories:
+      - status: 5
+        value: 2
+        duration: 5
+        permanent: 0
+        trigger: 1
+        unitTrigger: 0
+        factory: []
+        effectFactory: []
+        variable: 0
+      amount: 0
+      type: 2
+      animation: 8
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 5939910768465498834, guid: 8850d6bca355b5c46b366710e99f8cc2,
+      type: 3}
+    Description: 
+    set: 6
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: Claw
+    manaCost: 0
+    delay: 6
+    actionCost: 1
+    effects:
+    - statusFactories: []
+      amount: 0
+      type: 0
+      animation: 0
+      variable: 0
+      alternative: 0
+      condition: 0
+      OnPlay: 0
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: -6890340827879351342, guid: 8850d6bca355b5c46b366710e99f8cc2,
+      type: 3}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: 
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 0}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0
+  - Name: 
+    manaCost: 0
+    delay: 0
+    actionCost: 0
+    effects: []
+    channel: 0
+    channelLenght: 0
+    multipleTarget: 0
+    potential_target: 0
+    hidden: 0
+    sprite: {fileID: 0}
+    Description: 
+    set: 0
+    rarity: 0
+    databasePath: 
+    cardClass: 0
+    branch: 0
+    ID: 0

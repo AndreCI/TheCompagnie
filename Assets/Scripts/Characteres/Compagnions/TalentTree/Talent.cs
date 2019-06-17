@@ -71,7 +71,7 @@ public class Talent : UnitStatus
                         if(unit.maxHealth + amount <= 0) { healthCost = false; }
                         break;
                     case UNIT_MODIFIER.MANA:
-                        if (unit.maxMana + amount <= 0) { manaCost = false; }
+                        if (unit.maxMana + amount < 0) { manaCost = false; }
 
                         break;
                 }
@@ -99,7 +99,7 @@ public class Talent : UnitStatus
                         if (unit.maxHealth + amount<=0) { healthCost = false; }
                         break;
                     case UNIT_MODIFIER.MANA:
-                        if (unit.maxMana + amount <= 0) { manaCost = false; }
+                        if (unit.maxMana + amount < 0) { manaCost = false; }
 
                         break;
                 }

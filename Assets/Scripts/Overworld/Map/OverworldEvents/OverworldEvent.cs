@@ -23,8 +23,6 @@ public class OverworldEvent
     public int ID;
     public string GetDescription()
     {
-        Debug.Log(eventName);
-        Debug.Log(description);
         return description.Aggregate((x, y) => x + "\n" + y); ;
     }
 
